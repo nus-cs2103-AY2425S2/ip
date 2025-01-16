@@ -29,7 +29,7 @@ public class Jude    {
             }
             userInput = scanner.nextLine();
         }
-        
+
         // Terminate the chat
         System.out.println("Bye. Hope to see you again soon, poyo!");
         scanner.close();
