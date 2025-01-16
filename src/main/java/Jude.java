@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 
 /**
  * Represents a Jude, the personal assistant chatbot.
- *
  * This class helps a person to keep track of various things.
  *
  * @author Judy Park
@@ -49,6 +48,7 @@ public class Jude {
             if (command.equals("bye")) {
                 break;
             }
+
             // Check if the command is "list"
             else if (command.equals("list")) {
                 // Print the list of tasks saved
@@ -124,7 +124,7 @@ public class Jude {
                     continue;
                 }
                 list[listSize++] = task;
-                System.out.println("Poyo! added: " + task);
+                System.out.println("Poyo! added: " + task.toStringDetails());
                 continue;
             }
         }
@@ -133,4 +133,3 @@ public class Jude {
         System.out.println("Poyo. Hope to see you again soon!");
     }
 }
-
