@@ -3,7 +3,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-public class Jude    {
+/**
+ * Represents a Jude, the personal assistant chatbot.
+ * This class helps a person to keep track of various things.
+ *
+ * @author Judy Park
+ **/
+public class Jude {
     public static void main(String[] args) {
 
         // Initialize the variables
