@@ -26,7 +26,7 @@ public class Task {
     public String toString() {
         return description;
     }
-    public String toStringMarked() {
+    public String toStringDetails() {
         return String.format("[%s] %s", getStatusIcon(), description);
     }
 }
