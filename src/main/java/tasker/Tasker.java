@@ -1,6 +1,7 @@
 package tasker;
 
 import java.util.Scanner;
+import tasker.command.Parser;
 
 /**
  * Main class for project
@@ -34,7 +35,7 @@ public class Tasker {
         String cmd = sc.nextLine();
 
         while (!cmd.equals("bye")) {
-            respond(cmd);
+            respond(Parser.parse(cmd).execute(tasks));
             cmd = sc.nextLine();
         }
 
