@@ -1,3 +1,5 @@
+package tasker;
+
 import java.util.Scanner;
 
 public class Tasker {
