@@ -2,9 +2,18 @@ package tasker;
 
 import java.util.Scanner;
 
+/**
+ * Main class for project
+ */
 public class Tasker {
+    /** List of the user's tasks */
     private static TaskList tasks = new TaskList();
 
+    /**
+     * Formats and prints an output
+     *
+     * @param output The content of the output
+     */
     private static void respond(String output) {
         String separator = "____________________________________________________________\n";
         output = separator

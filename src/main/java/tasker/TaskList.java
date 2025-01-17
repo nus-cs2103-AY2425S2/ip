@@ -2,9 +2,18 @@ package tasker;
 
 import java.util.ArrayList;
 
+/**
+ * A List of tasks
+ */
 public class TaskList {
+    /** Stored tasks of the list */
     private ArrayList<String> tasks = new ArrayList<>();
 
+    /**
+     * Adds a task to this list
+     *
+     * @param task The task to be added
+     */
     public void add(String task) {
         tasks.add(task);
     }
