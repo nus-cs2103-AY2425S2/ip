@@ -1,6 +1,6 @@
 package tasker.command;
 
-import tasker.TaskList;
+import tasker.task.TaskList;
 
 /**
  * Lists the contents of the task list

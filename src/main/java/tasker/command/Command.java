@@ -1,6 +1,6 @@
 package tasker.command;
 
-import tasker.TaskList;
+import tasker.task.TaskList;
 
 /**
  * Performs an action on a task list

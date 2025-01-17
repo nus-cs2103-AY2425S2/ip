@@ -2,6 +2,7 @@ package tasker;
 
 import java.util.Scanner;
 import tasker.command.Parser;
+import tasker.task.TaskList;
 
 /**
  * Main class for project
@@ -18,7 +19,7 @@ public class Tasker {
     private static void respond(String output) {
         String separator = "____________________________________________________________\n";
         output = separator
-                + output + '\n'
+                + output + "\n"
                 + separator;
 
         for (String line : output.split("\n")) {
