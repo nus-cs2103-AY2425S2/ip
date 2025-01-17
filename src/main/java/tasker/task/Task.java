@@ -4,15 +4,15 @@ package tasker.task;
  * A task.
  */
 public abstract class Task {
-    /** The description of the task. */
+    /** The description of the task */
     private String description;
-    /** Status if the task is done. */
+    /** Status if the task is done */
     private boolean isDone = false;
 
     /**
      * Class constructor.
      *
-     * @param description The description of the task.
+     * @param description Description of this task.
      */
     Task(String description) {
         this.description = description;

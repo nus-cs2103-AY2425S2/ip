@@ -13,8 +13,8 @@ class MarkCommand extends MarkingCommand {
     /**
      * Marks the task with the corresponding index as done.
      *
-     * @param tasks The list of tasks to mark from
-     * @return Notice of marking the task
+     * @param tasks The list of tasks to mark from.
+     * @return Output of marking the task.
      */
     @Override
     public String execute(TaskList tasks) {

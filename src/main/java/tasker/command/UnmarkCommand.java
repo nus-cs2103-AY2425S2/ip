@@ -13,8 +13,8 @@ class UnmarkCommand extends MarkingCommand {
     /**
      * Unmarks the task with the corresponding index as done.
      *
-     * @param tasks The list of tasks to unmark from
-     * @return Notice of unmarking the task
+     * @param tasks The list of tasks to unmark from.
+     * @return Output of unmarking the task.
      */
     @Override
     public String execute(TaskList tasks) {

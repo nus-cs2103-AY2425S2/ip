@@ -20,8 +20,8 @@ abstract class MarkingCommand extends Command {
     /**
      * Pads the task at the index.
      *
-     * @param tasks The task list to get the task from
-     * @return The task at the index
+     * @param tasks The task list to get the task from.
+     * @return The description of the task at the index.
      */
     @Override
     public String execute(TaskList tasks) {

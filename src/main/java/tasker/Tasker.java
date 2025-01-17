@@ -5,16 +5,16 @@ import tasker.command.Parser;
 import tasker.task.TaskList;
 
 /**
- * Main class for project
+ * Main class for project.
  */
 public class Tasker {
     /** List of the user's tasks */
     private static TaskList tasks = new TaskList();
 
     /**
-     * Formats and prints an output
+     * Formats and prints an output.
      *
-     * @param output The content of the output
+     * @param output The content of the output.
      */
     private static void respond(String output) {
         String separator = "____________________________________________________________\n";

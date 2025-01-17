@@ -3,35 +3,35 @@ package tasker.task;
 import java.util.ArrayList;
 
 /**
- * A List of tasks
+ * A List of tasks.
  */
 public class TaskList {
     /** Stored tasks of the list */
     private ArrayList<Task> tasks = new ArrayList<>();
 
     /**
-     * Adds a task to this list
+     * Adds a task to this list.
      *
-     * @param Task to be added
+     * @param task to be added.
      */
     public void add(Task task) {
         tasks.add(task);
     }
 
     /**
-     * Returns the description of the tasks with the provided index
+     * Returns the description of the tasks with the provided index.
      *
-     * @param index The index of the task to be described
-     * @return Description of the task at the index
+     * @param index The index of the task to be described.
+     * @return Description of the task at the index.
      */
     public String getTaskDescription(int index) {
         return tasks.get(index).toString();
     }
 
     /**
-     * Returns the number of tasks within the list
+     * Returns the number of tasks within the list.
      *
-     * @return The number of tasks within the list
+     * @return The number of tasks within the list.
      */
     public int size() {
         return tasks.size();
@@ -40,7 +40,7 @@ public class TaskList {
     /**
      * Marks a task in the list as done.
      *
-     * @param index The index of the task to mark as done
+     * @param index The index of the task to mark as done.
      */
     public void markTask(int index) {
         tasks.get(index).mark();
@@ -49,7 +49,7 @@ public class TaskList {
     /**
      * Unarks a task in the list as done.
      *
-     * @param index The index of the task to unmark as done
+     * @param index The index of the task to unmark as done.
      */
     public void unmarkTask(int index) {
         tasks.get(index).unmark();

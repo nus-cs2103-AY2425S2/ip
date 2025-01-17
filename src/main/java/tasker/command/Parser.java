@@ -3,14 +3,14 @@ package tasker.command;
 import tasker.task.Todo;
 
 /**
- * Parses the user input
+ * Parses the user input.
  */
 public class Parser {
     /**
      * Creates the command to handle the user input.
      *
-     * @param command The input of the user
-     * @return The command to handle the user input
+     * @param command The input of the user.
+     * @return The command to handle the user input.
      */
     public static Command parse(String command) {
         String[] cmdParts = command.split(" ", 2);
