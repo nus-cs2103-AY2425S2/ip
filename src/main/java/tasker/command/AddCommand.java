@@ -1,26 +1,28 @@
 package tasker.command;
 
 import tasker.task.TaskList;
+import tasker.task.Task;
 
 /**
  * Adds a task to the task list
  */
 class AddCommand extends Command {
     /** Task to be added */
-    private String task;
+    private Task task;
 
     /**
      * Class constructor
      * 
-     * @param description Description of task to be added
+     * @param task Task to be added
      */
-    AddCommand(String description) {
-        this.task = description;
+    AddCommand(Task task) {
+        this.task = task;
     }
 
     @Override
     public String execute(TaskList tasks) {
         tasks.add(this.task);
-        return "added: " + this.task;
+        return "Got it. I've added this task:\n"
+                + "  " + this.task;
     }
 }

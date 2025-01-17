@@ -12,10 +12,10 @@ public class TaskList {
     /**
      * Adds a task to this list
      *
-     * @param description The description of the task to be added
+     * @param Task to be added
      */
-    public void add(String description) {
-        tasks.add(new Task(description));
+    public void add(Task task) {
+        tasks.add(task);
     }
 
     /**

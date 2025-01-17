@@ -1,12 +1,12 @@
 package tasker.task;
 
 /**
- * A task to do.
+ * A task.
  */
-class Task {
+public abstract class Task {
     /** The description of the task. */
     private String description;
-    /** State if the task is done. */
+    /** Status if the task is done. */
     private boolean isDone = false;
 
     /**

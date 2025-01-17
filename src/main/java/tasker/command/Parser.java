@@ -1,5 +1,7 @@
 package tasker.command;
 
+import tasker.task.Todo;
+
 /**
  * Parses the user input
  */
@@ -11,7 +13,7 @@ public class Parser {
      * @return The command to handle the user input
      */
     public static Command parse(String command) {
-        String[] cmdParts = command.split(" ");
+        String[] cmdParts = command.split(" ", 2);
         String mainPart = cmdParts[0];
 
         if (mainPart.equals("list")) {
@@ -28,6 +30,6 @@ public class Parser {
             }
         }
 
-        return new AddCommand(command);
+        return new AddCommand(new Todo(cmdParts[1]));
     }
 }
