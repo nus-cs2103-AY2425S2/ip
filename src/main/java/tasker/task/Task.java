@@ -34,6 +34,6 @@ public abstract class Task {
 
     @Override
     public String toString() {
-        return "[" + (this.isDone ? "X" : " ") + "] " + this.description;
+        return String.format("[%s] %s", this.isDone ? "X" : " ", this.description);
     }
 }

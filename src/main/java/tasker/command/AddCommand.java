@@ -22,8 +22,10 @@ class AddCommand extends Command {
     @Override
     public String execute(TaskList tasks) {
         tasks.add(this.task);
-        return "Got it. I've added this task:\n"
-                + "  " + this.task + "\n"
-                + "Now you have " + tasks.size() + " tasks in the list.";
+        return String.format("""
+                Got it. I've added this task:
+                  %s
+                Now you have %d tasks in the list.""",
+                this.task, tasks.size());
     }
 }
