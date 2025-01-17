@@ -19,6 +19,16 @@ public class TaskList {
     }
 
     /**
+     * Returns the tasks with the provided index
+     *
+     * @param index The index of the task
+     * @return String of the task at the index
+     */
+    public String getTask(int index) {
+        return tasks.get(index).toString();
+    }
+
+    /**
      * Marks a task in the list as done.
      *
      * @param index The index of the task to mark as done
