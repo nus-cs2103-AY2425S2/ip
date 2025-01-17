@@ -12,13 +12,22 @@ public class Parser {
      */
     public static Command parse(String command) {
         String[] cmdParts = command.split(" ");
+        String mainPart = cmdParts[0];
 
-        switch (cmdParts[0]) {
-            case "list":
-                return new ListCommand();
-
-            default:
-                return new AddCommand(command);
+        if (mainPart.equals("list")) {
+            return new ListCommand();
         }
+
+        if (mainPart.equals("mark") || mainPart.equals("unmark")) {
+            int index = Integer.parseInt(cmdParts[1]) - 1;
+
+            if (mainPart.equals("mark")) {
+                return new MarkCommand(index);
+            } else {
+                return new UnmarkCommand(index);
+            }
+        }
+
+        return new AddCommand(command);
     }
 }
