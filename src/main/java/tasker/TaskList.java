@@ -2,10 +2,10 @@ package tasker;
 
 import java.util.ArrayList;
 
-class TaskList {
+public class TaskList {
     private ArrayList<String> tasks = new ArrayList<>();
 
-    void add(String task) {
+    public void add(String task) {
         tasks.add(task);
     }
 
