@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Tasker {
+    private static TaskList tasks = new TaskList();
+
     private static void respond(String output) {
         String separator = "____________________________________________________________\n";
         output = separator
