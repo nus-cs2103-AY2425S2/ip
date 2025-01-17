@@ -23,6 +23,7 @@ class AddCommand extends Command {
     public String execute(TaskList tasks) {
         tasks.add(this.task);
         return "Got it. I've added this task:\n"
-                + "  " + this.task;
+                + "  " + this.task + "\n"
+                + "Now you have " + tasks.size() + " tasks in the list.";
     }
 }

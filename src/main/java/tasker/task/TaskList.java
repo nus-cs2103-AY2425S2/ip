@@ -29,6 +29,15 @@ public class TaskList {
     }
 
     /**
+     * Returns the number of tasks within the list
+     *
+     * @return The number of tasks within the list
+     */
+    public int size() {
+        return tasks.size();
+    }
+
+    /**
      * Marks a task in the list as done.
      *
      * @param index The index of the task to mark as done
