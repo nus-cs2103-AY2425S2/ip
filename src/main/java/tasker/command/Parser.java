@@ -1,6 +1,7 @@
 package tasker.command;
 
 import tasker.task.Todo;
+import tasker.task.Deadline;
 
 /**
  * Parses the user input.
@@ -28,6 +29,11 @@ public class Parser {
             } else {
                 return new UnmarkCommand(index);
             }
+        }
+
+        if (mainPart.equals("deadline")) {
+            String[] args = cmdParts[1].split(" /");
+            return new AddCommand(new Deadline(args[0], args[1].split(" ", 2)[1]));
         }
 
         return new AddCommand(new Todo(cmdParts[1]));
