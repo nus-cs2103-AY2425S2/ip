@@ -19,12 +19,12 @@ public class TaskList {
     }
 
     /**
-     * Returns the tasks with the provided index
+     * Returns the description of the tasks with the provided index
      *
-     * @param index The index of the task
-     * @return String of the task at the index
+     * @param index The index of the task to be described
+     * @return Description of the task at the index
      */
-    public String getTask(int index) {
+    public String getTaskDescription(int index) {
         return tasks.get(index).toString();
     }
 

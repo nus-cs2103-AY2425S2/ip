@@ -25,6 +25,6 @@ abstract class MarkingCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks) {
-        return "  " + tasks.getTask(this.index);
+        return "  " + tasks.getTaskDescription(this.index);
     }
 }
