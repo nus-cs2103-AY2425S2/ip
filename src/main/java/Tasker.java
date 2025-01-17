@@ -17,6 +17,15 @@ public class Tasker {
     public static void main(String[] args) {
         respond("Hello! I'm Tasker\n"
                 + "What can I do for you?");
+        Scanner sc = new Scanner(System.in);
+        String cmd = sc.nextLine();
+
+        while (!cmd.equals("bye")) {
+            respond(cmd);
+            cmd = sc.nextLine();
+        }
+
+        sc.close();
         respond("Bye. Hope to see you again soon!");
     }
 }
