@@ -39,13 +39,13 @@ public class TaskList {
     @Override
     public String toString() {
         int size = tasks.size();
-        StringBuilder output = new StringBuilder();
+        StringBuilder output = new StringBuilder("Here are the tasks in your list:\n");
 
         for (int i = 0; i < size; i++) {
             output.append((i + 1) + ". " + tasks.get(i));
 
             if (i != size - 1) {
-                output.append('\n');
+                output.append("\n");
             }
         }
 
