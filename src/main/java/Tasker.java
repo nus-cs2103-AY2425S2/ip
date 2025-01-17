@@ -1,13 +1,22 @@
+import java.util.Scanner;
+
 public class Tasker {
-    public static void main(String[] args) {
-        String separator = "____________________________________________________________";
-        String newLineSeparator = separator + "\n";
-        String greeting = newLineSeparator
-                + "Hello! I'm Tasker\n"
-                + "What can I do for you?\n"
-                + newLineSeparator
-                + "Bye. Hope to see you again soon!\n"
+    private static void respond(String output) {
+        String separator = "____________________________________________________________\n";
+        output = separator
+                + output + '\n'
                 + separator;
-        System.out.println(greeting);
+
+        for (String line : output.split("\n")) {
+            System.out.println("    " + line);
+        }
+
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        respond("Hello! I'm Tasker\n"
+                + "What can I do for you?");
+        respond("Bye. Hope to see you again soon!");
     }
 }
