@@ -27,11 +27,10 @@ class AddCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks) {
-        tasks.add(this.task);
         return String.format("""
                 Got it. I've added this task:
                   %s
-                Now you have %d tasks in the list.""",
-                this.task, tasks.size());
+                %s""",
+                this.task, tasks.add(this.task));
     }
 }

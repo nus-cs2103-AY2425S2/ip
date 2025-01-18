@@ -10,12 +10,23 @@ public class TaskList {
     private ArrayList<Task> tasks = new ArrayList<>();
 
     /**
+     * Reports the current number of tasks in the list.
+     *
+     * @return A report of current list count.
+     */
+    private String report() {
+        return String.format("Now you have %d tasks in the list.", tasks.size());
+    };
+
+    /**
      * Adds a task to this list.
      *
      * @param task to be added.
+     * @return A report of current list count.
      */
-    public void add(Task task) {
+    public String add(Task task) {
         tasks.add(task);
+        return report();
     }
 
     /**
@@ -26,15 +37,6 @@ public class TaskList {
      */
     public String getTaskDescription(int index) {
         return tasks.get(index).toString();
-    }
-
-    /**
-     * Returns the number of tasks within the list.
-     *
-     * @return The number of tasks within the list.
-     */
-    public int size() {
-        return tasks.size();
     }
 
     /**
