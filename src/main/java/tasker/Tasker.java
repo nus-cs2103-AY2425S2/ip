@@ -2,6 +2,7 @@ package tasker;
 
 import java.util.Scanner;
 import tasker.command.Parser;
+import tasker.exception.TaskerException;
 import tasker.task.TaskList;
 
 /**
@@ -39,7 +40,11 @@ public class Tasker {
         String cmd = sc.nextLine();
 
         while (!cmd.equals("bye")) {
-            respond(Parser.parse(cmd).execute(tasks));
+            try {
+                respond(Parser.parse(cmd).execute(tasks));
+            } catch (TaskerException e) {
+                respond(e.getMessage());
+            }
             cmd = sc.nextLine();
         }
 

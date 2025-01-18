@@ -3,6 +3,7 @@ package tasker.command;
 import tasker.task.Todo;
 import tasker.task.Deadline;
 import tasker.task.Event;
+import tasker.exception.TaskerException;
 
 /**
  * Parses the user input.
@@ -14,7 +15,7 @@ public class Parser {
      * @param command The input of the user.
      * @return The command to handle the user input.
      */
-    public static Command parse(String command) {
+    public static Command parse(String command) throws TaskerException {
         String[] cmdParts = command.split(" ", 2);
         String mainPart = cmdParts[0];
 
@@ -42,6 +43,10 @@ public class Parser {
             }
         }
 
-        return new AddCommand(new Todo(cmdParts[1]));
+        if (mainPart.equals("todo")) {
+            return new AddCommand(new Todo(cmdParts[1]));
+        }
+
+        throw new TaskerException("Unknown command: " + mainPart);
     }
 }
