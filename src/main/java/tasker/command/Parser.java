@@ -67,11 +67,16 @@ public class Parser {
                 toRun = new AddCommand(toAdd);
                 break;
 
+            case DELETE:
             case MARK:
             case UNMARK:
                 int index = Integer.parseInt(cmdParts[1]) - 1;
 
                 switch (mainPart) {
+                    case DELETE:
+                        toRun = new DeleteCommand(index);
+                        break;
+
                     case MARK:
                         toRun = new MarkCommand(index);
                         break;

@@ -30,6 +30,17 @@ public class TaskList {
     }
 
     /**
+     * Deletes a task from this list.
+     *
+     * @param index The index of the task to be deleted.
+     * @return A report of current list count.
+     */
+    public String delete(int index) {
+        tasks.remove(index);
+        return report();
+    }
+
+    /**
      * Returns the description of the tasks with the provided index.
      *
      * @param index The index of the task to be described.
