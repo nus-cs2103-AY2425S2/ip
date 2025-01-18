@@ -18,17 +18,22 @@ public class Parser {
      */
     public static Command parse(String command) throws TaskerException {
         String[] cmdParts = command.split(" ", 2);
-        String mainPart = cmdParts[0];
+        CommandType mainPart;
 
-        if (mainPart.equals(CommandType.LIST.toString())) {
-            return new ListCommand();
+        try {
+            mainPart = CommandType.valueOf(cmdParts[0].toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new TaskerException(String.format("""
+                    Unknown command: %s
+                    %s""",
+                    cmdParts[0], CommandType.listCommands()));
         }
 
-        if (mainPart.equals(CommandType.DEADLINE.toString()) || mainPart.equals(CommandType.EVENT.toString())
-                || mainPart.equals(CommandType.TODO.toString())) {
+        if (mainPart.equals(CommandType.DEADLINE) || mainPart.equals(CommandType.EVENT)
+                || mainPart.equals(CommandType.TODO)) {
             Task toAdd;
 
-            if (mainPart.equals(CommandType.TODO.toString())) {
+            if (mainPart.equals(CommandType.TODO)) {
                 if (cmdParts.length == 1) {
                     throw new TaskerException("Please provide a description for the todo task.");
                 }
@@ -37,7 +42,7 @@ public class Parser {
             } else {
                 String[] args = cmdParts[1].split(" /");
 
-                if (mainPart.equals(CommandType.DEADLINE.toString())) {
+                if (mainPart.equals(CommandType.DEADLINE)) {
                     toAdd = new Deadline(args[0], args[1].split(" ", 2)[1]);
                 } else {
                     toAdd = new Event(args[0], args[1].split(" ", 2)[1], args[2].split(" ", 2)[1]);
@@ -48,19 +53,16 @@ public class Parser {
             return new AddCommand(toAdd);
         }
 
-        if (mainPart.equals(CommandType.MARK.toString()) || mainPart.equals(CommandType.UNMARK.toString())) {
+        if (mainPart.equals(CommandType.MARK) || mainPart.equals(CommandType.UNMARK)) {
             int index = Integer.parseInt(cmdParts[1]) - 1;
 
-            if (mainPart.equals(CommandType.MARK.toString())) {
+            if (mainPart.equals(CommandType.MARK)) {
                 return new MarkCommand(index);
             } else {
                 return new UnmarkCommand(index);
             }
         }
 
-        throw new TaskerException(String.format("""
-                Unknown command: %s
-                %s""",
-                mainPart, CommandType.listCommands()));
+        return new ListCommand();
     }
 }
