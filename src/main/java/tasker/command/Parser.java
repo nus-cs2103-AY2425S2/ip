@@ -19,6 +19,7 @@ public class Parser {
     public static Command parse(String command) throws TaskerException {
         String[] cmdParts = command.split(" ", 2);
         CommandType mainPart;
+        Command toRun = null;
 
         try {
             mainPart = CommandType.valueOf(cmdParts[0].toUpperCase());
@@ -29,40 +30,66 @@ public class Parser {
                     cmdParts[0], CommandType.listCommands()));
         }
 
-        if (mainPart.equals(CommandType.DEADLINE) || mainPart.equals(CommandType.EVENT)
-                || mainPart.equals(CommandType.TODO)) {
-            Task toAdd;
+        switch (mainPart) {
+            case DEADLINE:
+            case EVENT:
+            case TODO:
+                Task toAdd = null;
 
-            if (mainPart.equals(CommandType.TODO)) {
-                if (cmdParts.length == 1) {
-                    throw new TaskerException("Please provide a description for the todo task.");
+                switch (mainPart) {
+                    case TODO:
+                        if (cmdParts.length == 1) {
+                            throw new TaskerException("Please provide a description for the todo task.");
+                        }
+
+                        toAdd = new Todo(cmdParts[1]);
+
+                    case DEADLINE:
+                    case EVENT:
+                        String[] args = cmdParts[1].split(" /");
+                        switch (mainPart) {
+                            case DEADLINE:
+                                toAdd = new Deadline(args[0], args[1].split(" ", 2)[1]);
+                                break;
+
+                            case EVENT:
+                                toAdd = new Event(args[0], args[1].split(" ", 2)[1], args[2].split(" ", 2)[1]);
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                    default:
+                        break;
                 }
 
-                toAdd = new Todo(cmdParts[1]);
-            } else {
-                String[] args = cmdParts[1].split(" /");
+                toRun = new AddCommand(toAdd);
+                break;
 
-                if (mainPart.equals(CommandType.DEADLINE)) {
-                    toAdd = new Deadline(args[0], args[1].split(" ", 2)[1]);
-                } else {
-                    toAdd = new Event(args[0], args[1].split(" ", 2)[1], args[2].split(" ", 2)[1]);
+            case MARK:
+            case UNMARK:
+                int index = Integer.parseInt(cmdParts[1]) - 1;
+
+                switch (mainPart) {
+                    case MARK:
+                        toRun = new MarkCommand(index);
+                        break;
+
+                    case UNMARK:
+                        toRun = new UnmarkCommand(index);
+                        break;
+
+                    default:
+                        break;
                 }
+                break;
 
-            }
-
-            return new AddCommand(toAdd);
+            case LIST:
+                toRun = new ListCommand();
+                break;
         }
 
-        if (mainPart.equals(CommandType.MARK) || mainPart.equals(CommandType.UNMARK)) {
-            int index = Integer.parseInt(cmdParts[1]) - 1;
-
-            if (mainPart.equals(CommandType.MARK)) {
-                return new MarkCommand(index);
-            } else {
-                return new UnmarkCommand(index);
-            }
-        }
-
-        return new ListCommand();
+        return toRun;
     }
 }
