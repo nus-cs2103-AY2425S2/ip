@@ -11,6 +11,11 @@ public enum CommandType {
     UNMARK,
     LIST;
 
+    /**
+     * Lists out all available commands.
+     *
+     * @returns A list of commands each on a new line.
+     */
     public static String listCommands() {
         CommandType[] commands = CommandType.values();
         int commandCount = commands.length;

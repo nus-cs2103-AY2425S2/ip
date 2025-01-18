@@ -1,7 +1,7 @@
 package tasker.exception;
 
 /**
- * Exceptions for Tasker
+ * Exceptions for Tasker.
  */
 public class TaskerException extends Exception {
     public TaskerException(String message) {
