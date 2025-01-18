@@ -54,6 +54,9 @@ public class Parser {
             }
         }
 
-        throw new TaskerException("Unknown command: " + mainPart);
+        throw new TaskerException(String.format("""
+                Unknown command: %s
+                %s""",
+                mainPart, CommandType.listCommands()));
     }
 }
