@@ -1,6 +1,7 @@
 package tasker;
 
 import java.util.Scanner;
+
 import tasker.command.Parser;
 import tasker.exception.TaskerException;
 import tasker.task.TaskList;
@@ -15,21 +16,19 @@ public class Tasker {
     /**
      * Formats and prints an output.
      *
-     * @param output The content of the output.
+     * @param content The content of this response.
      */
-    private static void respond(String output) {
-        String separator = "____________________________________________________________\n";
-        output = String.format("%s%s\n%s", separator, output, separator);
-        String[] lines = output.split("\n");
-        int lineCount = lines.length;
+    private static void respond(String content) {
+        String padding = "    ";
+        String separator = padding + "____________________________________________________________\n";
+        StringBuilder response = new StringBuilder(separator);
 
-        for (int i = 0; i < lineCount; i++) {
-            System.out.println(String.format("%s%s%s",
-                    i == 0 || i == lineCount - 1 ? "" : " ",
-                    "    ", lines[i]));
+        for (String line : content.split("\n")) {
+            response.append(" ").append(padding).append(line).append("\n");
         }
 
-        System.out.println();
+        response.append(separator);
+        System.out.println(response);
     }
 
     public static void main(String[] args) {
