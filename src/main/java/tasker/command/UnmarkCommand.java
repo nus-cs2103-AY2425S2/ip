@@ -5,7 +5,7 @@ import tasker.task.TaskList;
 /**
  * Command for unmarking a task as done.
  */
-class UnmarkCommand extends MarkingCommand {
+class UnmarkCommand extends IndexCommand {
     UnmarkCommand(int index) {
         super(index);
     }

@@ -3,9 +3,9 @@ package tasker.command;
 import tasker.task.TaskList;
 
 /**
- * Marking related commands.
+ * Command that makes use of task index.
  */
-abstract class MarkingCommand extends Command {
+abstract class IndexCommand extends Command {
     protected int index;
 
     /**
@@ -13,7 +13,7 @@ abstract class MarkingCommand extends Command {
      *
      * @param index The index of the task to be operated on.
      */
-    MarkingCommand(int index) {
+    IndexCommand(int index) {
         this.index = index;
     }
 

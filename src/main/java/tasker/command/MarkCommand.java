@@ -5,7 +5,7 @@ import tasker.task.TaskList;
 /**
  * Command for marking a task as done.
  */
-class MarkCommand extends MarkingCommand {
+class MarkCommand extends IndexCommand {
     MarkCommand(int index) {
         super(index);
     }
