@@ -1,9 +1,10 @@
 package tasker.command;
 
-import tasker.task.Todo;
+import tasker.exception.TaskerException;
 import tasker.task.Deadline;
 import tasker.task.Event;
-import tasker.exception.TaskerException;
+import tasker.task.Task;
+import tasker.task.Todo;
 
 /**
  * Parses the user input.
@@ -19,32 +20,38 @@ public class Parser {
         String[] cmdParts = command.split(" ", 2);
         String mainPart = cmdParts[0];
 
-        if (mainPart.equals("list")) {
+        if (mainPart.equals(CommandType.LIST.toString())) {
             return new ListCommand();
         }
 
-        if (mainPart.equals("mark") || mainPart.equals("unmark")) {
+        if (mainPart.equals(CommandType.DEADLINE.toString()) || mainPart.equals(CommandType.EVENT.toString())
+                || mainPart.equals(CommandType.TODO.toString())) {
+            Task toAdd;
+
+            if (mainPart.equals(CommandType.TODO.toString())) {
+                toAdd = new Todo(cmdParts[1]);
+            } else {
+                String[] args = cmdParts[1].split(" /");
+
+                if (mainPart.equals(CommandType.DEADLINE.toString())) {
+                    toAdd = new Deadline(args[0], args[1].split(" ", 2)[1]);
+                } else {
+                    toAdd = new Event(args[0], args[1].split(" ", 2)[1], args[2].split(" ", 2)[1]);
+                }
+
+            }
+
+            return new AddCommand(toAdd);
+        }
+
+        if (mainPart.equals(CommandType.MARK.toString()) || mainPart.equals(CommandType.UNMARK.toString())) {
             int index = Integer.parseInt(cmdParts[1]) - 1;
 
-            if (mainPart.equals("mark")) {
+            if (mainPart.equals(CommandType.MARK.toString())) {
                 return new MarkCommand(index);
             } else {
                 return new UnmarkCommand(index);
             }
-        }
-
-        if (mainPart.equals("deadline") || mainPart.equals("event")) {
-            String[] args = cmdParts[1].split(" /");
-
-            if (mainPart.equals("deadline")) {
-                return new AddCommand(new Deadline(args[0], args[1].split(" ", 2)[1]));
-            } else {
-                return new AddCommand(new Event(args[0], args[1].split(" ", 2)[1], args[2].split(" ", 2)[1]));
-            }
-        }
-
-        if (mainPart.equals("todo")) {
-            return new AddCommand(new Todo(cmdParts[1]));
         }
 
         throw new TaskerException("Unknown command: " + mainPart);
