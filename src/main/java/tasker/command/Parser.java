@@ -29,6 +29,10 @@ public class Parser {
             Task toAdd;
 
             if (mainPart.equals(CommandType.TODO.toString())) {
+                if (cmdParts.length == 1) {
+                    throw new TaskerException("Please provide a description for the todo task.");
+                }
+
                 toAdd = new Todo(cmdParts[1]);
             } else {
                 String[] args = cmdParts[1].split(" /");
