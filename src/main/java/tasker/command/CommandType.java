@@ -11,6 +11,22 @@ public enum CommandType {
     UNMARK,
     LIST;
 
+    public static String listCommands() {
+        CommandType[] commands = CommandType.values();
+        int commandCount = commands.length;
+        StringBuilder list = new StringBuilder("Valid commands:\n");
+
+        for (int i = 0; i < commandCount; i++) {
+            list.append(commands[i]);
+
+            if (i != commandCount - 1) {
+                list.append("\n");
+            }
+        }
+
+        return list.toString();
+    }
+
     @Override
     public String toString() {
         return super.toString().toLowerCase();
