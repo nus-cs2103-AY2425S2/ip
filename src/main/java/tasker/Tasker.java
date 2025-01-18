@@ -19,9 +19,13 @@ public class Tasker {
     private static void respond(String output) {
         String separator = "____________________________________________________________\n";
         output = String.format("%s%s\n%s", separator, output, separator);
+        String[] lines = output.split("\n");
+        int lineCount = lines.length;
 
-        for (String line : output.split("\n")) {
-            System.out.println("    " + line);
+        for (int i = 0; i < lineCount; i++) {
+            System.out.println(String.format("%s%s%s",
+                    i == 0 || i == lineCount - 1 ? "" : " ",
+                    "    ", lines[i]));
         }
 
         System.out.println();
