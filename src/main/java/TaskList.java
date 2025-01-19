@@ -5,14 +5,36 @@ public class TaskList {
     /**
      * Adds a task to the list
      *
-     * @param task the name of the chatbot.
+     * @param command the name of the chatbot.
      */
-    public void addTask(String task) {
+    public void addTask(String command) {
+        Task newTask;
+        if (command.startsWith("todo ")) {
+            String description = command.substring(5);
+            newTask = new ToDo(description);
+        } else if (command.startsWith("deadline ")) {
+            String[] parts = command.substring(9).split(" /by ");
+            String description = parts[0];
+            String by = parts[1];
+            newTask = new Deadline(description, by);
+        } else if (command.startsWith("event ")) {
+            String[] parts = command.substring(6).split(" /from | /to ");
+            String description = parts[0];
+            String from = parts[1];
+            String to = parts[2];
+            newTask = new Event(description, from, to);
+        } else {
+            System.out.println("Invalid task type. Please try again.");
+            return;
+        }
+
         if (taskCount < tasks.length) {
-            tasks[taskCount] = new Task(task);
+            tasks[taskCount] = newTask;
             taskCount++;
             System.out.println("____________________________________________________________");
-            System.out.println("added: " + task);
+            System.out.println("Got it. I've added this task:");
+            System.out.println("  " + newTask);
+            System.out.println("Now you have " + taskCount + " tasks in the list.");
             System.out.println("____________________________________________________________");
         } else {
             System.out.println("____________________________________________________________");
