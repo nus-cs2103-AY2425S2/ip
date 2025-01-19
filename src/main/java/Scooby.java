@@ -25,14 +25,10 @@ public class Scooby {
         Scanner scanner = new java.util.Scanner(System.in);
 
         while (true) {
+            Parser parser = new Parser(scooby.taskList, ui);
             String userInput = scanner.nextLine().trim();
-            if (userInput.equalsIgnoreCase("Bye")) {
-                ui.exitDialogue();
-                break;
-            } else if (userInput.equalsIgnoreCase("list")) {
-                scooby.taskList.listTasks();
-            } else {
-                scooby.addTask(userInput); // Use the Scooby class's addTask method
+            if (!parser.parseCommand(userInput)) {
+                break; // Exit the loop if the parser returns false
             }
         }
         scanner.close();

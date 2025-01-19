@@ -1,5 +1,5 @@
 public class TaskList {
-    private String[] tasks = new String[100]; // Fixed-size array to hold tasks
+    private Task[] tasks = new Task[100]; // Fixed-size array to hold tasks
     private int taskCount = 0; // Track the number of tasks
 
     /**
@@ -9,7 +9,7 @@ public class TaskList {
      */
     public void addTask(String task) {
         if (taskCount < tasks.length) {
-            tasks[taskCount] = task;
+            tasks[taskCount] = new Task(task);
             taskCount++;
             System.out.println("____________________________________________________________");
             System.out.println("added: " + task);
@@ -34,5 +34,32 @@ public class TaskList {
             }
         }
         System.out.println("____________________________________________________________");
+    }
+
+    /**
+     * gets a task from the task list
+     *
+     * @param index is the index of the task from the task list.
+     */
+    public Task getTask(int index) {
+        return this.tasks[index];
+    }
+
+    /**
+     * checks a task from the task list
+     *
+     * @param index is the index of the task from the task list to be checked.
+     */
+    public void checkTask(int index) {
+        this.tasks[index].setChecked();
+    }
+
+    /**
+     * unchecks a task from the task list
+     *
+     * @param index is the index of the task from the task list to be unchecked.
+     */
+    public void uncheckTask(int index) {
+        this.tasks[index].setUnchecked();
     }
 }
