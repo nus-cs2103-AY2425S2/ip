@@ -9,36 +9,50 @@ public class TaskList {
      */
     public void addTask(String command) {
         Task newTask;
-        if (command.startsWith("todo ")) {
-            String description = command.substring(5);
-            newTask = new ToDo(description);
-        } else if (command.startsWith("deadline ")) {
-            String[] parts = command.substring(9).split(" /by ");
-            String description = parts[0];
-            String by = parts[1];
-            newTask = new Deadline(description, by);
-        } else if (command.startsWith("event ")) {
-            String[] parts = command.substring(6).split(" /from | /to ");
-            String description = parts[0];
-            String from = parts[1];
-            String to = parts[2];
-            newTask = new Event(description, from, to);
-        } else {
-            System.out.println("Invalid task type. Please try again.");
-            return;
-        }
+        try {
+            if (command.startsWith("todo ")) {
+                String description = command.substring(5).trim();
+                if (description.isEmpty()) {
+                    throw new EmptyException("OOPS!!! The description of a todo cannot be empty.");
+                }
+                newTask = new ToDo(description);
+            } else if (command.startsWith("deadline ")) {
+                String[] parts = command.substring(9).split(" /by ");
+                String description = parts[0].trim();
+                if (description.isEmpty()) {
+                    throw new EmptyException("OOPS!!! The description of a deadline cannot be empty.");
+                }
+                String by = parts[1];
+                newTask = new Deadline(description, by);
+            } else if (command.startsWith("event ")) {
+                String[] parts = command.substring(6).split(" /from | /to ");
+                String description = parts[0].trim();
+                if (description.isEmpty()) {
+                    throw new EmptyException("OOPS!!! The description of an event cannot be empty.");
+                }
+                String from = parts[1];
+                String to = parts[2];
+                newTask = new Event(description, from, to);
+            } else {
+                throw new UnrecognisableException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+            }
 
-        if (taskCount < tasks.length) {
-            tasks[taskCount] = newTask;
-            taskCount++;
+            if (taskCount < tasks.length) {
+                tasks[taskCount] = newTask;
+                taskCount++;
+                System.out.println("____________________________________________________________");
+                System.out.println("Got it. I've added this task:");
+                System.out.println("  " + newTask);
+                System.out.println("Now you have " + taskCount + " tasks in the list.");
+                System.out.println("____________________________________________________________");
+            } else {
+                System.out.println("____________________________________________________________");
+                System.out.println("Task list is full. Cannot add more tasks.");
+                System.out.println("____________________________________________________________");
+            }
+        } catch (EmptyException | UnrecognisableException e) {
             System.out.println("____________________________________________________________");
-            System.out.println("Got it. I've added this task:");
-            System.out.println("  " + newTask);
-            System.out.println("Now you have " + taskCount + " tasks in the list.");
-            System.out.println("____________________________________________________________");
-        } else {
-            System.out.println("____________________________________________________________");
-            System.out.println("Task list is full. Cannot add more tasks.");
+            System.out.println(e.getMessage());
             System.out.println("____________________________________________________________");
         }
     }

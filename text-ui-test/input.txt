@@ -3,4 +3,6 @@ deadline return book /by June 6th
 event project meeting /from Aug 6th 2pm /to 4pm
 mark 1
 list
+todo
+blajh
 bye
