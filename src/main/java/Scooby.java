@@ -6,12 +6,12 @@ public class Scooby {
     }
 
     // exit_dialogue() exits current dialogue, and closes the bot
-    private static void exit_dialogue() {
+    private static void exitDialogue() {
         System.out.println("Bye. Hope to see you again soon!");
     }
 
     public static void main(String[] args) {
         greet();
-        exit_dialogue();
+        exitDialogue();
     }
 }
