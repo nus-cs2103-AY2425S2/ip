@@ -13,14 +13,14 @@ public class TaskList {
             if (command.startsWith("todo ")) {
                 String description = command.substring(5).trim();
                 if (description.isEmpty()) {
-                    throw new EmptyException("OOPS!!! The description of a todo cannot be empty.");
+                    throw new EmptyException("Description of a task cannot be empty. Try again");
                 }
                 newTask = new ToDo(description);
             } else if (command.startsWith("deadline ")) {
                 String[] parts = command.substring(9).split(" /by ");
                 String description = parts[0].trim();
                 if (description.isEmpty()) {
-                    throw new EmptyException("OOPS!!! The description of a deadline cannot be empty.");
+                    throw new EmptyException("Description of a task cannot be empty. Try again");
                 }
                 String by = parts[1];
                 newTask = new Deadline(description, by);
@@ -28,13 +28,13 @@ public class TaskList {
                 String[] parts = command.substring(6).split(" /from | /to ");
                 String description = parts[0].trim();
                 if (description.isEmpty()) {
-                    throw new EmptyException("OOPS!!! The description of an event cannot be empty.");
+                    throw new EmptyException("Description of a task cannot be empty. Try again");
                 }
                 String from = parts[1];
                 String to = parts[2];
                 newTask = new Event(description, from, to);
             } else {
-                throw new UnrecognisableException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+                throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
             }
 
             if (taskCount < tasks.length) {
