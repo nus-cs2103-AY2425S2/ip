@@ -115,6 +115,10 @@ public class Parser {
             case LIST:
                 toRun = new ListCommand();
                 break;
+
+            case BYE:
+                toRun = new ByeCommand();
+                break;
         }
 
         return toRun;

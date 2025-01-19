@@ -2,6 +2,8 @@ package tasker;
 
 import java.util.Scanner;
 
+import tasker.command.ByeCommand;
+import tasker.command.Command;
 import tasker.command.Parser;
 import tasker.exception.TaskerException;
 import tasker.task.TaskList;
@@ -38,16 +40,23 @@ public class Tasker {
         Scanner sc = new Scanner(System.in);
         String cmd = sc.nextLine();
 
-        while (!cmd.equals("bye")) {
+        while (true) {
+            Command parsedCmd = null;
+
             try {
-                respond(Parser.parse(cmd).execute(tasks));
+                parsedCmd = Parser.parse(cmd);
+                respond(parsedCmd.execute(tasks));
             } catch (TaskerException e) {
                 respond(e.getMessage());
             }
+
+            if (parsedCmd instanceof ByeCommand) {
+                break;
+            }
+
             cmd = sc.nextLine();
         }
 
         sc.close();
-        respond("Bye. Hope to see you again soon!");
     }
 }

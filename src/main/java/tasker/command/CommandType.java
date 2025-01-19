@@ -10,7 +10,8 @@ public enum CommandType {
     DELETE,
     MARK,
     UNMARK,
-    LIST;
+    LIST,
+    BYE;
 
     /**
      * Lists out all available commands.
