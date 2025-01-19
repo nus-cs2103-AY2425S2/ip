@@ -1,6 +1,7 @@
+import java.util.ArrayList;
+
 public class TaskList {
-    private Task[] tasks = new Task[100]; // Fixed-size array to hold tasks
-    private int taskCount = 0; // Track the number of tasks
+    private ArrayList<Task> tasks = new ArrayList<>(); // Dynamic list to hold tasks
 
     /**
      * Adds a task to the list
@@ -37,19 +38,13 @@ public class TaskList {
                 throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
             }
 
-            if (taskCount < tasks.length) {
-                tasks[taskCount] = newTask;
-                taskCount++;
-                System.out.println("____________________________________________________________");
-                System.out.println("Got it. I've added this task:");
-                System.out.println("  " + newTask);
-                System.out.println("Now you have " + taskCount + " tasks in the list.");
-                System.out.println("____________________________________________________________");
-            } else {
-                System.out.println("____________________________________________________________");
-                System.out.println("Task list is full. Cannot add more tasks.");
-                System.out.println("____________________________________________________________");
-            }
+            tasks.add(newTask); // Add task to ArrayList
+            System.out.println("____________________________________________________________");
+            System.out.println("Got it. I've added this task:");
+            System.out.println("  " + newTask);
+            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            System.out.println("____________________________________________________________");
+
         } catch (EmptyException | UnrecognisableException e) {
             System.out.println("____________________________________________________________");
             System.out.println(e.getMessage());
@@ -62,40 +57,60 @@ public class TaskList {
      */
     public void listTasks() {
         System.out.println("____________________________________________________________");
-        if (taskCount == 0) {
+        if (tasks.size() == 0) {
             System.out.println("No tasks in the list.");
         } else {
-            for (int i = 0; i < taskCount; i++) {
-                System.out.println((i + 1) + ". " + tasks[i]);
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println((i + 1) + ". " + tasks.get(i));
             }
         }
         System.out.println("____________________________________________________________");
     }
 
     /**
-     * gets a task from the task list
+     * Gets a task from the task list
      *
      * @param index is the index of the task from the task list.
      */
     public Task getTask(int index) {
-        return this.tasks[index];
+        return tasks.get(index);
     }
 
     /**
-     * checks a task from the task list
+     * Marks a task as completed.
      *
-     * @param index is the index of the task from the task list to be checked.
+     * @param index is the index of the task from the task list.
      */
     public void checkTask(int index) {
-        this.tasks[index].setChecked();
+        tasks.get(index).setChecked();
     }
 
     /**
-     * unchecks a task from the task list
+     * Unmarks a task from the task list.
      *
-     * @param index is the index of the task from the task list to be unchecked.
+     * @param index is the index of the task from the task list.
      */
     public void uncheckTask(int index) {
-        this.tasks[index].setUnchecked();
+        tasks.get(index).setUnchecked();
+    }
+
+    /**
+     * Deletes a task from the list
+     *
+     * @param index is the index of the task from the task list.
+     */
+    public void deleteTask(int index) {
+        // Ensure index is within bounds
+        if (index >= 0 && index < tasks.size()) {
+            Task deletedTask = tasks.get(index);
+            tasks.remove(index); // Remove task from ArrayList
+            System.out.println("____________________________________________________________");
+            System.out.println("Noted. I've removed this task:");
+            System.out.println("  " + deletedTask);
+            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            System.out.println("____________________________________________________________");
+        } else {
+            System.out.println("Invalid task index. Please try again.");
+        }
     }
 }
