@@ -15,6 +15,7 @@ public class Parser {
      *
      * @param command The input of the user.
      * @return The command to handle the user input.
+     * @throws TaskerException If there is an error with the command
      */
     public static Command parse(String command) throws TaskerException {
         String[] cmdParts = command.split(" ", 2);
@@ -36,23 +37,35 @@ public class Parser {
             case TODO:
                 Task toAdd = null;
 
+                if (cmdParts.length != 2) {
+                    throw new TaskerException("Please provide a description for the task.");
+                }
+
                 switch (mainPart) {
                     case TODO:
-                        if (cmdParts.length == 1) {
-                            throw new TaskerException("Please provide a description for the todo task.");
-                        }
-
                         toAdd = new Todo(cmdParts[1]);
 
                     case DEADLINE:
                     case EVENT:
                         String[] args = cmdParts[1].split(" /");
+
                         switch (mainPart) {
                             case DEADLINE:
-                                toAdd = new Deadline(args[0], args[1].split(" ", 2)[1]);
+                                if (args.length != 2 || !args[1].startsWith("by ")) {
+                                    throw new TaskerException(
+                                            "Please provide a deadline with: \"/by <deadline>\"");
+                                }
+
+                                toAdd = new Deadline(args[0], args[1].substring(3));
                                 break;
 
                             case EVENT:
+                                if (args.length != 3 || !args[1].startsWith("from ") || !args[2].startsWith("to ")) {
+                                    throw new TaskerException("""
+                                            Please provide a start and end time with:
+                                            \"/from <start> /to <end>\"""");
+                                }
+
                                 toAdd = new Event(args[0], args[1].split(" ", 2)[1], args[2].split(" ", 2)[1]);
                                 break;
 
