@@ -1,17 +1,24 @@
-public class Scooby {
-    // greet() greets the user by introducing its name
-    private static void greet() {
-        System.out.println("Hello! I'm Scooby");
-        System.out.println("What can I do for you?");
-    }
+import java.util.Scanner;
 
-    // exit_dialogue() exits current dialogue, and closes the bot
-    private static void exitDialogue() {
-        System.out.println("Bye. Hope to see you again soon!");
+public class Scooby {
+    public static void start(Ui ui) {
+        ui.greet();
+        Scanner scanner = new java.util.Scanner(System.in);
+
+        while (true) {
+            String userInput = scanner.nextLine().trim();
+            if (userInput.equalsIgnoreCase("Bye")) {
+                ui.exitDialogue();
+                break;
+            } else {
+                ui.echo(userInput);
+            }
+        }
+        scanner.close();
     }
 
     public static void main(String[] args) {
-        greet();
-        exitDialogue();
+        Ui ui = new Ui("Scooby");
+        start(ui);
     }
 }
