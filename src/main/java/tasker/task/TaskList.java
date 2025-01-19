@@ -30,6 +30,16 @@ public class TaskList {
     }
 
     /**
+     * Checks if the index exists within the list.
+     *
+     * @param index The index to check.
+     * @return True if valid, false otherwise.
+     */
+    public boolean isValidIndex(int index) {
+        return index < tasks.size();
+    }
+
+    /**
      * Deletes a task from this list.
      *
      * @param index The index of the task to be deleted.

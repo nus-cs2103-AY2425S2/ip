@@ -18,6 +18,10 @@ class MarkCommand extends IndexCommand {
      */
     @Override
     public String execute(TaskList tasks) {
+        if (!tasks.isValidIndex(this.index)) {
+            return this.invalidIndex;
+        }
+
         tasks.markTask(this.index);
         return "Nice! I've marked this task as done:\n"
                 + super.execute(tasks);

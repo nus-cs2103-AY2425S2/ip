@@ -23,4 +23,13 @@ event
 event test
 event test /wrong start /to end
 event test /from start /wrong end
+mark
+mark invalid
+mark 1
+unmark
+unmark invalid
+unmark 1
+delete
+delete invalid
+delete 1
 bye

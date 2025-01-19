@@ -18,6 +18,10 @@ class UnmarkCommand extends IndexCommand {
      */
     @Override
     public String execute(TaskList tasks) {
+        if (!tasks.isValidIndex(this.index)) {
+            return this.invalidIndex;
+        }
+
         tasks.unmarkTask(this.index);
         return "OK, I've marked this task as not done yet:\n"
                 + super.execute(tasks);

@@ -53,7 +53,7 @@ public class Parser {
                             case DEADLINE:
                                 if (args.length != 2 || !args[1].startsWith("by ")) {
                                     throw new TaskerException(
-                                            "Please provide a deadline with: \"/by <deadline>\"");
+                                            "Please provide a deadline with: \"/by <deadline>\".");
                                 }
 
                                 toAdd = new Deadline(args[0], args[1].substring(3));
@@ -63,7 +63,7 @@ public class Parser {
                                 if (args.length != 3 || !args[1].startsWith("from ") || !args[2].startsWith("to ")) {
                                     throw new TaskerException("""
                                             Please provide a start and end time with:
-                                            \"/from <start> /to <end>\"""");
+                                            \"/from <start> /to <end>\".""");
                                 }
 
                                 toAdd = new Event(args[0], args[1].split(" ", 2)[1], args[2].split(" ", 2)[1]);
@@ -83,7 +83,16 @@ public class Parser {
             case DELETE:
             case MARK:
             case UNMARK:
-                int index = Integer.parseInt(cmdParts[1]) - 1;
+                if (cmdParts.length != 2) {
+                    throw new TaskerException("Please provide a task number.");
+                }
+
+                int index;
+                try {
+                    index = Integer.parseInt(cmdParts[1]) - 1;
+                } catch (NumberFormatException e) {
+                    throw new TaskerException("Please provide a valid task number.");
+                }
 
                 switch (mainPart) {
                     case DELETE:

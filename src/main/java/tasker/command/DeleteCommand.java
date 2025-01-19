@@ -18,10 +18,12 @@ public class DeleteCommand extends IndexCommand {
      */
     @Override
     public String execute(TaskList tasks) {
-        return String.format("""
-                Noted. I've removed this task:
-                %s
-                %s""",
-                super.execute(tasks), tasks.delete(this.index));
+        return tasks.isValidIndex(this.index)
+                ? String.format("""
+                        Noted. I've removed this task:
+                        %s
+                        %s""",
+                        super.execute(tasks), tasks.delete(this.index))
+                : this.invalidIndex;
     }
 }
