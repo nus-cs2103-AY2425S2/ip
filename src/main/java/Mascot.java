@@ -1,8 +1,8 @@
-import java.util.Scanner;
+public class Mascot {
 
-public class Baymax {
-    public static void main(String[] args) {
-        String mascot = "                                                                                          \n" +
+    @Override
+    public String toString() {
+        return "                                                                                          \n" +
                 "                                          ...........                                        \n" +
                 "                                       ....:+=...     ..                                  \n" +
                 "                                      .:...=%+:::...:##:...                                \n" +
@@ -61,33 +61,5 @@ public class Baymax {
                 "              ..::-%%%%%%%%%%%%%%%##############################%%%%%%%%%%%#=             \n" +
                 "                   *%%%%%%%@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###+.          \n" +
                 "                   :#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%##%%%%%##-  \n";
-        String line = "-".repeat(100) + "\n";
-        String intro = "Greetings! I'm Codemax, Your personal coding companion.\n"
-                     + "What can I refactor for you today?\n";
-        System.out.println(line + intro + line + mascot + line);
-
-        String[] tasks = new String[100];
-        int count = 0;
-
-        Scanner scan = new Scanner(System.in);
-        String input;
-
-        while (true) {
-            input = scan.nextLine();
-            if (input.equals("bye")) {
-                System.out.println(line + "\nI hope that you are satisfied with your service.\n"
-                        + "See you again soon!\n" + line);
-                break;
-            } else if (input.equals("list")) {
-                for (int i = 0; i < count; i++) {
-                    System.out.println(i + 1 + ". " + tasks[i]);
-                }
-            }else if (count <= 100) {
-                tasks[count] = input;
-                count++;
-                System.out.println(line + "\n added: " + input + "\n" + line);
-            }
-        }
-        scan.close();
     }
 }
