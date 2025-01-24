@@ -26,7 +26,7 @@ public class Taskmax {
                                     + "2. ToDo: Enter \"todo theTaskName\" to add a task you plan to do!\n"
                                     + "3. Deadlines: Enter \"deadline theTaskName /by date\" to add a task with a specific deadline!\n"
                                     + "4. Events: Enter \"event theTaskName /from start period /to end period\" to add an event!\n"
-                                    + "5. Delete: Enter \"remove theTaskName\" to delete a task from the list!\n"
+                                    + "5. Delete: Enter \"delete theTaskName\" to delete a task from the list!\n"
                                     + "6. Mark as done: Enter \"mark TaskListNumber\" to mark the task as complete in the list!\n"
                                     + "7. Mark as undone: Enter \"unmark TaskListNumber\" to mark the task as incomplete in the list!\n"
                                     + "Any other text will be treated as a custom item for me to adhhed to the list!\n"
