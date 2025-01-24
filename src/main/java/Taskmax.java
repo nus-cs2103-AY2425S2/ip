@@ -9,17 +9,31 @@ public class Taskmax {
 
 
         String line = "-".repeat(100) + "\n";
-        String tooMany = "Your list is full, get to work first!";
+        String tooMany = "Your task list is full, get to work first!";
         String intro = "Greetings! I'm Taskmax, Your personal tasking companion.\n"
                      + "What can I schedule for you today?\n";
-        System.out.println(line + intro + line + mascot + line);
+        System.out.println(line + intro + line + mascot + line
+                           + "\nEnter \"hello!\" to begin\n" + line);
 
         Scanner scan = new Scanner(System.in);
         String input;
 
         while (true) {
             input = scan.nextLine();
-            if (input.equals("bye")) {   //bye input
+            if (input.equals("hello!") || input.equals("help")) {
+                System.out.println("Hey there! There are 7 things I can help you with! \n"
+                                    + "\n1. List: Enter \"list\" and I will list out all the tasks you have given me!\n"
+                                    + "2. ToDo: Enter \"todo theTaskName\" to add a task you plan to do!\n"
+                                    + "3. Deadlines: Enter \"deadline theTaskName /by date\" to add a task with a specific deadline!\n"
+                                    + "4. Events: Enter \"event theTaskName /from start period /to end period\" to add an event!\n"
+                                    + "5. Delete: Enter \"remove theTaskName\" to delete a task from the list!\n"
+                                    + "6. Mark as done: Enter \"mark TaskListNumber\" to mark the task as complete in the list!\n"
+                                    + "7. Mark as undone: Enter \"unmark TaskListNumber\" to mark the task as incomplete in the list!\n"
+                                    + "Any other text will be treated as a custom item for me to adhhed to the list!\n"
+                                    + "\nIf you need a refresher, just enter \"help\" and remember that my input receptors"
+                                    + "\nare sensitive so please be careful with your spelling and capital letters!\n"
+                                    + "\nThat is all and happy scheduling! ~Taskmax :D\n" + line);
+             } else if (input.equals("bye")) {   //bye input
                 System.out.println(line
                         + "\nI hope that you are satisfied with your service.\n"
                         + "See you again soon!\n"
@@ -139,19 +153,7 @@ public class Taskmax {
                 break;
             } else {
                 tasks.add(new Task(input));
-                System.out.println(line + "\n added: " + input + "\n"
-                        + "Hey there! There are 7 things I can help you with! \n"
-                        + "\n1. List: Type \"list\" and I will list out all the tasks you have given me!\n"
-                        + "2. ToDo: Type \"todo theTaskName\" to add a task you plan to do!\n"
-                        + "3. Deadlines: Type \"deadline theTaskName /by date\" to add a task with a specific deadline!\n"
-                        + "4. Events: Type \"event theTaskName /from start period /to end period\" to add an event!\n"
-                        + "5. Delete: Type \"remove theTaskName\" to delete a task from the list!\n"
-                        + "6. Mark as done: Type \"mark TaskListNumber\" to mark the task as complete in the list!\n"
-                        + "7. Mark as undone: Type \"unmark TaskListNumber\" to mark the task as incomplete in the list!\n"
-                        + "Any other text will be treated as a custom item for me to add to the list!\n"
-                        + "\nRemember that my input receptors are sensitive so please be careful with your spelling and capital letters!\n"
-                        + "That is all and happy scheduling! ~Taskmax :D\n"
-                        + line);
+                System.out.println(line + "\n added: " + input + "\n" + line);
             }
         }
         scan.close();
