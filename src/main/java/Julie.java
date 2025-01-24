@@ -7,18 +7,18 @@ public class Julie {
     private static final String EXIT = "Bye. See you later!\n";
     private static final ArrayList<Task> taskList = new ArrayList<>();
 
-    public static void addTask(String input) {
-        Task task = new Task(input);
-        taskList.add(task);
-        System.out.println(BREAK + "added: " + input + "\n" + BREAK);
-    }
+//    public static void addTask(String input) {
+//        Task task = new Task(input);
+//        taskList.add(task);
+//        System.out.println(BREAK + "added: " + input + "\n" + BREAK);
+//    }
 
     public static void showTask(ArrayList<Task> list) {
         System.out.println("Here are your tasks:");
         for (int i = 0; i < list.size(); i++) {
             int label = i + 1;
             Task item = list.get(i);
-            System.out.println(label + ". " + item.statusIcon() + " " + item.description);
+            System.out.println(label + ". " + item.toString());
         }
     }
 
@@ -26,16 +26,25 @@ public class Julie {
         int index = label - 1;
         Task currTask = taskList.get(index);
         currTask.markDone();
-        System.out.println(BREAK + "Nice! I've marked this task as done!\n" + currTask.statusIcon() + " " +
-                currTask.description + "\n" + BREAK);
+        System.out.println(BREAK + "Nice! I've marked this task as done!");
+        System.out.println(currTask.toString() + "\n" + BREAK);
     }
 
     public static void toggleUnmarked(int label) {
         int index = label - 1;
         Task currTask = taskList.get(index);
         currTask.markUndone();
-        System.out.println(BREAK + "Okay, I have marked this task as undone!\n" + currTask.statusIcon() + " " +
-                currTask.description + "\n" + BREAK);
+        System.out.println(BREAK + "Okay, I have marked this task as undone!");
+        System.out.println(currTask.toString() + "\n" + BREAK);
+    }
+
+    public static String mergeToString(String[] arr, int start, int stop) {
+        return String.join(" ", java.util.Arrays.copyOfRange(arr, start, stop));
+    }
+
+    public static void ackMessage(Task task) {
+        System.out.print(BREAK + "Got it. I've added this task to the list:\n" + task.toString() + "\n" +
+                "Now you have " + taskList.size() + " tasks in the list.\n" + BREAK );
     }
 
     public static void main(String[] args) {
@@ -45,6 +54,7 @@ public class Julie {
 
         while(true) {
             String input = scanner.nextLine();
+
             if(input.equals("bye")) {
                 break;
             } else if (input.equals("list")) {
@@ -59,8 +69,24 @@ public class Julie {
                 } else if (parts.length == 2 && parts[0].equals("unmark")) {
                     int label = Integer.parseInt(parts[1]);
                     toggleUnmarked(label);
-                } else {
-                    addTask(input);
+                } else if (parts[0].equals("todo")) {
+                    Task todo = new ToDo(mergeToString(parts, 1, parts.length));
+                    taskList.add(todo);
+                    ackMessage(todo);
+                } else if (parts[0].equals("deadline")) {
+                    String[] getDeadline = input.split("/by ");
+                    String desc = getDeadline[0].substring(9, getDeadline[0].length());
+                    Task deadline = new Deadline(desc, getDeadline[1]);
+                    taskList.add(deadline);
+                    ackMessage(deadline);
+
+                } else if (parts[0].equals("event")) {
+                    String[] getEvent = input.split("/from ");
+                    String desc = getEvent[0].substring(6, getEvent[0].length());
+                    String[] getTime = getEvent[1].split("/to ");
+                    Task event = new Event(desc, getTime[0], getTime[1]);
+                    taskList.add(event);
+                    ackMessage(event);
                 }
             }
         }

@@ -18,4 +18,8 @@ public class Task {
         return (isDone ? "[X]" : "[ ]");
     }
 
+    public String toString() {
+        return this.statusIcon() + " " + this.description;
+    }
+
 }
