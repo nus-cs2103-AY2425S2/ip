@@ -1,6 +1,9 @@
 package tasker.task;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import tasker.exception.TaskerException;
 
 /**
  * A List of tasks.
@@ -8,6 +11,17 @@ import java.util.ArrayList;
 public class TaskList {
     /** Stored tasks of the list */
     private ArrayList<Task> tasks = new ArrayList<>();
+
+    /**
+     * Class constructor.
+     *
+     * @param tasks The list of tasks to load from.
+     */
+    public TaskList(List<Task> tasks) throws TaskerException {
+        for (Task task : tasks) {
+            this.add(task);
+        }
+    }
 
     /**
      * Reports the current number of tasks in the list.
