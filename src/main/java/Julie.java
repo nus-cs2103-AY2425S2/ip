@@ -41,27 +41,47 @@ public class Julie {
                 "Now you have " + taskList.size() + " tasks in the list.\n" + BREAK );
     }
 
-    public static void addToDo(String[] input) {
+    public static void addToDo(String[] input) throws EmptyDescriptionException {
+        if (input.length == 1) {
+            throw new EmptyDescriptionException("Oops! It seems there's no description of your task!");
+        }
         Task todo = new ToDo(mergeToString(input, 1, input.length));
         taskList.add(todo);
         ackMessage(todo);
+
     }
 
-    public static void addDeadline(String input) {
-        String[] getDeadline = input.split("/by ");
-        String desc = getDeadline[0].substring(9, getDeadline[0].length());
-        Task deadline = new Deadline(desc, getDeadline[1]);
-        taskList.add(deadline);
-        ackMessage(deadline);
+    public static void addDeadline(String input) throws EmptyDescriptionException, WrongFormatException{
+        try{
+            String[] getDeadline = input.split("/by ");
+            String desc = getDeadline[0].substring(9, getDeadline[0].length());
+            if (desc.trim().isEmpty()) {
+                throw new EmptyDescriptionException("Oops! It seems there's no description of your deadline!");
+            }
+            Task deadline = new Deadline(desc, getDeadline[1]);
+            taskList.add(deadline);
+            ackMessage(deadline);
+        } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
+            throw new WrongFormatException("Oops! the correct format for a deadline is:\n" +
+                    "deadline <description> /by <date>");
+        }
     }
 
-    public static void addEvent(String input) {
-        String[] getEvent = input.split("/from ");
-        String desc = getEvent[0].substring(6, getEvent[0].length());
-        String[] getTime = getEvent[1].split("/to ");
-        Task event = new Event(desc, getTime[0], getTime[1]);
-        taskList.add(event);
-        ackMessage(event);
+    public static void addEvent(String input) throws EmptyDescriptionException, WrongFormatException {
+        try {
+            String[] getEvent = input.split("/from ");
+            String desc = getEvent[0].substring(6, getEvent[0].length());
+            if (desc.trim().isEmpty()) {
+                throw new EmptyDescriptionException("Oops! It seems there's no description of your event!");
+            }
+            String[] getTime = getEvent[1].split("/to ");
+            Task event = new Event(desc, getTime[0], getTime[1]);
+            taskList.add(event);
+            ackMessage(event);
+        } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
+            throw new WrongFormatException("Oops! the correct format for an event is:\n" +
+                    "event <description> /from <date> /to <date>");
+        }
     }
 
     public static void main(String[] args) {
@@ -70,7 +90,7 @@ public class Julie {
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().trim();
 
             if(input.equals("bye")) {
                 break;
@@ -79,19 +99,23 @@ public class Julie {
                 showTask(taskList);
                 System.out.print(BREAK);
             } else {
-                String[] parts = input.split(" ");
-                if (parts.length == 2 && parts[0].equals("mark")) {
-                    int label = Integer.parseInt(parts[1]);
-                    toggleMarked(label);
-                } else if (parts.length == 2 && parts[0].equals("unmark")) {
-                    int label = Integer.parseInt(parts[1]);
-                    toggleUnmarked(label);
-                } else if (parts[0].equals("todo")) {
-                    addToDo(parts);
-                } else if (parts[0].equals("deadline")) {
-                    addDeadline(input);
-                } else if (parts[0].equals("event")) {
-                    addEvent(input);
+                try {
+                    String[] parts = input.split(" ");
+                    if (parts.length == 2 && parts[0].equals("mark")) {
+                        int label = Integer.parseInt(parts[1]);
+                        toggleMarked(label);
+                    } else if (parts.length == 2 && parts[0].equals("unmark")) {
+                        int label = Integer.parseInt(parts[1]);
+                        toggleUnmarked(label);
+                    } else if (parts[0].equals("todo")) {
+                        addToDo(parts);
+                    } else if (parts[0].equals("deadline")) {
+                        addDeadline(input);
+                    } else if (parts[0].equals("event")) {
+                        addEvent(input);
+                    }
+                } catch (EmptyDescriptionException | WrongFormatException e) {
+                    System.out.println(BREAK + e.getMessage() + "\n" + BREAK);
                 }
             }
         }
