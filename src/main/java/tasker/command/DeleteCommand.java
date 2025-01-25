@@ -20,12 +20,14 @@ public class DeleteCommand extends IndexCommand {
      */
     @Override
     public String execute(TaskList tasks, Storage storage) throws TaskerException {
-        if (!tasks.isValidIndex(this.index)) {
-            return this.invalidIndex;
+        int index = this.getIndex();
+
+        if (!tasks.isValidIndex(index)) {
+            return this.getInvalidIndex();
         }
 
-        String task = this.getIndexTask(tasks);
-        String response = tasks.delete(this.index);
+        String task = this.getIndexTaskDescription(tasks);
+        String response = tasks.delete(index);
         storage.save(tasks.getTasks());
         return String.format("""
                 Noted. I've removed this task:

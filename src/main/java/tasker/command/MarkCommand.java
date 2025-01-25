@@ -20,12 +20,14 @@ class MarkCommand extends IndexCommand {
      */
     @Override
     public String execute(TaskList tasks, Storage storage) throws TaskerException {
-        if (!tasks.isValidIndex(this.index)) {
-            return this.invalidIndex;
+        int index = this.getIndex();
+
+        if (!tasks.isValidIndex(index)) {
+            return this.getInvalidIndex();
         }
 
-        tasks.markTask(this.index);
+        tasks.markTask(index);
         storage.save(tasks.getTasks());
-        return "Nice! I've marked this task as done:\n" + this.getIndexTask(tasks);
+        return "Nice! I've marked this task as done:\n" + this.getIndexTaskDescription(tasks);
     }
 }
