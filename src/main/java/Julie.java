@@ -18,18 +18,26 @@ public class Julie {
 
     public static void toggleMarked(int label) {
         int index = label - 1;
-        Task currTask = taskList.get(index);
-        currTask.markDone();
-        System.out.println(BREAK + "Nice! I've marked this task as done!");
-        System.out.println(currTask.toString() + "\n" + BREAK);
+        try {
+            Task currTask = taskList.get(index);
+            currTask.markDone();
+            System.out.println(BREAK + "Nice! I've marked this task as done!");
+            System.out.println(currTask.toString() + "\n" + BREAK);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.print(BREAK + "Sorry, that task cannot be marked as it isn't in the list!\n" + BREAK);
+        }
     }
 
     public static void toggleUnmarked(int label) {
         int index = label - 1;
-        Task currTask = taskList.get(index);
-        currTask.markUndone();
-        System.out.println(BREAK + "Okay, I have marked this task as undone!");
-        System.out.println(currTask.toString() + "\n" + BREAK);
+        try {
+            Task currTask = taskList.get(index);
+            currTask.markUndone();
+            System.out.println(BREAK + "Okay, I have marked this task as undone!");
+            System.out.println(currTask.toString() + "\n" + BREAK);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.print(BREAK + "Sorry, that task cannot be unmarked as it isn't in the list!\n" + BREAK);
+        }
     }
 
     public static String mergeToString(String[] arr, int start, int stop) {
