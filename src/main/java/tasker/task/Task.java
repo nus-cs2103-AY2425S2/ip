@@ -19,7 +19,7 @@ public abstract class Task {
     }
 
     /**
-     * Setter for isDone.
+     * Sets isDone value.
      */
     void setDone(boolean isDone) {
         this.isDone = isDone;

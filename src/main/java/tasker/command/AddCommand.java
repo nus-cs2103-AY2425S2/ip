@@ -1,7 +1,7 @@
 package tasker.command;
 
-import tasker.task.TaskList;
 import tasker.task.Task;
+import tasker.task.TaskList;
 
 /**
  * Adds a task to the task list.
@@ -30,7 +30,6 @@ class AddCommand extends Command {
         return String.format("""
                 Got it. I've added this task:
                   %s
-                %s""",
-                this.task, tasks.add(this.task));
+                %s""", this.task, tasks.add(this.task));
     }
 }

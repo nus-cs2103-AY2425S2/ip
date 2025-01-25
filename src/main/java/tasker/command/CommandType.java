@@ -1,17 +1,10 @@
 package tasker.command;
 
 /**
- * The allowed enums for commands.
+ * Allowed enums for commands.
  */
 public enum CommandType {
-    DEADLINE,
-    EVENT,
-    TODO,
-    DELETE,
-    MARK,
-    UNMARK,
-    LIST,
-    BYE;
+    DEADLINE, EVENT, TODO, DELETE, MARK, UNMARK, LIST, BYE;
 
     /**
      * Lists out all available commands.
