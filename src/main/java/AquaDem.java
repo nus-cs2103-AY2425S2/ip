@@ -74,20 +74,20 @@ public class AquaDem {
                     System.out.println(bar);
                     input = inputter.nextLine();
                     break;
-//                case "mark":
-//                    Task t1 = tasks.get(Integer.parseInt(detail)-1);
-//                    t1.markAsDone();
-//                    System.out.println("Task marked: " + t1);
-//                    System.out.println(bar);
-//                    input = inputter.nextLine();
-//                    break;
-//                case "unmark":
-//                    Task t2 = tasks.get(Integer.parseInt(detail)-1);
-//                    t2.markAsUndone();
-//                    System.out.println("Task unmarked: " + t2);
-//                    System.out.println(bar);
-//                    input = inputter.nextLine();
-//                    break;
+                case "mark":
+                    Task t1 = tasks.get(Integer.parseInt(detail)-1);
+                    t1.markAsDone();
+                    System.out.println("Task marked: " + t1);
+                    System.out.println(bar);
+                    input = inputter.nextLine();
+                    break;
+                case "unmark":
+                    Task t2 = tasks.get(Integer.parseInt(detail)-1);
+                    t2.markAsUndone();
+                    System.out.println("Task unmarked: " + t2);
+                    System.out.println(bar);
+                    input = inputter.nextLine();
+                    break;
                 default:
                     Task t3 = new Task(input);
                     tasks.add(t3);
