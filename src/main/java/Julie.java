@@ -121,6 +121,8 @@ public class Julie {
                         addDeadline(input);
                     } else if (parts[0].equals("event")) {
                         addEvent(input);
+                    } else {
+                        throw new WrongFormatException("Sorry, I didn't understand what you said!");
                     }
                 } catch (EmptyDescriptionException | WrongFormatException e) {
                     System.out.println(BREAK + e.getMessage() + "\n" + BREAK);
