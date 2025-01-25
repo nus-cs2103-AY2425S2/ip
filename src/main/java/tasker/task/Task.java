@@ -19,17 +19,10 @@ public abstract class Task {
     }
 
     /**
-     * Marks this task as done.
+     * Setter for isDone.
      */
-    void mark() {
-        this.isDone = true;
-    }
-
-    /**
-     * Unmarks this task as done.
-     */
-    void unmark() {
-        this.isDone = false;
+    void setDone(boolean isDone) {
+        this.isDone = isDone;
     }
 
     @Override

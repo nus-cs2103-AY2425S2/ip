@@ -66,7 +66,7 @@ public class TaskList {
      * @param index The index of the task to mark as done.
      */
     public void markTask(int index) {
-        tasks.get(index).mark();
+        tasks.get(index).setDone(true);
     }
 
     /**
@@ -75,7 +75,7 @@ public class TaskList {
      * @param index The index of the task to unmark as done.
      */
     public void unmarkTask(int index) {
-        tasks.get(index).unmark();
+        tasks.get(index).setDone(false);
     }
 
     @Override
