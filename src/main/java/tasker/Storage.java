@@ -39,6 +39,25 @@ public class Storage {
     }
 
     /**
+     * Saves the task list to the file.
+     *
+     * @param tasks The task list to save the contents of.
+     */
+    public void save(List<Task> tasks) throws TaskerException {
+        LinkedList<String> lines = new LinkedList<>();
+
+        for (Task task : tasks) {
+            lines.add(task.toStorage());
+        }
+
+        try {
+            Files.write(path, lines);
+        } catch (IOException e) {
+            throw new TaskerException("Failed to save tasks to storage");
+        }
+    }
+
+    /**
      * Returns a list of tasks in this storage.
      *
      * @returns List of task in storage.

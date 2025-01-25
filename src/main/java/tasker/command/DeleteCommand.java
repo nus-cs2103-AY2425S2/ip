@@ -1,5 +1,7 @@
 package tasker.command;
 
+import tasker.Storage;
+import tasker.exception.TaskerException;
 import tasker.task.TaskList;
 
 /**
@@ -17,13 +19,17 @@ public class DeleteCommand extends IndexCommand {
      * @return Output of deleting the task.
      */
     @Override
-    public String execute(TaskList tasks) {
-        return tasks.isValidIndex(this.index)
-                ? String.format("""
-                        Noted. I've removed this task:
-                        %s
-                        %s""",
-                        super.execute(tasks), tasks.delete(this.index))
-                : this.invalidIndex;
+    public String execute(TaskList tasks, Storage storage) throws TaskerException {
+        if (!tasks.isValidIndex(this.index)) {
+            return this.invalidIndex;
+        }
+
+        String task = super.execute(tasks, storage);
+        String response = tasks.delete(this.index);
+        storage.save(tasks.getTasks());
+        return String.format("""
+                Noted. I've removed this task:
+                %s
+                %s""", task, response);
     }
 }

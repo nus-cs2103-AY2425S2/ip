@@ -55,7 +55,7 @@ public class Tasker {
 
             try {
                 parsedCmd = parseCommand(cmd);
-                respond(parsedCmd.execute(tasks));
+                respond(parsedCmd.execute(tasks, storage));
             } catch (TaskerException e) {
                 respond(e.getMessage());
             }

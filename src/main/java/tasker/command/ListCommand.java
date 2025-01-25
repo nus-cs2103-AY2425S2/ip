@@ -1,5 +1,6 @@
 package tasker.command;
 
+import tasker.Storage;
 import tasker.task.TaskList;
 
 /**
@@ -14,7 +15,7 @@ class ListCommand extends Command {
      * @return The contents of the task list.
      */
     @Override
-    public String execute(TaskList tasks) {
+    public String execute(TaskList tasks, Storage storage) {
         return tasks.toString();
     }
 }

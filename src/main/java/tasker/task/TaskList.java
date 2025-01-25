@@ -24,6 +24,15 @@ public class TaskList {
     }
 
     /**
+     * Returns this list of tasks.
+     *
+     * @return This list of tasks.
+     */
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    /**
      * Reports the current number of tasks in the list.
      *
      * @return A report of current list count.

@@ -41,6 +41,15 @@ public abstract class Task {
         this.isDone = isDone;
     }
 
+    /**
+     * Returns a string for saving and loading this task.
+     * 
+     * @returns A storage representation string of this task.
+     */
+    public String toStorage() {
+        return String.format("%s|%s|%s", this.label, this.isDone, this.description);
+    }
+
     @Override
     public String toString() {
         return String.format("[%s][%s] %s", this.label, this.isDone ? "X" : " ", this.description);

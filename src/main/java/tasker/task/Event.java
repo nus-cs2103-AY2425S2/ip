@@ -37,6 +37,11 @@ public class Event extends Task {
     }
 
     @Override
+    public String toStorage() {
+        return String.format("%s|%s|%s", super.toStorage(), this.start, this.end);
+    }
+
+    @Override
     public String toString() {
         return String.format("%s (from: %s to: %s)", super.toString(), this.start, this.end);
     }

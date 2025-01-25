@@ -1,5 +1,7 @@
 package tasker.command;
 
+import tasker.Storage;
+import tasker.exception.TaskerException;
 import tasker.task.TaskList;
 
 /**
@@ -17,13 +19,13 @@ class MarkCommand extends IndexCommand {
      * @return Output of marking the task.
      */
     @Override
-    public String execute(TaskList tasks) {
+    public String execute(TaskList tasks, Storage storage) throws TaskerException {
         if (!tasks.isValidIndex(this.index)) {
             return this.invalidIndex;
         }
 
         tasks.markTask(this.index);
-        return "Nice! I've marked this task as done:\n"
-                + super.execute(tasks);
+        storage.save(tasks.getTasks());
+        return "Nice! I've marked this task as done:\n" + super.execute(tasks, storage);
     }
 }

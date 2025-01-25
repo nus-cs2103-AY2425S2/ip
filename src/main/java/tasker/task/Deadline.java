@@ -31,6 +31,11 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String toStorage() {
+        return String.format("%s|%s", super.toStorage(), this.deadline);
+    }
+
+    @Override
     public String toString() {
         return String.format("%s (by: %s)", super.toString(), this.deadline);
     }
