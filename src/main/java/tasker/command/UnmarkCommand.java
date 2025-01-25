@@ -26,6 +26,6 @@ class UnmarkCommand extends IndexCommand {
 
         tasks.unmarkTask(this.index);
         storage.save(tasks.getTasks());
-        return "OK, I've marked this task as not done yet:\n" + super.execute(tasks, storage);
+        return "OK, I've marked this task as not done yet:\n" + this.getIndexTask(tasks);
     }
 }

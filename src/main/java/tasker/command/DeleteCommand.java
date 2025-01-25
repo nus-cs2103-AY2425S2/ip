@@ -24,7 +24,7 @@ public class DeleteCommand extends IndexCommand {
             return this.invalidIndex;
         }
 
-        String task = super.execute(tasks, storage);
+        String task = this.getIndexTask(tasks);
         String response = tasks.delete(this.index);
         storage.save(tasks.getTasks());
         return String.format("""
