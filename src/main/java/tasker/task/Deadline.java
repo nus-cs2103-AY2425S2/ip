@@ -14,12 +14,12 @@ public class Deadline extends Task {
      * @param deadline Deadline of this task.
      */
     public Deadline(String description, String deadline) {
-        super(description);
+        super(description, "D");
         this.deadline = deadline;
     }
 
     @Override
     public String toString() {
-        return String.format("[D]%s (by: %s)", super.toString(), this.deadline);
+        return String.format("%s (by: %s)", super.toString(), this.deadline);
     }
 }

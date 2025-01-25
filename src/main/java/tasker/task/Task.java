@@ -8,14 +8,18 @@ public abstract class Task {
     private String description;
     /** Status if the task is done */
     private boolean isDone = false;
+    /** Task type label */
+    private String label;
 
     /**
      * Class constructor.
      *
      * @param description Description of this task.
+     * @param label The label of this task.
      */
-    Task(String description) {
+    Task(String description, String label) {
         this.description = description;
+        this.label = label;
     }
 
     /**
@@ -27,6 +31,6 @@ public abstract class Task {
 
     @Override
     public String toString() {
-        return String.format("[%s] %s", this.isDone ? "X" : " ", this.description);
+        return String.format("[%s][%s] %s", this.label, this.isDone ? "X" : " ", this.description);
     }
 }
