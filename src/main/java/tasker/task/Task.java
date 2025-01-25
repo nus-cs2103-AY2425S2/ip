@@ -23,6 +23,18 @@ public abstract class Task {
     }
 
     /**
+     * Class constructor specifying isDone.
+     *
+     * @param description Description of this task.
+     * @param label The label of this task.
+     * @param isDone Whether this task is done.
+     */
+    Task(String description, String label, boolean isDone) {
+        this(description, label);
+        this.isDone = isDone;
+    }
+
+    /**
      * Sets isDone value.
      */
     void setDone(boolean isDone) {
