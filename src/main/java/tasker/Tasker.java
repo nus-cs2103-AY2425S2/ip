@@ -1,10 +1,11 @@
 package tasker;
 
+import static tasker.command.Parser.parseCommand;
+
 import java.util.Scanner;
 
 import tasker.command.ByeCommand;
 import tasker.command.Command;
-import tasker.command.Parser;
 import tasker.exception.TaskerException;
 import tasker.task.TaskList;
 
@@ -13,7 +14,7 @@ import tasker.task.TaskList;
  */
 public class Tasker {
     /** List of the user's tasks */
-    private static TaskList tasks = new TaskList();
+    private static TaskList tasks;
 
     /**
      * Formats and prints an output.
@@ -34,6 +35,15 @@ public class Tasker {
     }
 
     public static void main(String[] args) {
+        Storage storage;
+        try {
+            storage = new Storage("./data/tasker.txt");
+            tasks = new TaskList(storage.getTasks());
+        } catch (TaskerException e) {
+            respond(e.getMessage());
+            return;
+        }
+
         respond("""
                 Hello! I'm Tasker
                 What can I do for you?""");
@@ -44,8 +54,8 @@ public class Tasker {
             Command parsedCmd = null;
 
             try {
-                parsedCmd = Parser.parse(cmd);
-                respond(parsedCmd.execute(tasks));
+                parsedCmd = parseCommand(cmd);
+                respond(parsedCmd.execute(tasks, storage));
             } catch (TaskerException e) {
                 respond(e.getMessage());
             }

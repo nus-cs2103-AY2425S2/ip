@@ -1,5 +1,7 @@
 package tasker.command;
 
+import tasker.Storage;
+import tasker.exception.TaskerException;
 import tasker.task.TaskList;
 
 /**
@@ -17,13 +19,13 @@ class UnmarkCommand extends IndexCommand {
      * @return Output of unmarking the task.
      */
     @Override
-    public String execute(TaskList tasks) {
+    public String execute(TaskList tasks, Storage storage) throws TaskerException {
         if (!tasks.isValidIndex(this.index)) {
             return this.invalidIndex;
         }
 
         tasks.unmarkTask(this.index);
-        return "OK, I've marked this task as not done yet:\n"
-                + super.execute(tasks);
+        storage.save(tasks.getTasks());
+        return "OK, I've marked this task as not done yet:\n" + super.execute(tasks, storage);
     }
 }

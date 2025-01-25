@@ -1,5 +1,7 @@
 package tasker.command;
 
+import tasker.Storage;
+import tasker.exception.TaskerException;
 import tasker.task.TaskList;
 
 /**
@@ -24,10 +26,11 @@ abstract class IndexCommand extends Command {
      * Pads the task at the index.
      *
      * @param tasks The task list to get the task from.
+     * @param storage The storage for saving changes to.
      * @return The description of the task at the index.
      */
     @Override
-    public String execute(TaskList tasks) {
+    public String execute(TaskList tasks, Storage storage) throws TaskerException {
         return "  " + tasks.getTaskDescription(this.index);
     }
 }

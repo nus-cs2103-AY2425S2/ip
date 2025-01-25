@@ -5,11 +5,10 @@ package tasker.task;
  */
 public class Todo extends Task {
     public Todo(String description) {
-        super(description);
+        super(description, "T");
     }
 
-    @Override
-    public String toString() {
-        return "[T]" + super.toString();
+    public Todo(String description, boolean isDone) {
+        super(description, "T", isDone);
     }
 }

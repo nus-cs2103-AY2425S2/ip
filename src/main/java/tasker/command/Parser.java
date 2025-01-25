@@ -7,7 +7,7 @@ import tasker.task.Task;
 import tasker.task.Todo;
 
 /**
- * Parses the user input.
+ * Parses tasks.
  */
 public class Parser {
     /**
@@ -17,7 +17,7 @@ public class Parser {
      * @return The command to handle the user input.
      * @throws TaskerException If there is an error with the command
      */
-    public static Command parse(String command) throws TaskerException {
+    public static Command parseCommand(String command) throws TaskerException {
         String[] cmdParts = command.split(" ", 2);
         CommandType mainPart;
         Command toRun = null;
@@ -124,5 +124,41 @@ public class Parser {
         }
 
         return toRun;
+    }
+
+    public static Task parseStorage(String line) throws TaskerException {
+        String[] parts = line.split("\\|");
+        TaskerException incorrectFormat = new TaskerException("Incorrect storage format");
+        int length = parts.length;
+
+        if (length < 3) {
+            throw incorrectFormat;
+        }
+
+        String type = parts[0];
+        boolean isDone = Boolean.parseBoolean(parts[1]);
+        String description = parts[2];
+
+        switch (type) {
+        case "T":
+            return new Todo(description, isDone);
+
+        case "D":
+            if (length < 4) {
+                throw incorrectFormat;
+            }
+
+            return new Deadline(description, isDone, parts[3]);
+
+        case "E":
+            if (length < 5) {
+                throw incorrectFormat;
+            }
+
+            return new Event(description, isDone, parts[3], parts[4]);
+
+        default:
+            throw new TaskerException(String.format("Unkown task type from storage: %s.", type));
+        }
     }
 }

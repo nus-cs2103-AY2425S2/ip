@@ -1,5 +1,7 @@
 package tasker.command;
 
+import tasker.Storage;
+import tasker.exception.TaskerException;
 import tasker.task.Task;
 import tasker.task.TaskList;
 
@@ -26,10 +28,12 @@ class AddCommand extends Command {
      * @return The ouput from adding a task.
      */
     @Override
-    public String execute(TaskList tasks) {
+    public String execute(TaskList tasks, Storage storage) throws TaskerException {
+        String response = tasks.add(this.task);
+        storage.save(tasks.getTasks());
         return String.format("""
                 Got it. I've added this task:
                   %s
-                %s""", this.task, tasks.add(this.task));
+                %s""", this.task, response);
     }
 }
