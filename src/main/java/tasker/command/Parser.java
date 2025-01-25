@@ -17,7 +17,7 @@ public class Parser {
      * @return The command to handle the user input.
      * @throws TaskerException If there is an error with the command
      */
-    public static Command parse(String command) throws TaskerException {
+    public static Command parseCommand(String command) throws TaskerException {
         String[] cmdParts = command.split(" ", 2);
         CommandType mainPart;
         Command toRun = null;
