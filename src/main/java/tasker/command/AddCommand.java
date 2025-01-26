@@ -36,4 +36,19 @@ public class AddCommand extends Command {
                   %s
                 %s""", this.task, response);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        AddCommand that = (AddCommand) obj;
+        return task != null ? task.equals(that.task) : that.task == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() + (task == null ? 0 : task.hashCode());
+    }
 }

@@ -47,4 +47,19 @@ abstract class IndexCommand extends Command {
     String getInvalidIndex() {
         return this.invalidIndex;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        IndexCommand other = (IndexCommand) obj;
+        return this.index == other.index;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() * 31 + Integer.hashCode(this.index);
+    }
 }
