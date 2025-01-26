@@ -11,7 +11,14 @@ import tasker.exception.TaskerException;
  */
 public class TaskList {
     /** Stored tasks of the list */
-    private ArrayList<Task> tasks = new ArrayList<>();
+    private ArrayList<Task> tasks;
+
+    /**
+     * Class constructor.
+     */
+    public TaskList() {
+        this.tasks = new ArrayList<>();
+    }
 
     /**
      * Class constructor.
@@ -19,9 +26,13 @@ public class TaskList {
      * @param tasks The list of tasks to load from.
      */
     public TaskList(Storage storage) throws TaskerException {
+        ArrayList<Task> tasks = new ArrayList<>();
+
         for (Task task : storage.getTasks()) {
             this.add(task);
         }
+
+        this.tasks = tasks;
     }
 
     /**

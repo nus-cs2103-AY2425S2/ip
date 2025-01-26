@@ -11,17 +11,22 @@ import tasker.task.TaskList;
  * Main class for project.
  */
 public class Tasker {
-    /** List of the user's tasks */
-    private static TaskList tasks;
-
     public static void main(String[] args) {
+        TaskList tasks;
         Storage storage;
+
         try {
             storage = new Storage("./data/tasker.txt");
+        } catch (TaskerException e) {
+            Ui.respond(e.getMessage() + "Exiting...");
+            return;
+        }
+
+        try {
             tasks = new TaskList(storage);
         } catch (TaskerException e) {
-            Ui.respond(e.getMessage());
-            return;
+            Ui.respond(e.getMessage() + " Creating new empty list.");
+            tasks = new TaskList();
         }
 
         Ui.respond("""

@@ -35,7 +35,7 @@ public class Storage {
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
-            throw new TaskerException("Failed to create task storage");
+            throw new TaskerException("Failed to create task storage.");
         }
     }
 
@@ -54,7 +54,7 @@ public class Storage {
         try {
             Files.write(path, lines);
         } catch (IOException e) {
-            throw new TaskerException("Failed to save tasks to storage");
+            throw new TaskerException("Failed to save tasks to storage.");
         }
     }
 
@@ -71,7 +71,7 @@ public class Storage {
                 tasks.add(parseStorage(line));
             }
         } catch (IOException e) {
-            throw new TaskerException("Failed to read tasks from storage");
+            throw new TaskerException("Failed to read tasks from storage.");
         }
 
         return tasks;
