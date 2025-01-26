@@ -8,29 +8,29 @@ public abstract class Task {
     private String description;
     /** Status if the task is done */
     private boolean isDone = false;
-    /** Task type label */
-    private String label;
+    /** Task type */
+    private TaskType type;
 
     /**
      * Class constructor.
      *
      * @param description Description of this task.
-     * @param label The label of this task.
+     * @param type The type of this task.
      */
-    Task(String description, String label) {
+    Task(String description, TaskType type) {
         this.description = description;
-        this.label = label;
+        this.type = type;
     }
 
     /**
      * Class constructor specifying isDone.
      *
      * @param description Description of this task.
-     * @param label The label of this task.
+     * @param type The type of this task.
      * @param isDone Whether this task is done.
      */
-    Task(String description, String label, boolean isDone) {
-        this(description, label);
+    Task(String description, TaskType type, boolean isDone) {
+        this(description, type);
         this.isDone = isDone;
     }
 
@@ -47,11 +47,11 @@ public abstract class Task {
      * @returns A storage representation string of this task.
      */
     public String toStorage() {
-        return String.format("%s|%s|%s", this.label, this.isDone, this.description);
+        return String.format("%s|%s|%s", this.type, this.isDone, this.description);
     }
 
     @Override
     public String toString() {
-        return String.format("[%s][%s] %s", this.label, this.isDone ? "X" : " ", this.description);
+        return String.format("[%s][%s] %s", this.type, this.isDone ? "X" : " ", this.description);
     }
 }

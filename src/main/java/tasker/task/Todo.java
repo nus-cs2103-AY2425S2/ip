@@ -5,10 +5,10 @@ package tasker.task;
  */
 public class Todo extends Task {
     public Todo(String description) {
-        super(description, "T");
+        super(description, TaskType.T);
     }
 
     public Todo(String description, boolean isDone) {
-        super(description, "T", isDone);
+        super(description, TaskType.T, isDone);
     }
 }

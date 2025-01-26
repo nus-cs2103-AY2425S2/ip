@@ -16,7 +16,7 @@ public class Deadline extends DateTimeTask {
      * @param deadline Deadline of this task.
      */
     public Deadline(String description, LocalDateTime deadline) {
-        super(description, "D");
+        super(description, TaskType.D);
         this.deadline = deadline;
     }
 
@@ -28,7 +28,7 @@ public class Deadline extends DateTimeTask {
      * @param deadline Deadline of this task.
      */
     public Deadline(String description, boolean isDone, LocalDateTime deadline) {
-        super(description, "D", isDone);
+        super(description, TaskType.D, isDone);
         this.deadline = deadline;
     }
 

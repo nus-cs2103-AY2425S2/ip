@@ -16,6 +16,7 @@ import tasker.task.DateTimeTask;
 import tasker.task.Deadline;
 import tasker.task.Event;
 import tasker.task.Task;
+import tasker.task.TaskType;
 import tasker.task.Todo;
 
 /**
@@ -164,15 +165,15 @@ public class Parser {
             throw incorrectFormat;
         }
 
-        String type = parts[0];
+        TaskType type = TaskType.valueOf(parts[0]);
         boolean isDone = Boolean.parseBoolean(parts[1]);
         String description = parts[2];
 
         switch (type) {
-        case "T":
+        case T:
             return new Todo(description, isDone);
 
-        case "D":
+        case D:
             if (length < 4) {
                 throw incorrectFormat;
             }
@@ -183,7 +184,7 @@ public class Parser {
                 throw incorrectFormat;
             }
 
-        case "E":
+        case E:
             if (length < 5) {
                 throw incorrectFormat;
             }

@@ -10,11 +10,11 @@ public abstract class DateTimeTask extends Task {
     /** Format of date and time input */
     public static final String INPUT_FORMAT = "d/M/yyyy HHmm";
 
-    DateTimeTask(String description, String type) {
+    DateTimeTask(String description, TaskType type) {
         super(description, type);
     }
 
-    DateTimeTask(String description, String type, boolean isDone) {
+    DateTimeTask(String description, TaskType type, boolean isDone) {
         super(description, type, isDone);
     }
 

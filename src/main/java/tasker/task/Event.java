@@ -19,7 +19,7 @@ public class Event extends DateTimeTask {
      * @param end The ending time of this task.
      */
     public Event(String description, LocalDateTime start, LocalDateTime end) {
-        super(description, "E");
+        super(description, TaskType.E);
         this.start = start;
         this.end = end;
     }
@@ -33,7 +33,7 @@ public class Event extends DateTimeTask {
      * @param end The ending time of this task.
      */
     public Event(String description, boolean isDone, LocalDateTime start, LocalDateTime end) {
-        super(description, "E", isDone);
+        super(description, TaskType.E, isDone);
         this.start = start;
         this.end = end;
     }
