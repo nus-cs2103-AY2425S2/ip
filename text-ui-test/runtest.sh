@@ -23,6 +23,9 @@ fi
 # run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
 java -classpath ../bin tasker.Tasker < input.txt > ACTUAL.TXT
 
+# cleanup storage data
+rm -rf data
+
 # compare the output to the expected output
 diff ACTUAL.TXT EXPECTED.TXT
 if [ $? -eq 0 ]
