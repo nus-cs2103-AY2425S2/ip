@@ -1,13 +1,15 @@
 package tasker.task;
 
+import java.time.LocalDateTime;
+
 /**
  * A task with a starting and ending time.
  */
-public class Event extends Task {
+public class Event extends DateTimeTask {
     /** The starting time of this task */
-    private String start;
+    private LocalDateTime start;
     /** The ending time of this task */
-    private String end;
+    private LocalDateTime end;
 
     /**
      * Class constructor.
@@ -16,7 +18,7 @@ public class Event extends Task {
      * @param start The starting time of this task.
      * @param end The ending time of this task.
      */
-    public Event(String description, String start, String end) {
+    public Event(String description, LocalDateTime start, LocalDateTime end) {
         super(description, "E");
         this.start = start;
         this.end = end;
@@ -30,7 +32,7 @@ public class Event extends Task {
      * @param start The starting time of this task.
      * @param end The ending time of this task.
      */
-    public Event(String description, boolean isDone, String start, String end) {
+    public Event(String description, boolean isDone, LocalDateTime start, LocalDateTime end) {
         super(description, "E", isDone);
         this.start = start;
         this.end = end;
@@ -43,6 +45,7 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return String.format("%s (from: %s to: %s)", super.toString(), this.start, this.end);
+        return String.format("%s (from: %s to: %s)", super.toString(), this.formatOutput(this.start),
+                this.formatOutput(this.end));
     }
 }
