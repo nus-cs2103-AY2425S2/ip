@@ -6,7 +6,7 @@ import tasker.task.TaskList;
 /**
  * Lists the contents of the task list.
  */
-class ListCommand extends Command {
+public class ListCommand extends Command {
 
     /**
      * Lists the contents of the task list.

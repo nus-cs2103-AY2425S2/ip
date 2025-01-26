@@ -1,6 +1,6 @@
 package tasker;
 
-import static tasker.command.Parser.parseCommand;
+import static tasker.Parser.parseCommand;
 
 import java.util.Scanner;
 

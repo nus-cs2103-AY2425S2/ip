@@ -8,7 +8,7 @@ import tasker.task.TaskList;
 /**
  * Adds a task to the task list.
  */
-class AddCommand extends Command {
+public class AddCommand extends Command {
     /** Task to be added */
     private Task task;
 
@@ -17,7 +17,7 @@ class AddCommand extends Command {
      * 
      * @param task Task to be added.
      */
-    AddCommand(Task task) {
+    public AddCommand(Task task) {
         this.task = task;
     }
 

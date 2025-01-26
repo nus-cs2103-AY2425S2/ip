@@ -1,6 +1,6 @@
 package tasker;
 
-import static tasker.command.Parser.parseStorage;
+import static tasker.Parser.parseStorage;
 
 import java.io.IOException;
 import java.nio.file.Files;
