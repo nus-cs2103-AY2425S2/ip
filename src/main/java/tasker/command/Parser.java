@@ -54,11 +54,12 @@ public class Parser {
             case DEADLINE:
             case EVENT:
                 String[] args = cmdParts[1].split(" /");
+                String dateTimeInput = DateTimeTask.INPUT_FORMAT;
 
                 switch (mainPart) {
                 case DEADLINE:
                     TaskerException deadlineException = new TaskerException(
-                            String.format("Please provide a deadline with: \"/by %s\".", DateTimeTask.INPUT_FORMAT));
+                            String.format("Please provide a deadline with: \"/by %s\".", dateTimeInput));
 
                     if (args.length != 2 || !args[1].startsWith("by ")) {
                         throw deadlineException;
@@ -74,13 +75,20 @@ public class Parser {
                     break;
 
                 case EVENT:
+                    TaskerException EventException = new TaskerException(String.format("""
+                            Please provide a start and end time with:
+                            \"/from %s /to %s\".""", dateTimeInput, dateTimeInput));
+
                     if (args.length != 3 || !args[1].startsWith("from ") || !args[2].startsWith("to ")) {
-                        throw new TaskerException("""
-                                Please provide a start and end time with:
-                                \"/from <start> /to <end>\".""");
+                        throw EventException;
                     }
 
-                    toAdd = new Event(args[0], args[1].split(" ", 2)[1], args[2].split(" ", 2)[1]);
+                    try {
+                        toAdd = new Event(args[0], DateTimeTask.parseInput(args[1].substring(5)),
+                                DateTimeTask.parseInput(args[2].substring(3)));
+                    } catch (DateTimeParseException e) {
+                        throw EventException;
+                    }
                     break;
 
                 default:
@@ -161,14 +169,22 @@ public class Parser {
                 throw incorrectFormat;
             }
 
-            return new Deadline(description, isDone, LocalDateTime.parse(parts[3]));
+            try {
+                return new Deadline(description, isDone, LocalDateTime.parse(parts[3]));
+            } catch (DateTimeParseException e) {
+                throw incorrectFormat;
+            }
 
         case "E":
             if (length < 5) {
                 throw incorrectFormat;
             }
 
-            return new Event(description, isDone, parts[3], parts[4]);
+            try {
+                return new Event(description, isDone, LocalDateTime.parse(parts[3]), LocalDateTime.parse(parts[4]));
+            } catch (DateTimeParseException e) {
+                throw incorrectFormat;
+            }
 
         default:
             throw new TaskerException(String.format("Unkown task type from storage: %s.", type));
