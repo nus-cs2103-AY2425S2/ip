@@ -24,10 +24,30 @@ public class Tasker {
     private static void respond(String content) {
         String padding = "    ";
         String separator = padding + "____________________________________________________________\n";
+        String contentPadding = padding + " ";
         StringBuilder response = new StringBuilder(separator);
 
         for (String line : content.split("\n")) {
-            response.append(" ").append(padding).append(line).append("\n");
+            String linePadding = contentPadding + line.replaceFirst("\\S.*", "");
+            StringBuilder wrappedLine = new StringBuilder(linePadding);
+
+            for (String word : line.split(" ")) {
+                int currLineLength = wrappedLine.length();
+                boolean isFirstWord = currLineLength == linePadding.length();
+
+                if ((currLineLength + 1 + word.length() <= separator.length() - 1) || isFirstWord) {
+                    if (!isFirstWord) {
+                        wrappedLine.append(" ");
+                    }
+
+                    wrappedLine.append(word);
+                } else {
+                    response.append(wrappedLine.append("\n"));
+                    wrappedLine = new StringBuilder(linePadding).append(word);
+                }
+            }
+
+            response.append(wrappedLine.append("\n"));
         }
 
         response.append(separator);
