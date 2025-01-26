@@ -1,5 +1,11 @@
 todo read book
-deadline return book /by June 6th
+todo
+deadline return book /by 6/06/2025 0000
+deadline
+deadline /by 6/06/2025 0000
+deadline test
+deadline test /by deadline
+deadline test /wrong 6/06/2025 0000
 event project meeting /from Aug 6th 2pm /to 4pm
 list
 mark 1
@@ -15,10 +21,6 @@ delete 2
 delete 1
 list
 unknown command
-todo
-deadline
-deadline test
-deadline test /wrong deadline
 event
 event test
 event test /wrong start /to end

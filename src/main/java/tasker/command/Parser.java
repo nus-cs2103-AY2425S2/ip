@@ -1,6 +1,10 @@
 package tasker.command;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+
 import tasker.exception.TaskerException;
+import tasker.task.DateTimeTask;
 import tasker.task.Deadline;
 import tasker.task.Event;
 import tasker.task.Task;
@@ -37,7 +41,7 @@ public class Parser {
         case TODO:
             Task toAdd = null;
 
-            if (cmdParts.length != 2) {
+            if (cmdParts.length != 2 || cmdParts[1].startsWith("/")) {
                 throw new TaskerException("Please provide a description for the task.");
             }
 
@@ -53,11 +57,20 @@ public class Parser {
 
                 switch (mainPart) {
                 case DEADLINE:
+                    TaskerException deadlineException = new TaskerException(
+                            String.format("Please provide a deadline with: \"/by %s\".", DateTimeTask.INPUT_FORMAT));
+
                     if (args.length != 2 || !args[1].startsWith("by ")) {
-                        throw new TaskerException("Please provide a deadline with: \"/by <deadline>\".");
+                        throw deadlineException;
                     }
 
-                    toAdd = new Deadline(args[0], args[1].substring(3));
+                    try {
+                        LocalDateTime time = DateTimeTask.parseInput(args[1].substring(3));
+                        toAdd = new Deadline(args[0], time);
+                    } catch (DateTimeParseException e) {
+                        throw deadlineException;
+                    }
+
                     break;
 
                 case EVENT:
@@ -148,7 +161,7 @@ public class Parser {
                 throw incorrectFormat;
             }
 
-            return new Deadline(description, isDone, parts[3]);
+            return new Deadline(description, isDone, LocalDateTime.parse(parts[3]));
 
         case "E":
             if (length < 5) {

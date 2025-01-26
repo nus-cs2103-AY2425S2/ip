@@ -1,11 +1,13 @@
 package tasker.task;
 
+import java.time.LocalDateTime;
+
 /**
  * A task with a deadline.
  */
-public class Deadline extends Task {
+public class Deadline extends DateTimeTask {
     /** Deadline to complete task before */
-    private String deadline;
+    private LocalDateTime deadline;
 
     /**
      * Constructor class.
@@ -13,7 +15,7 @@ public class Deadline extends Task {
      * @param description Description of this task.
      * @param deadline Deadline of this task.
      */
-    public Deadline(String description, String deadline) {
+    public Deadline(String description, LocalDateTime deadline) {
         super(description, "D");
         this.deadline = deadline;
     }
@@ -25,7 +27,7 @@ public class Deadline extends Task {
      * @param isDone Whether this task is done.
      * @param deadline Deadline of this task.
      */
-    public Deadline(String description, boolean isDone, String deadline) {
+    public Deadline(String description, boolean isDone, LocalDateTime deadline) {
         super(description, "D", isDone);
         this.deadline = deadline;
     }
@@ -37,6 +39,6 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return String.format("%s (by: %s)", super.toString(), this.deadline);
+        return String.format("%s (by: %s)", super.toString(), this.formatOutput(deadline));
     }
 }
