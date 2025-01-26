@@ -28,7 +28,7 @@ public class DeleteCommand extends IndexCommand {
 
         String task = this.getIndexTaskDescription(tasks);
         String response = tasks.delete(index);
-        storage.save(tasks.getTasks());
+        storage.save(tasks);
         return String.format("""
                 Noted. I've removed this task:
                 %s

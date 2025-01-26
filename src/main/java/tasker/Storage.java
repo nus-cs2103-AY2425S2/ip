@@ -11,6 +11,7 @@ import java.util.List;
 
 import tasker.exception.TaskerException;
 import tasker.task.Task;
+import tasker.task.TaskList;
 
 /**
  * Storage and retrieval of tasks.
@@ -43,10 +44,10 @@ public class Storage {
      *
      * @param tasks The task list to save the contents of.
      */
-    public void save(List<Task> tasks) throws TaskerException {
+    public void save(TaskList tasks) throws TaskerException {
         LinkedList<String> lines = new LinkedList<>();
 
-        for (Task task : tasks) {
+        for (Task task : tasks.getTasks()) {
             lines.add(task.toStorage());
         }
 

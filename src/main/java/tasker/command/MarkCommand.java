@@ -27,7 +27,7 @@ public class MarkCommand extends IndexCommand {
         }
 
         tasks.markTask(index);
-        storage.save(tasks.getTasks());
+        storage.save(tasks);
         return "Nice! I've marked this task as done:\n" + this.getIndexTaskDescription(tasks);
     }
 }

@@ -30,7 +30,7 @@ public class AddCommand extends Command {
     @Override
     public String execute(TaskList tasks, Storage storage) throws TaskerException {
         String response = tasks.add(this.task);
-        storage.save(tasks.getTasks());
+        storage.save(tasks);
         return String.format("""
                 Got it. I've added this task:
                   %s
