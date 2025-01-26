@@ -15,8 +15,8 @@ public class Event extends DateTimeTask {
      * Class constructor.
      *
      * @param description The description of this task.
-     * @param start The starting time of this task.
-     * @param end The ending time of this task.
+     * @param start       The starting time of this task.
+     * @param end         The ending time of this task.
      */
     public Event(String description, LocalDateTime start, LocalDateTime end) {
         super(description, TaskType.E);
@@ -28,9 +28,9 @@ public class Event extends DateTimeTask {
      * Class constructor.
      *
      * @param description The description of this task.
-     * @param isDone Whether this task is done.
-     * @param start The starting time of this task.
-     * @param end The ending time of this task.
+     * @param isDone      Whether this task is done.
+     * @param start       The starting time of this task.
+     * @param end         The ending time of this task.
      */
     public Event(String description, boolean isDone, LocalDateTime start, LocalDateTime end) {
         super(description, TaskType.E, isDone);
@@ -47,5 +47,23 @@ public class Event extends DateTimeTask {
     public String toString() {
         return String.format("%s (from: %s to: %s)", super.toString(), this.formatOutput(this.start),
                 this.formatOutput(this.end));
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }
+        Event event = (Event) obj;
+        return (start == null ? event.start == null : start.equals(event.start)) &&
+                (end == null ? event.end == null : end.equals(event.end));
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (start == null ? 0 : start.hashCode());
+        result = 31 * result + (end == null ? 0 : end.hashCode());
+        return result;
     }
 }

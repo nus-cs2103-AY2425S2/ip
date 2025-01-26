@@ -15,7 +15,7 @@ public abstract class Task {
      * Class constructor.
      *
      * @param description Description of this task.
-     * @param type The type of this task.
+     * @param type        The type of this task.
      */
     Task(String description, TaskType type) {
         this.description = description;
@@ -26,8 +26,8 @@ public abstract class Task {
      * Class constructor specifying isDone.
      *
      * @param description Description of this task.
-     * @param type The type of this task.
-     * @param isDone Whether this task is done.
+     * @param type        The type of this task.
+     * @param isDone      Whether this task is done.
      */
     Task(String description, TaskType type, boolean isDone) {
         this(description, type);
@@ -53,5 +53,30 @@ public abstract class Task {
     @Override
     public String toString() {
         return String.format("[%s][%s] %s", this.type, this.isDone ? "X" : " ", this.description);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Task other = (Task) obj;
+        return isDone == other.isDone &&
+                (description == null ? other.description == null : description.equals(other.description)) &&
+                (type == null ? other.type == null : type.equals(other.type));
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + (description == null ? 0 : description.hashCode());
+        result = 31 * result + Boolean.hashCode(isDone);
+        result = 31 * result + (type == null ? 0 : type.hashCode());
+        return result;
     }
 }
