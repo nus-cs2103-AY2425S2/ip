@@ -22,7 +22,7 @@ import tasker.task.Todo;
 /**
  * Parses tasks.
  */
-public class Parser {
+class Parser {
     /**
      * Creates the command to handle the user input.
      *
