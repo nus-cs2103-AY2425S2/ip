@@ -3,6 +3,7 @@ package tasker.task;
 import java.util.ArrayList;
 import java.util.List;
 
+import tasker.Storage;
 import tasker.exception.TaskerException;
 
 /**
@@ -17,8 +18,8 @@ public class TaskList {
      *
      * @param tasks The list of tasks to load from.
      */
-    public TaskList(List<Task> tasks) throws TaskerException {
-        for (Task task : tasks) {
+    public TaskList(Storage storage) throws TaskerException {
+        for (Task task : storage.getTasks()) {
             this.add(task);
         }
     }

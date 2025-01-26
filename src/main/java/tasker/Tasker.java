@@ -58,7 +58,7 @@ public class Tasker {
         Storage storage;
         try {
             storage = new Storage("./data/tasker.txt");
-            tasks = new TaskList(storage.getTasks());
+            tasks = new TaskList(storage);
         } catch (TaskerException e) {
             respond(e.getMessage());
             return;
