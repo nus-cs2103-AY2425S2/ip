@@ -6,11 +6,14 @@ public class Parser {
      * Constructs a Parser with the given TaskManager and Ui.
      *
      * @param taskList the TaskManager to manage tasks.
-     * @param ui the Ui to handle user interactions.
+     * @param ui       the Ui to handle user interactions.
      */
     public Parser(TaskList taskList, Ui ui) {
         this.taskList = taskList;
         this.ui = ui;
+
+        // Load tasks from the file at startup
+        taskList.loadFromFile();
     }
 
     /**
@@ -30,6 +33,7 @@ public class Parser {
                 }
 
                 taskList.addTask(command);
+                taskList.saveToFile(); // Save after adding a task
             } else if (command.equalsIgnoreCase("bye")) {
                 ui.exitDialogue();
                 return false;
@@ -40,7 +44,7 @@ public class Parser {
             } else if (command.startsWith("unmark ")) {
                 handleMarkCommand(command, false);
             } else if (command.startsWith("delete ")) {
-                handleDeleteCommand(command);  // Handle delete command
+                handleDeleteCommand(command); // Handle delete command
             } else {
                 throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
             }
@@ -64,6 +68,7 @@ public class Parser {
                 taskList.uncheckTask(taskIndex);
                 ui.printTaskUnmarked(taskList.getTask(taskIndex));
             }
+            taskList.saveToFile(); // Save after marking/unmarking a task
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
             System.out.println("Invalid task index. Please try again.");
         }
@@ -73,6 +78,7 @@ public class Parser {
         try {
             int taskIndex = Integer.parseInt(command.split(" ")[1]) - 1;
             taskList.deleteTask(taskIndex); // Call deleteTask method
+            taskList.saveToFile(); // Save after deleting a task
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
             System.out.println("Invalid task index. Please try again.");
         }
