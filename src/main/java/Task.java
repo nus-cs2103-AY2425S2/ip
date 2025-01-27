@@ -36,6 +36,12 @@ public class Task {
         return "[" + (isChecked ? "X" : " ") + "] " + desc;
     }
 
+    /**
+     * Returns the raw representation of the String to be read from the txt file
+     * Only overridden by Deadline and Event classes
+     *
+     * @return returns the string to be added into the txt file
+     */
     public String toRawString() {
         return this.toString();
     }

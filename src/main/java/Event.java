@@ -41,6 +41,11 @@ public class Event extends Task {
                 + " (from: " + startTime.format(outputFormatter) + " to: " + endTime.format(outputFormatter) + ")";
     }
 
+    /**
+     * Returns the raw representation of the String to be read from the txt file
+     * @return returns the string to be added into the txt file
+     */
+    @Override
     public String toRawString() {
         return "[E]" + super.toString()
                 + " (from: " + startTime.format(inputFormatter) + " to: " + endTime.format(inputFormatter) + ")";

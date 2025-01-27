@@ -2,8 +2,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Deadline extends Task {
-    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"); // Input format (with time)
-    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HHmm"); // Output format
+    // Input format (with time)
+    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    // Output format
+    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HHmm");
     private LocalDateTime deadlineTime;
 
     /**
@@ -38,6 +40,11 @@ public class Deadline extends Task {
                 + " (by: " + deadlineTime.format(outputFormatter) + ")";
     }
 
+    /**
+     * Returns the raw representation of the String to be read from the txt file
+     * @return returns the string to be added into the txt file
+     */
+    @Override
     public String toRawString() {
         return "[D]" + super.toString()
                 + " (by: " + deadlineTime.format(inputFormatter) + ")";
