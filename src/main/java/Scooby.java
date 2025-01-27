@@ -1,7 +1,14 @@
 import java.util.Scanner;
 
 public class Scooby {
-    private TaskList taskList = new TaskList(); // TaskList instance to manage tasks
+    private TaskList taskList; // TaskList instance to manage tasks
+    private Ui ui;
+    private static final String FILEPATH = "tasks.txt";
+
+    public Scooby() {
+        this.ui = new Ui("Scooby");
+        this.taskList = new TaskList();
+    }
 
     /**
      * Adds task to the task list.
@@ -34,9 +41,21 @@ public class Scooby {
         scanner.close();
     }
 
+    public void run() {
+        this.ui.greet();
+        Scanner scanner = new java.util.Scanner(System.in);
+
+        while (true) {
+            Parser parser = new Parser(this.taskList, this.ui);
+            String userInput = scanner.nextLine().trim();
+            if (!parser.parseCommand(userInput)) {
+                break; // Exit the loop if the parser returns false
+            }
+        }
+        scanner.close();
+    }
+
     public static void main(String[] args) {
-        Ui ui = new Ui("Scooby");
-        Scooby scooby = new Scooby();
-        start(ui, scooby);
+        new Scooby().run();
     }
 }

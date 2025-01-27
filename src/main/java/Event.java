@@ -3,9 +3,9 @@ import java.time.format.DateTimeFormatter;
 
 public class Event extends Task {
     // Input format (with time)
-    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter INPUTFORMATTER  = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     // Output format
-    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HHmm");
+    private static final DateTimeFormatter OUTPUTFORMATTER  = DateTimeFormatter.ofPattern("MMM dd yyyy HHmm");
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
@@ -29,7 +29,7 @@ public class Event extends Task {
      * @return the formatted LocalDateTime object
      */
     private LocalDateTime parseDate(String dateStr) {
-        return LocalDateTime.parse(dateStr, inputFormatter); // Parse both date and time
+        return LocalDateTime.parse(dateStr, INPUTFORMATTER); // Parse both date and time
     }
 
     /**
@@ -40,7 +40,7 @@ public class Event extends Task {
     @Override
     public String toString() {
         return "[E]" + super.toString()
-                + " (from: " + startTime.format(outputFormatter) + " to: " + endTime.format(outputFormatter) + ")";
+                + " (from: " + startTime.format(OUTPUTFORMATTER) + " to: " + endTime.format(OUTPUTFORMATTER) + ")";
     }
 
     /**
@@ -50,6 +50,6 @@ public class Event extends Task {
     @Override
     public String toRawString() {
         return "[E]" + super.toString()
-                + " (from: " + startTime.format(inputFormatter) + " to: " + endTime.format(inputFormatter) + ")";
+                + " (from: " + startTime.format(INPUTFORMATTER) + " to: " + endTime.format(INPUTFORMATTER) + ")";
     }
 }
