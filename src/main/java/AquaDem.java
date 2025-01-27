@@ -84,7 +84,7 @@ public class AquaDem {
     }
     private static final String bar = "____________________________________________________________";
     public String intro() {
-        String str = bar + "\n" +  "Hello! I'm AquaDem \n" +
+        String str = bar + "\n" +  "Hello! I'm AquaDem\n" +
                 "What can I do for you?\n" + bar + "\n";
         return str;
     }
@@ -126,7 +126,7 @@ public class AquaDem {
                     Task d1 = new Deadline(deadlineString[0],deadlineString[1]);
                     tasks.add(d1);
                     System.out.println("Okay : ), added: " + d1 + "\n");
-                    System.out.println("You have" + tasks.size() + " tasks in the list ;)");
+                    System.out.println("You have " + tasks.size() + " tasks in the list ;)");
                     System.out.println(bar);
                     input = inputter.nextLine();
                     break;
@@ -136,7 +136,7 @@ public class AquaDem {
                     Task e1 = new Event(eventString1[0],eventString2[0],eventString2[1]);
                     tasks.add(e1);
                     System.out.println("Okay : ), added: " + e1 + "\n");
-                    System.out.println("You have" + tasks.size() + " tasks in the list ;)");
+                    System.out.println("You have " + tasks.size() + " tasks in the list ;)");
                     System.out.println(bar);
                     input = inputter.nextLine();
                     break;
@@ -144,7 +144,7 @@ public class AquaDem {
                     Task to1 = new Todo(detail);
                     tasks.add(to1);
                     System.out.println("Okay : ), added: " + to1 + "\n");
-                    System.out.println("You have" + tasks.size() + " tasks in the list ;)");
+                    System.out.println("You have " + tasks.size() + " tasks in the list ;)");
                     System.out.println(bar);
                     input = inputter.nextLine();
                     break;
