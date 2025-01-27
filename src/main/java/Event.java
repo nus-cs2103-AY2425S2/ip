@@ -2,41 +2,47 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Event extends Task {
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"); // Input format (with time)
+    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HHmm"); // Output format
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
     /**
-     *
-     * @param dateStr is the date in the form of String, in the format: "yyyy-mm-dd HHmm"
-     * @return the formatted local date time in the form of "MMM dd yyyy"
-     */
-    private LocalDateTime parseDate(String dateStr) {
-        // Expected format: yyyy-MM-dd HHmm
-        return LocalDateTime.parse(dateStr, formatter);
-    }
-
-    /**
      * Constructs a new Event task.
      *
-     * @param desc the name of the deadline task
-     * @param from is the start date
-     * @param to is the end date of the event
+     * @param desc the name of the event task
+     * @param from the start date and time of the event
+     * @param to the end date and time of the event
      */
     public Event(String desc, String from, String to) {
         super(desc);
-        this.startTime = parseDate(from);
-        this.endTime = parseDate(to);
+        this.startTime = parseDate(from); // Parse the date and time
+        this.endTime = parseDate(to); // Parse the date and time
     }
 
     /**
-     * Returns the string representation of the task.
+     * Parses the date and time string from input format "yyyy-MM-dd HHmm" to LocalDateTime.
      *
-     * @return the string representation of the task.
+     * @param dateStr the date and time in the form of String, in the format: "yyyy-MM-dd HHmm"
+     * @return the formatted LocalDateTime object
+     */
+    private LocalDateTime parseDate(String dateStr) {
+        return LocalDateTime.parse(dateStr, inputFormatter); // Parse both date and time
+    }
+
+    /**
+     * Returns the string representation of the event.
+     *
+     * @return the string representation of the event.
      */
     @Override
     public String toString() {
         return "[E]" + super.toString()
-                + " (from: " + startTime.format(formatter) + " to: " + endTime.format(formatter) + ")";
+                + " (from: " + startTime.format(outputFormatter) + " to: " + endTime.format(outputFormatter) + ")";
+    }
+
+    public String toRawString() {
+        return "[E]" + super.toString()
+                + " (from: " + startTime.format(inputFormatter) + " to: " + endTime.format(inputFormatter) + ")";
     }
 }

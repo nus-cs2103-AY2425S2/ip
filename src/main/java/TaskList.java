@@ -197,7 +197,7 @@ public class TaskList {
     public void saveToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("tasks.txt"))) {
             for (Task task : tasks) {
-                writer.write(task.toString());
+                writer.write(task.toRawString());
                 writer.newLine();
             }
         } catch (IOException e) {

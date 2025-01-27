@@ -36,4 +36,7 @@ public class Task {
         return "[" + (isChecked ? "X" : " ") + "] " + desc;
     }
 
+    public String toRawString() {
+        return this.toString();
+    }
 }
