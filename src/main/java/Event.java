@@ -1,6 +1,20 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Event extends Task {
-    protected String from;
-    protected String to;
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+
+    /**
+     *
+     * @param dateStr is the date in the form of String, in the format: "yyyy-mm-dd HHmm"
+     * @return the formatted local date time in the form of "MMM dd yyyy"
+     */
+    private LocalDateTime parseDate(String dateStr) {
+        // Expected format: yyyy-MM-dd HHmm
+        return LocalDateTime.parse(dateStr, formatter);
+    }
 
     /**
      * Constructs a new Event task.
@@ -11,8 +25,8 @@ public class Event extends Task {
      */
     public Event(String desc, String from, String to) {
         super(desc);
-        this.from = from;
-        this.to = to;
+        this.startTime = parseDate(from);
+        this.endTime = parseDate(to);
     }
 
     /**
@@ -22,6 +36,7 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+        return "[E]" + super.toString()
+                + " (from: " + startTime.format(formatter) + " to: " + endTime.format(formatter) + ")";
     }
 }
