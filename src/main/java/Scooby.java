@@ -10,19 +10,8 @@ public class Scooby {
     }
 
     /**
-     * Adds task to the task list.
-     *
-     * @param task is  the name of the task to be added into the task list.
+     * run() runs the bot
      */
-    public void addTask(String task) {
-        this.taskList.addTask(task);
-    }
-
-
-    /**
-     * Runs the bot
-     */
-
     public void run() {
         this.ui.greet();
         Scanner scanner = new java.util.Scanner(System.in);
