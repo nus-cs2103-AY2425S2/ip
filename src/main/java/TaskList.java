@@ -8,6 +8,7 @@ import java.io.FileWriter;
 
 public class TaskList {
     private ArrayList<Task> tasks = new ArrayList<>(); // Dynamic list to hold tasks
+    private static final Line LINE = new Line();
 
     /**
      * Loads tasks from the tasks.txt file if it exists.
@@ -116,16 +117,16 @@ public class TaskList {
             }
 
             tasks.add(newTask); // Add task to ArrayList
-            System.out.println("____________________________________________________________");
+            LINE.print();
             System.out.println("Got it. I've added this task:");
             System.out.println("  " + newTask);
             System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-            System.out.println("____________________________________________________________");
+            LINE.print();
 
         } catch (EmptyException | UnrecognisableException e) {
-            System.out.println("____________________________________________________________");
+            LINE.print();
             System.out.println(e.getMessage());
-            System.out.println("____________________________________________________________");
+            LINE.print();
         }
     }
 
@@ -133,7 +134,7 @@ public class TaskList {
      * Lists down all the tasks in the list.
      */
     public void listTasks() {
-        System.out.println("____________________________________________________________");
+        LINE.print();
         if (tasks.size() == 0) {
             System.out.println("No tasks in the list.");
         } else {
@@ -141,7 +142,7 @@ public class TaskList {
                 System.out.println((i + 1) + ". " + tasks.get(i));
             }
         }
-        System.out.println("____________________________________________________________");
+        LINE.print();
     }
 
     /**
@@ -181,11 +182,11 @@ public class TaskList {
         if (index >= 0 && index < tasks.size()) {
             Task deletedTask = tasks.get(index);
             tasks.remove(index); // Remove task from ArrayList
-            System.out.println("____________________________________________________________");
+            LINE.print();
             System.out.println("Noted. I've removed this task:");
             System.out.println("  " + deletedTask);
             System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-            System.out.println("____________________________________________________________");
+            LINE.print();
         } else {
             System.out.println("Invalid task index. Please try again.");
         }

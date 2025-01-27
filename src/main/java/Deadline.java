@@ -3,9 +3,9 @@ import java.time.format.DateTimeFormatter;
 
 public class Deadline extends Task {
     // Input format (with time)
-    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter INPUTFORMATTER  = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     // Output format
-    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HHmm");
+    private static final DateTimeFormatter OUTPUTFORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy HHmm");
     private LocalDateTime deadlineTime;
 
     /**
@@ -26,7 +26,7 @@ public class Deadline extends Task {
      * @return the formatted LocalDateTime object
      */
     private LocalDateTime parseDate(String dateStr) {
-        return LocalDateTime.parse(dateStr, inputFormatter); // Parse both date and time
+        return LocalDateTime.parse(dateStr, INPUTFORMATTER); // Parse both date and time
     }
 
     /**
@@ -37,7 +37,7 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         return "[D]" + super.toString()
-                + " (by: " + deadlineTime.format(outputFormatter) + ")";
+                + " (by: " + deadlineTime.format(OUTPUTFORMATTER) + ")";
     }
 
     /**
@@ -47,6 +47,6 @@ public class Deadline extends Task {
     @Override
     public String toRawString() {
         return "[D]" + super.toString()
-                + " (by: " + deadlineTime.format(inputFormatter) + ")";
+                + " (by: " + deadlineTime.format(INPUTFORMATTER) + ")";
     }
 }
