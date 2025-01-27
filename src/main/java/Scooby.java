@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Scooby {
     private TaskList taskList; // TaskList instance to manage tasks
     private Ui ui;
-    private static final String FILEPATH = "tasks.txt";
 
     public Scooby() {
         this.ui = new Ui("Scooby");
@@ -21,25 +20,8 @@ public class Scooby {
 
 
     /**
-     * Starts up the chatbot.
-     *
-     * @param ui is the user interface defined in the Ui class
-     * @param scooby is the chatbot.
+     * Runs the bot
      */
-
-    public static void start(Ui ui, Scooby scooby) {
-        ui.greet();
-        Scanner scanner = new java.util.Scanner(System.in);
-
-        while (true) {
-            Parser parser = new Parser(scooby.taskList, ui);
-            String userInput = scanner.nextLine().trim();
-            if (!parser.parseCommand(userInput)) {
-                break; // Exit the loop if the parser returns false
-            }
-        }
-        scanner.close();
-    }
 
     public void run() {
         this.ui.greet();

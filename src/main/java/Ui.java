@@ -1,5 +1,6 @@
 public class Ui {
     private final String name;
+    private static final Line LINE = new Line();
 
     /**
      * Constructs a Ui object for the given chatbot name.
@@ -14,19 +15,19 @@ public class Ui {
      * Greets the user and introduces its given name.
      */
     public void greet() {
-        System.out.println("____________________________________________________________");
+        LINE.print();
         System.out.println("Hello! I'm " + name);
         System.out.println("What can I do for you?");
-        System.out.println("____________________________________________________________");
+        LINE.print();
     }
 
     /**
      * Exits the dialogue and closes the bot
      */
     public void exitDialogue() {
-        System.out.println("____________________________________________________________");
+        LINE.print();
         System.out.println("Bye. Hope to see you again soon!");
-        System.out.println("____________________________________________________________");
+        LINE.print();
     }
 
     /**
@@ -35,9 +36,9 @@ public class Ui {
      * @param input the name of the chatbot.
      */
     public void echo(String input) {
-        System.out.println("____________________________________________________________");
+        LINE.print();
         System.out.println(input);
-        System.out.println("____________________________________________________________");
+        LINE.print();
     }
 
     /**
@@ -46,10 +47,10 @@ public class Ui {
      * @param task the task that was marked as done.
      */
     public void printTaskMarked(Task task) {
-        System.out.println("____________________________________________________________");
+        LINE.print();
         System.out.println("Nice! I've marked this task as done:");
         System.out.println("  " + task);
-        System.out.println("____________________________________________________________");
+        LINE.print();
     }
 
     /**
@@ -58,9 +59,9 @@ public class Ui {
      * @param task the task that was marked as not done.
      */
     public void printTaskUnmarked(Task task) {
-        System.out.println("____________________________________________________________");
+        LINE.print();
         System.out.println("OK, I've marked this task as not done yet:");
         System.out.println("  " + task);
-        System.out.println("____________________________________________________________");
+        LINE.print();
     }
 }

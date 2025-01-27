@@ -1,3 +1,3 @@
 [T][X] read book
 [E][ ] project meeting (from: 2019-12-12 1300 to: 2019-12-13 1600)
-[D][ ] project report (by: 2019-12-12 1300)
+[D][X] project report (by: 2019-12-12 1300)
