@@ -84,9 +84,9 @@ class Parser {
                     break;
 
                 case EVENT:
-                    TaskerException EventException = new TaskerException(String.format("""
-                            Please provide a start and end time with:
-                            \"/from %s /to %s\".""", dateTimeInput, dateTimeInput));
+                    TaskerException EventException = new TaskerException(
+                            String.format("Please provide a start and end time with: \"/from %s /to %s\".",
+                                    dateTimeInput, dateTimeInput));
 
                     if (args.length != 3 || !args[1].startsWith("from ") || !args[2].startsWith("to ")) {
                         throw EventException;
