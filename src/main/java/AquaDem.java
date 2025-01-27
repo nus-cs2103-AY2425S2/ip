@@ -32,6 +32,53 @@ public class AquaDem {
         //...
     }
 
+    public class Deadline extends Task {
+
+        protected String by;
+
+        public Deadline(String description, String by) {
+            super(description);
+            this.by = by;
+        }
+
+        @Override
+        public String toString() {
+            return "[D]" + super.toString() + " (by:" + by + ")";
+        }
+    }
+    public class Todo extends Task {
+
+        protected String by;
+
+        public Todo(String description) {
+            super(description);
+        }
+
+        @Override
+        public String toString() {
+            return "[T]" + super.toString();
+        }
+    }
+
+    public class Event extends Task {
+
+        protected String t1;
+
+        protected String t2;
+        public Event(String description, String t1, String t2) {
+            super(description);
+            this.t1 = t1;
+            this.t2 = t2;
+        }
+
+        @Override
+        public String toString() {
+            return "[E]" + super.toString() + " (from:" + t1 + "to:" + t2 +  ")";
+        }
+    }
+
+
+
     public AquaDem(){
 
     }
@@ -42,7 +89,7 @@ public class AquaDem {
         return str;
     }
 
-    public void Printiterlist(List<Task> vals) {
+    public void printIterlist(List<Task> vals) {
         int v = 1;
         for(Task t: vals){
             String s = t.toString();
@@ -70,7 +117,34 @@ public class AquaDem {
             }
             switch(command) {
                 case "list":
-                    Printiterlist(tasks);
+                    printIterlist(tasks);
+                    System.out.println(bar);
+                    input = inputter.nextLine();
+                    break;
+                case "deadline":
+                    String deadlineString[] = detail.split("/by",2);
+                    Task d1 = new Deadline(deadlineString[0],deadlineString[1]);
+                    tasks.add(d1);
+                    System.out.println("Okay : ), added: " + d1 + "\n");
+                    System.out.println("You have" + tasks.size() + " tasks in the list ;)");
+                    System.out.println(bar);
+                    input = inputter.nextLine();
+                    break;
+                case "event":
+                    String eventString1[] = detail.split("/from",2);
+                    String eventString2[] = eventString1[1].split("/to",2);
+                    Task e1 = new Event(eventString1[0],eventString2[0],eventString2[1]);
+                    tasks.add(e1);
+                    System.out.println("Okay : ), added: " + e1 + "\n");
+                    System.out.println("You have" + tasks.size() + " tasks in the list ;)");
+                    System.out.println(bar);
+                    input = inputter.nextLine();
+                    break;
+                case "todo":
+                    Task to1 = new Todo(detail);
+                    tasks.add(to1);
+                    System.out.println("Okay : ), added: " + to1 + "\n");
+                    System.out.println("You have" + tasks.size() + " tasks in the list ;)");
                     System.out.println(bar);
                     input = inputter.nextLine();
                     break;
@@ -97,15 +171,6 @@ public class AquaDem {
                     break;
             }
 
-//            if(Objects.equals(input, "list")) {
-//                Printiterlist(tasks);
-//                input = inputter.nextLine();
-//            } else {
-//                tasks.add(new Task(input));
-//                System.out.println("added: " + input + "\n");
-//
-//                input = inputter.nextLine();
-//            }
         }
         System.out.println(bar);
         System.out.println("Cya again soon ;)" + "\n");
