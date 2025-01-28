@@ -10,10 +10,23 @@ public abstract class DateTimeTask extends Task {
     /** Format of date and time input */
     public static final String INPUT_FORMAT = "d/M/yyyy HHmm";
 
+    /**
+     * Class contructor.
+     *
+     * @param description Description of this task.
+     * @param type        The type of this task.
+     */
     DateTimeTask(String description, TaskType type) {
         super(description, type);
     }
 
+    /**
+     * Class contructor.
+     *
+     * @param description Description of this task.
+     * @param type        The type of this task.
+     * @param isDone      Whether this task is done.
+     */
     DateTimeTask(String description, TaskType type, boolean isDone) {
         super(description, type, isDone);
     }
