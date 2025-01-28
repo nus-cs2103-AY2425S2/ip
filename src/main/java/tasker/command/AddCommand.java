@@ -49,6 +49,6 @@ public class AddCommand extends Command {
 
     @Override
     public int hashCode() {
-        return super.hashCode() + (task == null ? 0 : task.hashCode());
+        return 31 * super.hashCode() + (task == null ? 0 : task.hashCode());
     }
 }
