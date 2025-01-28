@@ -15,6 +15,7 @@ import tasker.command.ByeCommand;
 import tasker.command.Command;
 import tasker.command.CommandType;
 import tasker.command.DeleteCommand;
+import tasker.command.FindCommand;
 import tasker.command.ListCommand;
 import tasker.command.MarkCommand;
 import tasker.command.UnmarkCommand;
@@ -39,6 +40,7 @@ class ParserTest {
         String delete = CommandType.DELETE.toString();
         String mark = CommandType.MARK.toString();
         String unmark = CommandType.UNMARK.toString();
+        String find = CommandType.FIND.toString();
         String description = " read book";
         String deadlineDescription = deadline + description;
         String eventDescription = event + description;
@@ -99,6 +101,15 @@ class ParserTest {
         void parseCommand_validUnmark_success() throws TaskerException {
             String input = unmark + " 3";
             Command expected = new UnmarkCommand(2);
+            Command actual = Parser.parseCommand(input);
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        @DisplayName("Parse find command successfully")
+        void parseCommand_validFind_success() throws TaskerException {
+            String input = find + description;
+            Command expected = new FindCommand("read book");
             Command actual = Parser.parseCommand(input);
             assertEquals(expected, actual);
         }
@@ -272,6 +283,16 @@ class ParserTest {
             assertEquals(exception5.getMessage(), errMsg);
             assertEquals(exception6.getMessage(), errMsg);
             assertEquals(exception7.getMessage(), errMsg);
+        }
+
+        @Test
+        @DisplayName("Throw exception when find search term is missing")
+        void parseCommand_missingSearch_exceptionThrown() {
+            String input = find;
+            TaskerException exception = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input);
+            });
+            assertEquals(exception.getMessage(), "Please provide a search term.");
         }
     }
 
