@@ -42,6 +42,16 @@ public abstract class Task {
     }
 
     /**
+     * Checks if the task description contains a string.
+     *
+     * @param term The string which the description must contain.
+     * @return A boolean of the result
+     */
+    boolean contains(String term) {
+        return description.toLowerCase().contains(term.toLowerCase());
+    }
+
+    /**
      * Returns a string for saving and loading this task.
      * 
      * @returns A storage representation string of this task.

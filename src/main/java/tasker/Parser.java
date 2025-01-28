@@ -8,6 +8,7 @@ import tasker.command.ByeCommand;
 import tasker.command.Command;
 import tasker.command.CommandType;
 import tasker.command.DeleteCommand;
+import tasker.command.FindCommand;
 import tasker.command.ListCommand;
 import tasker.command.MarkCommand;
 import tasker.command.UnmarkCommand;
@@ -142,6 +143,13 @@ class Parser {
             default:
                 break;
             }
+            break;
+
+        case FIND:
+            if (cmdParts.length != 2) {
+                throw new TaskerException("Please provide a search term.");
+            }
+            toRun = new FindCommand(cmdParts[1]);
             break;
 
         case LIST:

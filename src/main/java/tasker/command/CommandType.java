@@ -4,7 +4,7 @@ package tasker.command;
  * Allowed enums for commands.
  */
 public enum CommandType {
-    DEADLINE, EVENT, TODO, DELETE, MARK, UNMARK, LIST, BYE;
+    DEADLINE, EVENT, TODO, DELETE, MARK, UNMARK, FIND, LIST, BYE;
 
     /**
      * Lists out all available commands.
