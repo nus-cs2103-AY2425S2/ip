@@ -29,7 +29,7 @@ public class TaskList {
         ArrayList<Task> tasks = new ArrayList<>();
 
         for (Task task : storage.getTasks()) {
-            this.add(task);
+            tasks.add(task);
         }
 
         this.tasks = tasks;
@@ -111,6 +111,28 @@ public class TaskList {
      */
     public void unmarkTask(int index) {
         tasks.get(index).setDone(false);
+    }
+
+    /**
+     * Finds tasks which description contains a string.
+     *
+     * @param term The string which task descriptions must contain.
+     * @return A string of tasks which description contains the string.
+     */
+    public String findTasks(String term) {
+        boolean hasMatches = false;
+        StringBuilder output = new StringBuilder("Here are the matching tasks in your list:");
+        int count = 1;
+
+        for (Task task : tasks) {
+            if (task.contains(term)) {
+                hasMatches = true;
+                output.append("\n").append(count).append(".").append(task);
+                ++count;
+            }
+        }
+
+        return hasMatches ? output.toString() : "No tasks contain that term";
     }
 
     @Override
