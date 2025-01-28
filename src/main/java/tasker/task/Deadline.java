@@ -10,7 +10,7 @@ public class Deadline extends DateTimeTask {
     private LocalDateTime deadline;
 
     /**
-     * Constructor class.
+     * Class constructor.
      *
      * @param description Description of this task.
      * @param deadline    Deadline of this task.
@@ -21,7 +21,7 @@ public class Deadline extends DateTimeTask {
     }
 
     /**
-     * Constructor class.
+     * Class constructor.
      *
      * @param description Description of this task.
      * @param isDone      Whether this task is done.
