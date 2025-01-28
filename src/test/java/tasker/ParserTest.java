@@ -27,7 +27,6 @@ import tasker.task.TaskType;
 import tasker.task.Todo;
 
 class ParserTest {
-
     @Nested
     @DisplayName("parseCommand Tests")
     class ParseCommandTests {
