@@ -311,6 +311,22 @@ public class AquaDem {
                         input = runninginputs(inputter);
                         break;
                     }
+                case "delete":
+                    try {
+                        markAndUnmarkcheck(detail, tasks.size());
+                        int i = Integer.parseInt(detail)-1;
+                        Task t2 = tasks.get(i);
+                        tasks.remove(i);
+                        System.out.println("Task deleted: " + t2);
+                        System.out.println("you have " + tasks.size() +" tasks left");
+                        System.out.println(bar);
+                        input = runninginputs(inputter);
+                        break;
+                    } catch(detailException e) {
+                        System.out.println(e.getMessage());
+                        input = runninginputs(inputter);
+                        break;
+                    }
                 default:
                     System.out.println("I dont know what that is sorry : (");
                     System.out.println(bar);
