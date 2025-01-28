@@ -161,9 +161,9 @@ public class AquaDem {
 
     public void markAndUnmarkcheck(String detail, int limit) throws markAndUnmarkException{
         try {
-            int i = Integer.parseInt(detail);
-            if (i < limit) {
-                throw new markAndUnmarkException("you dont even have that many tasks..");
+            int i = Integer.parseInt(detail)-1;
+            if (i >= limit || i < 0) {
+                throw new markAndUnmarkException("that task does not exist... maybe you finished it?");
             }
 
         }
@@ -181,11 +181,11 @@ public class AquaDem {
     }
 
     public void eventCheck(String detail) throws eventException{
-        if (detail == ""){
+        if (detail.equals("")){
             throw new eventException("event for what? , for who? when ?????");
-        } else if (!detail.contains("/from") && !detail.contains("to")){
+        } else if (!detail.contains("/from") && !detail.contains("/to")){
             throw new eventException("From when to when?????");
-        } else if ((detail.contains("/from") && !detail.contains("to")) ||(!detail.contains("/from") && detail.contains("to"))) {
+        } else if ((detail.contains("/from") && !detail.contains("/to")) ||(!detail.contains("/from") && detail.contains("/to"))) {
             throw new eventException("From and To please");
         }
     }
@@ -229,104 +229,92 @@ public class AquaDem {
                     input = inputter.nextLine();
                     break;
                 case "deadline":
-                    while(true) {
-                        try {
-                            deadlineCheck(detail);
-                            String deadlineString[] = detail.split("/by",2);
-                            Task d1 = new Deadline(deadlineString[0],deadlineString[1]);
-                            tasks.add(d1);
-                            System.out.println("Okay : ), added: " + d1 + "\n");
-                            System.out.println("You have " + tasks.size() + " tasks in the list ;)");
-                            System.out.println(bar);
-                            input = inputter.nextLine();
-                            break;
-                        } catch(detailException e) {
-                            System.out.println(e.getMessage());
-                            input = inputter.nextLine();
-                            break;
-                        }
+
+                    try {
+                        deadlineCheck(detail);
+                        String deadlineString[] = detail.split("/by",2);
+                        Task d1 = new Deadline(deadlineString[0],deadlineString[1]);
+                        tasks.add(d1);
+                        System.out.println("Okay : ), added: " + d1 + "\n");
+                        System.out.println("You have " + tasks.size() + " tasks in the list ;)");
+                        System.out.println(bar);
+                        input = runninginputs(inputter);
+                        break;
+                    } catch(detailException e) {
+                        System.out.println(e.getMessage());
+                        input = runninginputs(inputter);
+                        break;
                     }
-                    break;
+
+
                 case "event":
-                    while(true) {
-                        try {
-                            eventCheck(detail);
-                            String eventString1[] = detail.split("/from",2);
-                            String eventString2[] = eventString1[1].split("/to",2);
-                            Task e1 = new Event(eventString1[0],eventString2[0],eventString2[1]);
-                            tasks.add(e1);
-                            System.out.println("Okay : ), added: " + e1 + "\n");
-                            System.out.println("You have " + tasks.size() + " tasks in the list ;)");
-                            System.out.println(bar);
-                            input = inputter.nextLine();
-                            break;
-                        } catch(detailException e) {
-                            System.out.println(e.getMessage());
-                            input = inputter.nextLine();
-                            break;
-                        }
+                    try {
+                        eventCheck(detail);
+                        String eventString1[] = detail.split("/from",2);
+                        String eventString2[] = eventString1[1].split("/to",2);
+                        Task e1 = new Event(eventString1[0],eventString2[0],eventString2[1]);
+                        tasks.add(e1);
+                        System.out.println("Okay : ), added: " + e1 + "\n");
+                        System.out.println("You have " + tasks.size() + " tasks in the list ;)");
+                        System.out.println(bar);
+                        input = runninginputs(inputter);
+                        break;
+                    } catch(detailException e) {
+                        System.out.println(e.getMessage());
+                        input = runninginputs(inputter);
+                        break;
                     }
-                    break;
 
                 case "todo":
-                    while(true) {
-                        try {
-                            todoCheck(detail);
-                            Task to1 = new Todo(detail);
-                            tasks.add(to1);
-                            System.out.println("Okay : ), added: " + to1 + "\n");
-                            System.out.println("You have " + tasks.size() + " tasks in the list ;)");
-                            System.out.println(bar);
-                            input = inputter.nextLine();
-                            break;
-                        } catch(detailException e) {
-                            System.out.println(e.getMessage());
-                            input = inputter.nextLine();
-                            break;
-                        }
-                    }
 
-                    break;
+                    try {
+                        todoCheck(detail);
+                        Task to1 = new Todo(detail);
+                        tasks.add(to1);
+                        System.out.println("Okay : ), added: " + to1 + "\n");
+                        System.out.println("You have " + tasks.size() + " tasks in the list ;)");
+                        System.out.println(bar);
+                        input = runninginputs(inputter);
+                        break;
+                    } catch(detailException e) {
+                        System.out.println(e.getMessage());
+                        input = runninginputs(inputter);
+                        break;
+                    }
                 case "mark":
-                    while(true) {
-                        try {
-                            markAndUnmarkcheck(detail, tasks.size());
-                            Task t1 = tasks.get(Integer.parseInt(detail)-1);
-                            t1.markAsDone();
-                            System.out.println("Task marked: " + t1);
-                            System.out.println(bar);
-                            input = inputter.nextLine();
-                            break;
-                        } catch(detailException e) {
-                            System.out.println(e.getMessage());
-                            input = inputter.nextLine();
-                            break;
-                        }
+                    try {
+                        markAndUnmarkcheck(detail, tasks.size());
+                        Task t1 = tasks.get(Integer.parseInt(detail)-1);
+                        t1.markAsDone();
+                        System.out.println("Task marked: " + t1);
+                        System.out.println(bar);
+                        input = runninginputs(inputter);
+                        break;
+                    } catch(detailException e) {
+                        System.out.println(e.getMessage());
+                        input = runninginputs(inputter);
+                        break;
                     }
 
 
-                    break;
                 case "unmark":
-                    while(true) {
-                        try {
-                            markAndUnmarkcheck(detail, tasks.size());
-                            Task t2 = tasks.get(Integer.parseInt(detail)-1);
-                            t2.markAsUndone();
-                            System.out.println("Task unmarked: " + t2);
-                            System.out.println(bar);
-                            input = inputter.nextLine();
-                            break;
-                        } catch(detailException e) {
-                            System.out.println(e.getMessage());
-                            input = inputter.nextLine();
-                            break;
-                        }
+                    try {
+                        markAndUnmarkcheck(detail, tasks.size());
+                        Task t2 = tasks.get(Integer.parseInt(detail)-1);
+                        t2.markAsUndone();
+                        System.out.println("Task unmarked: " + t2);
+                        System.out.println(bar);
+                        input = runninginputs(inputter);
+                        break;
+                    } catch(detailException e) {
+                        System.out.println(e.getMessage());
+                        input = runninginputs(inputter);
+                        break;
                     }
-                    break;
                 default:
                     System.out.println("I dont know what that is sorry : (");
                     System.out.println(bar);
-                    input = inputter.nextLine();
+                    input = runninginputs(inputter);
                     break;
             }
 
