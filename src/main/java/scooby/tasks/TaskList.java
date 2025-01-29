@@ -208,7 +208,7 @@ public class TaskList {
         ArrayList<Task> foundTasks = new ArrayList<>();
 
         for (Task task : tasks) {
-            if (task.toString().contains(keyword)) {
+            if (task.toString().toLowerCase().contains(keyword.toLowerCase())) {
                 foundTasks.add(task);
             }
         }
