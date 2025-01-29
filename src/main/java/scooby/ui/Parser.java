@@ -51,6 +51,13 @@ public class Parser {
                 handleMarkCommand(command, false);
             } else if (command.startsWith("delete ")) {
                 handleDeleteCommand(command); // Handle delete command
+            } else if (command.startsWith("find ")) {
+                // Handle find command
+                String[] parts = command.split(" ", 2);
+                if (parts.length < 2 || parts[1].trim().isEmpty()) {
+                    throw new EmptyException("Keyword for find cannot be empty. Try again.");
+                }
+                taskList.find(parts[1].trim());
             } else {
                 throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
             }

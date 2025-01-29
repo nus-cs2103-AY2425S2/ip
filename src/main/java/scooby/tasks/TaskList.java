@@ -199,6 +199,33 @@ public class TaskList {
     }
 
     /**
+     * Finds and lists tasks that contain the given keyword.
+     *
+     * @param keyword The keyword to search for.
+     */
+    public void find(String keyword) {
+        LINE.print();
+        ArrayList<Task> foundTasks = new ArrayList<>();
+
+        for (Task task : tasks) {
+            if (task.toString().contains(keyword)) {
+                foundTasks.add(task);
+            }
+        }
+
+        if (foundTasks.isEmpty()) {
+            System.out.println("No matching tasks found.");
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+            for (int i = 0; i < foundTasks.size(); i++) {
+                System.out.println((i + 1) + ". " + foundTasks.get(i));
+            }
+        }
+
+        LINE.print();
+    }
+
+    /**
      * Saves the content in the task list to a file.
      */
     public void saveToFile() {
