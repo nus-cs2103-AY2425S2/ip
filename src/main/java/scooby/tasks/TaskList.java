@@ -212,7 +212,23 @@ public class TaskList {
         }
     }
 
-    public boolean isEmpty() { return this.tasks.isEmpty(); }
+    /**
+     * returns whether the list is empty or not
+     * returns True when it is empty
+     * returns False when it is not empty
+     *
+     * @return returns a boolean value of
+     */
+    public boolean isEmpty() {
+        return this.tasks.isEmpty();
+    }
 
-    public int size() { return this.tasks.size(); }
+    /**
+     * Returns the size of the taskList
+     *
+     * @return returns the size of the taskList
+     */
+    public int size() {
+        return this.tasks.size();
+    }
 }
