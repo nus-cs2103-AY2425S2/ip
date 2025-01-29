@@ -11,7 +11,7 @@ public class Ui {
      *
      * @param name the name of the chatbot.
      */
-    Ui(String name) {
+    public Ui(String name) {
         this.name = name;
     }
 

@@ -211,4 +211,8 @@ public class TaskList {
             System.err.println("An error occurred while saving tasks: " + e.getMessage());
         }
     }
+
+    public boolean isEmpty() { return this.tasks.isEmpty(); }
+
+    public int size() { return this.tasks.size(); }
 }
