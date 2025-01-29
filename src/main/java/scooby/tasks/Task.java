@@ -47,4 +47,6 @@ public class Task {
     public String toRawString() {
         return this.toString();
     }
+
+    public boolean isChecked() { return this.isChecked; }
 }
