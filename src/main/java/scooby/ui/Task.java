@@ -1,3 +1,5 @@
+package scooby.ui;
+
 public class Task {
     private String desc;
     private boolean isChecked;

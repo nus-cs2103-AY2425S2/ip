@@ -1,3 +1,5 @@
+package scooby.ui;
+
 public class Ui {
     private final String name;
     private static final Line LINE = new Line();

@@ -1,3 +1,5 @@
+package scooby.ui;
+
 public class Parser {
     private final TaskList taskList;
     private final Ui ui;

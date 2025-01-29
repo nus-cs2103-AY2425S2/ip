@@ -1,3 +1,5 @@
+package scooby.ui;
+
 public class EmptyException extends IndexOutOfBoundsException {
     /**
      * Constructs an Empty Exception if the description is empty.

@@ -1,3 +1,5 @@
+package scooby.ui;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

@@ -1,3 +1,5 @@
+package scooby.ui;
+
 import java.util.Scanner;
 
 public class Scooby {

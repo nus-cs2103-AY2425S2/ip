@@ -1,3 +1,5 @@
+package scooby.ui;
+
 public class UnrecognisableException extends Exception {
     /**
      * Constructs an Empty Exception if the description is empty.
