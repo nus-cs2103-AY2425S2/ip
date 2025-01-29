@@ -1,9 +1,5 @@
 package scooby.tasks;
 
-import scooby.exception.UnrecognisableException;
-import scooby.exception.EmptyException;
-import scooby.ui.Line;
-
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,6 +7,10 @@ import java.io.IOException;
 import java.io.File;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+
+import scooby.exception.UnrecognisableException;
+import scooby.exception.EmptyException;
+import scooby.ui.Line;
 
 public class TaskList {
     private ArrayList<Task> tasks = new ArrayList<>(); // Dynamic list to hold tasks

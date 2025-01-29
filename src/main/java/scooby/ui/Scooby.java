@@ -1,8 +1,8 @@
 package scooby.ui;
 
-import scooby.tasks.TaskList;
-
 import java.util.Scanner;
+
+import scooby.tasks.TaskList;
 
 public class Scooby {
     private TaskList taskList; // TaskList instance to manage tasks
