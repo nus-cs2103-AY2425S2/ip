@@ -1,4 +1,4 @@
-package scooby.ui;
+package scooby.tasks;
 
 public class Task {
     private String desc;

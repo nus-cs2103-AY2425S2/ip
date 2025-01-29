@@ -1,5 +1,9 @@
 package scooby.ui;
 
+import scooby.tasks.TaskList;
+import scooby.exception.UnrecognisableException;
+import scooby.exception.EmptyException;
+
 public class Parser {
     private final TaskList taskList;
     private final Ui ui;

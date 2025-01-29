@@ -1,4 +1,8 @@
-package scooby.ui;
+package scooby.tasks;
+
+import scooby.exception.UnrecognisableException;
+import scooby.exception.EmptyException;
+import scooby.ui.Line;
 
 import java.util.ArrayList;
 import java.io.BufferedReader;

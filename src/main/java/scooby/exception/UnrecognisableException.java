@@ -1,12 +1,12 @@
-package scooby.ui;
+package scooby.exception;
 
-public class EmptyException extends IndexOutOfBoundsException {
+public class UnrecognisableException extends Exception {
     /**
      * Constructs an Empty Exception if the description is empty.
      *
      * @param message is the message of the error.
      */
-    public EmptyException(String message) {
+    public UnrecognisableException(String message) {
         super(message);
     }
 }

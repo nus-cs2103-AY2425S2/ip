@@ -1,4 +1,4 @@
-package scooby.ui;
+package scooby.tasks;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

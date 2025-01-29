@@ -1,5 +1,7 @@
 package scooby.ui;
 
+import scooby.tasks.TaskList;
+
 import java.util.Scanner;
 
 public class Scooby {
