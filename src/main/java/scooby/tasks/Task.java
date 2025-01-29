@@ -48,5 +48,13 @@ public class Task {
         return this.toString();
     }
 
-    public boolean isChecked() { return this.isChecked; }
+
+    /**
+     * Returns the value of the isChecked value inside the Task class
+     *
+     * @return returns the value of isChecked
+     */
+    public boolean isChecked() {
+        return this.isChecked;
+    }
 }
