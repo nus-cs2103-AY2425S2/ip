@@ -1,6 +1,14 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+
 
 class Storage {
     private String filePath;
@@ -48,10 +56,11 @@ class Storage {
             typeCode = "T";
         } else if (task instanceof Deadline) {
             typeCode = "D";
-            extraData = " | " + ((Deadline) task).date;
+            extraData = " | " + ((Deadline) task).dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
         } else if (task instanceof Event) {
             typeCode = "E";
-            extraData = " | " + ((Event) task).start + " | " + ((Event) task).end;
+            extraData = " | " + ((Event) task).start.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"))
+                    + " | " + ((Event) task).end.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
         }
 
         return typeCode + " | " + (task.isDone ? "1" : "0") + " | " + task.description + extraData;
@@ -62,7 +71,7 @@ class Storage {
             String[] parts = line.split(" \\| ");
             if (parts.length < 3) {
                 System.out.println("WARNING: Skipping invalid task format!"
-                               + "Please ask my creator for help!" + line);
+                        + "Please ask my creator for help!" + line);
                 return null;
             }
 
@@ -77,11 +86,14 @@ class Storage {
                     break;
                 case "D":
                     if (parts.length < 4) return null;
-                    task = new Deadline(description, parts[3]);
+                    String dateTimeString = parts[3];
+                    task = new Deadline(description, dateTimeString);
                     break;
                 case "E":
                     if (parts.length < 5) return null;
-                    task = new Event(description, parts[3], parts[4]);
+                    String startString = parts[3];
+                    String endString = parts[4];
+                    task = new Event(description, startString, endString);
                     break;
                 default:
                     return null;

@@ -112,47 +112,47 @@ class Taskmax {
                     } catch (TaskmaxException e) {
                         System.out.println(e.getMessage());
                     }
-            } else if (input.startsWith("deadline")) {  //Deadline tasks
-                if (tasks.size() >= limit) {
-                    System.out.println(tooMany);
-                    break;
-                }
-                try {
-                    String[] sections = input.substring(9).split("/by");
-                if (sections.length != 2) {
-                    throw new TaskmaxException("Oops! You have to include a \"/by deadline\" after your task\n"
-                            + "e.g. deadline Assignment2 /by Sunday\n"
-                            + "Please ry again!");
-                }
-                tasks.add(new Deadline(sections[0], sections[1]));
-                System.out.println(line + "\nGot it. I've added this task:\n  "
-                        + tasks.get(tasks.size() - 1).toString()
-                        + "\nNow you have " + tasks.size() + " tasks in the list.\n"
-                        + line);
-            } catch (TaskmaxException e){
-                System.out.println(e.getMessage());
-            }
-            } else if (input.startsWith("event")) {     //Event tasks
-                if(tasks.size() >= limit) {
-                    System.out.println(tooMany);
-                    break;
-                }
-                try {
-                    String[] sections = input.substring(6).split("/from | /to");
-                    if (sections.length != 3) {
-                        throw new TaskmaxException("Oops! You have to include a \"/from start /to end\" after your task\n"
-                                + "e.g. event Concert /from Monday 3am /to Monday 4pm\n"
-                                + "Please try again!");
-                    }
-                    tasks.add(new Event(sections[0], sections[1], sections[2]));
-                    System.out.println(line + "\nGot it. I've added this task:\n  "
-                            + tasks.get(tasks.size() - 1).toString()
-                            + "\nNow you have " + tasks.size() + " tasks in the list.\n"
-                            + line);
-                } catch (TaskmaxException e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (tasks.size() >= limit) {
+            } else if (input.startsWith("deadline")) {  // Deadline tasks
+                 if (tasks.size() >= limit) {
+                     System.out.println(tooMany);
+                     break;
+                 }
+                 try {
+                     String[] sections = input.substring(9).split("/by");
+                     if (sections.length != 2) {
+                         throw new TaskmaxException("Oops! You have to include a \"/by deadline\" after your task\n"
+                                 + "e.g. deadline Assignment2 /by 2021-10-15 1800\n"
+                                 + "Please try again!");
+                     }
+                     tasks.add(new Deadline(sections[0].trim(), sections[1].trim()));
+                     System.out.println(line + "\nGot it. I've added this task:\n  "
+                             + tasks.get(tasks.size() - 1).toString()
+                             + "\nNow you have " + tasks.size() + " tasks in the list.\n"
+                             + line);
+                 } catch (TaskmaxException e) {
+                     System.out.println(e.getMessage());
+                 }
+             } else if (input.startsWith("event")) {  // Event tasks
+                 if (tasks.size() >= limit) {
+                     System.out.println(tooMany);
+                     break;
+                 }
+                 try {
+                     String[] sections = input.substring(6).split("/from | /to");
+                     if (sections.length != 3) {
+                         throw new TaskmaxException("Oops! You have to include a \"/from start /to end\" after your task\n"
+                                 + "e.g. event Concert /from 2021-10-15 1800 /to 2021-10-15 2200\n"
+                                 + "Please try again!");
+                     }
+                     tasks.add(new Event(sections[0].trim(), sections[1].trim(), sections[2].trim()));
+                     System.out.println(line + "\nGot it. I've added this task:\n  "
+                             + tasks.get(tasks.size() - 1).toString()
+                             + "\nNow you have " + tasks.size() + " tasks in the list.\n"
+                             + line);
+                 } catch (TaskmaxException e) {
+                     System.out.println(e.getMessage());
+                 }
+             } else if (tasks.size() >= limit) {
                 System.out.println(tooMany);
                 break;
             } else {
