@@ -1,9 +1,43 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
-public class AquaDem {
-    public class Task {
+
+public class AquaDem implements Serializable{
+    private static final String FILE_PATH = "./src/main/data/Aquadem.ser";
+
+    public void saveTasks(ArrayList<Task> tasks){
+        try {
+            File dataList = new File(FILE_PATH);
+            if(dataList.createNewFile()) {
+                //
+            } else {
+                //
+            }
+            FileOutputStream fileSerialized = new FileOutputStream(FILE_PATH);
+            ObjectOutputStream taskSerialized = new ObjectOutputStream(fileSerialized);
+            taskSerialized.writeObject(tasks);
+        } catch (IOException e) {
+
+            
+        }
+    }
+
+    public void loadTasks(){
+        try {
+            FileInputStream fileDeSerialized = new FileInputStream(FILE_PATH);
+            ObjectInputStream taskDeSerialized = new ObjectInputStream(fileDeSerialized);
+            this.tasks = (ArrayList<Task>) taskDeSerialized.readObject();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            this.tasks = new ArrayList<>();
+        }
+    }
+
+    public class Task implements Serializable {
+
         protected String description;
         protected boolean isDone;
 
@@ -32,7 +66,7 @@ public class AquaDem {
         //...
     }
 
-    public class Deadline extends Task {
+    public class Deadline extends Task implements Serializable {
 
         protected String by;
 
@@ -46,7 +80,7 @@ public class AquaDem {
             return "[D]" + super.toString() + " (by:" + by + ")";
         }
     }
-    public class Todo extends Task {
+    public class Todo extends Task implements Serializable{
 
         protected String by;
 
@@ -60,7 +94,7 @@ public class AquaDem {
         }
     }
 
-    public class Event extends Task {
+    public class Event extends Task implements Serializable {
 
         protected String t1;
 
@@ -128,9 +162,9 @@ public class AquaDem {
 
 
 
-
+    private ArrayList<Task> tasks;
     public AquaDem(){
-
+        this.tasks = new ArrayList<Task>();
     }
     private static final String bar = "____________________________________________________________";
     public String intro() {
@@ -210,7 +244,6 @@ public class AquaDem {
     }
 
     public void running() {
-        List<Task> tasks = new ArrayList<>();
         Scanner inputter = new Scanner(System.in);
         String input = runninginputs(inputter);
         while (!Objects.equals(input, "bye")) {
@@ -224,7 +257,7 @@ public class AquaDem {
             }
             switch(command) {
                 case "list":
-                    printIterlist(tasks);
+                    printIterlist(this.tasks);
                     System.out.println(bar);
                     input = inputter.nextLine();
                     break;
@@ -238,7 +271,9 @@ public class AquaDem {
                         System.out.println("Okay : ), added: " + d1 + "\n");
                         System.out.println("You have " + tasks.size() + " tasks in the list ;)");
                         System.out.println(bar);
+                        this.saveTasks(tasks);
                         input = runninginputs(inputter);
+
                         break;
                     } catch(detailException e) {
                         System.out.println(e.getMessage());
@@ -257,6 +292,7 @@ public class AquaDem {
                         System.out.println("Okay : ), added: " + e1 + "\n");
                         System.out.println("You have " + tasks.size() + " tasks in the list ;)");
                         System.out.println(bar);
+                        this.saveTasks(tasks);
                         input = runninginputs(inputter);
                         break;
                     } catch(detailException e) {
@@ -274,7 +310,9 @@ public class AquaDem {
                         System.out.println("Okay : ), added: " + to1 + "\n");
                         System.out.println("You have " + tasks.size() + " tasks in the list ;)");
                         System.out.println(bar);
+                        this.saveTasks(tasks);
                         input = runninginputs(inputter);
+
                         break;
                     } catch(detailException e) {
                         System.out.println(e.getMessage());
@@ -288,7 +326,9 @@ public class AquaDem {
                         t1.markAsDone();
                         System.out.println("Task marked: " + t1);
                         System.out.println(bar);
+                        this.saveTasks(tasks);
                         input = runninginputs(inputter);
+
                         break;
                     } catch(detailException e) {
                         System.out.println(e.getMessage());
@@ -304,7 +344,9 @@ public class AquaDem {
                         t2.markAsUndone();
                         System.out.println("Task unmarked: " + t2);
                         System.out.println(bar);
+                        this.saveTasks(tasks);
                         input = runninginputs(inputter);
+
                         break;
                     } catch(detailException e) {
                         System.out.println(e.getMessage());
@@ -320,7 +362,9 @@ public class AquaDem {
                         System.out.println("Task deleted: " + t2);
                         System.out.println("you have " + tasks.size() +" tasks left");
                         System.out.println(bar);
+                        this.saveTasks(tasks);
                         input = runninginputs(inputter);
+
                         break;
                     } catch(detailException e) {
                         System.out.println(e.getMessage());
@@ -343,6 +387,7 @@ public class AquaDem {
     public static void main(String[] args) {
         AquaDem chatbot = new AquaDem();
         System.out.print((chatbot.intro()));
+        chatbot.loadTasks();
         chatbot.running();
 
     }
