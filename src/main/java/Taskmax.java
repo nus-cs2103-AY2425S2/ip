@@ -1,12 +1,22 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Taskmax {
+class Taskmax {
+    private static final String FILE_PATH = "data/tasks.txt";
+    private static Storage storage = new Storage(FILE_PATH);
+
     public static void main(String[] args) {
         int limit = 100;  //Maximum number of tasks
         Mascot mascot = new Mascot();  //Taskmax's illustration
-        ArrayList<Task> tasks = new ArrayList<>(); //Task arraylist
-
+        ArrayList<Task> tasks; //Task arraylist
+        try {
+            tasks = new ArrayList<>(storage.loadTasks());
+            System.out.println("Loaded previous tasks from file.");
+        } catch (IOException e) {
+            System.out.println("Error loading tasks. Starting with an empty list.");
+            tasks = new ArrayList<>();
+        }
 
         String line = "-".repeat(100) + "\n";
         String tooMany = "Your task list is full, get to work first!";
@@ -20,20 +30,14 @@ public class Taskmax {
 
         while (true) {
             input = scan.nextLine();
-            if (input.equals("hello!") || input.equals("help")) {
-                System.out.println("Hey there! There are 7 things I can help you with! \n"
-                                    + "\n1. List: Enter \"list\" and I will list out all the tasks you have given me!\n"
-                                    + "2. ToDo: Enter \"todo theTaskName\" to add a task you plan to do!\n"
-                                    + "3. Deadlines: Enter \"deadline theTaskName /by date\" to add a task with a specific deadline!\n"
-                                    + "4. Events: Enter \"event theTaskName /from start period /to end period\" to add an event!\n"
-                                    + "5. Delete: Enter \"delete theTaskName\" to delete a task from the list!\n"
-                                    + "6. Mark as done: Enter \"mark TaskListNumber\" to mark the task as complete in the list!\n"
-                                    + "7. Mark as undone: Enter \"unmark TaskListNumber\" to mark the task as incomplete in the list!\n"
-                                    + "Any other text will be treated as a custom item for me to adhhed to the list!\n"
-                                    + "\nIf you need a refresher, just enter \"help\" and remember that my input receptors"
-                                    + "\nare sensitive so please be careful with your spelling and capital letters!\n"
-                                    + "\nThat is all and happy scheduling! ~Taskmax :D\n" + line);
-             } else if (input.equals("bye")) {   //bye input
+             if (input.equals("bye")) {   //bye input
+                try {
+                    storage.saveTasks(tasks); // save tasks before exiting
+                    System.out.println("Tasks have been saved to my drive!");
+                } catch (IOException e){
+                    System.out.println("Error saving tasks to my drive!");
+                }
+
                 System.out.println(line
                         + "\nI hope that you are satisfied with your service.\n"
                         + "See you again soon!\n"
@@ -152,8 +156,19 @@ public class Taskmax {
                 System.out.println(tooMany);
                 break;
             } else {
-                tasks.add(new Task(input, TaskType.TODO));
-                System.out.println(line + "\n added: " + input + "\n" + line);
+                  System.out.println("Hey there! There are 7 things I can help you with! \n"
+                          + "\n1. List: Enter \"list\" and I will list out all the tasks you have given me!\n"
+                          + "2. ToDo: Enter \"todo theTaskName\" to add a task you plan to do!\n"
+                          + "3. Deadlines: Enter \"deadline theTaskName /by date\" to add a task with a specific deadline!\n"
+                          + "4. Events: Enter \"event theTaskName /from start period /to end period\" to add an event!\n"
+                          + "5. Delete: Enter \"delete theTaskName\" to delete a task from the list!\n"
+                          + "6. Mark as done: Enter \"mark TaskListNumber\" to mark the task as complete in the list!\n"
+                          + "7. Mark as undone: Enter \"unmark TaskListNumber\" to mark the task as incomplete in the list!\n"
+                          + "\nIf you need a refresher, just enter any word!"
+                          + "\nIf you are satisfied with your service, just enter \"bye\"\n"
+                          + "\nDo remember that my input receptors are sensitive so please be careful with your spelling"
+                          + "\nand capital letters for commands!\n"
+                          + "\nThat is all and happy scheduling! ~Taskmax :D\n" + line);
             }
         }
         scan.close();

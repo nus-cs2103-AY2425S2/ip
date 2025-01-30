@@ -1,4 +1,4 @@
-public class Deadline extends Task {
+class Deadline extends Task {
     protected String date;
 
     public Deadline(String description, String date) {
@@ -8,7 +8,7 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by:" + date + ")";
+        return "[D]" + super.toString() + "(by:" + date + ")";
     }
 }
 

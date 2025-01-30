@@ -1,4 +1,4 @@
-public class Mascot {
+class Mascot {
 
     @Override
     public String toString() {
