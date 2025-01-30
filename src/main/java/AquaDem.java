@@ -1,11 +1,23 @@
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.io.File;
+import java.io.Serializable;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
+import java.util.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class AquaDem implements Serializable{
     private static final String FILE_PATH = "./src/main/data/Aquadem.ser";
+    private ArrayList<Task> tasks;
 
     public void saveTasks(ArrayList<Task> tasks){
         try {
@@ -32,43 +44,15 @@ public class AquaDem implements Serializable{
 
         } catch (IOException | ClassNotFoundException e) {
 
-            this.tasks = new ArrayList<>();
+            this.tasks = new ArrayList<Task>();
         }
     }
 
-    public class Task implements Serializable {
-
-        protected String description;
-        protected boolean isDone;
-
-        protected String statusIcon = " ";
-        public Task(String description) {
-            this.description = description;
-            this.isDone = false;
-        }
-
-
-        public void markAsDone() {
-            this.isDone = true;
-            this.statusIcon = "X";
-        }
-
-        public void markAsUndone() {
-            this.isDone = false;
-            this.statusIcon = " ";
-        }
-        @Override
-        public String toString() {
-            String str = String.format("[%s] %s", this.statusIcon, this.description);
-            return str;
-        }
-
-        //...
-    }
 
     public class Deadline extends Task implements Serializable {
 
         protected String by;
+        protected LocalDateTime dueDate;
 
         public Deadline(String description, String by) {
             super(description);
@@ -161,15 +145,16 @@ public class AquaDem implements Serializable{
     }
 
 
+;
 
-    private ArrayList<Task> tasks;
     public AquaDem(){
         this.tasks = new ArrayList<Task>();
     }
     private static final String bar = "____________________________________________________________";
     public String intro() {
         String str = bar + "\n" +  "Hello! I'm AquaDem\n" +
-                "What can I do for you?\n" + bar + "\n";
+                "What can I do for you?\n" +
+                "fyi: yyyy-MM-dd HH:mm is the valid date format for a deadline\n" + bar + "\n";
         return str;
     }
 
@@ -193,7 +178,7 @@ public class AquaDem implements Serializable{
         }
     }
 
-    public void markAndUnmarkcheck(String detail, int limit) throws markAndUnmarkException{
+    public void numCheck(String detail, int limit) throws markAndUnmarkException{
         try {
             int i = Integer.parseInt(detail)-1;
             if (i >= limit || i < 0) {
@@ -227,6 +212,26 @@ public class AquaDem implements Serializable{
     public void todoCheck(String detail) throws todoException{
         if (detail == ""){
             throw new todoException("You need to-do something, todo something, get it...");
+        }
+    }
+
+    public LocalDateTime dateConvert(String date) {
+
+        try {
+            String dateProcessed = date;
+            if (Character.isWhitespace(date.charAt(0))) {
+                dateProcessed = date.substring(1);
+            }
+            DateTimeFormatter acceptedFormat = new DateTimeFormatterBuilder()
+                    .append(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toFormatter();
+
+            LocalDateTime loDT = LocalDateTime.parse(dateProcessed, acceptedFormat);
+            return loDT;
+        } catch(DateTimeParseException e) {
+            System.out.println("Date entered is not a valid format " +
+                    "setting default date (1 week from" +
+                    " this moment)");
+            return LocalDateTime.now().plusWeeks(1);
         }
     }
 
@@ -266,7 +271,9 @@ public class AquaDem implements Serializable{
                     try {
                         deadlineCheck(detail);
                         String deadlineString[] = detail.split("/by",2);
+                        LocalDateTime d1Date = dateConvert(deadlineString[1]);
                         Task d1 = new Deadline(deadlineString[0],deadlineString[1]);
+                        d1.setDate(d1Date);
                         tasks.add(d1);
                         System.out.println("Okay : ), added: " + d1 + "\n");
                         System.out.println("You have " + tasks.size() + " tasks in the list ;)");
@@ -321,7 +328,7 @@ public class AquaDem implements Serializable{
                     }
                 case "mark":
                     try {
-                        markAndUnmarkcheck(detail, tasks.size());
+                        numCheck(detail, tasks.size());
                         Task t1 = tasks.get(Integer.parseInt(detail)-1);
                         t1.markAsDone();
                         System.out.println("Task marked: " + t1);
@@ -339,7 +346,7 @@ public class AquaDem implements Serializable{
 
                 case "unmark":
                     try {
-                        markAndUnmarkcheck(detail, tasks.size());
+                        numCheck(detail, tasks.size());
                         Task t2 = tasks.get(Integer.parseInt(detail)-1);
                         t2.markAsUndone();
                         System.out.println("Task unmarked: " + t2);
@@ -355,7 +362,7 @@ public class AquaDem implements Serializable{
                     }
                 case "delete":
                     try {
-                        markAndUnmarkcheck(detail, tasks.size());
+                        numCheck(detail, tasks.size());
                         int i = Integer.parseInt(detail)-1;
                         Task t2 = tasks.get(i);
                         tasks.remove(i);
@@ -371,6 +378,32 @@ public class AquaDem implements Serializable{
                         input = runninginputs(inputter);
                         break;
                     }
+                case "getdate":
+                    try {
+                        numCheck(detail, tasks.size());
+                        int i = Integer.parseInt(detail)-1;
+                        Task t = tasks.get(i);
+                        if (t instanceof Deadline) {
+                            System.out.println("Your deadline date is: ");
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
+                            String niceDate = t.getDate().format(format);
+                            System.out.println(niceDate);
+                            System.out.println(bar);
+                            break;
+                        } else {
+                            System.out.println("This task has no deadline date");
+                            System.out.println(bar);
+                            break;
+
+                        }
+
+                    } catch(detailException e) {
+                        System.out.println(e.getMessage());
+                        input = runninginputs(inputter);
+                        break;
+
+                    }
+
                 default:
                     System.out.println("I dont know what that is sorry : (");
                     System.out.println(bar);
