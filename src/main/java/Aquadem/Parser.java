@@ -1,13 +1,9 @@
 package Aquadem;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DateTimeParseException;
-
 /**
  * A class that is used to parse the give user input
  */
+
 public class Parser {
     /**
      * Default constructor for the class Parser
@@ -47,18 +43,22 @@ public class Parser {
         }
     }
 
+
     /**
      * Checks if the given String contains a deadline (/by)
      * @param detail
      * @throws DetailException
      */
+
     public void deadlineCheck(String detail) throws DetailException {
         if (detail == ""){
             throw new Aquadem.DetailException("if you have no work then why you setting a deadline???");
         } else if (!detail.contains("/by")) {
-            throw new Aquadem.DetailException("Without a deadline to submit by, your work gonna be a dead line, get it....");
+            throw new Aquadem.DetailException("Without a deadline to submit by, your work gonna be " +
+                    "a dead line, get it....");
         }
     }
+
 
     /**
      * Checks if the given String contains /from and /to
@@ -71,7 +71,8 @@ public class Parser {
             throw new Aquadem.DetailException("event for what? , for who? when ?????");
         } else if (!detail.contains("/from") && !detail.contains("/to")){
             throw new Aquadem.DetailException("From when to when?????");
-        } else if ((detail.contains("/from") && !detail.contains("/to")) ||(!detail.contains("/from") && detail.contains("/to"))) {
+        } else if ((detail.contains("/from") && !detail.contains("/to")) ||
+                (!detail.contains("/from") && detail.contains("/to"))) {
             throw new Aquadem.DetailException("From and To please");
         }
     }
@@ -104,51 +105,51 @@ public class Parser {
         }
 
         switch(command) {
-            case "list":
-                String[] listDetail = {""};
-                return new Aquadem.Pair(0, listDetail);
-            case "deadline":
-                deadlineCheck(detail);
-                String[] deadlineString = detail.split("/by",2);
-                return new Aquadem.Pair(1, deadlineString);
-            case "event":
+        case "list":
+            String[] listDetail = {""};
+            return new Aquadem.Pair(0, listDetail);
+        case "deadline":
+            deadlineCheck(detail);
+            String[] deadlineString = detail.split("/by",2);
+            return new Aquadem.Pair(1, deadlineString);
+        case "event":
 
-                eventCheck(detail);
-                String[] eventString1 = detail.split("/from",2);
-                String[] eventString2 = eventString1[1].split("/to",2);
-                String[] eventString = {eventString1[0], eventString2[0], eventString2[1]};
-                return new Aquadem.Pair(2, eventString);
-            case "todo":
-                todoCheck(detail);
-                String[] todoDetail = {detail};
-                return new Aquadem.Pair(3, todoDetail);
+            eventCheck(detail);
+            String[] eventString1 = detail.split("/from",2);
+            String[] eventString2 = eventString1[1].split("/to",2);
+            String[] eventString = {eventString1[0], eventString2[0], eventString2[1]};
+            return new Aquadem.Pair(2, eventString);
+        case "todo":
+            todoCheck(detail);
+            String[] todoDetail = {detail};
+            return new Aquadem.Pair(3, todoDetail);
 
-            case "mark":
-                numCheck(detail, size);
-                String[] markDetail = {detail};
-                return new Aquadem.Pair(4, markDetail);
-            case "unmark":
-                numCheck(detail, size);
-                String[] unmarkDetail = {detail};
-                return new Aquadem.Pair(5, unmarkDetail);
+        case "mark":
+            numCheck(detail, size);
+            String[] markDetail = {detail};
+            return new Aquadem.Pair(4, markDetail);
+        case "unmark":
+            numCheck(detail, size);
+            String[] unmarkDetail = {detail};
+            return new Aquadem.Pair(5, unmarkDetail);
 
-            case "delete":
-                numCheck(detail, size);
-                String[] deleteDetail = {detail};
-                return new Aquadem.Pair(6, deleteDetail);
+        case "delete":
+            numCheck(detail, size);
+            String[] deleteDetail = {detail};
+            return new Aquadem.Pair(6, deleteDetail);
 
-            case "getdate":
-                numCheck(detail, size);
-                String[] dateDetail = {detail};
-                return new Aquadem.Pair(7, dateDetail);
+        case "getdate":
+            numCheck(detail, size);
+            String[] dateDetail = {detail};
+            return new Aquadem.Pair(7, dateDetail);
 
-            case "bye":
-                String[] noDetail = {" "};
-                return new Aquadem.Pair(8, noDetail );
+        case "bye":
+            String[] noDetail = {" "};
+            return new Aquadem.Pair(8, noDetail );
 
-            default:
-                String[] defaultDetail = {"unknown"};
-                return new Aquadem.Pair(-1, defaultDetail);
+        default:
+            String[] defaultDetail = {"unknown"};
+            return new Aquadem.Pair(-1, defaultDetail);
         }
 
 
