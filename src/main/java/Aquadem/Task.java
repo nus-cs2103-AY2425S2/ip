@@ -32,9 +32,6 @@ public class Task implements Serializable {
         this.taskDate = date;
     }
 
-    public String set() {
-        return "hello";
-    }
     public LocalDateTime getDate(){
         return this.taskDate;
     }

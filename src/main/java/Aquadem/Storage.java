@@ -9,18 +9,18 @@ public class Storage {
     }
 
     public Storage(String path) {
-        this.FILE_PATH = path;
+        this.filePath = path;
     }
-    private String FILE_PATH = "./src/main/data/Aquadem.ser";
+    private String filePath = "./src/main/data/Aquadem.ser";
     public void saveTasks(TaskList tasks){
         try {
-            File dataList = new File(FILE_PATH);
+            File dataList = new File(this.filePath);
             if(dataList.createNewFile()) {
                 //
             } else {
                 //
             }
-            FileOutputStream fileSerialized = new FileOutputStream(FILE_PATH);
+            FileOutputStream fileSerialized = new FileOutputStream(this.filePath);
             ObjectOutputStream taskSerialized = new ObjectOutputStream(fileSerialized);
             taskSerialized.writeObject(tasks);
         } catch (IOException e) {
@@ -31,7 +31,7 @@ public class Storage {
 
     public TaskList loadTasks(){
         try {
-            FileInputStream fileDeSerialized = new FileInputStream(FILE_PATH);
+            FileInputStream fileDeSerialized = new FileInputStream(this.filePath);
             ObjectInputStream taskDeSerialized = new ObjectInputStream(fileDeSerialized);
             TaskList tasks = (TaskList) taskDeSerialized.readObject();
             return tasks;
