@@ -1,13 +1,24 @@
-class Task {
-    protected String description;
-    protected boolean isDone;
-    protected TaskType type;
+package taskmax.task;
+
+public class Task {
+    private String description;
+    private boolean isDone;
+    private TaskType type;
 
     public Task(String description, TaskType type) {
         this.description = description;
         this.isDone = false;
         this.type = type;
     }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
 
     public String getStatusIcon() {   //Marks a checkbox
         return (isDone ? "X" : " ");

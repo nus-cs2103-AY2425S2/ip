@@ -1,4 +1,16 @@
-class AddCommand extends Command {
+package taskmax.command;
+
+import taskmax.storage.Storage;
+import taskmax.storage.TaskList;
+
+import taskmax.task.Task;
+
+import taskmax.ui.Ui;
+
+import taskmax.exception.TaskmaxException;
+
+
+public class AddCommand extends Command {
     private final Task task;
 
     public AddCommand(Task task) {

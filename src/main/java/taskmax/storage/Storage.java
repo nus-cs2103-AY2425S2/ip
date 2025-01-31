@@ -1,14 +1,23 @@
+package taskmax.storage;
+
+import taskmax.task.Task;
+import taskmax.task.ToDo;
+import taskmax.task.Deadline;
+import taskmax.task.Event;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.ArrayList;
+
 import java.time.format.DateTimeFormatter;
 
 
-class Storage {
+public class Storage {
     private final String filePath;
 
     public Storage(String filePath) {
@@ -54,14 +63,14 @@ class Storage {
             typeCode = "T";
         } else if (task instanceof Deadline) {
             typeCode = "D";
-            extraData = " | " + ((Deadline) task).dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+            extraData = " | " + ((Deadline) task).getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
         } else if (task instanceof Event) {
             typeCode = "E";
-            extraData = " | " + ((Event) task).start.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"))
-                    + " | " + ((Event) task).end.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+            extraData = " | " + ((Event) task).getStart().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"))
+                    + " | " + ((Event) task).getEnd().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
         }
 
-        return typeCode + " | " + (task.isDone ? "1" : "0") + " | " + task.description + extraData;
+        return typeCode + " | " + (task.isDone() ? "1" : "0") + " | " + task.getDescription() + extraData;
     }
 
     private Task deserializeTask(String line) {

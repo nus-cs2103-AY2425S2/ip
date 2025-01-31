@@ -1,4 +1,13 @@
-class MarkCommand extends Command {
+package taskmax.command;
+
+import taskmax.storage.Storage;
+import taskmax.storage.TaskList;
+
+import taskmax.ui.Ui;
+
+import taskmax.exception.TaskmaxException;
+
+public class MarkCommand extends Command {
     private final int index;
 
     public MarkCommand(int index) {

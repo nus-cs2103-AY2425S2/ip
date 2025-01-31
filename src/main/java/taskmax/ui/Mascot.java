@@ -1,4 +1,6 @@
-class Mascot {
+package taskmax.ui;
+
+public class Mascot {
 
     @Override
     public String toString() {

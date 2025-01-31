@@ -1,4 +1,18 @@
+package taskmax.main;
+
+import taskmax.storage.Storage;
+import taskmax.storage.TaskList;
+
+import taskmax.ui.Ui;
+
+import taskmax.parser.Parser;
+
+import taskmax.command.Command;
+
+import taskmax.exception.TaskmaxException;
+
 import java.io.IOException;
+
 
 public class Taskmax {
     private Storage storage;
