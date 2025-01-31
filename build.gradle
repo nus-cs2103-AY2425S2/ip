@@ -32,8 +32,9 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "taskmax"
-    archiveClassifier = null
+    archiveBaseName.set("Taskmax")
+    archiveClassifier.set("")
+    archiveVersion.set("")
 }
 
 run{
