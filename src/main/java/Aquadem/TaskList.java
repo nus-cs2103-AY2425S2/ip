@@ -58,6 +58,16 @@ public class TaskList implements Serializable {
         this.tasks.remove(i);
     }
 
+    public TaskList findTask(String s) {
+        TaskList found = new TaskList();
+        for (int i = 0; i < this.tasks.size(); i++) {
+            Task t = tasks.get(i);
+            if (t.toString().contains(s)) {
+                found.add(t);
+            }
+        }
+        return found;
+    }
 
 
 

@@ -107,6 +107,13 @@ public class Execution {
         case 8:
             Ui.printBye();
             break;
+
+        case 9:
+            TaskList found = tasks.findTask(parsedDetail[0]);
+            Ui.printFound();
+            Ui.printList(found);
+            break;
+
         default:
             Ui.printError();
             break;
