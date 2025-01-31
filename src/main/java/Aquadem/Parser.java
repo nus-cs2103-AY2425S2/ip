@@ -5,19 +5,36 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 
+/**
+ * A class that is used to parse the give user input
+ */
 public class Parser {
+    /**
+     * Default constructor for the class Parser
+     */
     public Parser() {
         //
     }
 
-
-    public static void detailCheck(String detail) throws Aquadem.DetailException {
+    /**
+     * Checks if the given string is empty
+     * @param detail
+     * @throws DetailException
+     */
+    public static void detailCheck(String detail) throws DetailException {
         if (detail.trim().isEmpty()) {
             throw new Aquadem.DetailException("Sorry i need something more in my knowledge space...");
         }
     }
 
-    public void numCheck(String detail, int limit) throws Aquadem.DetailException {
+    /**
+     * Checks if the given string is a number wihtin a given limit
+     * @param detail
+     * @param limit
+     * @throws DetailException
+     */
+
+    public void numCheck(String detail, int limit) throws DetailException {
         try {
             int i = Integer.parseInt(detail)-1;
             if (i >= limit || i < 0) {
@@ -30,7 +47,12 @@ public class Parser {
         }
     }
 
-    public void deadlineCheck(String detail) throws Aquadem.DetailException {
+    /**
+     * Checks if the given String contains a deadline (/by)
+     * @param detail
+     * @throws DetailException
+     */
+    public void deadlineCheck(String detail) throws DetailException {
         if (detail == ""){
             throw new Aquadem.DetailException("if you have no work then why you setting a deadline???");
         } else if (!detail.contains("/by")) {
@@ -38,7 +60,13 @@ public class Parser {
         }
     }
 
-    public void eventCheck(String detail) throws Aquadem.DetailException {
+    /**
+     * Checks if the given String contains /from and /to
+     * @param detail
+     * @throws DetailException
+     */
+
+    public void eventCheck(String detail) throws DetailException {
         if (detail.equals("")){
             throw new Aquadem.DetailException("event for what? , for who? when ?????");
         } else if (!detail.contains("/from") && !detail.contains("/to")){
@@ -48,13 +76,24 @@ public class Parser {
         }
     }
 
-    public void todoCheck(String detail) throws Aquadem.DetailException {
+    /**
+     * Checks the given string is not empty
+     * @param detail
+     * @throws DetailException
+     */
+    public void todoCheck(String detail) throws DetailException {
         if (detail == ""){
             throw new Aquadem.DetailException("You need to-do something, todo something, get it...");
         }
     }
 
-
+    /**
+     * Returns an encoded Pair which contians information about parsing
+     * @param input Given input
+     * @param size Size of the tasklist
+     * @return an object of type Pair
+     * @throws DetailException
+     */
     public Pair encodeCommand(String input, int size) throws DetailException {
         String arr[] = input.split(" ",2);
 
