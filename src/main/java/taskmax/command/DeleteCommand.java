@@ -1,4 +1,15 @@
-class DeleteCommand extends Command {
+package taskmax.command;
+
+import taskmax.storage.Storage;
+import taskmax.storage.TaskList;
+
+import taskmax.task.Task;
+
+import taskmax.ui.Ui;
+
+import taskmax.exception.TaskmaxException;
+
+public class DeleteCommand extends Command {
     private final int index;
 
     public DeleteCommand(int index) {

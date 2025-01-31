@@ -1,7 +1,13 @@
+package taskmax.storage;
+
+import taskmax.exception.TaskmaxException;
+
+import taskmax.task.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class TaskList {
+public class TaskList {
     private final List<Task> tasks;
 
     public TaskList() {

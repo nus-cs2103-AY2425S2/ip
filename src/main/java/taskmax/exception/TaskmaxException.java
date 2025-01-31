@@ -1,4 +1,6 @@
-class TaskmaxException extends Exception {
+package taskmax.exception;
+
+public class TaskmaxException extends Exception {
 
     public TaskmaxException(String message) {
         super(message);

@@ -1,4 +1,22 @@
-class Parser {
+package taskmax.parser;
+
+import taskmax.command.AddCommand;
+import taskmax.command.DeleteCommand;
+import taskmax.command.ExitCommand;
+import taskmax.command.ListCommand;
+import taskmax.command.MarkCommand;
+import taskmax.command.UnmarkCommand;
+import taskmax.command.Command;
+
+import taskmax.exception.TaskmaxException;
+
+import taskmax.task.Deadline;
+import taskmax.task.Event;
+import taskmax.task.ToDo;
+
+import taskmax.ui.Ui;
+
+public class Parser {
     public static Command parse(String input) throws TaskmaxException {
         String[] words = input.split(" ", 2); // Ensure command and arguments are split properly
         String commandWord = words[0];

@@ -1,6 +1,8 @@
+package taskmax.ui;
+
 import java.util.Scanner;
 
-class Ui {
+public class Ui {
     private final Scanner scanner;
     public static final String LINE = "-".repeat(100) + "\n";
 

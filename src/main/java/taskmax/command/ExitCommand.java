@@ -1,6 +1,13 @@
+package taskmax.command;
+
+import taskmax.storage.Storage;
+import taskmax.storage.TaskList;
+
+import taskmax.ui.Ui;
+
 import java.io.IOException;
 
-class ExitCommand extends Command {
+public class ExitCommand extends Command {
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) {
         try {
