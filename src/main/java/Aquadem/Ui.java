@@ -92,6 +92,10 @@ public class Ui {
         System.out.println("Ok then bye!!!");
     }
 
+    public static void printFound() {
+        System.out.println("Here are the tasks matching your search: ");
+    }
+
 
 
 
