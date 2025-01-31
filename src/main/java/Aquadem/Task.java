@@ -1,3 +1,5 @@
+package Aquadem;
+
 import java.time.LocalDateTime;
 
 public class Task {
@@ -35,11 +37,11 @@ public class Task {
     public LocalDateTime getDate(){
         return this.taskDate;
     }
-    
+
     @Override
     public String toString() {
         String str = String.format("[%s] %s", this.statusIcon, this.description);
         return str;
     }
-    
+
 }
