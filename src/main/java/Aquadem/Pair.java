@@ -1,5 +1,7 @@
 package Aquadem;
 
+import java.util.Arrays;
+
 public class Pair {
     protected int head;
     protected String[] contents;
@@ -23,5 +25,25 @@ public class Pair {
 
     public void setContents(String[] contents) {
         this.contents = contents;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+        if (obj instanceof Pair) {
+            Pair o = (Pair) obj;
+            if (this.head == o.head && Arrays.equals(this.contents, o.contents)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }
