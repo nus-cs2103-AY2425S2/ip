@@ -2,17 +2,32 @@ package Aquadem;
 
 import java.io.Serializable;
 
+/**
+ * The main class through which the chatbot is initiated and run
+ */
 public class AquaDem implements Serializable{
     protected TaskList tasks;
     protected Storage storage;
+
+    /**
+     * Constructor for the class to initialise the tasks into the current run
+     * @param storage of type <code>Storage</code> to load saved tasks
+     */
     public AquaDem(Storage storage){
         this.storage = storage;
         this.tasks = this.storage.loadTasks();
     }
 
+    /**
+     * Prints introductory message on console
+     */
     public void intro() {
         Ui.intro();
     }
+
+    /**
+     * Runs the chatbot
+     */
     public void running() {
         while(true){
             try {
@@ -34,6 +49,7 @@ public class AquaDem implements Serializable{
 
         }
     }
+
 
     public static void main(String[] args) {
         AquaDem chatbot = new AquaDem(new Storage());

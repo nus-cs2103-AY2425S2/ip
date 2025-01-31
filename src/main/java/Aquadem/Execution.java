@@ -5,11 +5,19 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 
+/**
+ * A class that handles the bulk of the logic of the chatbot
+ */
 public class Execution {
     public Execution() {
 
     }
 
+    /**
+     * Converts a string into an Object of type LocalDateTime
+     * @param date
+     * @return LocalDateTime corresponding to the date
+     */
     public static LocalDateTime dateConvert(String date) {
 
         try {
@@ -31,10 +39,12 @@ public class Execution {
     }
 
 
-
-
-
-
+    /**
+     * Executes command based on parsed user input
+     * @param encodedCommand Parsed input
+     * @param tasks Tasklist
+     * @param storage Storage object to store tasklist
+     */
     public static void execute(Pair encodedCommand, TaskList tasks, Storage storage){
         int command = encodedCommand.getHead();
         String[] parsedDetail = encodedCommand.getContents();

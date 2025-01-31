@@ -2,10 +2,18 @@ package Aquadem;
 
 import java.util.Arrays;
 
+/**
+ * A class that represents the encoded version of the parsed user input
+ */
 public class Pair {
     protected int head;
     protected String[] contents;
 
+    /**
+     * Constructor for the class Pair
+     * @param head
+     * @param arr
+     */
     public Pair(int head, String[] arr) {
         this.head = head;
         this.contents = arr;
@@ -27,6 +35,11 @@ public class Pair {
         this.contents = contents;
     }
 
+    /**
+     * Overriding the equals method of object
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if(obj == null) {
