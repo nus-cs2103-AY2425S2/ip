@@ -1,29 +1,41 @@
 package taskmax.storage;
 
-import taskmax.task.Task;
-import taskmax.task.ToDo;
 import taskmax.task.Deadline;
 import taskmax.task.Event;
+import taskmax.task.Task;
+import taskmax.task.ToDo;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.BufferedReader;
 import java.io.IOException;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
-
+/**
+ * Handles loading and saving tasks to a storage file.
+ */
 public class Storage {
     private final String filePath;
 
+    /**
+     * Constructs a Storage instance with the specified file path.
+     *
+     * @param filePath The path where tasks are stored.
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Saves the list of tasks to the storage file.
+     *
+     * @param tasks The list of tasks to be saved.
+     * @throws IOException If an error occurs during file writing.
+     */
     public void saveTasks(List<Task> tasks) throws IOException {
         File file = new File(filePath);
         file.getParentFile().mkdirs();
@@ -35,6 +47,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads the list of tasks from the storage file.
+     *
+     * @return A list of tasks retrieved from the file.
+     * @throws IOException If an error occurs during file reading.
+     */
     public List<Task> loadTasks() throws IOException {
         File file = new File(filePath);
         List<Task> tasks = new ArrayList<>();
@@ -55,6 +73,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Serializes a Task object into a formatted string for storage.
+     *
+     * @param task The task to serialize.
+     * @return The serialized string representation of the task.
+     */
     private String serializeTask(Task task) {
         String typeCode = "";
         String extraData = "";
@@ -73,11 +97,17 @@ public class Storage {
         return typeCode + " | " + (task.isDone() ? "1" : "0") + " | " + task.getDescription() + extraData;
     }
 
+    /**
+     * Deserializes a line from the storage file into a Task object.
+     *
+     * @param line The stored task data in string format.
+     * @return The corresponding Task object, or null if the format is invalid.
+     */
     private Task deserializeTask(String line) {
         try {
             String[] parts = line.split(" \\| ");
             if (parts.length < 3) {
-                System.out.println("WARNING: Skipping invalid task format! " + line);
+                System.out.println("WARNING: Skipping invalid task format: " + line);
                 return null;
             }
 
@@ -100,13 +130,13 @@ public class Storage {
                     return null;
             }
 
-            if (isDone) task.markAsDone();
+            if (isDone) {
+                task.markAsDone();
+            }
             return task;
         } catch (Exception e) {
-            System.out.println("WARNING: Error parsing task! " + line);
+            System.out.println("WARNING: Error parsing task: " + line);
             return null;
         }
     }
 }
-
-

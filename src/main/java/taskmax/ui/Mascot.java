@@ -1,5 +1,8 @@
 package taskmax.ui;
 
+/**
+ * Represents the Taskmax mascot, displayed as ASCII art.
+ */
 public class Mascot {
 
     @Override
