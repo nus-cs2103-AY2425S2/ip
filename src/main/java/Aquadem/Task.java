@@ -1,8 +1,9 @@
 package Aquadem;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Task {
+public class Task implements Serializable {
 
     protected String description;
     protected boolean isDone;

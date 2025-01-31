@@ -1,8 +1,9 @@
 package Aquadem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TaskList {
+public class TaskList implements Serializable {
     protected ArrayList<Task> tasks = new ArrayList<Task>();
     public TaskList() {
 
@@ -24,7 +25,9 @@ public class TaskList {
         this.tasks.add(t);
     }
 
-
+    public void remove(int i){
+        this.tasks.remove(i);
+    }
 
 
 

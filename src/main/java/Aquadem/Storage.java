@@ -24,6 +24,7 @@ public class Storage {
             ObjectOutputStream taskSerialized = new ObjectOutputStream(fileSerialized);
             taskSerialized.writeObject(tasks);
         } catch (IOException e) {
+            System.out.println(e.getMessage());
             //
         }
     }
@@ -32,11 +33,10 @@ public class Storage {
         try {
             FileInputStream fileDeSerialized = new FileInputStream(FILE_PATH);
             ObjectInputStream taskDeSerialized = new ObjectInputStream(fileDeSerialized);
-            ArrayList<Task> tasks = (ArrayList<Task>) taskDeSerialized.readObject();
-            return new TaskList(tasks);
+            TaskList tasks = (TaskList) taskDeSerialized.readObject();
+            return tasks;
 
         } catch (IOException | ClassNotFoundException e) {
-
             return new TaskList();
         }
     }

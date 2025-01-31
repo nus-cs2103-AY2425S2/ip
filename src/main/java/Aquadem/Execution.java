@@ -80,17 +80,17 @@ public class Execution {
                 storage.saveTasks(tasks);
                 break;
             case 6:
-                Task de1 = tasks.get(Integer.parseInt(parsedDetail[0])-1);
+                int i = Integer.parseInt(parsedDetail[0])-1;
+                Task de1 = tasks.get(i);
+                tasks.remove(i);
                 Ui.printDeleted(de1);
                 Ui.printRemaining(tasks);
                 storage.saveTasks(tasks);
                 break;
             case 7:
 
-                int i = Integer.parseInt(parsedDetail[0])-1;
-                Task d = tasks.get(i);
-
-
+                int a = Integer.parseInt(parsedDetail[0])-1;
+                Task d = tasks.get(a);
                 Ui.printDate(d);
                 storage.saveTasks(tasks);
                 break;
