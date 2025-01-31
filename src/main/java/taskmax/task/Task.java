@@ -1,19 +1,18 @@
 package taskmax.task;
 
 /**
- * Represents a task with a description, completion status, and type.
+ * Represents a generic task with a description, completion status, and type.
  */
 public class Task {
-    private String description;
+    private final String description;
     private boolean isDone;
-    private TaskType type;
+    private final TaskType type;
 
     /**
      * Constructs a Task with a given description and type.
-     * The task is initially not marked as done.
      *
      * @param description The description of the task.
-     * @param type        The type of the task (e.g., TODO, DEADLINE, EVENT).
+     * @param type        The type of the task (ToDo, Deadline, Event).
      */
     public Task(String description, TaskType type) {
         this.description = description;
@@ -22,51 +21,50 @@ public class Task {
     }
 
     /**
-     * Returns the description of the task.
+     * Retrieves the description of the task.
      *
      * @return The task description.
      */
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     /**
-     * Returns whether the task is marked as done.
+     * Checks if the task is marked as done.
      *
-     * @return {@code true} if the task is done, {@code false} otherwise.
+     * @return True if the task is completed, false otherwise.
      */
     public boolean isDone() {
         return isDone;
     }
 
     /**
-     * Returns the status icon of the task.
-     * An "X" represents a completed task, while a space represents an incomplete task.
+     * Returns a status icon representing task completion.
      *
-     * @return A string representing the status icon.
+     * @return "X" if the task is done, otherwise a space " ".
      */
     public String getStatusIcon() {
-        return (isDone ? "X" : " ");
+        return isDone ? "X" : " ";
     }
 
     /**
-     * Marks the task as done.
+     * Marks the task as completed.
      */
     public void markAsDone() {
         isDone = true;
     }
 
     /**
-     * Marks the task as not done.
+     * Marks the task as not completed.
      */
     public void markAsNotDone() {
         isDone = false;
     }
 
     /**
-     * Returns the string representation of the task, including its status icon.
+     * Returns the string representation of the task.
      *
-     * @return A string representation of the task.
+     * @return A formatted string displaying the task's status and description.
      */
     @Override
     public String toString() {

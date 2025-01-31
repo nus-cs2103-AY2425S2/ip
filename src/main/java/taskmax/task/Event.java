@@ -4,52 +4,54 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Represents an event task that has a start and end date/time.
+ * Represents an event task with a start and end date/time.
  */
 public class Event extends Task {
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
+
+    private final LocalDateTime start;
+    private final LocalDateTime end;
 
     /**
      * Constructs an Event task with a description, start time, and end time.
      *
      * @param description The description of the event.
-     * @param startString The start date and time in the format "yyyy-MM-dd HHmm".
-     * @param endString   The end date and time in the format "yyyy-MM-dd HHmm".
+     * @param startString The start date/time in "yyyy-MM-dd HHmm" format.
+     * @param endString   The end date/time in "yyyy-MM-dd HHmm" format.
      */
     public Event(String description, String startString, String endString) {
         super(description, TaskType.EVENT);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-        this.start = LocalDateTime.parse(startString, formatter);
-        this.end = LocalDateTime.parse(endString, formatter);
+        this.start = LocalDateTime.parse(startString, INPUT_FORMATTER);
+        this.end = LocalDateTime.parse(endString, INPUT_FORMATTER);
     }
 
     /**
-     * Returns the start date and time of the event.
+     * Retrieves the start date/time of the event.
      *
-     * @return The start date and time as a {@code LocalDateTime} object.
+     * @return The start date/time as a LocalDateTime object.
      */
     public LocalDateTime getStart() {
         return start;
     }
 
     /**
-     * Returns the end date and time of the event.
+     * Retrieves the end date/time of the event.
      *
-     * @return The end date and time as a {@code LocalDateTime} object.
+     * @return The end date/time as a LocalDateTime object.
      */
     public LocalDateTime getEnd() {
         return end;
     }
 
     /**
-     * Returns the string representation of the event task, including formatted start and end times.
+     * Returns the string representation of the event task.
      *
-     * @return A string representation of the event task.
+     * @return A formatted string displaying the task type, description, start, and end times.
      */
     @Override
     public String toString() {
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
-        return "[E]" + super.toString() + " (from: " + start.format(outputFormatter) + " to: " + end.format(outputFormatter) + ")";
+        return "[E]" + super.toString() + " (from: " + start.format(OUTPUT_FORMATTER)
+                + " to: " + end.format(OUTPUT_FORMATTER) + ")";
     }
 }

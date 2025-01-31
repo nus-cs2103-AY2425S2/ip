@@ -3,40 +3,40 @@ package taskmax.ui;
 import java.util.Scanner;
 
 /**
- * Handles user interaction for the Taskmax application.
+ * Handles user interactions, including displaying messages and reading user input.
  */
 public class Ui {
     private final Scanner scanner;
     public static final String LINE = "-".repeat(100) + "\n";
 
     /**
-     * Constructs a Ui instance to handle user input and output.
+     * Constructs a Ui instance with a Scanner for reading user input.
      */
     public Ui() {
         this.scanner = new Scanner(System.in);
     }
 
     /**
-     * Displays the welcome message, including an introduction and the mascot.
+     * Displays the welcome message along with the mascot.
      */
     public void showWelcome() {
-        String intro = "Greetings! I'm Taskmax, Your personal tasking companion.\n"
+        String intro = "Greetings! I'm Taskmax, your personal tasking companion.\n"
                 + "What can I schedule for you today?\n";
         System.out.println(LINE + intro + LINE + new Mascot() + LINE
                 + "\nEnter \"hello!\" to begin\n" + LINE);
     }
 
     /**
-     * Reads and returns a user command from the input.
+     * Reads and returns the next user command from input.
      *
-     * @return The user command as a string.
+     * @return The user input as a string.
      */
     public String readCommand() {
         return scanner.nextLine();
     }
 
     /**
-     * Displays a message formatted with separator lines.
+     * Displays a formatted message.
      *
      * @param message The message to display.
      */
@@ -45,7 +45,7 @@ public class Ui {
     }
 
     /**
-     * Displays an error message when tasks fail to load.
+     * Displays an error message when loading tasks fails.
      */
     public void showLoadingError() {
         showMessage("Error loading tasks. Starting with an empty list.");

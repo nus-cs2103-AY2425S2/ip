@@ -1,7 +1,7 @@
 package taskmax.task;
 
 /**
- * Represents the different types of tasks that can be created.
+ * Represents the different types of tasks supported in Taskmax.
  */
 public enum TaskType {
     /**

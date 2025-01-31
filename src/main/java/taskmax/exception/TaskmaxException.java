@@ -6,9 +6,9 @@ package taskmax.exception;
 public class TaskmaxException extends Exception {
 
     /**
-     * Constructs a {@code TaskmaxException} with the specified error message.
+     * Constructs a TaskmaxException with the specified error message.
      *
-     * @param message The error message describing the exception.
+     * @param message The error message to be displayed.
      */
     public TaskmaxException(String message) {
         super(message);
