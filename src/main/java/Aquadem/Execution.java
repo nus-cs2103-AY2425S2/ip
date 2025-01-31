@@ -44,7 +44,7 @@ public class Execution {
                 break;
             case 1:
                 LocalDateTime d1Date = dateConvert(parsedDetail[1]);
-                Task d1 = new Aquadem.Deadline(parsedDetail[0], parsedDetail[1]);
+                Task d1 = new Deadline(parsedDetail[0], parsedDetail[1]);
                 d1.setDate(d1Date);
                 tasks.add(d1);
                 Ui.printAdded(d1);
@@ -52,7 +52,7 @@ public class Execution {
                 storage.saveTasks(tasks);
                 break;
             case 2:
-                Task e1 = new Aquadem.Event(parsedDetail[0], parsedDetail[1], parsedDetail[2]);
+                Task e1 = new Event(parsedDetail[0], parsedDetail[1], parsedDetail[2]);
                 tasks.add(e1);
                 Ui.printAdded(e1);
                 Ui.printRemaining(tasks);

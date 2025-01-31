@@ -54,27 +54,8 @@ public class Parser {
         }
     }
 
-    public LocalDateTime dateConvert(String date) {
 
-        try {
-            String dateProcessed = date;
-            if (Character.isWhitespace(date.charAt(0))) {
-                dateProcessed = date.substring(1);
-            }
-            DateTimeFormatter acceptedFormat = new DateTimeFormatterBuilder()
-                    .append(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toFormatter();
-
-            LocalDateTime loDT = LocalDateTime.parse(dateProcessed, acceptedFormat);
-            return loDT;
-        } catch(DateTimeParseException e) {
-            System.out.println("Date entered is not a valid format " +
-                    "setting default date (1 week from" +
-                    " this moment)");
-            return LocalDateTime.now().plusWeeks(1);
-        }
-    }
-
-    public Aquadem.Pair encodeCommand(String input, int size) throws Aquadem.DetailException {
+    public Pair encodeCommand(String input, int size) throws DetailException {
         String arr[] = input.split(" ",2);
 
         String command = arr[0];
