@@ -17,10 +17,27 @@ import jude.task.Event;
 import jude.task.Task;
 import jude.task.Todo;
 
+/**
+ * It takes in input from the user to return its Command.
+ *
+ * This class has the method parse to identify the command based on the input of the user.
+ * If the input is not valid, it throws JudeException.
+ */
 public class Parser {
     private String command;
     private String[] descriptions;
 
+
+    public Parser() {
+    }
+
+    /** Identifies the Command from the user input and returns the identified command.
+     * throws a JudeException if the command is not valid.
+     *
+     * @param input
+     * @return Command from the user.
+     * @throws JudeException if the command is not valid, containing the possible reason for invalidity.
+     */
     public Command parse(String input) throws JudeException {
         int index;
 
