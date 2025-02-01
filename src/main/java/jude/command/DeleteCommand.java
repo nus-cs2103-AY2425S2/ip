@@ -1,3 +1,4 @@
+
 package jude.command;
 
 import jude.JudeException;
@@ -17,5 +18,10 @@ public class DeleteCommand extends Command {
         list.deleteTask(index);
         ui.showMessage("jude.task.Task has been deleted.");
         storage.save(list);
+    }
+
+    @Override
+    public String toString() {
+        return "DeleteCommand";
     }
 }
