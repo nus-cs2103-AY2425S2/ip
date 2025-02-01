@@ -67,13 +67,11 @@ public class Parser {
             default:
                 throw new JudeException("No valid command was provided.");
             }
-
         } catch (NumberFormatException ne) {
             throw new JudeException("Invalid number format: expected an integer.");
         } catch (ArrayIndexOutOfBoundsException ae) {
             throw new JudeException("Poyo, the format of the command "
                     + command + " was not valid. The correct format: " + command);
-
         }
     }
 }
