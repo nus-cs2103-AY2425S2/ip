@@ -33,7 +33,7 @@ public abstract class DateTimeTask extends Task {
 
     /**
      * Parses the input of date and time string.
-     * 
+     *
      * @param dateTimeString The string to parse.
      * @return The date and time.
      */
@@ -43,7 +43,7 @@ public abstract class DateTimeTask extends Task {
 
     /**
      * Formats the output of date and time string.
-     * 
+     *
      * @param dateTime The date and time to output.
      * @return The date and time as a String.
      */

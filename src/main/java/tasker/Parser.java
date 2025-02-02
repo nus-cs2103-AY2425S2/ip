@@ -85,25 +85,26 @@ class Parser {
                     break;
 
                 case EVENT:
-                    TaskerException EventException = new TaskerException(
+                    TaskerException eventException = new TaskerException(
                             String.format("Please provide a start and end time with: \"/from %s /to %s\".",
                                     dateTimeInput, dateTimeInput));
 
                     if (args.length != 3 || !args[1].startsWith("from ") || !args[2].startsWith("to ")) {
-                        throw EventException;
+                        throw eventException;
                     }
 
                     try {
                         toAdd = new Event(args[0], DateTimeTask.parseInput(args[1].substring(5)),
                                 DateTimeTask.parseInput(args[2].substring(3)));
                     } catch (DateTimeParseException e) {
-                        throw EventException;
+                        throw eventException;
                     }
                     break;
 
                 default:
                     break;
                 }
+                break;
 
             default:
                 break;
@@ -158,6 +159,9 @@ class Parser {
 
         case BYE:
             toRun = new ByeCommand();
+            break;
+
+        default:
             break;
         }
 

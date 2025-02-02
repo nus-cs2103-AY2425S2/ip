@@ -53,7 +53,7 @@ public abstract class Task {
 
     /**
      * Returns a string for saving and loading this task.
-     * 
+     *
      * @returns A storage representation string of this task.
      */
     public String toStorage() {
@@ -76,9 +76,9 @@ public abstract class Task {
         }
 
         Task other = (Task) obj;
-        return isDone == other.isDone &&
-                (description == null ? other.description == null : description.equals(other.description)) &&
-                (type == null ? other.type == null : type.equals(other.type));
+        return isDone == other.isDone
+                && (description == null ? other.description == null : description.equals(other.description))
+                && (type == null ? other.type == null : type.equals(other.type));
     }
 
     @Override
