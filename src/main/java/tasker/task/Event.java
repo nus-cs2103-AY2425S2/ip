@@ -55,8 +55,8 @@ public class Event extends DateTimeTask {
             return false;
         }
         Event event = (Event) obj;
-        return (start == null ? event.start == null : start.equals(event.start)) &&
-                (end == null ? event.end == null : end.equals(event.end));
+        return (start == null ? event.start == null : start.equals(event.start))
+                && (end == null ? event.end == null : end.equals(event.end));
     }
 
     @Override

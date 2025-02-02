@@ -32,7 +32,7 @@ abstract class IndexCommand extends Command {
 
     /**
      * Returns the index of the task to be operated on.
-     * 
+     *
      * @return The index of the task to be operated on.
      */
     int getIndex() {
@@ -41,7 +41,7 @@ abstract class IndexCommand extends Command {
 
     /**
      * Returns the notification when an invalid index is used.
-     * 
+     *
      * @return The notification when an invalid index is used.
      */
     String getInvalidIndex() {

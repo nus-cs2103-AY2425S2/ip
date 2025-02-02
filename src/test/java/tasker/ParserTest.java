@@ -31,20 +31,20 @@ class ParserTest {
     @Nested
     @DisplayName("parseCommand Tests")
     class ParseCommandTests {
-        String todo = CommandType.TODO.toString();
-        String deadline = CommandType.DEADLINE.toString();
-        String by = " /by 26/1/2025 2359";
-        String event = CommandType.EVENT.toString();
-        String from = " /from 26/1/2025 1000";
-        String to = " /to 26/01/2025 1200";
-        String delete = CommandType.DELETE.toString();
-        String mark = CommandType.MARK.toString();
-        String unmark = CommandType.UNMARK.toString();
-        String find = CommandType.FIND.toString();
-        String description = " read book";
-        String deadlineDescription = deadline + description;
-        String eventDescription = event + description;
-        String eventDescriptionFrom = eventDescription + from;
+        private String todo = CommandType.TODO.toString();
+        private String deadline = CommandType.DEADLINE.toString();
+        private String by = " /by 26/1/2025 2359";
+        private String event = CommandType.EVENT.toString();
+        private String from = " /from 26/1/2025 1000";
+        private String to = " /to 26/01/2025 1200";
+        private String delete = CommandType.DELETE.toString();
+        private String mark = CommandType.MARK.toString();
+        private String unmark = CommandType.UNMARK.toString();
+        private String find = CommandType.FIND.toString();
+        private String description = " read book";
+        private String deadlineDescription = deadline + description;
+        private String eventDescription = event + description;
+        private String eventDescriptionFrom = eventDescription + from;
 
         @Test
         @DisplayName("Parse todo add command successfully")
@@ -299,17 +299,17 @@ class ParserTest {
     @Nested
     @DisplayName("parseStorage Tests")
     class ParseStorageTests {
-        String todoType = TaskType.T.toString();
-        String deadlineType = TaskType.D.toString();
-        String by = "|2025-01-26T23:59";
-        String eventType = TaskType.E.toString();
-        String from = "|2025-01-26T10:00";
-        String to = "|2025-01-26T12:00";
-        String marked = "|true";
-        String unmarked = "|false";
-        String description = "|read book";
-        String markedDescription = marked + description;
-        String unmarkedDescription = unmarked + description;
+        private String todoType = TaskType.T.toString();
+        private String deadlineType = TaskType.D.toString();
+        private String by = "|2025-01-26T23:59";
+        private String eventType = TaskType.E.toString();
+        private String from = "|2025-01-26T10:00";
+        private String to = "|2025-01-26T12:00";
+        private String marked = "|true";
+        private String unmarked = "|false";
+        private String description = "|read book";
+        private String markedDescription = marked + description;
+        private String unmarkedDescription = unmarked + description;
 
         @Test
         @DisplayName("Parse valid todo from storage")

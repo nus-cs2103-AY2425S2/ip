@@ -14,7 +14,7 @@ public class AddCommand extends Command {
 
     /**
      * Class constructor.
-     * 
+     *
      * @param task Task to be added.
      */
     public AddCommand(Task task) {

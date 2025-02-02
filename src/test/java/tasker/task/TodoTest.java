@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
  * Unit tests for the Todo class.
  */
 class TodoTest {
-    String todoType = TaskType.T.toString();
-    String description = "Complete assignment";
+    private String todoType = TaskType.T.toString();
+    private String description = "Complete assignment";
 
     @Nested
     @DisplayName("toStorage Tests")
