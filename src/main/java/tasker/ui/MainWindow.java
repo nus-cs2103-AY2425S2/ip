@@ -26,10 +26,21 @@ public class MainWindow extends AnchorPane {
     /** Button to send commands */
     @FXML
     private Button sendButton;
+    /** Tasker instance */
+    private Tasker tasker;
 
+    /**
+     * Controller initializer.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+
+        try {
+            tasker = new Tasker();
+        } catch (TaskerException e) {
+            this.showError(e.getMessage());
+        }
     }
 
     /**
@@ -43,11 +54,22 @@ public class MainWindow extends AnchorPane {
         try {
             dialogContainer.getChildren().addAll(
                     DialogBox.getUserDialog(userText),
-                    DialogBox.getDukeDialog(Tasker.respond(userText)));
+                    DialogBox.getDukeDialog(tasker.respond(userText)));
         } catch (TaskerException e) {
-            dialogContainer.getChildren().add(new Label(e.getMessage()));
+            this.showError(e.getMessage());
         }
 
         userInput.clear();
+    }
+
+    /**
+     * Displays an error message on the UI.
+     *
+     * @param error The error message.
+     */
+    private void showError(String error) {
+        Label label = new Label(error);
+        label.setWrapText(true);
+        dialogContainer.getChildren().add(label);
     }
 }
