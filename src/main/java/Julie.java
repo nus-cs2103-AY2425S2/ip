@@ -5,7 +5,9 @@ public class Julie {
     private static final String BREAK = "______________________________________________\n";
     private static final String INTRO = "Hello! I'm Julie\nWhat can I do for you?\n";
     private static final String EXIT = "Bye. See you later!\n";
-    private static final ArrayList<Task> taskList = new ArrayList<>();
+    private static final String FILE_PATH = "./data/julie.txt";
+    private static ArrayList<Task> taskList;
+    private static Storage storage;
 
     public static void showTask(ArrayList<Task> list) {
         System.out.println("Here are your tasks:");
@@ -23,6 +25,8 @@ public class Julie {
             currTask.markDone();
             System.out.println(BREAK + "Nice! I've marked this task as done!");
             System.out.println(currTask.toString() + "\n" + BREAK);
+
+            storage.saveTasks(taskList);
         } catch (IndexOutOfBoundsException e) {
             System.out.print(BREAK + "Sorry, that task cannot be marked as it isn't in the list!\n" + BREAK);
         }
@@ -35,6 +39,8 @@ public class Julie {
             currTask.markUndone();
             System.out.println(BREAK + "Okay, I have marked this task as undone!");
             System.out.println(currTask.toString() + "\n" + BREAK);
+
+            storage.saveTasks(taskList);
         } catch (IndexOutOfBoundsException e) {
             System.out.print(BREAK + "Sorry, that task cannot be unmarked as it isn't in the list!\n" + BREAK);
         }
@@ -54,7 +60,9 @@ public class Julie {
             throw new WrongFormatException("Oops! The correct format for a todo is:\ntodo <description>");
         }
         Task todo = new ToDo(mergeToString(input, 1, input.length));
+
         taskList.add(todo);
+        storage.saveTasks(taskList);
         ackMessage(todo);
 
     }
@@ -68,7 +76,9 @@ public class Julie {
                         "deadline <description> /by <date>");
             }
             Task deadline = new Deadline(desc, getDeadline[1]);
+
             taskList.add(deadline);
+            storage.saveTasks(taskList);
             ackMessage(deadline);
         } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
             throw new WrongFormatException("Oops! the correct format for a deadline is:\n" +
@@ -86,7 +96,9 @@ public class Julie {
             }
             String[] getTime = getEvent[1].split("/to ");
             Task event = new Event(desc, getTime[0], getTime[1]);
+
             taskList.add(event);
+            storage.saveTasks(taskList);
             ackMessage(event);
         } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
             throw new WrongFormatException("Oops! the correct format for an event is:\n" +
@@ -102,13 +114,69 @@ public class Julie {
                     "\n" + "Now you have " + listSize + " tasks in the list.\n" + BREAK);
 
             taskList.remove(index);
+            storage.saveTasks(taskList);
         } catch (IndexOutOfBoundsException e) {
             System.out.print(BREAK + "Sorry, that task cannot be deleted as it isn't in the list!\n" + BREAK);
         }
     }
 
+    public static void handleCommand(String input) {
+        try {
+            String[] parts = input.split(" ");
+            if (parts[0].equals("todo")) {
+                addToDo(parts);
+            } else if (parts[0].equals("deadline")) {
+                addDeadline(input);
+            } else if (parts[0].equals("event")) {
+                addEvent(input);
+            } else if (parts.length == 2) {
+                try {
+                    int label = Integer.parseInt(parts[1]);
+                    if (parts[0].equals("mark")) {
+                        toggleMarked(label);
+                    } else if (parts[0].equals("unmark")) {
+                        toggleUnmarked(label);
+                    } else if (parts[0].equals("delete")) {
+                        deleteTask(label);
+                    } else {
+                        throw new WrongFormatException("Sorry, I didn't understand what you said!");
+                    }
+                } catch (NumberFormatException e) {
+                    throw new WrongFormatException(
+                            "Sorry, that command must be followed by an integer in the format: <command> <integer>!"
+                    );
+                }
+            } else {
+                if (parts[0].equals("mark")) {
+                    throw new WrongFormatException(
+                            "Sorry, that's the wrong format for marking! Here's the correct format:\n" +
+                                    "mark <task number>"
+                    );
+                } else if (parts[0].equals("unmark")) {
+                    throw new WrongFormatException(
+                            "Sorry, that's the wrong format for unmarking! Here's the correct format:\n" +
+                                    "unmark <task number>"
+                    );
+                } else if (parts[0].equals("delete")) {
+                    throw new WrongFormatException(
+                            "Sorry, that's the wrong format for deletion! Here's the correct format:\n" +
+                                    "delete <task number>"
+                    );
+                } else {
+                    throw new WrongFormatException("Sorry, I didn't understand what you said!");
+                }
+            }
+        } catch (WrongFormatException e) {
+            System.out.println(BREAK + e.getMessage() + "\n" + BREAK);
+        }
+    }
+
+
     public static void main(String[] args) {
         System.out.println(BREAK + INTRO + BREAK);
+
+        storage = new Storage(FILE_PATH);
+        taskList = new ArrayList<>(storage.loadTasks());
 
         Scanner scanner = new Scanner(System.in);
 
@@ -122,54 +190,7 @@ public class Julie {
                 showTask(taskList);
                 System.out.print(BREAK);
             } else {
-                try {
-                    String[] parts = input.split(" ");
-                    if (parts[0].equals("todo")) {
-                        addToDo(parts);
-                    } else if (parts[0].equals("deadline")) {
-                        addDeadline(input);
-                    } else if (parts[0].equals("event")) {
-                        addEvent(input);
-                    } else if (parts.length == 2) {
-                        try {
-                            int label = Integer.parseInt(parts[1]);
-                            if (parts[0].equals("mark")) {
-                                toggleMarked(label);
-                            } else if (parts[0].equals("unmark")) {
-                                toggleUnmarked(label);
-                            } else if (parts[0].equals("delete")) {
-                                deleteTask(label);
-                            } else {
-                                throw new WrongFormatException("Sorry, I didn't understand what you said!");
-                            }
-                        } catch (NumberFormatException e) {
-                            throw new WrongFormatException(
-                                    "Sorry, that command must be followed by an integer in the format: <command> <integer>!"
-                            );
-                        }
-                    } else {
-                        if (parts[0].equals("mark")) {
-                            throw new WrongFormatException(
-                                    "Sorry, that's the wrong format for marking! Here's the correct format:\n" +
-                                            "mark <task number>"
-                            );
-                        } else if (parts[0].equals("unmark")) {
-                            throw new WrongFormatException(
-                                    "Sorry, that's the wrong format for unmarking! Here's the correct format:\n" +
-                                            "unmark <task number>"
-                            );
-                        } else if (parts[0].equals("delete")) {
-                            throw new WrongFormatException(
-                                    "Sorry, that's the wrong format for deletion! Here's the correct format:\n" +
-                                            "delete <task number>"
-                            );
-                        } else {
-                            throw new WrongFormatException("Sorry, I didn't understand what you said!");
-                        }
-                    }
-                } catch (WrongFormatException e) {
-                    System.out.println(BREAK + e.getMessage() + "\n" + BREAK);
-                }
+                handleCommand(input);
             }
         }
         System.out.println(BREAK + EXIT + BREAK);

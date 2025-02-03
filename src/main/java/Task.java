@@ -1,4 +1,5 @@
-public class Task {
+import java.io.Serializable;
+public abstract class Task implements Serializable {
     protected String description;
     protected boolean isDone;
 
@@ -17,6 +18,8 @@ public class Task {
     public String statusIcon() {
         return (isDone ? "[X]" : "[ ]");
     }
+
+    public abstract String toFileFormat();
 
     public String toString() {
         return this.statusIcon() + " " + this.description;

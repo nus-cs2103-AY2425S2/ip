@@ -10,6 +10,11 @@ public class Event extends Task {
     }
 
     @Override
+    public String toFileFormat() {
+        return "E | " + (isDone ? "1" : "0") + " | " + description + " | " + from + " | " + by;
+    }
+
+    @Override
     public String toString() {
         return this.MARKER + " " + super.toString() + "(from: " + this.from + " to: " + this.by + ")";
     }
