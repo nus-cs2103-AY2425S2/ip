@@ -34,7 +34,6 @@ public class Storage {
                 Files.createFile(this.path);
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
             throw new TaskerException("Failed to create task storage.");
         }
     }
@@ -62,6 +61,7 @@ public class Storage {
      * Returns a list of tasks in this storage.
      *
      * @returns List of task in storage.
+     * @throws TaskerException If the stored tasks cannot be read.
      */
     public List<Task> getTasks() throws TaskerException {
         LinkedList<Task> tasks = new LinkedList<>();
