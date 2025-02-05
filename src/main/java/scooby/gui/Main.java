@@ -13,7 +13,6 @@ import scooby.ui.Scooby;
  * A GUI for Duke using FXML.
  */
 public class Main extends Application {
-
     private Scooby scooby = new Scooby();
 
     @Override

@@ -91,23 +91,22 @@ public class Parser {
                 taskList.addTask(command);
                 taskList.saveToFile(); // Save after adding a task
             } else if (command.equalsIgnoreCase("bye")) {
-                ui.exitDialogue();
-                response = "Goodbye!"; // Respond when user says goodbye
+                return ui.exitDialogue(); // Respond when user says goodbye
             } else if (command.equalsIgnoreCase("list")) {
                 return taskList.listTasks();
             } else if (command.startsWith("mark ")) {
-                handleMarkCommand(command, true);
+                return handleMarkCommand(command, true);
             } else if (command.startsWith("unmark ")) {
-                handleMarkCommand(command, false);
+                return handleMarkCommand(command, false);
             } else if (command.startsWith("delete ")) {
-                handleDeleteCommand(command); // Handle delete command
+                return handleDeleteCommand(command); // Handle delete command
             } else if (command.startsWith("find ")) {
                 // Handle find command
                 String[] parts = command.split(" ", 2);
                 if (parts.length < 2 || parts[1].trim().isEmpty()) {
                     throw new EmptyException("Keyword for find cannot be empty. Try again.");
                 }
-                taskList.find(parts[1].trim());
+                return taskList.find(parts[1].trim());
             } else {
                 throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
             }
@@ -124,29 +123,32 @@ public class Parser {
     }
 
 
-    private void handleMarkCommand(String command, boolean isMark) {
+    private String handleMarkCommand(String command, boolean isMark) {
         try {
             int taskIndex = Integer.parseInt(command.split(" ")[1]) - 1;
             if (isMark) {
                 taskList.checkTask(taskIndex);
-                ui.printTaskMarked(taskList.getTask(taskIndex));
+                taskList.saveToFile();
+                return ui.returnMarkedString(taskList.getTask(taskIndex));
             } else {
                 taskList.uncheckTask(taskIndex);
-                ui.printTaskUnmarked(taskList.getTask(taskIndex));
+                taskList.saveToFile();
+                return ui.returnUnmarkedString(taskList.getTask(taskIndex));
             }
-            taskList.saveToFile(); // Save after marking/unmarking a task
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            System.out.println("Invalid task index. Please try again.");
+            return "Invalid task index. Please try again.";
         }
     }
 
-    private void handleDeleteCommand(String command) {
+    private String handleDeleteCommand(String command) {
+        String response = "";
         try {
             int taskIndex = Integer.parseInt(command.split(" ")[1]) - 1;
-            taskList.deleteTask(taskIndex); // Call deleteTask method
+            response += taskList.deleteTask(taskIndex); // Call deleteTask method
             taskList.saveToFile(); // Save after deleting a task
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            System.out.println("Invalid task index. Please try again.");
+            response += "Invalid task index. Please try again.";
         }
+        return response;
     }
 }

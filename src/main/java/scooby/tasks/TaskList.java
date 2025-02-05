@@ -185,18 +185,17 @@ public class TaskList {
      *
      * @param index is the index of the task from the task list.
      */
-    public void deleteTask(int index) {
+    public String deleteTask(int index) {
         // Ensure index is within bounds
         if (index >= 0 && index < tasks.size()) {
             Task deletedTask = tasks.get(index);
             tasks.remove(index); // Remove task from ArrayList
-            LINE.print();
-            System.out.println("Noted. I've removed this task:");
-            System.out.println("  " + deletedTask);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-            LINE.print();
+            // LINE.print();
+            return "Noted. I've removed this task:\n " + deletedTask + "\nNow you have "
+                    + tasks.size() + " tasks in the list.";
+            // LINE.print();
         } else {
-            System.out.println("Invalid task index. Please try again.");
+            return "Invalid task index. Please try again.";
         }
     }
 
@@ -205,8 +204,9 @@ public class TaskList {
      *
      * @param keyword The keyword to search for.
      */
-    public void find(String keyword) {
-        LINE.print();
+    public String find(String keyword) {
+        // LINE.print();
+        String response = "";
         ArrayList<Task> foundTasks = new ArrayList<>();
 
         for (Task task : tasks) {
@@ -216,15 +216,15 @@ public class TaskList {
         }
 
         if (foundTasks.isEmpty()) {
-            System.out.println("No matching tasks found.");
+            return "No matching tasks found.";
         } else {
-            System.out.println("Here are the matching tasks in your list:");
+            response += "Here are the matching tasks in your list:\n";
             for (int i = 0; i < foundTasks.size(); i++) {
-                System.out.println((i + 1) + ". " + foundTasks.get(i));
+                response += ((i + 1) + ". " + foundTasks.get(i));
             }
         }
-
-        LINE.print();
+        return response;
+        // LINE.print();
     }
 
     /**
