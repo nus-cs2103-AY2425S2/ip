@@ -7,6 +7,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.application.Platform;
+import javafx.util.Duration;
+import javafx.animation.PauseTransition;
 import scooby.ui.Scooby;
 
 /**
@@ -45,6 +48,24 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = scooby.getResponse(input);
+
+        // Check if the input is "bye"
+        if (input.equalsIgnoreCase("bye")) {
+            // Add the "bye" message to the dialog container before closing
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getUserDialog(input, userImage),
+                    DialogBox.getScoobyDialog(response, scoobyImage)
+            );
+
+            // Add a delay before closing the application
+            PauseTransition pause = new PauseTransition(Duration.seconds(1)); // 1 second delay
+            pause.setOnFinished(event -> Platform.exit()); // Close the application after the delay
+            pause.play();
+
+            userInput.clear();
+            return; // Prevent further execution of the method
+        }
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getScoobyDialog(response, scoobyImage)
