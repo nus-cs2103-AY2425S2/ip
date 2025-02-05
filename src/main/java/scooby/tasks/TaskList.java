@@ -92,48 +92,44 @@ public class TaskList {
      *
      * @param command the name of the chatbot.
      */
-    public void addTask(String command) {
+    public String addTask(String command) {
         Task newTask;
-        try {
-            if (command.startsWith("todo ")) {
-                String description = command.substring(5).trim();
-                if (description.isEmpty()) {
-                    throw new EmptyException("Description of a task cannot be empty. Try again");
-                }
-                newTask = new ToDo(description);
-            } else if (command.startsWith("deadline ")) {
-                String[] parts = command.substring(9).split(" /by ");
-                String description = parts[0].trim();
-                if (description.isEmpty()) {
-                    throw new EmptyException("Description of a task cannot be empty. Try again");
-                }
-                String by = parts[1];
-                newTask = new Deadline(description, by);
-            } else if (command.startsWith("event ")) {
-                String[] parts = command.substring(6).split(" /from | /to ");
-                String description = parts[0].trim();
-                if (description.isEmpty()) {
-                    throw new EmptyException("Description of a task cannot be empty. Try again");
-                }
-                String from = parts[1];
-                String to = parts[2];
-                newTask = new Event(description, from, to);
-            } else {
-                throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
+        String response = "";
+        if (command.startsWith("todo ")) {
+            String description = command.substring(5).trim();
+            if (description.isEmpty()) {
+                return "Description of a task cannot be empty. Try again";
             }
-
-            tasks.add(newTask); // Add task to ArrayList
-            LINE.print();
-            System.out.println("Got it. I've added this task:");
-            System.out.println("  " + newTask);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-            LINE.print();
-
-        } catch (EmptyException | UnrecognisableException e) {
-            LINE.print();
-            System.out.println(e.getMessage());
-            LINE.print();
+            newTask = new ToDo(description);
+        } else if (command.startsWith("deadline ")) {
+            String[] parts = command.substring(9).split(" /by ");
+            String description = parts[0].trim();
+            if (description.isEmpty()) {
+                return "Description of a task cannot be empty. Try again";
+            }
+            String by = parts[1];
+            newTask = new Deadline(description, by);
+        } else if (command.startsWith("event ")) {
+            String[] parts = command.substring(6).split(" /from | /to ");
+            String description = parts[0].trim();
+            if (description.isEmpty()) {
+                return "Description of a task cannot be empty. Try again";
+            }
+            String from = parts[1];
+            String to = parts[2];
+            newTask = new Event(description, from, to);
+        } else {
+            return "I'm sorry, but I don't know what that means.";
         }
+
+        tasks.add(newTask); // Add task to ArrayList
+        // LINE.print();
+        response += "Got it. I've added this task:\n " + newTask + "\nNow you have "
+                + tasks.size() + " tasks in the list.";
+        // LINE.print();
+        return response;
+
+
     }
 
     /**

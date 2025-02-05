@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import scooby.ui.Scooby;
 
 /**
- * A GUI for Duke using FXML.
+ * A GUI for Scooby using FXML.
  */
 public class Main extends Application {
     private Scooby scooby = new Scooby();
@@ -18,11 +18,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setScooby(scooby);  // inject the Scooby instance
+            fxmlLoader.<MainWindow>getController().setScooby(scooby);  // Fix: Pass correct instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

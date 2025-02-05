@@ -88,8 +88,9 @@ public class Parser {
                     throw new EmptyException("Description of a task cannot be empty. Try again");
                 }
 
-                taskList.addTask(command);
+                String holderForAddTask = taskList.addTask(command);
                 taskList.saveToFile(); // Save after adding a task
+                return holderForAddTask;
             } else if (command.equalsIgnoreCase("bye")) {
                 return ui.exitDialogue(); // Respond when user says goodbye
             } else if (command.equalsIgnoreCase("list")) {

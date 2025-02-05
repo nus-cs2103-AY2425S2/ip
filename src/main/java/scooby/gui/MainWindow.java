@@ -25,7 +25,7 @@ public class MainWindow extends AnchorPane {
     @FXML
     private Button sendButton;
 
-    private Scooby scooby = new Scooby();
+    private Scooby scooby;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/User.png"));
     private Image scoobyImage = new Image(this.getClass().getResourceAsStream("/images/Scooby.png"));
@@ -37,7 +37,7 @@ public class MainWindow extends AnchorPane {
 
     /** Injects the Scooby instance */
     public void setScooby(Scooby scooby) {
-        scooby = scooby;
+        this.scooby = scooby;  // Fix: Assign the correct instance
     }
 
     /**
@@ -51,19 +51,18 @@ public class MainWindow extends AnchorPane {
 
         // Check if the input is "bye"
         if (input.equalsIgnoreCase("bye")) {
-            // Add the "bye" message to the dialog container before closing
             dialogContainer.getChildren().addAll(
                     DialogBox.getUserDialog(input, userImage),
                     DialogBox.getScoobyDialog(response, scoobyImage)
             );
 
-            // Add a delay before closing the application
-            PauseTransition pause = new PauseTransition(Duration.seconds(1)); // 1 second delay
-            pause.setOnFinished(event -> Platform.exit()); // Close the application after the delay
+            // Delay before closing the application
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+            pause.setOnFinished(event -> Platform.exit());
             pause.play();
 
             userInput.clear();
-            return; // Prevent further execution of the method
+            return;
         }
 
         dialogContainer.getChildren().addAll(
