@@ -28,10 +28,10 @@ public class Ui {
     /**
      * Exits the dialogue and closes the bot
      */
-    public void exitDialogue() {
-        LINE.print();
-        System.out.println("Bye. Hope to see you again soon!");
-        LINE.print();
+    public String exitDialogue() {
+        // LINE.print();
+        return "Bye. Hope to see you again soon!";
+        // LINE.print();
     }
 
     /**
@@ -51,10 +51,10 @@ public class Ui {
      * @param task the task that was marked as done.
      */
     public void printTaskMarked(Task task) {
-        LINE.print();
+        // LINE.print();
         System.out.println("Nice! I've marked this task as done:");
         System.out.println("  " + task);
-        LINE.print();
+        // LINE.print();
     }
 
     /**
@@ -63,9 +63,17 @@ public class Ui {
      * @param task the task that was marked as not done.
      */
     public void printTaskUnmarked(Task task) {
-        LINE.print();
+        // LINE.print();
         System.out.println("OK, I've marked this task as not done yet:");
         System.out.println("  " + task);
-        LINE.print();
+        // LINE.print();
+    }
+
+    public String returnMarkedString(Task task) {
+        return "Nice! I've marked this task as done: \n" + task;
+    }
+
+    public String returnUnmarkedString(Task task) {
+        return "OK, I've marked this task as not done yet: \n" + task;
     }
 }

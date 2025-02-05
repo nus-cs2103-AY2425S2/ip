@@ -92,63 +92,61 @@ public class TaskList {
      *
      * @param command the name of the chatbot.
      */
-    public void addTask(String command) {
+    public String addTask(String command) {
         Task newTask;
-        try {
-            if (command.startsWith("todo ")) {
-                String description = command.substring(5).trim();
-                if (description.isEmpty()) {
-                    throw new EmptyException("Description of a task cannot be empty. Try again");
-                }
-                newTask = new ToDo(description);
-            } else if (command.startsWith("deadline ")) {
-                String[] parts = command.substring(9).split(" /by ");
-                String description = parts[0].trim();
-                if (description.isEmpty()) {
-                    throw new EmptyException("Description of a task cannot be empty. Try again");
-                }
-                String by = parts[1];
-                newTask = new Deadline(description, by);
-            } else if (command.startsWith("event ")) {
-                String[] parts = command.substring(6).split(" /from | /to ");
-                String description = parts[0].trim();
-                if (description.isEmpty()) {
-                    throw new EmptyException("Description of a task cannot be empty. Try again");
-                }
-                String from = parts[1];
-                String to = parts[2];
-                newTask = new Event(description, from, to);
-            } else {
-                throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
+        String response = "";
+        if (command.startsWith("todo ")) {
+            String description = command.substring(5).trim();
+            if (description.isEmpty()) {
+                return "Description of a task cannot be empty. Try again";
             }
-
-            tasks.add(newTask); // Add task to ArrayList
-            LINE.print();
-            System.out.println("Got it. I've added this task:");
-            System.out.println("  " + newTask);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-            LINE.print();
-
-        } catch (EmptyException | UnrecognisableException e) {
-            LINE.print();
-            System.out.println(e.getMessage());
-            LINE.print();
+            newTask = new ToDo(description);
+        } else if (command.startsWith("deadline ")) {
+            String[] parts = command.substring(9).split(" /by ");
+            String description = parts[0].trim();
+            if (description.isEmpty()) {
+                return "Description of a task cannot be empty. Try again";
+            }
+            String by = parts[1];
+            newTask = new Deadline(description, by);
+        } else if (command.startsWith("event ")) {
+            String[] parts = command.substring(6).split(" /from | /to ");
+            String description = parts[0].trim();
+            if (description.isEmpty()) {
+                return "Description of a task cannot be empty. Try again";
+            }
+            String from = parts[1];
+            String to = parts[2];
+            newTask = new Event(description, from, to);
+        } else {
+            return "I'm sorry, but I don't know what that means.";
         }
+
+        tasks.add(newTask); // Add task to ArrayList
+        // LINE.print();
+        response += "Got it. I've added this task:\n " + newTask + "\nNow you have "
+                + tasks.size() + " tasks in the list.";
+        // LINE.print();
+        return response;
+
+
     }
 
     /**
      * Lists down all the tasks in the list.
      */
-    public void listTasks() {
-        LINE.print();
+    public String listTasks() {
+        // LINE.print();
+        String response = "";
         if (tasks.size() == 0) {
-            System.out.println("No tasks in the list.");
+            response = "No tasks in the list.";
         } else {
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.println((i + 1) + ". " + tasks.get(i));
+                response += ((i + 1) + ". " + tasks.get(i) + "\n");
             }
         }
-        LINE.print();
+        return response;
+        // LINE.print();
     }
 
     /**
@@ -183,18 +181,17 @@ public class TaskList {
      *
      * @param index is the index of the task from the task list.
      */
-    public void deleteTask(int index) {
+    public String deleteTask(int index) {
         // Ensure index is within bounds
         if (index >= 0 && index < tasks.size()) {
             Task deletedTask = tasks.get(index);
             tasks.remove(index); // Remove task from ArrayList
-            LINE.print();
-            System.out.println("Noted. I've removed this task:");
-            System.out.println("  " + deletedTask);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-            LINE.print();
+            // LINE.print();
+            return "Noted. I've removed this task:\n " + deletedTask + "\nNow you have "
+                    + tasks.size() + " tasks in the list.";
+            // LINE.print();
         } else {
-            System.out.println("Invalid task index. Please try again.");
+            return "Invalid task index. Please try again.";
         }
     }
 
@@ -203,8 +200,9 @@ public class TaskList {
      *
      * @param keyword The keyword to search for.
      */
-    public void find(String keyword) {
-        LINE.print();
+    public String find(String keyword) {
+        // LINE.print();
+        String response = "";
         ArrayList<Task> foundTasks = new ArrayList<>();
 
         for (Task task : tasks) {
@@ -214,15 +212,15 @@ public class TaskList {
         }
 
         if (foundTasks.isEmpty()) {
-            System.out.println("No matching tasks found.");
+            return "No matching tasks found.";
         } else {
-            System.out.println("Here are the matching tasks in your list:");
+            response += "Here are the matching tasks in your list:\n";
             for (int i = 0; i < foundTasks.size(); i++) {
-                System.out.println((i + 1) + ". " + foundTasks.get(i));
+                response += ((i + 1) + ". " + foundTasks.get(i));
             }
         }
-
-        LINE.print();
+        return response;
+        // LINE.print();
     }
 
     /**
