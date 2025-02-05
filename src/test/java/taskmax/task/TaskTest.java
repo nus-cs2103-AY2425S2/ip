@@ -1,7 +1,11 @@
 package taskmax.task;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import taskmax.task.Task;
+import taskmax.task.ToDo;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class TaskTest {
     @Test
