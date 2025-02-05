@@ -139,16 +139,18 @@ public class TaskList {
     /**
      * Lists down all the tasks in the list.
      */
-    public void listTasks() {
-        LINE.print();
+    public String listTasks() {
+        // LINE.print();
+        String response = "";
         if (tasks.size() == 0) {
-            System.out.println("No tasks in the list.");
+            response = "No tasks in the list.";
         } else {
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.println((i + 1) + ". " + tasks.get(i));
+                response += ((i + 1) + ". " + tasks.get(i) + "\n");
             }
         }
-        LINE.print();
+        return response;
+        // LINE.print();
     }
 
     /**

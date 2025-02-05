@@ -30,6 +30,11 @@ public class Scooby {
         scanner.close();
     }
 
+    public String getResponse(String input) {
+        Parser parser = new Parser(taskList, ui); // Pass the Scooby instance to the parser
+        return parser.parseCommandReturnString(input); // Return the response from parseCommand
+    }
+
     public static void main(String[] args) {
         new Scooby().run();
     }
