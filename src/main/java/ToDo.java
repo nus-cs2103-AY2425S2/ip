@@ -1,5 +1,5 @@
 public class ToDo extends Task {
-    private final String MARKER = "[T]";
+    private static final String MARKER = "[T]";
 
     public ToDo(String description) {
         super(description);

@@ -1,21 +1,38 @@
-public class Event extends Task {
-    protected String from;
-    protected String by;
-    private final String MARKER = "[E]";
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
-    public Event(String description, String from, String by) {
+public class Event extends Task {
+    protected LocalDateTime from;
+    protected LocalDateTime by;
+    private static final String MARKER = "[E]";
+    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
+    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
+
+    public Event(String description, String from, String by) throws WrongFormatException{
         super(description);
-        this.from = from;
-        this.by = by;
+        try {
+            this.from = LocalDateTime.parse(from, INPUT_FORMATTER);
+            this.by = LocalDateTime.parse(by, INPUT_FORMATTER);
+
+            if (!this.by.isAfter(this.from)) {
+                throw new WrongFormatException("The end date/time of an event must be after the start date/time!");
+            }
+        } catch (DateTimeParseException e) {
+            throw new WrongFormatException("Invalid date/time format!\nCorrect format: DD-MM-YYYY HHMM");
+        }
+
     }
 
     @Override
     public String toFileFormat() {
-        return "E | " + (isDone ? "1" : "0") + " | " + description + " | " + from + " | " + by;
+        return "E | " + (isDone ? "1" : "0") + " | " + description + " | " +
+                from.format(INPUT_FORMATTER) + " | " + by.format(INPUT_FORMATTER);
     }
 
     @Override
     public String toString() {
-        return this.MARKER + " " + super.toString() + "(from: " + this.from + " to: " + this.by + ")";
+        return MARKER + " " + super.toString() + " (from: " +
+                from.format(OUTPUT_FORMATTER) + " to: " + by.format(OUTPUT_FORMATTER) + ")";
     }
 }
