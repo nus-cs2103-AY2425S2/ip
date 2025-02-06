@@ -1,3 +1,4 @@
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -67,42 +68,104 @@ public class Julie {
 
     }
 
-    public static void addDeadline(String input) throws WrongFormatException{
-        try{
+    public static void addDeadline(String input) throws WrongFormatException {
+        try {
+            String desc = (input.length() > 9)
+                    ? input.substring(9).split("/by", 2)[0].trim()
+                    : "";
             String[] getDeadline = input.split("/by ");
-            String desc = getDeadline[0].substring(9, getDeadline[0].length());
-            if (desc.trim().isEmpty()) {
-                throw new WrongFormatException("Oops! the correct format for a deadline is:\n" +
-                        "deadline <description> /by <date>");
-            }
-            Task deadline = new Deadline(desc, getDeadline[1]);
+            String dateTime = (getDeadline.length > 1) ? getDeadline[1].trim() : "";
 
+            if (desc.isEmpty() && dateTime.isEmpty()) {
+                throw new WrongFormatException("Oops! Missing both the deadline description and the due date/time!\n" +
+                        "The correct format is:\n deadline <description> /by <DD-MM-YYYY HHMM>\n" +
+                        "e.g. deadline Finish math homework /by 10-02-2025 1800");
+            }
+            if (desc.isEmpty()) {
+                throw new WrongFormatException("Oops! Missing deadline description! The correct format is:\n" +
+                        "deadline <description> /by <DD-MM-YYYY HHMM>");
+            }
+            if (dateTime.isEmpty()) {
+                throw new WrongFormatException("Oops! Missing date and time of deadline! The correct format is:\n" +
+                        "deadline <description> /by <DD-MM-YYYY HHMM>");
+            }
+
+            String[] dateTimeParts = dateTime.split(" ");
+
+            if (dateTimeParts.length < 2) {
+                if (dateTimeParts[0].matches("\\d{4}")) {
+                    throw new WrongFormatException("Oops! Your deadline is missing the due date! " +
+                            "The correct format is:\n deadline <description> /by <DD-MM-YYYY HHMM>\n" +
+                            "e.g. deadline Finish math homework /by 10-02-2025 1800");
+                } else {
+                    throw new WrongFormatException("Oops! Your deadline is missing the due time! " +
+                            "The correct format is:\n deadline <description> /by <DD-MM-YYYY HHMM>\n" +
+                            "e.g. deadline Finish math homework /by 10-02-2025 1800");
+                }
+            }
+
+            Task deadline = new Deadline(desc, dateTime);
             taskList.add(deadline);
             storage.saveTasks(taskList);
             ackMessage(deadline);
+
         } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
-            throw new WrongFormatException("Oops! the correct format for a deadline is:\n" +
-                    "deadline <description> /by <date>");
+            throw new WrongFormatException("Oops! Wrong format! The correct format for a deadline is:\n" +
+                    "deadline <description> /by <DD-MM-YYYY HHMM>");
         }
     }
 
     public static void addEvent(String input) throws WrongFormatException {
         try {
+            String desc = (input.length() > 6)
+                    ? input.substring(6).split("/from", 2)[0].trim()
+                    : "";
             String[] getEvent = input.split("/from ");
-            String desc = getEvent[0].substring(6, getEvent[0].length());
-            if (desc.trim().isEmpty()) {
-                throw new WrongFormatException("Oops! the correct format for an event is:\n" +
-                        "event <description> /from <date> /to <date>");
-            }
-            String[] getTime = getEvent[1].split("/to ");
-            Task event = new Event(desc, getTime[0], getTime[1]);
+            String dateTimeFrom = (getEvent.length > 1)
+                    ? getEvent[1].split("/to", 2)[0].trim()
+                    : "";
+            String dateTimeTo = (getEvent.length > 1 && getEvent[1].contains("/to"))
+                    ? getEvent[1].split("/to", 2)[1].trim()
+                    : "";
 
+            if (desc.isEmpty() && dateTimeFrom.isEmpty() && dateTimeTo.isEmpty()) {
+                throw new WrongFormatException("Oops! Missing the event description and start/end date/time!\n" +
+                        "The correct format is:\nevent <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>\n" +
+                        "e.g. event Team meeting /from 10-02-2025 1400 /to 10-02-2025 1600");
+            }
+            if (desc.trim().isEmpty()) {
+                throw new WrongFormatException("Oops! Missing description! The correct format is:\n" +
+                        "event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+            }
+            if (dateTimeFrom.isEmpty()) {
+                throw new WrongFormatException("Oops! Missing the start date and time of the event! " +
+                        "The correct format is:\nevent <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+            }
+            if (dateTimeTo.isEmpty()) {
+                throw new WrongFormatException("Oops! Missing the end date and time of the event! " +
+                        "The correct format is:\nevent <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+            }
+
+            String[] dateTimeFromParts = dateTimeFrom.split(" ");
+            String[] dateTimeToParts = dateTimeTo.split(" ");
+
+            if (dateTimeFromParts.length < 2) {
+                throw new WrongFormatException("Oops! Your event is missing the full start date and time! " +
+                        "The correct format is:\nevent <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+            }
+            if (dateTimeToParts.length < 2) {
+                throw new WrongFormatException("Oops! Your event is missing the full end date and time! " +
+                        "The correct format is:\nevent <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+            }
+
+            Task event = new Event(desc, dateTimeFrom, dateTimeTo);
             taskList.add(event);
             storage.saveTasks(taskList);
             ackMessage(event);
-        } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
-            throw new WrongFormatException("Oops! the correct format for an event is:\n" +
-                    "event <description> /from <date> /to <date>");
+
+        } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException | DateTimeParseException e) {
+            throw new WrongFormatException("Oops! Wrong format! The correct format for an event is:\n" +
+                    "event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
         }
     }
 
@@ -170,7 +233,6 @@ public class Julie {
             System.out.println(BREAK + e.getMessage() + "\n" + BREAK);
         }
     }
-
 
     public static void main(String[] args) {
         System.out.println(BREAK + INTRO + BREAK);
