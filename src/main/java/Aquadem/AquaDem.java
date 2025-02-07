@@ -1,5 +1,7 @@
 package Aquadem;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.io.Serializable;
 
 /**
@@ -50,6 +52,31 @@ public class AquaDem implements Serializable{
         }
     }
 
+    public String getResponse(String input) {
+        String output;
+        ByteArrayOutputStream redirect = new ByteArrayOutputStream();
+        PrintStream holder = new PrintStream(redirect);
+        PrintStream current = System.out;
+        System.setOut(holder);
+        Parser parser = new Parser();
+        try {
+            Pair parsed = parser.encodeCommand(input, tasks.size());
+            if (parsed.getHead() == 8) {
+                Execution.execute(parsed, tasks, storage);
+            } else {
+                Execution.execute(parsed,tasks,storage);
+            }
+
+        } catch (DetailException e) {
+            System.out.println(e.getMessage());
+            Ui.printBar();
+        }
+
+        System.out.flush();
+        System.setOut(current);
+        output = redirect.toString();
+        return output;
+    }
 
     public static void main(String[] args) {
         AquaDem chatbot = new AquaDem(new Storage());
