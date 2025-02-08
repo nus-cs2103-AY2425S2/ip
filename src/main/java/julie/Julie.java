@@ -1,3 +1,9 @@
+package julie;
+
+import julie.command.Command;
+import julie.exception.WrongFormatException;
+import julie.task.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 

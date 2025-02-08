@@ -1,3 +1,10 @@
+package julie.command;
+
+import julie.*;
+import julie.exception.WrongFormatException;
+import julie.task.Task;
+import julie.task.ToDo;
+
 public class AddToDoCommand extends Command {
     private final String description;
 

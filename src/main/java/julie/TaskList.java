@@ -1,3 +1,7 @@
+package julie;
+
+import julie.task.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 

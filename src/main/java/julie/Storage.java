@@ -1,3 +1,10 @@
+package julie;
+
+import julie.task.Deadline;
+import julie.task.Event;
+import julie.task.Task;
+import julie.task.ToDo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;

@@ -1,3 +1,5 @@
+package julie.task;
+
 import java.io.Serializable;
 public abstract class Task implements Serializable {
     protected String description;

@@ -1,3 +1,7 @@
+package julie;
+
+import julie.task.Task;
+
 import java.util.Scanner;
 public class UI {
     private Scanner scanner;
@@ -8,7 +12,7 @@ public class UI {
 
     public void showWelcome() {
         drawLine();
-        System.out.println("Hello! I'm Julie.\nWhat can I do for you?");
+        System.out.println("Hello! I'm julie.Julie.\nWhat can I do for you?");
         drawLine();
     }
 

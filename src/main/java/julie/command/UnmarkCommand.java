@@ -1,7 +1,13 @@
-public class MarkCommand extends Command {
+package julie.command;
+
+import julie.*;
+import julie.exception.WrongFormatException;
+import julie.task.Task;
+
+public class UnmarkCommand extends Command {
     private final int index;
 
-    public MarkCommand(int index) {
+    public UnmarkCommand(int index) {
         this.index = index;
     }
     @Override
@@ -10,8 +16,8 @@ public class MarkCommand extends Command {
             throw new WrongFormatException("Oops! That task number doesn't exist!");
         }
         Task task = tasks.getTask(index - 1);
-        task.markDone();
+        task.markUndone();
         storage.saveTasks(tasks.getAllTasks());
-        ui.markMessage(task);
+        ui.unmarkMessage(task);
     }
 }

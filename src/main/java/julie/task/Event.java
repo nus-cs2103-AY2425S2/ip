@@ -1,3 +1,7 @@
+package julie.task;
+
+import julie.exception.WrongFormatException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -9,7 +13,7 @@ public class Event extends Task {
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
 
-    public Event(String description, String from, String by) throws WrongFormatException{
+    public Event(String description, String from, String by) throws WrongFormatException {
         super(description);
         try {
             this.from = LocalDateTime.parse(from, INPUT_FORMATTER);

@@ -1,3 +1,10 @@
+package julie.command;
+
+import julie.*;
+import julie.exception.WrongFormatException;
+import julie.task.Event;
+import julie.task.Task;
+
 import java.time.format.DateTimeParseException;
 
 public class AddEventCommand extends Command {

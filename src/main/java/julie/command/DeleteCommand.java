@@ -1,3 +1,9 @@
+package julie.command;
+
+import julie.*;
+import julie.exception.WrongFormatException;
+import julie.task.Task;
+
 public class DeleteCommand extends Command {
     private final int index;
 

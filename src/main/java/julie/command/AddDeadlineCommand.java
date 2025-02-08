@@ -1,3 +1,10 @@
+package julie.command;
+
+import julie.*;
+import julie.exception.WrongFormatException;
+import julie.task.Deadline;
+import julie.task.Task;
+
 import java.time.format.DateTimeParseException;
 
 public class AddDeadlineCommand extends Command {
@@ -9,7 +16,7 @@ public class AddDeadlineCommand extends Command {
         this.dateTime = dateTime;
     }
     @Override
-    public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException{
+    public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
         if (description.isEmpty() || dateTime.isEmpty()) {
             throw new WrongFormatException("Oops! Missing description or date/time!\n" +
                     "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");

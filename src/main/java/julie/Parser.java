@@ -1,3 +1,8 @@
+package julie;
+
+import julie.command.*;
+import julie.exception.WrongFormatException;
+
 public class Parser {
     private static final String TODO_FORMAT = "Oops! The correct format for a todo is:\n" +
             "todo <description>";
@@ -7,7 +12,7 @@ public class Parser {
     private static final String EVENT_FORMAT = "The correct format for an event is:\n" +
             "event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>";
 
-    private static final String NUMBER_FORMAT_ERROR = "Task number must be an integer!\n" +
+    private static final String NUMBER_FORMAT_ERROR = "julie.task.Task number must be an integer!\n" +
             "Correct format: <command> <task number>";
 
     public static Command parse(String input) throws WrongFormatException {
