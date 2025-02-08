@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import jude.command.AddCommand;
 import jude.command.ListCommand;
 import jude.command.MarkCommand;
-import jude.command.UnmarkCommand;
 import jude.command.DeleteCommand;
 
 import jude.task.Deadline;
