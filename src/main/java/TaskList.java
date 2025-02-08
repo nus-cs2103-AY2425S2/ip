@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+
 public class TaskList {
     private final ArrayList<Task> tasks;
 
@@ -14,8 +16,8 @@ public class TaskList {
         tasks.add(task);
     }
 
-    public void deleteTask(Task task) {
-        tasks.remove(task);
+    public void deleteTask(int index) {
+        tasks.remove(index);
     }
 
     public Task getTask(int index) {
@@ -26,6 +28,10 @@ public class TaskList {
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println((i + 1) + ". " + tasks.get(i));
         }
+    }
+
+    public List<Task> getAllTasks() {
+        return new ArrayList<>(tasks);  // Returns a copy to maintain encapsulation
     }
 
     public int size() {
