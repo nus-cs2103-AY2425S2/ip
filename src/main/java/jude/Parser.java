@@ -1,9 +1,5 @@
 package jude;
 
-import java.lang.reflect.Array;
-
-import javax.naming.directory.SearchControls;
-
 import jude.command.AddCommand;
 import jude.command.Command;
 import jude.command.DeleteCommand;
@@ -14,7 +10,6 @@ import jude.command.MarkCommand;
 import jude.command.UnmarkCommand;
 import jude.task.Deadline;
 import jude.task.Event;
-import jude.task.Task;
 import jude.task.Todo;
 
 /**
@@ -26,10 +21,6 @@ import jude.task.Todo;
 public class Parser {
     private String command;
     private String[] descriptions;
-
-
-    public Parser() {
-    }
 
     /** Identifies the Command from the user input and returns the identified command.
      * throws a JudeException if the command is not valid.
@@ -84,6 +75,7 @@ public class Parser {
             default:
                 throw new JudeException("No valid command was provided.");
             }
+
         } catch (NumberFormatException ne) {
             throw new JudeException("Invalid number format: expected an integer.");
         } catch (ArrayIndexOutOfBoundsException ae) {
