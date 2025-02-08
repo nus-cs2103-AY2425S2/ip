@@ -9,6 +9,7 @@ import jude.command.AddCommand;
 import jude.command.ListCommand;
 import jude.command.MarkCommand;
 import jude.command.DeleteCommand;
+import jude.command.UnmarkCommand;
 
 import jude.task.Deadline;
 import jude.task.Event;
