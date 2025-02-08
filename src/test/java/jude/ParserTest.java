@@ -1,16 +1,15 @@
 package jude;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import org.junit.jupiter.api.Test;
+
 import jude.command.AddCommand;
+import jude.command.DeleteCommand;
 import jude.command.ListCommand;
 import jude.command.MarkCommand;
-import jude.command.DeleteCommand;
 import jude.command.UnmarkCommand;
-
 import jude.task.Deadline;
 import jude.task.Event;
 import jude.task.Todo;

@@ -1,4 +1,3 @@
-
 package jude;
 
 import java.io.File;
@@ -23,9 +22,9 @@ import jude.task.Todo;
  * It saves the file by writing the task datas in the save file, so that it can be loaded the next time.
  */
 public class Storage {
-    String filePath;
-    Scanner fileReader;
-    FileWriter writer;
+    private String filePath;
+    private Scanner fileReader;
+    private FileWriter writer;
 
     public Storage(String filePath) {
         this.filePath = filePath;
@@ -52,39 +51,28 @@ public class Storage {
             throw new JudeException("file not found" + errorMessage);
         }
 
-
         while (fileReader.hasNextLine()) {
             String[] split = fileReader.nextLine().split(" \\| ");
 
-            // Handles file format with no Type letter
-            if (split.length < 3) {
-                throw new JudeException("invalid file format" + errorMessage);
-            }
-            boolean isDone = split[1].equals("1");
-            String description = split[2];
+            try {
+                boolean isDone = split[1].equals("1");
+                String description = split[2];
 
-            switch (split[0]) {
-            case "T":
-                if (split.length != 3) {
-                    throw new JudeException("invalid file format" + errorMessage);
+                switch (split[0]) {
+                case "T":
+                    list.add(new Todo(description, isDone));
+                    break;
+                case "D":
+                    list.add(new Deadline(description, split[3], isDone));
+                    break;
+                case "E":
+                    list.add(new Event(description, split[3], split[4], isDone));
+                    break;
+                default:
+                    break;
                 }
-                list.add(new Todo(description, isDone));
-                break;
-            case "D":
-                if (split.length != 4) {
-                    throw new JudeException("invalid file format" + errorMessage);
-                }
-                list.add(new Deadline(description, split[3], isDone));
-                break;
-            case "E":
-                if (split.length != 5) {
-                    throw new JudeException("invalid file format" + errorMessage);
-                }
-
-                list.add(new Event(description, split[3], split[4], isDone));
-                break;
-            default:
-                break;
+            } catch (ArrayIndexOutOfBoundsException ae) {
+                throw new JudeException("Invalid format was provided in the save file.");
             }
         }
         return list;
@@ -97,15 +85,6 @@ public class Storage {
      */
     public void save(TaskList list) throws JudeException {
         File save = new File(filePath);
-
-        // Check if file exists, create a file if it doesn't
-        if (!save.exists()) {
-            try {
-                save.createNewFile();
-            } catch (IOException ie) {
-                throw new JudeException("An error has occurred while creating a save file.");
-            }
-        }
 
         // Write to the save file
         try {
