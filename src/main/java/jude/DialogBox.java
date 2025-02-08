@@ -23,6 +23,11 @@ public class DialogBox extends HBox {
     @FXML
     private ImageView displayPicture;
 
+    /**
+     * Initiates DialogBox component by loading fxml file. Then it sets controller and root to load a dialogue box.
+     * Then it sets the text and image of the following dialogue.
+     * It prints the traces when error has been catched.
+     */
     public DialogBox(String text, Image img) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogBox.fxml"));

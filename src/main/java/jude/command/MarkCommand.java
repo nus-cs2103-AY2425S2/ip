@@ -14,15 +14,15 @@ public class MarkCommand extends Command {
     public MarkCommand(int index) {
         this.index = index;
     }
-    @Override
 
     /**
      * Marks the task as done. Save the changes into the save file.
      * @param list
      * @param ui displays the message that a task has been marked
      * @param storage will save the marked version of task data to the save file
-     * @throws JudeException, if any one of the method call fails
+     * @throws JudeException if any one of the method call fails
      */
+    @Override
     public void execute(TaskList list, Ui ui, Storage storage) throws JudeException {
         list.markTask(index);
         setMessage("Task " + list.getTask(index) + " has been marked.");
