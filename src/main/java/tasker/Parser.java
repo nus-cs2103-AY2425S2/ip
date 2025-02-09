@@ -212,12 +212,72 @@ class Parser {
         }
     }
 
+    /**
+     * Creates a Todo task from storage string.
+     *
+     * @param description The description of the task.
+     * @param isDone      If the task is complete.
+     * @return a todo task based on the storage information.
+     */
+    private static Todo createTodoFromStorage(String description, boolean isDone) {
+        return new Todo(description, isDone);
+    }
+
+    /**
+     * Creates a Deadline task from storage string.
+     *
+     * @param description The description of the task.
+     * @param isDone      If the task is complete.
+     * @param parts       Parts of the storage string containing information.
+     * @return A dealine task based on the storage information.
+     */
+    private static Deadline createDeadlineFromStorage(String description, boolean isDone, String[] parts,
+            TaskerException exception) throws TaskerException {
+        if (parts.length < 4) {
+            throw exception;
+        }
+
+        try {
+            return new Deadline(description, isDone, LocalDateTime.parse(parts[3]));
+        } catch (DateTimeParseException e) {
+            throw exception;
+        }
+
+    }
+
+    /**
+     * Creates an Event task from storage string.
+     *
+     * @param description The description of the task.
+     * @param isDone      If the task is complete.
+     * @param parts       Parts of the storage string containing information.
+     * @return An event task based on the storage ingormation.
+     */
+    private static Event createEventFromStorage(String description, boolean isDone, String[] parts,
+            TaskerException exception) throws TaskerException {
+        if (parts.length < 5) {
+            throw exception;
+        }
+
+        try {
+            return new Event(description, isDone, LocalDateTime.parse(parts[3]), LocalDateTime.parse(parts[4]));
+        } catch (DateTimeParseException e) {
+            throw exception;
+        }
+    }
+
+    /**
+     * Parses tasks from the storages into task objects.
+     *
+     * @param line The line to parse.
+     * @returns The task represented by the line.
+     * @throws TaskerException If there is an error parsing the task.
+     */
     public static Task parseStorage(String line) throws TaskerException {
         String[] parts = line.split("\\|");
         TaskerException incorrectFormat = new TaskerException("Incorrect storage format");
-        int length = parts.length;
 
-        if (length < 3) {
+        if (parts.length < 3) {
             throw incorrectFormat;
         }
 
@@ -227,29 +287,12 @@ class Parser {
 
         switch (type) {
         case T:
-            return new Todo(description, isDone);
+            return createTodoFromStorage(description, isDone);
 
         case D:
-            if (length < 4) {
-                throw incorrectFormat;
-            }
-
-            try {
-                return new Deadline(description, isDone, LocalDateTime.parse(parts[3]));
-            } catch (DateTimeParseException e) {
-                throw incorrectFormat;
-            }
-
+            return createDeadlineFromStorage(description, isDone, parts, incorrectFormat);
         case E:
-            if (length < 5) {
-                throw incorrectFormat;
-            }
-
-            try {
-                return new Event(description, isDone, LocalDateTime.parse(parts[3]), LocalDateTime.parse(parts[4]));
-            } catch (DateTimeParseException e) {
-                throw incorrectFormat;
-            }
+            return createEventFromStorage(description, isDone, parts, incorrectFormat);
 
         default:
             throw new TaskerException(String.format("Unkown task type from storage: %s.", type));
