@@ -32,16 +32,16 @@ class Parser {
      * @throws TaskerException If there is an error with the command
      */
     public static Command parseCommand(String command) throws TaskerException {
-        String[] cmdParts = command.split(" ", 2);
+        String[] commandParts = command.split(" ", 2);
         CommandType mainPart;
-        Command toRun = null;
+        Command parsedCommand = null;
 
         try {
-            mainPart = CommandType.valueOf(cmdParts[0].toUpperCase());
+            mainPart = CommandType.valueOf(commandParts[0].toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new TaskerException(String.format("""
                     Unknown command: %s
-                    %s""", cmdParts[0], CommandType.listCommands()));
+                    %s""", commandParts[0], CommandType.listCommands()));
         }
 
         switch (mainPart) {
@@ -49,21 +49,21 @@ class Parser {
         case DEADLINE:
         case EVENT:
         case TODO:
-            Task toAdd = null;
+            Task taskToAdd = null;
 
-            if (cmdParts.length != 2 || cmdParts[1].startsWith("/")) {
+            if (commandParts.length != 2 || commandParts[1].startsWith("/")) {
                 throw new TaskerException("Please provide a description for the task.");
             }
 
             switch (mainPart) {
             case TODO:
-                toAdd = new Todo(cmdParts[1]);
+                taskToAdd = new Todo(commandParts[1]);
                 break;
 
             // Fallthrough
             case DEADLINE:
             case EVENT:
-                String[] args = cmdParts[1].split(" /");
+                String[] args = commandParts[1].split(" /");
                 String dateTimeInput = DateTimeTask.INPUT_FORMAT;
 
                 switch (mainPart) {
@@ -77,7 +77,7 @@ class Parser {
 
                     try {
                         LocalDateTime time = DateTimeTask.parseInput(args[1].substring(3));
-                        toAdd = new Deadline(args[0], time);
+                        taskToAdd = new Deadline(args[0], time);
                     } catch (DateTimeParseException e) {
                         throw deadlineException;
                     }
@@ -94,7 +94,7 @@ class Parser {
                     }
 
                     try {
-                        toAdd = new Event(args[0], DateTimeTask.parseInput(args[1].substring(5)),
+                        taskToAdd = new Event(args[0], DateTimeTask.parseInput(args[1].substring(5)),
                                 DateTimeTask.parseInput(args[2].substring(3)));
                     } catch (DateTimeParseException e) {
                         throw eventException;
@@ -110,35 +110,35 @@ class Parser {
                 break;
             }
 
-            toRun = new AddCommand(toAdd);
+            parsedCommand = new AddCommand(taskToAdd);
             break;
 
         // Fallthrough
         case DELETE:
         case MARK:
         case UNMARK:
-            if (cmdParts.length != 2) {
+            if (commandParts.length != 2) {
                 throw new TaskerException("Please provide a task number.");
             }
 
             int index;
             try {
-                index = Integer.parseInt(cmdParts[1]) - 1;
+                index = Integer.parseInt(commandParts[1]) - 1;
             } catch (NumberFormatException e) {
                 throw new TaskerException("Please provide a valid task number.");
             }
 
             switch (mainPart) {
             case DELETE:
-                toRun = new DeleteCommand(index);
+                parsedCommand = new DeleteCommand(index);
                 break;
 
             case MARK:
-                toRun = new MarkCommand(index);
+                parsedCommand = new MarkCommand(index);
                 break;
 
             case UNMARK:
-                toRun = new UnmarkCommand(index);
+                parsedCommand = new UnmarkCommand(index);
                 break;
 
             default:
@@ -147,25 +147,25 @@ class Parser {
             break;
 
         case FIND:
-            if (cmdParts.length != 2) {
+            if (commandParts.length != 2) {
                 throw new TaskerException("Please provide a search term.");
             }
-            toRun = new FindCommand(cmdParts[1]);
+            parsedCommand = new FindCommand(commandParts[1]);
             break;
 
         case LIST:
-            toRun = new ListCommand();
+            parsedCommand = new ListCommand();
             break;
 
         case BYE:
-            toRun = new ByeCommand();
+            parsedCommand = new ByeCommand();
             break;
 
         default:
             break;
         }
 
-        return toRun;
+        return parsedCommand;
     }
 
     public static Task parseStorage(String line) throws TaskerException {
