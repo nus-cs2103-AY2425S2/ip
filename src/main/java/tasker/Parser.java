@@ -1,5 +1,6 @@
 package tasker;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -16,6 +17,7 @@ import tasker.exception.TaskerException;
 import tasker.task.DateTimeTask;
 import tasker.task.Deadline;
 import tasker.task.Event;
+import tasker.task.FixedDuration;
 import tasker.task.Task;
 import tasker.task.TaskType;
 import tasker.task.Todo;
@@ -79,6 +81,28 @@ class Parser {
     }
 
     /**
+     * Creates a FixedDuration task from command.
+     *
+     * @param args Arguments to the command.
+     */
+    private static FixedDuration createFixedDuration(String[] args) throws TaskerException {
+        TaskerException eventException = new TaskerException(
+                "Please provide a start and end time with: \"/hr h /min m\".");
+
+        if (args.length != 3 || !args[1].startsWith("hr ") || !args[2].startsWith("min ")) {
+            throw eventException;
+        }
+
+        try {
+            return new FixedDuration(args[0],
+                    Duration.ofHours(Integer.parseInt(args[1].substring(3)))
+                            .plusMinutes(Integer.parseInt(args[2].substring(4))));
+        } catch (NumberFormatException e) {
+            throw eventException;
+        }
+    }
+
+    /**
      * Creates a command to add a task.
      *
      * @param command      The command to determine the task type.
@@ -101,6 +125,7 @@ class Parser {
         // Fallthrough
         case DEADLINE:
         case EVENT:
+        case FIXED:
             String[] args = commandParts[1].split(" /");
             String dateTimeInputFormat = DateTimeTask.INPUT_FORMAT;
 
@@ -111,6 +136,10 @@ class Parser {
 
             case EVENT:
                 taskToAdd = createEventTask(args, dateTimeInputFormat);
+                break;
+
+            case FIXED:
+                taskToAdd = createFixedDuration(args);
                 break;
 
             default:
@@ -219,6 +248,7 @@ class Parser {
         case DEADLINE:
         case EVENT:
         case TODO:
+        case FIXED:
             return createAddCommand(mainPart, commandParts);
 
         // Fallthrough
@@ -296,6 +326,28 @@ class Parser {
     }
 
     /**
+     * Creates a FixedDuration task from storage string.
+     *
+     * @param description The description of the task.
+     * @param isDone      If the task is complete.
+     * @param parts       Parts of the storage string containing information.
+     * @return An event task based on the storage ingormation.
+     */
+    private static FixedDuration createFixedDurationFromStorage(String description, boolean isDone,
+            String[] parts,
+            TaskerException exception) throws TaskerException {
+        if (parts.length < 4) {
+            throw exception;
+        }
+
+        try {
+            return new FixedDuration(description, isDone, Duration.parse(parts[3]));
+        } catch (DateTimeParseException e) {
+            throw exception;
+        }
+    }
+
+    /**
      * Parses tasks from the storages into task objects.
      *
      * @param line The line to parse.
@@ -320,8 +372,12 @@ class Parser {
 
         case D:
             return createDeadlineFromStorage(description, isDone, parts, incorrectFormat);
+
         case E:
             return createEventFromStorage(description, isDone, parts, incorrectFormat);
+
+        case F:
+            return createFixedDurationFromStorage(description, isDone, parts, incorrectFormat);
 
         default:
             throw new TaskerException(String.format("Unkown task type from storage: %s.", type));
