@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.DisplayName;
@@ -23,6 +24,7 @@ import tasker.exception.TaskerException;
 import tasker.task.DateTimeTask;
 import tasker.task.Deadline;
 import tasker.task.Event;
+import tasker.task.FixedDuration;
 import tasker.task.Task;
 import tasker.task.TaskType;
 import tasker.task.Todo;
@@ -37,6 +39,9 @@ class ParserTest {
         private String event = CommandType.EVENT.toString();
         private String from = " /from 26/1/2025 1000";
         private String to = " /to 26/01/2025 1200";
+        private String fixed = CommandType.FIXED.toString();
+        private String hr = " /hr 2";
+        private String min = " /min 30";
         private String delete = CommandType.DELETE.toString();
         private String mark = CommandType.MARK.toString();
         private String unmark = CommandType.UNMARK.toString();
@@ -45,6 +50,8 @@ class ParserTest {
         private String deadlineDescription = deadline + description;
         private String eventDescription = event + description;
         private String eventDescriptionFrom = eventDescription + from;
+        private String fixedDescription = fixed + description;
+        private String fixedDescriptionHr = fixedDescription + hr;
 
         @Test
         @DisplayName("Parse todo add command successfully")
@@ -73,6 +80,16 @@ class ParserTest {
             Event event = new Event("read book",
                     LocalDateTime.parse("2025-01-26T10:00"),
                     LocalDateTime.parse("2025-01-26T12:00"));
+            Command expected = new AddCommand(event);
+            Command actual = Parser.parseCommand(input);
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        @DisplayName("Parse fixed duration add command successfully")
+        void parseCommand_validFixedDuration_success() throws TaskerException {
+            String input = fixedDescriptionHr + min;
+            FixedDuration event = new FixedDuration("read book", Duration.parse("PT2H30M"));
             Command expected = new AddCommand(event);
             Command actual = Parser.parseCommand(input);
             assertEquals(expected, actual);
@@ -165,6 +182,10 @@ class ParserTest {
             TaskerException exception5 = assertThrows(TaskerException.class, () -> {
                 Parser.parseCommand(input5);
             });
+            String input6 = fixed + hr + min;
+            TaskerException exception6 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input6);
+            });
             String errMsg = "Please provide a description for the task.";
             assertEquals(errMsg,
                     exception1.getMessage());
@@ -174,6 +195,8 @@ class ParserTest {
                     exception3.getMessage());
             assertEquals(errMsg,
                     exception4.getMessage());
+            assertEquals(errMsg,
+                    exception5.getMessage());
             assertEquals(errMsg,
                     exception5.getMessage());
         }
@@ -276,6 +299,47 @@ class ParserTest {
             });
             String errMsg = String.format("Please provide a start and end time with: \"/from %s /to %s\".",
                     DateTimeTask.INPUT_FORMAT, DateTimeTask.INPUT_FORMAT);
+            assertEquals(exception1.getMessage(), errMsg);
+            assertEquals(exception2.getMessage(), errMsg);
+            assertEquals(exception3.getMessage(), errMsg);
+            assertEquals(exception4.getMessage(), errMsg);
+            assertEquals(exception5.getMessage(), errMsg);
+            assertEquals(exception6.getMessage(), errMsg);
+            assertEquals(exception7.getMessage(), errMsg);
+        }
+
+        @Test
+        @DisplayName("Throw exception for fixed furation with invalid duration")
+        void parseCommand_fixedDurationInvalidDuration_exceptionThrown() {
+            String input1 = fixedDescription;
+            TaskerException exception1 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input1);
+            });
+            String input2 = fixedDescriptionHr;
+            TaskerException exception2 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input2);
+            });
+            String input3 = fixedDescriptionHr + " /min invalid";
+            TaskerException exception3 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input3);
+            });
+            String input4 = fixedDescriptionHr + " /invalid 30";
+            TaskerException exception4 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input4);
+            });
+            String input5 = fixedDescription + min;
+            TaskerException exception5 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input5);
+            });
+            String input6 = fixedDescription + " /hr invalid" + min;
+            TaskerException exception6 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input6);
+            });
+            String input7 = fixedDescription + " /invalid 2" + min;
+            TaskerException exception7 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input7);
+            });
+            String errMsg = "Please provide a start and end time with: \"/hr h /min m\".";
             assertEquals(exception1.getMessage(), errMsg);
             assertEquals(exception2.getMessage(), errMsg);
             assertEquals(exception3.getMessage(), errMsg);
