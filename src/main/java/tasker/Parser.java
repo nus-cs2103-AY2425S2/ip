@@ -32,7 +32,7 @@ class Parser {
      * @returns A command to add the correct task when executed.
      * @throws TaskerException If there is an error with the command.
      */
-    private static AddCommand CreateAddCommand(CommandType command, String[] commandParts) throws TaskerException {
+    private static AddCommand createAddCommand(CommandType command, String[] commandParts) throws TaskerException {
         if (commandParts.length != 2 || commandParts[1].startsWith("/")) {
             throw new TaskerException("Please provide a description for the task.");
         }
@@ -190,7 +190,7 @@ class Parser {
         case DEADLINE:
         case EVENT:
         case TODO:
-            return CreateAddCommand(mainPart, commandParts);
+            return createAddCommand(mainPart, commandParts);
 
         // Fallthrough
         case DELETE:
