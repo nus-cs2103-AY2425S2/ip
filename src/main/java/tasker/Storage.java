@@ -44,14 +44,8 @@ public class Storage {
      * @param tasks The task list to save the contents of.
      */
     public void save(TaskList tasks) throws TaskerException {
-        LinkedList<String> lines = new LinkedList<>();
-
-        for (Task task : tasks.getTasks()) {
-            lines.add(task.toStorage());
-        }
-
         try {
-            Files.write(path, lines);
+            Files.write(path, tasks.getTasks().stream().map(task -> task.toStorage()).toList());
         } catch (IOException e) {
             throw new TaskerException("Failed to save tasks to storage.");
         }
@@ -63,7 +57,7 @@ public class Storage {
      * @returns List of task in storage.
      * @throws TaskerException If the stored tasks cannot be read.
      */
-    public List<Task> getTasks() throws TaskerException {
+    public LinkedList<Task> getTasks() throws TaskerException {
         LinkedList<Task> tasks = new LinkedList<>();
 
         try {

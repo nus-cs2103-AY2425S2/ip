@@ -27,11 +27,7 @@ public class TaskList {
      */
     public TaskList(Storage storage) throws TaskerException {
         ArrayList<Task> tasks = new ArrayList<>();
-
-        for (Task task : storage.getTasks()) {
-            tasks.add(task);
-        }
-
+        storage.getTasks().stream().forEach(task -> tasks.add(task));
         this.tasks = tasks;
     }
 
@@ -120,19 +116,13 @@ public class TaskList {
      * @return A string of tasks which description contains the string.
      */
     public String findTasks(String term) {
-        boolean hasMatches = false;
-        StringBuilder output = new StringBuilder("Here are the matching tasks in your list:");
-        int count = 1;
-
-        for (Task task : tasks) {
-            if (task.contains(term)) {
-                hasMatches = true;
-                output.append("\n").append(count).append(".").append(task);
-                ++count;
-            }
-        }
-
-        return hasMatches ? output.toString() : "No tasks contain that term";
+        StringBuilder output = new StringBuilder("Here are the matching tasks in your list:\n");
+        return tasks.stream()
+                .filter(task -> task.contains(term))
+                .peek(task -> output.append(task).append("\n"))
+                .count() > 0
+                        ? output.toString()
+                        : "No tasks contain that term";
     }
 
     @Override
