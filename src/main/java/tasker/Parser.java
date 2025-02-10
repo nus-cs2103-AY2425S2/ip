@@ -25,6 +25,60 @@ import tasker.task.Todo;
  */
 class Parser {
     /**
+     * Creates a Todo task from command.
+     *
+     * @param commandParts Command information to create the task.
+     */
+    private static Todo createTodoTask(String[] commandParts) {
+        return new Todo(commandParts[1]);
+    }
+
+    /**
+     * Creates a Deadline task from command.
+     *
+     * @param args                Arguments to the command.
+     * @param dateTimeInputFormat The format of tasks with date and time.
+     */
+    private static Deadline createDeadlineTask(String[] args, String dateTimeInputFormat) throws TaskerException {
+        TaskerException deadlineException = new TaskerException(
+                String.format("Please provide a deadline with: \"/by %s\".", dateTimeInputFormat));
+
+        if (args.length != 2 || !args[1].startsWith("by ")) {
+            throw deadlineException;
+        }
+
+        try {
+            return new Deadline(args[0], DateTimeTask.parseInput(args[1].substring(3)));
+        } catch (DateTimeParseException e) {
+            throw deadlineException;
+        }
+
+    }
+
+    /**
+     * Creates an Event task from command.
+     *
+     * @param args                Arguments to the command.
+     * @param dateTimeInputFormat The format of tasks with date and time.
+     */
+    private static Event createEventTask(String[] args, String dateTimeInputFormat) throws TaskerException {
+        TaskerException eventException = new TaskerException(
+                String.format("Please provide a start and end time with: \"/from %s /to %s\".",
+                        dateTimeInputFormat, dateTimeInputFormat));
+
+        if (args.length != 3 || !args[1].startsWith("from ") || !args[2].startsWith("to ")) {
+            throw eventException;
+        }
+
+        try {
+            return new Event(args[0], DateTimeTask.parseInput(args[1].substring(5)),
+                    DateTimeTask.parseInput(args[2].substring(3)));
+        } catch (DateTimeParseException e) {
+            throw eventException;
+        }
+    }
+
+    /**
      * Creates a command to add a task.
      *
      * @param command      The command to determine the task type.
@@ -41,52 +95,26 @@ class Parser {
 
         switch (command) {
         case TODO:
-            taskToAdd = new Todo(commandParts[1]);
+            taskToAdd = createTodoTask(commandParts);
             break;
 
         // Fallthrough
         case DEADLINE:
         case EVENT:
             String[] args = commandParts[1].split(" /");
-            String dateTimeInput = DateTimeTask.INPUT_FORMAT;
+            String dateTimeInputFormat = DateTimeTask.INPUT_FORMAT;
 
             switch (command) {
             case DEADLINE:
-                TaskerException deadlineException = new TaskerException(
-                        String.format("Please provide a deadline with: \"/by %s\".", dateTimeInput));
-
-                if (args.length != 2 || !args[1].startsWith("by ")) {
-                    throw deadlineException;
-                }
-
-                try {
-                    LocalDateTime time = DateTimeTask.parseInput(args[1].substring(3));
-                    taskToAdd = new Deadline(args[0], time);
-                } catch (DateTimeParseException e) {
-                    throw deadlineException;
-                }
-
+                taskToAdd = createDeadlineTask(args, dateTimeInputFormat);
                 break;
 
             case EVENT:
-                TaskerException eventException = new TaskerException(
-                        String.format("Please provide a start and end time with: \"/from %s /to %s\".",
-                                dateTimeInput, dateTimeInput));
-
-                if (args.length != 3 || !args[1].startsWith("from ") || !args[2].startsWith("to ")) {
-                    throw eventException;
-                }
-
-                try {
-                    taskToAdd = new Event(args[0], DateTimeTask.parseInput(args[1].substring(5)),
-                            DateTimeTask.parseInput(args[2].substring(3)));
-                } catch (DateTimeParseException e) {
-                    throw eventException;
-                }
+                taskToAdd = createEventTask(args, dateTimeInputFormat);
                 break;
 
             default:
-                break;
+                throw new TaskerException("Not a command to add taks with arguments.");
             }
             break;
 
