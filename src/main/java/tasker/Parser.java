@@ -110,6 +110,7 @@ class Parser {
                 break;
             }
 
+            assert toAdd != null : "Task to add is null.";
             toRun = new AddCommand(toAdd);
             break;
 
@@ -122,6 +123,7 @@ class Parser {
             }
 
             int index;
+
             try {
                 index = Integer.parseInt(cmdParts[1]) - 1;
             } catch (NumberFormatException e) {
@@ -150,6 +152,7 @@ class Parser {
             if (cmdParts.length != 2) {
                 throw new TaskerException("Please provide a search term.");
             }
+
             toRun = new FindCommand(cmdParts[1]);
             break;
 
@@ -165,6 +168,7 @@ class Parser {
             break;
         }
 
+        assert toRun != null : "Command to run is null.";
         return toRun;
     }
 
