@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedList;
-import java.util.List;
 
 import tasker.exception.TaskerException;
 import tasker.task.Task;
@@ -45,7 +44,7 @@ public class Storage {
      */
     public void save(TaskList tasks) throws TaskerException {
         try {
-            Files.write(path, tasks.getTasks().stream().map(task -> task.toStorage()).toList());
+            Files.write(path, tasks.getTasks().stream().map(Task::toStorage).toList());
         } catch (IOException e) {
             throw new TaskerException("Failed to save tasks to storage.");
         }

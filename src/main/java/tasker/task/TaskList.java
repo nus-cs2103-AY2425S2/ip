@@ -27,7 +27,7 @@ public class TaskList {
      */
     public TaskList(Storage storage) throws TaskerException {
         ArrayList<Task> tasks = new ArrayList<>();
-        storage.getTasks().stream().forEach(task -> tasks.add(task));
+        storage.getTasks().stream().forEach(tasks::add);
         this.tasks = tasks;
     }
 
