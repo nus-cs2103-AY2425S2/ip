@@ -94,6 +94,7 @@ class Parser {
             throw new TaskerException("Not a command to add tasks.");
         }
 
+        assert taskToAdd != null : "Task to add is null.";
         return new AddCommand(taskToAdd);
     }
 
