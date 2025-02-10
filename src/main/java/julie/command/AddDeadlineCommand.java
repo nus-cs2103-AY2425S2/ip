@@ -7,14 +7,35 @@ import julie.task.Task;
 
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents a command to add a new deadline task to the task list.
+ * A deadline task includes a description and a specific due date/time.
+ */
 public class AddDeadlineCommand extends Command {
     private final String description;
     private final String dateTime;
 
+    /**
+     * Constructs an {@code AddDeadlineCommand} with the given description and deadline date/time.
+     *
+     * @param description The description of the deadline task.
+     * @param dateTime The due date and time of the deadline task in the format {@code DD-MM-YYYY HHMM}.
+     */
     public AddDeadlineCommand(String description, String dateTime) {
         this.description = description;
         this.dateTime = dateTime;
     }
+
+    /**
+     * Executes the command to add a new deadline task.
+     * The task is added to the task list, saved to storage, and acknowledged via the UI.
+     *
+     * @param tasks The task list where the new deadline task will be added.
+     * @param ui The user interface to display feedback to the user.
+     * @param storage The storage system to persist the task list.
+     * @throws WrongFormatException If the deadline description or date/time is missing or if the date/time
+     * format is incorrect.
+     */
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
         if (description.isEmpty() || dateTime.isEmpty()) {
