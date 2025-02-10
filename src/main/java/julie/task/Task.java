@@ -1,28 +1,63 @@
 package julie.task;
 
-import java.io.Serializable;
-public abstract class Task implements Serializable {
+
+/**
+ * Represents an abstract task that can be marked as done or undone.
+ * This serves as a base class for specific task types such as ToDo, Deadline, and Event.
+ */
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
+    /**
+     * Constructs a new {@code Task} with the specified description.
+     * The task is initially marked as not done.
+     *
+     * @param description The description of the task.
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
     }
 
+    /**
+     * Marks the task as done.
+     */
     public void markDone() {
         this.isDone = true;
     }
 
+    /**
+     * Marks the task as not done.
+     */
     public void markUndone() {
         this.isDone = false;
     }
+
+    /**
+     * Returns the status icon representing whether the task is done or not.
+     * "[X]" for completed tasks, "[ ]" for incomplete tasks.
+     *
+     * @return The status icon string.
+     */
     public String statusIcon() {
         return (isDone ? "[X]" : "[ ]");
     }
 
+    /**
+     * Returns the formatted string to be stored in a file.
+     * Subclasses must implement this method to define their own file format.
+     *
+     * @return The formatted string representing the task for storage.
+     */
     public abstract String toFileFormat();
 
+    /**
+     * Returns a string representation of the task.
+     * The format includes the status icon followed by the task description.
+     *
+     * @return The string representation of the task.
+     */
     public String toString() {
         return this.statusIcon() + " " + this.description;
     }
