@@ -32,7 +32,7 @@ public class TaskList {
      * @param command the name of the chatbot.
      */
     public String addTask(String command) {
-        assert command != null && !command.isEmpty();
+        assert command != null && !command.isEmpty() : "Error, command cannot be empty";
 
         Task newTask;
         if (command.startsWith("todo ")) {
