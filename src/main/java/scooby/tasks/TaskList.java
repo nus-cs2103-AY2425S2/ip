@@ -1,6 +1,7 @@
 package scooby.tasks;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 import scooby.ui.Storage;
 
@@ -60,16 +61,9 @@ public class TaskList {
      * Lists down all the tasks in the list.
      */
     public String listTasks() {
-        String response = "";
-        if (tasks.size() == 0) {
-            return "No tasks in the list.";
-        } else {
-            assert tasks.size() > 0;
-            for (int i = 0; i < tasks.size(); i++) {
-                response += ((i + 1) + ". " + tasks.get(i) + "\n");
-            }
-        }
-        return response;
+        return IntStream.range(0, tasks.size())
+                .mapToObj(index -> (index + 1) + ". " + tasks.get(index).toString() + "\n")
+                .reduce("", (task1, task2) -> task1 + task2);
     }
 
     /**
@@ -122,25 +116,13 @@ public class TaskList {
      * @param keyword The keyword to search for.
      */
     public String find(String keyword) {
-        String response = "";
-        ArrayList<Task> foundTasks = new ArrayList<>();
-
-        for (Task task : tasks) {
-            if (task.toString().toLowerCase().contains(keyword.toLowerCase())) {
-                foundTasks.add(task);
-            }
-        }
-
-        if (foundTasks.isEmpty()) {
-            return "No matching tasks found.";
-        } else {
-            assert foundTasks.size() > 0;
-            response += "Here are the matching tasks in your list:\n";
-            for (int i = 0; i < foundTasks.size(); i++) {
-                response += ((i + 1) + ". " + foundTasks.get(i) + "\n");
-            }
-        }
-        return response;
+        String response = this.tasks.stream()
+                .filter(task -> task.toString().toLowerCase().contains(keyword.toLowerCase()))
+                .map(task -> (tasks.indexOf(task) + 1) + ". " + task.toString())
+                .reduce("",
+                        (task1, task2) -> task1 + "\n" + task2);
+        return response.isEmpty() ? "No matching tasks found" :
+                "Here are the matching tasks in your list:\n" + response;
     }
 
     /**
