@@ -1,21 +1,11 @@
 package scooby.tasks;
 
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.File;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 
-import scooby.exception.UnrecognisableException;
-import scooby.exception.EmptyException;
-import scooby.ui.Line;
 import scooby.ui.Storage;
 
 public class TaskList {
     private ArrayList<Task> tasks = new ArrayList<>(); // Dynamic list to hold tasks
-    private static final Line LINE = new Line();
     private static final Storage storage = new Storage();
 
     /**
@@ -62,17 +52,14 @@ public class TaskList {
         tasks.add(newTask); // Add task to ArrayList
         assert tasks.contains(newTask) : "Error: Task was not added successfully!";
 
-        // LINE.print();
         return "Got it. I've added this task:\n " + newTask + "\nNow you have "
                 + tasks.size() + " tasks in the list.";
-        // LINE.print();
     }
 
     /**
      * Lists down all the tasks in the list.
      */
     public String listTasks() {
-        // LINE.print();
         String response = "";
         if (tasks.size() == 0) {
             return "No tasks in the list.";
@@ -83,7 +70,6 @@ public class TaskList {
             }
         }
         return response;
-        // LINE.print();
     }
 
     /**
@@ -123,10 +109,8 @@ public class TaskList {
         if (index >= 0 && index < tasks.size()) {
             Task deletedTask = tasks.get(index);
             tasks.remove(index); // Remove task from ArrayList
-            // LINE.print();
             return "Noted. I've removed this task:\n " + deletedTask + "\nNow you have "
                     + tasks.size() + " tasks in the list.";
-            // LINE.print();
         } else {
             return "Invalid task index. Please try again.";
         }
@@ -138,7 +122,6 @@ public class TaskList {
      * @param keyword The keyword to search for.
      */
     public String find(String keyword) {
-        // LINE.print();
         String response = "";
         ArrayList<Task> foundTasks = new ArrayList<>();
 
@@ -154,11 +137,10 @@ public class TaskList {
             assert foundTasks.size() > 0;
             response += "Here are the matching tasks in your list:\n";
             for (int i = 0; i < foundTasks.size(); i++) {
-                response += ((i + 1) + ". " + foundTasks.get(i));
+                response += ((i + 1) + ". " + foundTasks.get(i) + "\n");
             }
         }
         return response;
-        // LINE.print();
     }
 
     /**
@@ -173,7 +155,7 @@ public class TaskList {
      * returns True when it is empty
      * returns False when it is not empty
      *
-     * @return returns a boolean value of
+     * @return returns a boolean value whether the list is empty or not
      */
     public boolean isEmpty() {
         return this.tasks.isEmpty();
