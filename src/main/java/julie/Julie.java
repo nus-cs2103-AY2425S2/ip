@@ -14,7 +14,6 @@ import java.util.List;
 
 public class Julie {
     private static final String FILE_PATH = "./data/julie.txt";
-
     private final UI ui;
     private final Storage storage;
     private final TaskList tasks;
