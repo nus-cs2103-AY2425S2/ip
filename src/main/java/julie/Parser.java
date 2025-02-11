@@ -17,7 +17,7 @@ public class Parser {
     private static final String EVENT_FORMAT = "The correct format for an event is:\n" +
             "event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>";
 
-    private static final String NUMBER_FORMAT_ERROR = "julie.task.Task number must be an integer!\n" +
+    private static final String NUMBER_FORMAT_ERROR = "Task number must be an integer!\n" +
             "Correct format: <command> <task number>";
 
     /**
@@ -58,7 +58,7 @@ public class Parser {
 
         default:
             throw new WrongFormatException("Sorry, I didn't understand what you said!");
-    }
+        }
     }
 
     /**
@@ -91,7 +91,8 @@ public class Parser {
         String dateTime = (getDeadline.length > 1) ? getDeadline[1].trim() : "";
 
         if (desc.isEmpty() && dateTime.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing both the deadline description and due date/time!\n" + DEADLINE_FORMAT);
+            throw new WrongFormatException("Oops! Missing both the deadline description and due date/time!\n"
+                    + DEADLINE_FORMAT);
         }
         if (desc.isEmpty()) {
             throw new WrongFormatException("Oops! Missing deadline description!\n" + DEADLINE_FORMAT);

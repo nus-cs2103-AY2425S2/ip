@@ -31,8 +31,8 @@ public class AddToDoCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
-        if (description.isEmpty()) {
-            throw new WrongFormatException("Oops! The correct format for a todo is:\ntodo <description>");
+        if (description.trim().isEmpty()) {
+            throw new WrongFormatException("Oops! Missing todo description!\nCorrect format: todo <description>");
         }
         Task todo = new ToDo(description);
         tasks.addTask(todo);

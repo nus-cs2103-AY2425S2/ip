@@ -38,8 +38,14 @@ public class AddDeadlineCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
-        if (description.isEmpty() || dateTime.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing description or date/time!\n" +
+        if (description.isEmpty() && dateTime.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing both description and due date/time!\n" +
+                    "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
+        } else if (description.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing description!\n" +
+                    "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
+        } else if (dateTime.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing due date and time!\n" +
                     "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
         }
 

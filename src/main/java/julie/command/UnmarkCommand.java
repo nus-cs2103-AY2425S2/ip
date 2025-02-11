@@ -13,7 +13,7 @@ public class UnmarkCommand extends Command {
     /**
      * Constructs an UnmarkCommand with the specified task index.
      *
-     * @param index The index of the task to be unmarked.
+     * @param index The 1-based index of the task to be unmarked.
      */
     public UnmarkCommand(int index) {
         this.index = index;

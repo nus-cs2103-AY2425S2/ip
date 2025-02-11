@@ -34,7 +34,7 @@ public class Storage {
         List<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
 
-        if(!file.exists()) {
+        if (!file.exists()) {
             file.getParentFile().mkdirs();
             return tasks;
         }
@@ -84,17 +84,17 @@ public class Storage {
 
             Task task;
             switch (type) {
-                case "T":
-                    task = new ToDo(description);
-                    break;
-                case "D":
-                    task = new Deadline(description, parts[3]);
-                    break;
-                case "E":
-                    task = new Event(description, parts[3], parts[4]);
-                    break;
-                default:
-                    return null;
+            case "T":
+                task = new ToDo(description);
+                break;
+            case "D":
+                task = new Deadline(description, parts[3]);
+                break;
+            case "E":
+                task = new Event(description, parts[3], parts[4]);
+                break;
+            default:
+                return null;
             }
 
             if (isDone) {

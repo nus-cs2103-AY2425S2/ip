@@ -11,8 +11,8 @@ import java.time.format.DateTimeParseException;
  * An {@code Event} task includes a description, a start date/time, and an end date/time.
  */
 public class Event extends Task {
-    protected LocalDateTime from;
-    protected LocalDateTime by;
+    private final LocalDateTime from;
+    private final LocalDateTime by;
     private static final String MARKER = "[E]";
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");

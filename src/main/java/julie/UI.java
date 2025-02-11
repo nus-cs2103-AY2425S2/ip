@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Responsible for displaying messages, reading user input, and formatting responses.
  */
 public class UI {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     /**
      * Constructs a new {@code UI} instance.
@@ -53,7 +53,7 @@ public class UI {
      */
     public void showTaskList(TaskList tasks) {
         drawLine();
-        System.out.println("Here are you tasks:");
+        System.out.println("Here are your tasks:");
         tasks.showTasks();
         drawLine();
     }

@@ -13,7 +13,7 @@ public class MarkCommand extends Command {
     /**
      * Constructs a MarkCommand with the specified task index.
      *
-     * @param index The index of the task to be marked as done.
+     * @param index The 1-based index of the task to be marked as done.
      */
     public MarkCommand(int index) {
         this.index = index;

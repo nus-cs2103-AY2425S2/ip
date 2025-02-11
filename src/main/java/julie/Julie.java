@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents the main entry point for the task management chatbot.
- * It initialises the user interface, storage and task list, handling user input and executing commands.
+ * Represents the Julie chatbot, which manages user tasks.
+ * It handles user input, executes commands, and manages task persistence.
  */
 
 public class Julie {
@@ -27,7 +27,6 @@ public class Julie {
         this.ui = new UI();
         this.storage = new Storage(FILE_PATH);
 
-        // Load tasks from storage
         List<Task> loadedTasks = storage.loadTasks();
         this.tasks = new TaskList(new ArrayList<>(loadedTasks));
     }

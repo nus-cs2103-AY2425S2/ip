@@ -11,7 +11,7 @@ import java.time.format.DateTimeParseException;
  * A {@code Deadline} task includes a description and a due date/time.
  */
 public class Deadline extends Task {
-    protected LocalDateTime by;
+    private final LocalDateTime by;
     private static final String MARKER = "[D]";
 
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");

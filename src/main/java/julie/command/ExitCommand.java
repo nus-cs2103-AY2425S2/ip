@@ -23,7 +23,7 @@ public class ExitCommand extends Command {
     }
 
     /**
-     * Indicates that this command will terminate the program.
+     * Indicates that this command will terminate the session.
      *
      * @return {@code true}, signaling the program should exit.
      */

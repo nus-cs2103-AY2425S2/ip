@@ -1,9 +1,10 @@
 package julie.exception;
 
 /**
- * Represents an exception that is thrown when a user inputs a command in an incorrect format.
- * This exception is used to enforce proper command syntax in the chatbot.
+ * Exception thrown when a command input does not follow the expected syntax.
+ * This helps in enforcing proper command formatting by the user using the chatbot.
  */
+
 public class WrongFormatException extends Exception {
 
     /**
