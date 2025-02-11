@@ -26,55 +26,6 @@ public class TaskList {
     }
 
     /**
-     * Parses a task string and creates the appropriate Task object.
-     *
-     * @param line the string representation of a task from tasks.txt.
-     * @return the Task object, or null if the line is invalid.
-     */
-    private Task parseTask(String line) {
-        try {
-            // Identify task type from the string format, e.g., "[T][ ] description"
-            char taskType = line.charAt(1); // T for ToDo, D for Deadline, E for Event
-            boolean isDone = line.charAt(4) == 'X'; // X indicates task is marked as done
-
-            if (taskType == 'T') {
-                // Format: [T][ ] description
-                String description = line.substring(7);
-                ToDo todo = new ToDo(description);
-                if (isDone) {
-                    todo.setChecked();
-                }
-                return todo;
-            } else if (taskType == 'D') {
-                // Format: [D][ ] description (by: time)
-                int byIndex = line.indexOf("(by: ");
-                String description = line.substring(7, byIndex - 1);
-                String by = line.substring(byIndex + 5, line.length() - 1);
-                Deadline deadline = new Deadline(description, by);
-                if (isDone) {
-                    deadline.setChecked();
-                }
-                return deadline;
-            } else if (taskType == 'E') {
-                // Format: [E][ ] description (from: time1 to: time2)
-                int fromIndex = line.indexOf("(from: ");
-                int toIndex = line.indexOf(" to: ");
-                String description = line.substring(7, fromIndex - 1);
-                String from = line.substring(fromIndex + 7, toIndex);
-                String to = line.substring(toIndex + 5, line.length() - 1);
-                Event event = new Event(description, from, to);
-                if (isDone) {
-                    event.setChecked();
-                }
-                return event;
-            }
-        } catch (Exception e) {
-            System.err.println("Error parsing task: " + line);
-        }
-        return null;
-    }
-
-    /**
      * Adds a task to the list
      *
      * @param command the name of the chatbot.
