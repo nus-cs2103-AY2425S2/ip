@@ -15,9 +15,6 @@ public class Parser {
      * @param ui       the Ui to handle user interactions.
      */
     public Parser(TaskList taskList, Ui ui) {
-        assert taskList != null : "TaskList instance cannot be null.";
-        assert ui != null : "Ui instance cannot be null.";
-
         this.taskList = taskList;
         this.ui = ui;
 
