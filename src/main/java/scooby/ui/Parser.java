@@ -15,6 +15,9 @@ public class Parser {
      * @param ui       the Ui to handle user interactions.
      */
     public Parser(TaskList taskList, Ui ui) {
+        assert taskList != null : "TaskList instance cannot be null.";
+        assert ui != null : "Ui instance cannot be null.";
+
         this.taskList = taskList;
         this.ui = ui;
 
@@ -123,6 +126,7 @@ public class Parser {
 
 
     private String handleMarkCommand(String command, boolean isMark) {
+        assert command != null : "Description of Event task cannot be null.";
         try {
             int taskIndex = Integer.parseInt(command.split(" ")[1]) - 1;
             if (isMark) {
@@ -140,6 +144,7 @@ public class Parser {
     }
 
     private String handleDeleteCommand(String command) {
+        assert command != null : "Description of Event task cannot be null.";
         String response = "";
         try {
             int taskIndex = Integer.parseInt(command.split(" ")[1]) - 1;
