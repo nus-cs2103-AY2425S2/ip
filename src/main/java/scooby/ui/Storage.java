@@ -18,90 +18,93 @@ public class Storage {
 
     /**
      * Loads tasks from the tasks.txt file if it exists.
+     * @return List of tasks loaded from the file.
      */
     public ArrayList<Task> loadFromFile() {
-        ArrayList<Task> tasks = new ArrayList<Task>();
+        ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(FILELOCATION);
-        if (file.exists()) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    assert !line.isEmpty();
-                    // Parse the task and add it to the task list
-                    Task task = parseTask(line);
-                    if (task != null) {
-                        tasks.add(task);
-                    }
-                }
-            } catch (IOException e) {
-                System.err.println("An error occurred while loading tasks: " + e.getMessage());
-            }
+
+        if (!file.exists()) {
+            return tasks; // Return empty list if file doesn't exist
         }
-        assert tasks != null;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                assert !line.isEmpty() : "Error: Encountered an empty line in tasks file.";
+
+                Task task = parseTask(line);
+                assert task != null : "Error: Failed to parse task from line: " + line;
+                tasks.add(task);
+            }
+        } catch (IOException e) {
+            System.err.println("Error loading tasks: " + e.getMessage());
+        }
+
         return tasks;
     }
 
     /**
      * Parses a task string and creates the appropriate Task object.
-     *
-     * @param line the string representation of a task from tasks.txt.
-     * @return the Task object, or null if the line is invalid.
+     * @param line The string representation of a task from tasks.txt.
+     * @return The Task object, or null if the line is invalid.
      */
     private Task parseTask(String line) {
         try {
-            // Identify task type from the string format, e.g., "[T][ ] description"
-            char taskType = line.charAt(1); // T for ToDo, D for Deadline, E for Event
-            boolean isDone = line.charAt(4) == 'X'; // X indicates task is marked as done
+            char taskType = line.charAt(1); // T, D, or E
+            boolean isDone = line.charAt(4) == 'X'; // X indicates completed task
+            String description;
+            Task task = null;
 
-            if (taskType == 'T') {
-                // Format: [T][ ] description
-                String description = line.substring(7);
-                ToDo todo = new ToDo(description);
-                if (isDone) {
-                    todo.setChecked();
-                }
-                return todo;
-            } else if (taskType == 'D') {
-                // Format: [D][ ] description (by: time)
+            switch (taskType) {
+            case 'T' -> {
+                description = line.substring(7);
+                task = new ToDo(description);
+            }
+            case 'D' -> {
                 int byIndex = line.indexOf("(by: ");
-                String description = line.substring(7, byIndex - 1);
+                assert byIndex > 7 : "Error: Invalid deadline format!";
+                description = line.substring(7, byIndex - 1);
                 String by = line.substring(byIndex + 5, line.length() - 1);
-                Deadline deadline = new Deadline(description, by);
-                if (isDone) {
-                    deadline.setChecked();
-                }
-                return deadline;
-            } else if (taskType == 'E') {
-                // Format: [E][ ] description (from: time1 to: time2)
+                task = new Deadline(description, by);
+            }
+            case 'E' -> {
                 int fromIndex = line.indexOf("(from: ");
                 int toIndex = line.indexOf(" to: ");
-                String description = line.substring(7, fromIndex - 1);
+                assert fromIndex > 7 && toIndex > fromIndex : "Error: Invalid event format!";
+                description = line.substring(7, fromIndex - 1);
                 String from = line.substring(fromIndex + 7, toIndex);
                 String to = line.substring(toIndex + 5, line.length() - 1);
-                Event event = new Event(description, from, to);
-                if (isDone) {
-                    event.setChecked();
-                }
-                return event;
+                task = new Event(description, from, to);
             }
+            default -> System.err.println("Unknown task type: " + taskType);
+            }
+
+            if (task != null && isDone) {
+                task.setChecked();
+            }
+            return task;
         } catch (Exception e) {
             System.err.println("Error parsing task: " + line);
+            return null;
         }
-        return null;
     }
 
     /**
-     * Saves the content in the task list to a file.
+     * Saves the task list to a file.
+     * @param tasks List of tasks to be saved.
      */
     public void saveToFile(ArrayList<Task> tasks) {
-        assert tasks != null : "Error, tasks cannot be null";
+        assert tasks != null : "Error: Task list cannot be null when saving.";
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILELOCATION))) {
             for (Task task : tasks) {
                 writer.write(task.toRawString());
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.err.println("An error occurred while saving tasks: " + e.getMessage());
+            System.err.println("Error saving tasks: " + e.getMessage());
         }
     }
 }
+

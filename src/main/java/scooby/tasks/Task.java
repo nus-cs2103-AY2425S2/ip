@@ -1,16 +1,16 @@
 package scooby.tasks;
 
 public class Task {
-    private String desc;
+    private String description;
     private boolean isChecked;
 
     /**
      * Constructs a Ui object for the given chatbot name.
      *
-     * @param desc the name of the chatbot.
+     * @param description the name of the chatbot.
      */
-    Task(String desc) {
-        this.desc = desc;
+    Task(String description) {
+        this.description = description;
         this.isChecked = false;
     }
 
@@ -35,7 +35,7 @@ public class Task {
      */
     @Override
     public String toString() {
-        return "[" + (isChecked ? "X" : " ") + "] " + desc;
+        return "[" + (isChecked ? "X" : " ") + "] " + description;
     }
 
     /**
