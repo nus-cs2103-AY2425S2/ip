@@ -81,48 +81,69 @@ public class Parser {
      * @return the response string to be displayed to the user.
      */
     public String parseCommandReturnString(String command) {
-        String response = ""; // Initialize the response variable
+        assert command != null && !command.isEmpty() : "Error: Command cannot be null or empty!";
+
         try {
-            if (command.startsWith("todo") || command.startsWith("deadline") || command.startsWith("event")) {
-                // Handle adding tasks
-                String[] parts = command.split(" ", 2);  // This will split into [command, description]
+            // Extract the first word of the command (the action)
+            String[] parts = command.split(" ", 2);
+            String action = parts[0].toLowerCase(); // Normalize to lowercase
+            String details = (parts.length > 1) ? parts[1].trim() : "";
 
-                if (parts.length < 2 || parts[1].trim().isEmpty()) {
-                    throw new EmptyException("Description of a task cannot be empty. Try again");
-                }
-
-                String holderForAddTask = taskList.addTask(command);
-                taskList.saveToFile(); // Save after adding a task
-                return holderForAddTask;
-            } else if (command.equalsIgnoreCase("bye")) {
-                return ui.exitDialogue(); // Respond when user says goodbye
-            } else if (command.equalsIgnoreCase("list")) {
-                return taskList.listTasks();
-            } else if (command.startsWith("mark ")) {
-                return handleMarkCommand(command, true);
-            } else if (command.startsWith("unmark ")) {
-                return handleMarkCommand(command, false);
-            } else if (command.startsWith("delete ")) {
-                return handleDeleteCommand(command); // Handle delete command
-            } else if (command.startsWith("find ")) {
-                // Handle find command
-                String[] parts = command.split(" ", 2);
-                if (parts.length < 2 || parts[1].trim().isEmpty()) {
-                    throw new EmptyException("Keyword for find cannot be empty. Try again.");
-                }
-                return taskList.find(parts[1].trim());
-            } else {
-                throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
-            }
-
-        } catch (EmptyException e) {
-            return e.getMessage();  // Return the error message if the description is empty
-        } catch (UnrecognisableException e) {
-            return e.getMessage();  // Return the error message if command is not recognized
+            return switch (action) {
+                case "todo", "deadline", "event" -> handleTaskCreation(action, details);
+                case "mark", "unmark", "delete" -> handleTaskModification(action, details);
+                case "list", "bye", "find" -> handleGeneralCommand(action, details);
+                default -> throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
+            };
+        } catch (EmptyException | UnrecognisableException e) {
+            return e.getMessage(); // Return known exception messages
         } catch (Exception e) {
-            return "An unexpected error occurred: " + e.getMessage(); // Return error message for unexpected errors
+            return "An unexpected error occurred: " + e.getMessage(); // Handle other errors
         }
     }
+
+    /**
+     * Handles task creation commands (`todo`, `deadline`, `event`).
+     */
+    private String handleTaskCreation(String action, String details) throws EmptyException {
+        if (details.isEmpty()) {
+            throw new EmptyException("Description of a task cannot be empty. Try again.");
+        }
+        String response = taskList.addTask(action + " " + details);
+        taskList.saveToFile(); // Save after adding a task
+        return response;
+    }
+
+    /**
+     * Handles task modification commands (`mark`, `unmark`, `delete`).
+     */
+    private String handleTaskModification(String action, String details) {
+        return switch (action) {
+            case "mark" -> handleMarkCommand("mark " + details, true);
+            case "unmark" -> handleMarkCommand("unmark " + details, false);
+            case "delete" -> handleDeleteCommand("delete " + details);
+            default -> throw new IllegalArgumentException("Unknown modification command: " + action);
+        };
+    }
+
+    /**
+     * Handles general commands (`list`, `bye`, `find`).
+     */
+    private String handleGeneralCommand(String action, String details) throws EmptyException {
+        return switch (action) {
+            case "bye" -> ui.exitDialogue();
+            case "list" -> taskList.listTasks();
+            case "find" -> {
+                if (details.isEmpty()) {
+                    throw new EmptyException("Keyword for find cannot be empty. Try again.");
+                }
+                yield taskList.find(details);
+            }
+            default -> throw new IllegalArgumentException("Unknown general command: " + action);
+        };
+    }
+
+
 
 
     private String handleMarkCommand(String command, boolean isMark) {
