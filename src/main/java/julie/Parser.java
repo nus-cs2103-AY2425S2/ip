@@ -53,7 +53,11 @@ public class Parser {
         case "list":
             return new ListCommand();
 
-        case "bye":
+        case "find":
+            return parseFindCommand(parts);
+
+
+            case "bye":
             return new ExitCommand();
 
         default:
@@ -165,6 +169,24 @@ public class Parser {
             throw new WrongFormatException(NUMBER_FORMAT_ERROR);
         }
     }
+
+    /**
+     * Parses a {@code find} command and returns a {@code FindCommand}.
+     *
+     * @param parts The split user input.
+     * @return An instance of {@code FindCommand}.
+     * @throws WrongFormatException If the search keyword is missing.
+     */
+    private static Command parseFindCommand(String[] parts) throws WrongFormatException {
+        String keyword = (parts.length > 1) ? parts[1].trim() : "";
+
+        if (keyword.isEmpty()) {
+            throw new WrongFormatException("Oops! The correct format for find is:\nfind <keyword>");
+        }
+
+        return new FindCommand(keyword);
+    }
+
 
     /**
      * Extracts the task description from a user command.

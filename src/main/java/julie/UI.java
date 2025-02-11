@@ -1,7 +1,6 @@
 package julie;
 
 import julie.task.Task;
-
 import java.util.Scanner;
 
 /**
@@ -55,6 +54,18 @@ public class UI {
         drawLine();
         System.out.println("Here are your tasks:");
         tasks.showTasks();
+        drawLine();
+    }
+
+    /**
+     * Displays the list of tasks matching the keyword.
+     *
+     * @param tasks The {@code TaskList} containing the tasks to search in.
+     * @param keyword The search keyword.
+     */
+    public void showFoundTaskList(TaskList tasks, String keyword) {
+        drawLine();
+        tasks.showFoundTasks(keyword);
         drawLine();
     }
 

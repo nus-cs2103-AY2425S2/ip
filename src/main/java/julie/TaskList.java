@@ -66,6 +66,28 @@ public class TaskList {
     }
 
     /**
+     * Displays tasks that contain the given keyword.
+     *
+     * @param keyword The keyword to search for in task descriptions.
+     */
+    public void showFoundTasks(String keyword) {
+        boolean hasMatches = false;
+        System.out.println("Here are the matching tasks in your list:");
+
+        for (int i = 0; i < tasks.size(); i++) {
+            Task task = tasks.get(i);
+            if (task.toString().toLowerCase().contains(keyword.toLowerCase())) {
+                System.out.println((i + 1) + ". " + task);
+                hasMatches = true;
+            }
+        }
+
+        if (!hasMatches) {
+            System.out.println("No matching tasks found.");
+        }
+    }
+
+    /**
      * Returns a copy of the list of tasks to maintain encapsulation.
      *
      * @return A new list containing all tasks.
