@@ -6,13 +6,24 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents a task with a deadline.
+ * A {@code Deadline} task includes a description and a due date/time.
+ */
 public class Deadline extends Task {
-    protected LocalDateTime by;
+    private final LocalDateTime by;
     private static final String MARKER = "[D]";
 
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
 
+    /**
+     * Constructs a {@code Deadline} task with the given description and due date/time.
+     *
+     * @param description The description of the deadline task.
+     * @param by The due date and time in the format "dd-MM-yyyy HHmm".
+     * @throws WrongFormatException If the date/time format is incorrect.
+     */
     public Deadline(String description, String by) throws WrongFormatException {
         super(description);
         try {
@@ -22,11 +33,23 @@ public class Deadline extends Task {
         }
     }
 
+    /**
+     * Converts the {@code Deadline} task into a formatted string suitable for file storage.
+     * The format follows: "D | {isDone} | {description} | {by}".
+     *
+     * @return A string representation of the {@code Deadline} task for file storage.
+     */
     @Override
     public String toFileFormat() {
         return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + by.format(INPUT_FORMATTER);
     }
 
+    /**
+     * Returns a string representation of the {@code Deadline} task,
+     * including its status, description, and formatted due date/time.
+     *
+     * @return A formatted string representation of the {@code Deadline} task.
+     */
     @Override
     public String toString() {
         return MARKER + " " + super.toString() + " (by: " + by.format(OUTPUT_FORMATTER) + ")";

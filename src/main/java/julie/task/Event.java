@@ -6,13 +6,25 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents an event task that occurs within a specific time range.
+ * An {@code Event} task includes a description, a start date/time, and an end date/time.
+ */
 public class Event extends Task {
-    protected LocalDateTime from;
-    protected LocalDateTime by;
+    private final LocalDateTime from;
+    private final LocalDateTime by;
     private static final String MARKER = "[E]";
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
 
+    /**
+     * Constructs an {@code Event} task with a description, start time, and end time.
+     *
+     * @param description The description of the event.
+     * @param from The start date and time in the format "dd-MM-yyyy HHmm".
+     * @param by The end date and time in the format "dd-MM-yyyy HHmm".
+     * @throws WrongFormatException If the date/time format is incorrect or the end time is before the start time.
+     */
     public Event(String description, String from, String by) throws WrongFormatException {
         super(description);
         try {
@@ -28,12 +40,24 @@ public class Event extends Task {
 
     }
 
+    /**
+     * Converts the {@code Event} task into a formatted string suitable for file storage.
+     * The format follows: "E | {isDone} | {description} | {from} | {by}".
+     *
+     * @return A string representation of the {@code Event} task for file storage.
+     */
     @Override
     public String toFileFormat() {
         return "E | " + (isDone ? "1" : "0") + " | " + description + " | " +
                 from.format(INPUT_FORMATTER) + " | " + by.format(INPUT_FORMATTER);
     }
 
+    /**
+     * Returns a string representation of the {@code Event} task,
+     * including its status, description, start time, and end time.
+     *
+     * @return A formatted string representation of the {@code Event} task.
+     */
     @Override
     public String toString() {
         return MARKER + " " + super.toString() + " (from: " +

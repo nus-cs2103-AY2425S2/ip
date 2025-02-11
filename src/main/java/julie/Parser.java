@@ -3,6 +3,11 @@ package julie;
 import julie.command.*;
 import julie.exception.WrongFormatException;
 
+/**
+ * Parses user input and returns the corresponding command.
+ * Handles the extraction of relevant details from user commands
+ * and ensures proper formatting before creating appropriate command objects.
+ */
 public class Parser {
     private static final String TODO_FORMAT = "Oops! The correct format for a todo is:\n" +
             "todo <description>";
@@ -12,9 +17,16 @@ public class Parser {
     private static final String EVENT_FORMAT = "The correct format for an event is:\n" +
             "event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>";
 
-    private static final String NUMBER_FORMAT_ERROR = "julie.task.Task number must be an integer!\n" +
+    private static final String NUMBER_FORMAT_ERROR = "Task number must be an integer!\n" +
             "Correct format: <command> <task number>";
 
+    /**
+     * Parses the user input string and returns the corresponding command.
+     *
+     * @param input The full command input from the user.
+     * @return The corresponding {@code Command} object.
+     * @throws WrongFormatException If the input format is incorrect or unrecognized.
+     */
     public static Command parse(String input) throws WrongFormatException {
         String[] parts = input.split(" ", 2);
         String commandWord = parts[0];
@@ -46,9 +58,16 @@ public class Parser {
 
         default:
             throw new WrongFormatException("Sorry, I didn't understand what you said!");
-    }
+        }
     }
 
+    /**
+     * Parses a {@code ToDo} command and returns an {@code AddToDoCommand}.
+     *
+     * @param input The full user input.
+     * @return An instance of {@code AddToDoCommand}.
+     * @throws WrongFormatException If the todo description is missing.
+     */
     private static Command parseToDoCommand(String input) throws WrongFormatException {
         String desc = extractDescription(input, "todo");
 
@@ -59,13 +78,21 @@ public class Parser {
         return new AddToDoCommand(desc);
     }
 
+    /**
+     * Parses a {@code deadline} command and returns an {@code AddDeadlineCommand}.
+     *
+     * @param input The full user input.
+     * @return An instance of {@code AddDeadlineCommand}.
+     * @throws WrongFormatException If the deadline description or date/time is missing.
+     */
     private static Command parseDeadlineCommand(String input) throws WrongFormatException {
         String desc = extractDescription(input, "deadline");
         String[] getDeadline = input.split("/by ", 2);
         String dateTime = (getDeadline.length > 1) ? getDeadline[1].trim() : "";
 
         if (desc.isEmpty() && dateTime.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing both the deadline description and due date/time!\n" + DEADLINE_FORMAT);
+            throw new WrongFormatException("Oops! Missing both the deadline description and due date/time!\n"
+                    + DEADLINE_FORMAT);
         }
         if (desc.isEmpty()) {
             throw new WrongFormatException("Oops! Missing deadline description!\n" + DEADLINE_FORMAT);
@@ -77,6 +104,13 @@ public class Parser {
         return new AddDeadlineCommand(desc, dateTime);
     }
 
+    /**
+     * Parses an {@code event} command and returns an {@code AddEventCommand}.
+     *
+     * @param input The full user input.
+     * @return An instance of {@code AddEventCommand}.
+     * @throws WrongFormatException If the event description, start, or end time is missing.
+     */
     private static Command parseEventCommand(String input) throws WrongFormatException {
         String desc = extractDescription(input, "event");
         String[] getEvent = input.split("/from ", 2);
@@ -101,6 +135,14 @@ public class Parser {
         return new AddEventCommand(desc, dateTimeFrom, dateTimeTo);
     }
 
+    /**
+     * Parses commands that require an integer index (e.g., delete, mark, unmark).
+     *
+     * @param parts  The split user input.
+     * @param action The command action (e.g., "delete", "mark", "unmark").
+     * @return The corresponding command object.
+     * @throws WrongFormatException If the task number is missing or invalid.
+     */
     private static Command parseIndexCommand(String[] parts, String action) throws WrongFormatException {
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
             throw new WrongFormatException("Oops! Missing task number for " + action + "!\n" +
@@ -124,6 +166,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Extracts the task description from a user command.
+     *
+     * @param input   The full user input.
+     * @param command The command keyword (e.g., "todo", "deadline", "event").
+     * @return The extracted description.
+     */
     private static String extractDescription(String input, String command) {
         int commandLength = command.length() + 1;  // +1 for space after command
         return (input.length() > commandLength)
