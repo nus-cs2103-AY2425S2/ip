@@ -11,31 +11,18 @@ import java.io.FileWriter;
 import scooby.exception.UnrecognisableException;
 import scooby.exception.EmptyException;
 import scooby.ui.Line;
+import scooby.ui.Storage;
 
 public class TaskList {
     private ArrayList<Task> tasks = new ArrayList<>(); // Dynamic list to hold tasks
     private static final Line LINE = new Line();
+    private static final Storage storage = new Storage();
 
     /**
      * Loads tasks from the tasks.txt file if it exists.
      */
     public void loadFromFile() {
-        tasks.clear();
-        File file = new File("tasks.txt");
-        if (file.exists()) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    // Parse the task and add it to the task list
-                    Task task = parseTask(line);
-                    if (task != null) {
-                        tasks.add(task);
-                    }
-                }
-            } catch (IOException e) {
-                System.err.println("An error occurred while loading tasks: " + e.getMessage());
-            }
-        }
+        this.tasks = storage.loadFromFile();
     }
 
     /**
@@ -227,14 +214,7 @@ public class TaskList {
      * Saves the content in the task list to a file.
      */
     public void saveToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("tasks.txt"))) {
-            for (Task task : tasks) {
-                writer.write(task.toRawString());
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            System.err.println("An error occurred while saving tasks: " + e.getMessage());
-        }
+        storage.saveToFile(this.tasks);
     }
 
     /**
