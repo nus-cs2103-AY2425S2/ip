@@ -94,7 +94,7 @@ public class Storage {
      * Saves the content in the task list to a file.
      */
     public void saveToFile(ArrayList<Task> tasks) {
-        assert tasks != null;
+        assert tasks != null : "Error, tasks cannot be null";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILELOCATION))) {
             for (Task task : tasks) {
                 writer.write(task.toRawString());
