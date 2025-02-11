@@ -26,6 +26,7 @@ public class Storage {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
+                    assert !line.isEmpty();
                     // Parse the task and add it to the task list
                     Task task = parseTask(line);
                     if (task != null) {
@@ -36,6 +37,7 @@ public class Storage {
                 System.err.println("An error occurred while loading tasks: " + e.getMessage());
             }
         }
+        assert tasks != null;
         return tasks;
     }
 
@@ -92,6 +94,7 @@ public class Storage {
      * Saves the content in the task list to a file.
      */
     public void saveToFile(ArrayList<Task> tasks) {
+        assert tasks != null : "Error, tasks cannot be null";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILELOCATION))) {
             for (Task task : tasks) {
                 writer.write(task.toRawString());

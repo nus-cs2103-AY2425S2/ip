@@ -23,6 +23,7 @@ public class TaskList {
      */
     public void loadFromFile() {
         this.tasks = storage.loadFromFile();
+        assert tasks != null : "Error: Loaded tasks list is null!";
     }
 
     /**
@@ -31,28 +32,26 @@ public class TaskList {
      * @param command the name of the chatbot.
      */
     public String addTask(String command) {
+        assert command != null && !command.isEmpty() : "Error, command cannot be empty";
+
         Task newTask;
-        String response = "";
         if (command.startsWith("todo ")) {
             String description = command.substring(5).trim();
-            if (description.isEmpty()) {
-                return "Description of a task cannot be empty. Try again";
-            }
+            assert !description.isEmpty() : "Error: ToDo description cannot be empty!";
+
             newTask = new ToDo(description);
         } else if (command.startsWith("deadline ")) {
             String[] parts = command.substring(9).split(" /by ");
             String description = parts[0].trim();
-            if (description.isEmpty()) {
-                return "Description of a task cannot be empty. Try again";
-            }
+            assert parts.length == 2 : "Error: Incorrect Deadline format!";
+
             String by = parts[1];
             newTask = new Deadline(description, by);
         } else if (command.startsWith("event ")) {
             String[] parts = command.substring(6).split(" /from | /to ");
             String description = parts[0].trim();
-            if (description.isEmpty()) {
-                return "Description of a task cannot be empty. Try again";
-            }
+            assert parts.length == 3 : "Error: Incorrect Event format!";
+
             String from = parts[1];
             String to = parts[2];
             newTask = new Event(description, from, to);
@@ -61,13 +60,12 @@ public class TaskList {
         }
 
         tasks.add(newTask); // Add task to ArrayList
+        assert tasks.contains(newTask) : "Error: Task was not added successfully!";
+
         // LINE.print();
-        response += "Got it. I've added this task:\n " + newTask + "\nNow you have "
+        return "Got it. I've added this task:\n " + newTask + "\nNow you have "
                 + tasks.size() + " tasks in the list.";
         // LINE.print();
-        return response;
-
-
     }
 
     /**
@@ -77,8 +75,9 @@ public class TaskList {
         // LINE.print();
         String response = "";
         if (tasks.size() == 0) {
-            response = "No tasks in the list.";
+            return "No tasks in the list.";
         } else {
+            assert tasks.size() > 0;
             for (int i = 0; i < tasks.size(); i++) {
                 response += ((i + 1) + ". " + tasks.get(i) + "\n");
             }
@@ -152,6 +151,7 @@ public class TaskList {
         if (foundTasks.isEmpty()) {
             return "No matching tasks found.";
         } else {
+            assert foundTasks.size() > 0;
             response += "Here are the matching tasks in your list:\n";
             for (int i = 0; i < foundTasks.size(); i++) {
                 response += ((i + 1) + ". " + foundTasks.get(i));

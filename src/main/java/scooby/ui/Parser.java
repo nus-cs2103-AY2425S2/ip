@@ -15,6 +15,9 @@ public class Parser {
      * @param ui       the Ui to handle user interactions.
      */
     public Parser(TaskList taskList, Ui ui) {
+        assert taskList != null : "TaskList instance cannot be null.";
+        assert ui != null : "Ui instance cannot be null.";
+
         this.taskList = taskList;
         this.ui = ui;
 
@@ -113,18 +116,17 @@ public class Parser {
             }
 
         } catch (EmptyException e) {
-            response = e.getMessage();  // Return the error message if the description is empty
+            return e.getMessage();  // Return the error message if the description is empty
         } catch (UnrecognisableException e) {
-            response = e.getMessage();  // Return the error message if command is not recognized
+            return e.getMessage();  // Return the error message if command is not recognized
         } catch (Exception e) {
-            response = "An unexpected error occurred: " + e.getMessage(); // Return error message for unexpected errors
+            return "An unexpected error occurred: " + e.getMessage(); // Return error message for unexpected errors
         }
-
-        return response; // Return the response to be used elsewhere
     }
 
 
     private String handleMarkCommand(String command, boolean isMark) {
+        assert command != null : "Description of Event task cannot be null.";
         try {
             int taskIndex = Integer.parseInt(command.split(" ")[1]) - 1;
             if (isMark) {
@@ -142,14 +144,15 @@ public class Parser {
     }
 
     private String handleDeleteCommand(String command) {
+        assert command != null : "Description of Event task cannot be null.";
         String response = "";
         try {
             int taskIndex = Integer.parseInt(command.split(" ")[1]) - 1;
             response += taskList.deleteTask(taskIndex); // Call deleteTask method
             taskList.saveToFile(); // Save after deleting a task
+            return response; // returns the response
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            response += "Invalid task index. Please try again.";
+            return "Invalid task index. Please try again.";
         }
-        return response;
     }
 }
