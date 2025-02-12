@@ -8,33 +8,8 @@ import backend.Storage;
 
 import static frontend.Format.HORIZONTAL_LINE;
 /**
- * Class that acts as the User Interface.
- *<p>
- *     Using the chatbot:
- *     - To view the list, use the following command:
- *     list
- *
- *      - To add a To Do to the list, use the following format:
- *     deadline/description
- *
- *      - To add a Deadline to the list, use the following format:
- *     deadline/description/time to be completed by
- *
- *      - To add an Event to the list, use the following format:
- *      event/description/start time/end time
- *
- *      - To mark a task as done, use the following format:
- *      mark/task index
- *
- *      - To unmark a task as done, use the following format:
- *      unmark/task index
- *
- *      - To delete a task, use the following format:
- *      delete/task index
- *
- *      - To close the chatbot, use the following command:
- *      bye
- *</p>
+ * Class that acts as the User Interface. This class is responsible for printing
+ * all prompts and responses.
  */
 public class SirDuke {
 
@@ -68,6 +43,9 @@ public class SirDuke {
     public void markTaskAsDone(int index) {
         try {
             this.taskList.markTaskAsDone(index);
+            System.out.println(HORIZONTAL_LINE + "\n");
+            System.out.println("Well done, I have marked this task as done.");
+            System.out.println(HORIZONTAL_LINE + "\n");
         } catch (NumberFormatException e) { //index provided after "mark" is not a number
             System.out.println(HORIZONTAL_LINE + "\n");
             System.out.println("You have not provided me with a valid task index. " +
@@ -81,6 +59,9 @@ public class SirDuke {
     public void unmarkTaskAsDone(int index) {
         try {
             taskList.unmarkTaskAsDone(index);
+            System.out.println(HORIZONTAL_LINE + "\n");
+            System.out.println("Understood, I have unmarked this task as done.");
+            System.out.println(HORIZONTAL_LINE + "\n");
         } catch (NumberFormatException e) { //index provided after "mark" is not a number
             System.out.println(HORIZONTAL_LINE + "\n");
             System.out.println("You have not provided me with a valid task index. " +
@@ -94,6 +75,9 @@ public class SirDuke {
     public void deleteTask(int index) {
         try {
             taskList.deleteTask(index);
+            System.out.println(HORIZONTAL_LINE + "\n");
+            System.out.println("Very well, I have deleted this task .");
+            System.out.println(HORIZONTAL_LINE + "\n");
         } catch (DateTimeParseException e) {
             System.out.println(HORIZONTAL_LINE + "\n");
             System.out.println("One or more of your dates do not follow a format I understand." +
