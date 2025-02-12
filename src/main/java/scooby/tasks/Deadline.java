@@ -13,11 +13,11 @@ public class Deadline extends Task {
     /**
      * Constructs a new Deadline task.
      *
-     * @param desc the name of the deadline task
+     * @param description the name of the deadline task
      * @param by the deadline date and time
      */
-    public Deadline(String desc, String by) {
-        super(desc);
+    public Deadline(String description, String by) {
+        super(description);
         this.deadlineTime = parseDate(by); // Parse the date and time
     }
 
@@ -51,4 +51,34 @@ public class Deadline extends Task {
         return "[D]" + super.toString()
                 + " (by: " + deadlineTime.format(INPUTFORMATTER) + ")";
     }
+
+    /**
+     * Checks if the given object is equal to this task instance.
+     *
+     * @param obj The object to compare with this task.
+     * @return {@code true} if both the description and type are equal; {@code false} otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Deadline deadline) {
+            return this.deadlineTime.equals(deadline.deadlineTime)
+                    && this.description.equalsIgnoreCase(deadline.description);
+        }
+        return false;
+    }
+
+    /**
+     * Updates the deadline task details.
+     *
+     * @param newDescription The new task description.
+     * @param newDeadline The new deadline date.
+     */
+    public void updateDetails(String newDescription, String newDeadline) {
+        this.description = newDescription.trim();
+        this.deadlineTime = LocalDateTime.parse(newDeadline, INPUTFORMATTER);
+    }
+
 }

@@ -91,7 +91,7 @@ public class Parser {
 
             return switch (action) {
                 case "todo", "deadline", "event" -> handleTaskCreation(action, details);
-                case "mark", "unmark", "delete" -> handleTaskModification(action, details);
+                case "mark", "unmark", "delete", "update" -> handleTaskModification(action, details);
                 case "list", "bye", "find" -> handleGeneralCommand(action, details);
                 default -> throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
             };
@@ -122,6 +122,7 @@ public class Parser {
             case "mark" -> handleMarkCommand("mark " + details, true);
             case "unmark" -> handleMarkCommand("unmark " + details, false);
             case "delete" -> handleDeleteCommand("delete " + details);
+            case "update" -> handleUpdateCommand("update" + details);
             default -> throw new IllegalArgumentException("Unknown modification command: " + action);
         };
     }
@@ -143,8 +144,28 @@ public class Parser {
         };
     }
 
+    /**
+     * Handles the update command by extracting the task index and new details.
+     *
+     * @param command The update command in the format "update <taskIndex> <newDetails>"
+     * @return The response string after updating the task.
+     */
+    private String handleUpdateCommand(String command) {
+        try {
+            // Extract task index and new details
+            String[] parts = command.split(" ", 2);
+            if (parts.length < 2) {
+                return "Error: Please specify the task number and new details.";
+            }
 
+            int taskIndex = Integer.parseInt(parts[0].replace("update", "").trim()) - 1;
+            String newDetails = parts[1].trim();
 
+            return taskList.updateTask(taskIndex, newDetails);
+        } catch (NumberFormatException e) {
+            return "Error: Invalid task number. Please enter a valid number.";
+        }
+    }
 
     private String handleMarkCommand(String command, boolean isMark) {
         assert command != null : "Description of Event task cannot be null.";

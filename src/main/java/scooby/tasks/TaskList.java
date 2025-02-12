@@ -50,6 +50,12 @@ public class TaskList {
             return "I'm sorry, but I don't know what that means.";
         }
 
+        System.out.println(tasks.contains(newTask));
+        System.out.println(newTask.equals(new ToDo("Task 4")));
+        if (tasks.contains(newTask)) {
+            return "Task already exists in the list:\n " + newTask;
+        }
+
         tasks.add(newTask); // Add task to ArrayList
         assert tasks.contains(newTask) : "Error: Task was not added successfully!";
 
@@ -65,6 +71,45 @@ public class TaskList {
                 .mapToObj(index -> (index + 1) + ". " + tasks.get(index).toString() + "\n")
                 .reduce("", (task1, task2) -> task1 + task2);
     }
+
+    /**
+     * Updates a task's details in the task list.
+     *
+     * @param index the index of the task to update.
+     * @param newDetails the new details to update the task with.
+     * @return a message indicating the result of the update.
+     */
+    public String updateTask(int index, String newDetails) {
+        if (index < 0 || index >= tasks.size()) {
+            return "Invalid task index. Please try again.";
+        }
+
+        Task taskToUpdate = tasks.get(index);
+
+        if (taskToUpdate instanceof ToDo todo) {
+            todo.updateDetails(newDetails);
+        } else if (taskToUpdate instanceof Deadline deadline) {
+            String[] parts = newDetails.split(" /by ", 2);
+            if (parts.length < 2) {
+                return "Error: Invalid update format. Use: <new description> /by <new deadline>";
+            }
+            deadline.updateDetails(parts[0], parts[1]);
+        } else if (taskToUpdate instanceof Event event) {
+            String[] parts = newDetails.split(" /from | /to ", 3);
+            if (parts.length < 3) {
+                return "Error: Invalid update format. Use: <new description> /from <start time> /to <end time>";
+            }
+            event.updateDetails(parts[0], parts[1], parts[2]);
+        } else {
+            return "Error: Unsupported task type.";
+        }
+
+        // Save updated tasks to file
+        saveToFile();
+
+        return "Task updated successfully:\n" + taskToUpdate;
+    }
+
 
     /**
      * Gets a task from the task list
@@ -150,5 +195,15 @@ public class TaskList {
      */
     public int size() {
         return this.tasks.size();
+    }
+
+    /**
+     * Returns whether the task is inside the task list
+     *
+     * @param task is the task to be checked
+     * @return returns whether the task is inside the task list or not
+     */
+    public boolean containsTask(Task task) {
+        return this.tasks.contains(task);
     }
 }

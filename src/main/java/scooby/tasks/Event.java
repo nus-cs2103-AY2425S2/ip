@@ -14,12 +14,12 @@ public class Event extends Task {
     /**
      * Constructs a new Event task.
      *
-     * @param desc the name of the event task
+     * @param description the name of the event task
      * @param from the start date and time of the event
      * @param to the end date and time of the event
      */
-    public Event(String desc, String from, String to) {
-        super(desc);
+    public Event(String description, String from, String to) {
+        super(description);
         this.startTime = parseDate(from); // Parse the date and time
         this.endTime = parseDate(to); // Parse the date and time
     }
@@ -54,4 +54,37 @@ public class Event extends Task {
         return "[E]" + super.toString()
                 + " (from: " + startTime.format(INPUTFORMATTER) + " to: " + endTime.format(INPUTFORMATTER) + ")";
     }
+
+    /**
+     * Checks if the given object is equal to this task instance.
+     *
+     * @param obj The object to compare with this task.
+     * @return {@code true} if both the description and type are equal; {@code false} otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Event otherEvent) {
+            return this.description.equalsIgnoreCase(otherEvent.description)
+                     && this.startTime.equals(otherEvent.startTime)
+                     && this.endTime.equals(otherEvent.endTime);
+        }
+        return false;
+    }
+
+    /**
+     * Updates the event task details.
+     *
+     * @param newDescription The new task description.
+     * @param newStartTime The new start time.
+     * @param newEndTime The new end time.
+     */
+    public void updateDetails(String newDescription, String newStartTime, String newEndTime) {
+        this.description = newDescription.trim();
+        this.startTime = LocalDateTime.parse(newStartTime, INPUTFORMATTER);
+        this.endTime = LocalDateTime.parse(newEndTime, INPUTFORMATTER);
+    }
+
 }
