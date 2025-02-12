@@ -1,0 +1,6 @@
+todo Task 1
+deadline Task 2 /by 7 feb 25
+mark 2
+mark 1
+list
+bye
