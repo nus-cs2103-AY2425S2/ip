@@ -7,6 +7,7 @@ import scooby.exception.EmptyException;
 public class Parser {
     private final TaskList taskList;
     private final Ui ui;
+    private static final String HELPRESPONSE = new HelpPrompt().getHelp();
 
     /**
      * Constructs a Parser with the given TaskManager and Ui.
@@ -93,6 +94,7 @@ public class Parser {
                 case "todo", "deadline", "event" -> handleTaskCreation(action, details);
                 case "mark", "unmark", "delete", "update" -> handleTaskModification(action, details);
                 case "list", "bye", "find" -> handleGeneralCommand(action, details);
+                case "help" -> handleHelpCommand();
                 default -> throw new UnrecognisableException("I'm sorry, but I don't know what that means.");
             };
         } catch (EmptyException | UnrecognisableException e) {
@@ -100,6 +102,10 @@ public class Parser {
         } catch (Exception e) {
             return "An unexpected error occurred: " + e.getMessage(); // Handle other errors
         }
+    }
+
+    private String handleHelpCommand() {
+        return HELPRESPONSE;
     }
 
     /**
