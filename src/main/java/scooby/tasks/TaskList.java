@@ -49,9 +49,7 @@ public class TaskList {
         } else {
             return "I'm sorry, but I don't know what that means.";
         }
-
-        System.out.println(tasks.contains(newTask));
-        System.out.println(newTask.equals(new ToDo("Task 4")));
+        
         if (tasks.contains(newTask)) {
             return "Task already exists in the list:\n " + newTask;
         }
