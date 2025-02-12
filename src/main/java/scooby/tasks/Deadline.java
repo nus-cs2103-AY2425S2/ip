@@ -69,4 +69,16 @@ public class Deadline extends Task {
         }
         return false;
     }
+
+    /**
+     * Updates the deadline task details.
+     *
+     * @param newDescription The new task description.
+     * @param newDeadline The new deadline date.
+     */
+    public void updateDetails(String newDescription, String newDeadline) {
+        this.description = newDescription.trim();
+        this.deadlineTime = LocalDateTime.parse(newDeadline, INPUTFORMATTER);
+    }
+
 }

@@ -57,4 +57,13 @@ public class Task {
     public boolean isChecked() {
         return this.isChecked;
     }
+
+    /**
+     * Updates the task description.
+     *
+     * @param newDescription The new description to update.
+     */
+    public void updateDetails(String newDescription) {
+        this.description = newDescription.trim();
+    }
 }

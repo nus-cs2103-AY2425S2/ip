@@ -73,4 +73,18 @@ public class Event extends Task {
         }
         return false;
     }
+
+    /**
+     * Updates the event task details.
+     *
+     * @param newDescription The new task description.
+     * @param newStartTime The new start time.
+     * @param newEndTime The new end time.
+     */
+    public void updateDetails(String newDescription, String newStartTime, String newEndTime) {
+        this.description = newDescription.trim();
+        this.startTime = LocalDateTime.parse(newStartTime, INPUTFORMATTER);
+        this.endTime = LocalDateTime.parse(newEndTime, INPUTFORMATTER);
+    }
+
 }

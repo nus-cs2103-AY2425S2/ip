@@ -73,6 +73,45 @@ public class TaskList {
     }
 
     /**
+     * Updates a task's details in the task list.
+     *
+     * @param index the index of the task to update.
+     * @param newDetails the new details to update the task with.
+     * @return a message indicating the result of the update.
+     */
+    public String updateTask(int index, String newDetails) {
+        if (index < 0 || index >= tasks.size()) {
+            return "Invalid task index. Please try again.";
+        }
+
+        Task taskToUpdate = tasks.get(index);
+
+        if (taskToUpdate instanceof ToDo todo) {
+            todo.updateDetails(newDetails);
+        } else if (taskToUpdate instanceof Deadline deadline) {
+            String[] parts = newDetails.split(" /by ", 2);
+            if (parts.length < 2) {
+                return "Error: Invalid update format. Use: <new description> /by <new deadline>";
+            }
+            deadline.updateDetails(parts[0], parts[1]);
+        } else if (taskToUpdate instanceof Event event) {
+            String[] parts = newDetails.split(" /from | /to ", 3);
+            if (parts.length < 3) {
+                return "Error: Invalid update format. Use: <new description> /from <start time> /to <end time>";
+            }
+            event.updateDetails(parts[0], parts[1], parts[2]);
+        } else {
+            return "Error: Unsupported task type.";
+        }
+
+        // Save updated tasks to file
+        saveToFile();
+
+        return "Task updated successfully:\n" + taskToUpdate;
+    }
+
+
+    /**
      * Gets a task from the task list
      *
      * @param index is the index of the task from the task list.
