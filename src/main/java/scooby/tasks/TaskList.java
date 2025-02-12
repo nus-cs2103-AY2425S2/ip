@@ -50,6 +50,12 @@ public class TaskList {
             return "I'm sorry, but I don't know what that means.";
         }
 
+        System.out.println(tasks.contains(newTask));
+        System.out.println(newTask.equals(new ToDo("Task 4")));
+        if (tasks.contains(newTask)) {
+            return "Task already exists in the list:\n " + newTask;
+        }
+
         tasks.add(newTask); // Add task to ArrayList
         assert tasks.contains(newTask) : "Error: Task was not added successfully!";
 
@@ -150,5 +156,15 @@ public class TaskList {
      */
     public int size() {
         return this.tasks.size();
+    }
+
+    /**
+     * Returns whether the task is inside the task list
+     *
+     * @param task is the task to be checked
+     * @return returns whether the task is inside the task list or not
+     */
+    public boolean containsTask(Task task) {
+        return this.tasks.contains(task);
     }
 }

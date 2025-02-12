@@ -1,7 +1,7 @@
 package scooby.tasks;
 
 public class Task {
-    private String description;
+    protected String description;
     private boolean isChecked;
 
     /**
