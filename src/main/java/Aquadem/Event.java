@@ -12,7 +12,7 @@ public class Event extends Task implements Serializable {
     protected String t2;
 
     /**
-     * A constructor for the event classs
+     * Constrcuts an object of event class.
      * @param description description of task
      * @param t1 date from
      * @param t2 date to
