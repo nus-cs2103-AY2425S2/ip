@@ -5,15 +5,15 @@ import java.io.PrintStream;
 import java.io.Serializable;
 
 /**
- * The main class through which the chatbot is initiated and run
+ * The main class through which the chatbot is initiated and run.
  */
 public class AquaDem implements Serializable{
     protected TaskList tasks;
     protected Storage storage;
 
     /**
-     * Constructor for the class to initialise the tasks into the current run
-     * @param storage of type <code>Storage</code> to load saved tasks
+     * Constructs an instance of AquaDem.
+     * @param storage of type <code>Storage</code> to load saved tasks.
      */
     public AquaDem(Storage storage){
         this.storage = storage;
@@ -21,14 +21,14 @@ public class AquaDem implements Serializable{
     }
 
     /**
-     * Prints introductory message on console
+     * Prints introductory message on console.
      */
     public void intro() {
         Ui.intro();
     }
 
     /**
-     * Runs the chatbot
+     * Runs the chatbot.
      */
     public void running() {
         while(true){
@@ -52,6 +52,12 @@ public class AquaDem implements Serializable{
         }
     }
 
+    /**
+     * Gets the response for javafx to use and display, Printstream is redirected
+     * from console toa special ByteArrayOutputStream.
+     * @param input
+     * @return
+     */
     public String getResponse(String input) {
         String output;
         ByteArrayOutputStream redirect = new ByteArrayOutputStream();

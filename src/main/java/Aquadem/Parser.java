@@ -89,10 +89,21 @@ public class Parser {
     }
 
     /**
-     * Returns an encoded Pair which contians information about parsing
-     * @param input Given input
-     * @param size Size of the tasklist
-     * @return an object of type Pair
+     * Checks the given string is not empty.
+     * @param detail
+     * @throws DetailException
+     */
+    public void doafterCheck(String detail) throws DetailException {
+        if (detail == "" && detail.contains("/after")){
+            throw new Aquadem.DetailException("You need a date if you want to do something after");
+        }
+    }
+
+    /**
+     * Returns an encoded Pair which contians information about parsing.
+     * @param input Given input.
+     * @param size Size of the tasklist.
+     * @return an object of type Pair.
      * @throws DetailException
      */
     public Pair encodeCommand(String input, int size) throws DetailException {
@@ -154,6 +165,10 @@ public class Parser {
             detailCheck(detail);
             String[] findDetail = {detail};
             return new Pair(9, findDetail);
+        case "doafter":
+            doafterCheck(detail);
+            String[] doafterString = detail.split("/after",2);
+            return new Pair(10, doafterString);
 
         default:
             String[] defaultDetail = {"unknown"};
