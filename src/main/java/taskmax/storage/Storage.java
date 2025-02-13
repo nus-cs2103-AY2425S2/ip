@@ -38,6 +38,7 @@ public class Storage {
      * @throws IOException If an error occurs during file writing.
      */
     public void saveTasks(List<Task> tasks) throws IOException {
+        assert tasks != null : "Tasks should not be null";
         saveTasks(tasks.toArray(new Task[0])); // Convert list to varargs
     }
 
@@ -48,6 +49,7 @@ public class Storage {
      * @throws IOException If an error occurs during file writing.
      */
     public void saveTasks(Task... tasks) throws IOException {
+        assert tasks != null : "Tasks to save should not be null";
         File file = new File(filePath);
         file.getParentFile().mkdirs();
 
@@ -91,6 +93,7 @@ public class Storage {
      * @return The serialized string representation of the task.
      */
     private String serializeTask(Task task) {
+        assert task != null : "Task should not be null";
         String typeCode = "";
         String extraData = "";
 
