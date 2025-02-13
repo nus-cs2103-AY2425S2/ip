@@ -22,14 +22,14 @@ public class Execution {
 
         try {
             String dateProcessed = date;
-            if (Character.isWhitespace(date.charAt(0))) {
+            while(Character.isWhitespace(date.charAt(0))) {
                 dateProcessed = date.substring(1);
             }
+            assert !Character.isWhitespace(dateProcessed.charAt(0));
             DateTimeFormatter acceptedFormat = new DateTimeFormatterBuilder()
                     .append(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toFormatter();
 
-            LocalDateTime loDT = LocalDateTime.parse(dateProcessed, acceptedFormat);
-            return loDT;
+            return LocalDateTime.parse(dateProcessed, acceptedFormat);
         } catch(DateTimeParseException e) {
             System.out.println("Date entered is not a valid format " +
                     "setting default date (1 week from" +
@@ -47,6 +47,7 @@ public class Execution {
      */
     public static void execute(Pair encodedCommand, TaskList tasks, Storage storage){
         int command = encodedCommand.getHead();
+        assert -2 < command && command < 11;
         String[] parsedDetail = encodedCommand.getContents();
         switch (command) {
         case 0:
