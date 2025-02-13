@@ -1,7 +1,42 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Hello! I'm zoe.Zoe
+What can I do for you?
 
+_______
+_______
+_______
+Got it. I've added this task:
+	[T][ ] borrow book
+Now you have 1 tasks in your list.
+_______
+_______
+Nice! I've marked this task as done:
+	[T][X] borrow book
+_______
+_______
+Got it. I've added this task:
+	[D][ ]  return book (by: Oct 15 2019)
+Now you have 2 tasks in your list.
+_______
+_______
+Got it. I've added this task:
+	[E][ ]  project meeting (from: Oct 16 2019 to: Oct 17 2019)
+Now you have 3 tasks in your list.
+_______
+_______
+OOPS!!! The description of a todo cannot be empty.
+_______
+_______
+OOPS!!! I'm sorry, but I don't know what that means :-(
+_______
+_______
+Noted. I've removed this task:
+	[D][ ]  return book (by: Oct 15 2019)
+Now you have 2 tasks in your list.
+_______
+_______
+1. [T][X] borrow book
+2. [E][ ]  project meeting (from: Oct 16 2019 to: Oct 17 2019)
+_______
+_______
+Bye. Hope to see you again soon!
+_______
