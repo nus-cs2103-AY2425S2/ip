@@ -21,64 +21,66 @@ public class Parser {
         String command = scanner.nextLine();
         String regex = "/";
         String[] parsedCommand = command.split(regex);
-        switch (parsedCommand[0]) { //first word of the command
-            case "bye":
-                chatbot.sayBye();
-                break;
-            case "list":
-                chatbot.showList();
-                break;
-            case "mark":
-                try {
-                    chatbot.markTaskAsDone(Integer.parseInt(parsedCommand[1]) - 1);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    chatbot.informThatTaskIndexIsMissing(); //missing task index
-                } catch (NumberFormatException e) {
-                    chatbot.informThatTaskIndexIsNotInteger();
-                }
-                break;
-            case "unmark":
-                try {
-                    chatbot.unmarkTaskAsDone(Integer.parseInt(parsedCommand[1]) - 1);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    chatbot.informThatTaskIndexIsMissing(); //missing task index
-                } catch (NumberFormatException e) {
-                    chatbot.informThatTaskIndexIsNotInteger();
-                }
-                break;
-            case "todo":
-                try {
-                    chatbot.createToDoTask(parsedCommand[1]);
-                } catch (ArrayIndexOutOfBoundsException e) { //command incomplete
-                    chatbot.informThatCommandIsIncomplete();
-                }
-                break;
-            case "deadline":
-                try {
-                    chatbot.createDeadlineTask(parsedCommand[1], parsedCommand[2]);
-                } catch (ArrayIndexOutOfBoundsException e) { //command incomplete
-                    chatbot.informThatCommandIsIncomplete();
-                }
-                break;
-            case "event":
-                try {
-                    chatbot.createEventTask(parsedCommand[1], parsedCommand[2], parsedCommand[3]);;
-                } catch (ArrayIndexOutOfBoundsException e) { //command incomplete
-                    chatbot.informThatCommandIsIncomplete();
-                }
-                break;
-            case "delete":
-                try {
-                    chatbot.deleteTask(Integer.parseInt(parsedCommand[1]) - 1);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    chatbot.informThatTaskIndexIsMissing(); //missing task index
-                } catch (NumberFormatException e) {
-                    chatbot.informThatTaskIndexIsNotInteger();
-                }
-                break;
-            default:
-                chatbot.informThatCommandIsInvalid();
-                break;
+        while (true) {
+            switch (parsedCommand[0]) { //first word of the command
+                case "bye":
+                    chatbot.sayBye();
+                    break;
+                case "list":
+                    chatbot.showList();
+                    break;
+                case "mark":
+                    try {
+                        chatbot.markTaskAsDone(Integer.parseInt(parsedCommand[1]) - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        chatbot.informThatTaskIndexIsMissing(); //missing task index
+                    } catch (NumberFormatException e) {
+                        chatbot.informThatTaskIndexIsNotInteger();
+                    }
+                    break;
+                case "unmark":
+                    try {
+                        chatbot.unmarkTaskAsDone(Integer.parseInt(parsedCommand[1]) - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        chatbot.informThatTaskIndexIsMissing(); //missing task index
+                    } catch (NumberFormatException e) {
+                        chatbot.informThatTaskIndexIsNotInteger();
+                    }
+                    break;
+                case "todo":
+                    try {
+                        chatbot.createToDoTask(parsedCommand[1]);
+                    } catch (ArrayIndexOutOfBoundsException e) { //command incomplete
+                        chatbot.informThatCommandIsIncomplete();
+                    }
+                    break;
+                case "deadline":
+                    try {
+                        chatbot.createDeadlineTask(parsedCommand[1], parsedCommand[2]);
+                    } catch (ArrayIndexOutOfBoundsException e) { //command incomplete
+                        chatbot.informThatCommandIsIncomplete();
+                    }
+                    break;
+                case "event":
+                    try {
+                        chatbot.createEventTask(parsedCommand[1], parsedCommand[2], parsedCommand[3]);;
+                    } catch (ArrayIndexOutOfBoundsException e) { //command incomplete
+                        chatbot.informThatCommandIsIncomplete();
+                    }
+                    break;
+                case "delete":
+                    try {
+                        chatbot.deleteTask(Integer.parseInt(parsedCommand[1]) - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        chatbot.informThatTaskIndexIsMissing(); //missing task index
+                    } catch (NumberFormatException e) {
+                        chatbot.informThatTaskIndexIsNotInteger();
+                    }
+                    break;
+                default:
+                    chatbot.informThatCommandIsInvalid();
+                    break;
+            }
         }
     }
 }
