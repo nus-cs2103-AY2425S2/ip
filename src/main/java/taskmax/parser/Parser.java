@@ -32,63 +32,90 @@ public class Parser {
     public static Command parse(String input) throws TaskmaxException {
         assert input != null && !input.trim().isEmpty() : "Input command should not be null or empty";
 
-        String[] words = input.split(" ", 2);
-        String commandWord = words[0];
+        String[] text = input.split(" ", 2);
+        String commandText = text[0];
 
-        switch (commandWord) {
+        switch (commandText) {
             case "bye":
                 return new ExitCommand();
             case "list":
                 return new ListCommand();
             case "mark":
-                validateCommand(words, "Please enter a number of an existing task so I can find it in the list!");
-                return new MarkCommand(Integer.parseInt(words[1]));
             case "unmark":
-                validateCommand(words, "Please enter a number of an existing task so I can find it in the list!");
-                return new UnmarkCommand(Integer.parseInt(words[1]));
             case "delete":
-                validateCommand(words, "Please enter a number of an existing task so I can find it in the list!");
-                return new DeleteCommand(Integer.parseInt(words[1]));
+                return handleTaskModification(commandText, text);
             case "todo":
-                validateCommand(words, "You have to include a task to add!\n"
-                        + "e.g. todo Assignment1");
-                return new AddCommand(new ToDo(words[1]));
+                return handleTodoCommand(text);
             case "deadline":
-                validateCommand(words, "Oops! You have to include a \"/by deadline\" after your task\n"
-                        + "e.g. deadline Assignment2 /by 2021-10-15 1800\n"
-                        + "Please try again!");
-                String[] deadlineParts = words[1].split(" /by ", 2);
-                validateParts(deadlineParts, 2, "Oops! You have to include a \"/by deadline\" after your task\n"
-                        + "e.g. deadline Assignment2 /by 2021-10-15 1800\n"
-                        + "Please try again!");
-                return new AddCommand(new Deadline(deadlineParts[0].trim(), deadlineParts[1].trim()));
+                return handleDeadlineCommand(text);
             case "event":
-                validateCommand(words, "Oops! You have to include a \"/from start /to end\" after your task\n"
-                        + "e.g. event Concert /from 2021-10-15 1800 /to 2021-10-15 2200\n"
-                        + "Please try again!");
-                String[] eventParts = words[1].split(" /from | /to ", 3);
-                validateParts(eventParts, 3, "Oops! You have to include a \"/from start /to end\" after your task\n"
-                        + "e.g. event Concert /from 2021-10-15 1800 /to 2021-10-15 2200\n"
-                        + "Please try again!");
-                return new AddCommand(new Event(eventParts[0].trim(), eventParts[1].trim(), eventParts[2].trim()));
+                return handleEventCommand(text);
             case "find":
-                validateCommand(words, "Please provide a keyword to search for.");
-                return new FindCommand(words[1].trim());
+                return handleFindCommand(text);
             default:
                 throw new TaskmaxException(getHelpMessage());
         }
     }
 
+    private static Command handleTaskModification(String command, String[] text) throws TaskmaxException {
+        validateCommand(text, "Please enter a number of an existing task so I can find it in the list!");
+        int index = Integer.parseInt(text[1]);
+
+        switch (command) {
+            case "mark":
+                return new MarkCommand(index);
+            case "unmark":
+                return new UnmarkCommand(index);
+            case "delete":
+                return new DeleteCommand(index);
+            default:
+                throw new TaskmaxException("Invalid command.");
+        }
+    }
+
+    private static Command handleTodoCommand(String[] text) throws TaskmaxException {
+        validateCommand(text, "You have to include a task to add!\n"
+                + "e.g. todo Assignment1");
+        return new AddCommand(new ToDo(text[1]));
+    }
+
+    private static Command handleDeadlineCommand(String[] text) throws TaskmaxException {
+        validateCommand(text, "Oops! You have to include a \"/by deadline\" after your task\n"
+                + "e.g. deadline Assignment2 /by 2021-10-15 1800\n"
+                + "Please try again!");
+        String[] deadlineParts = text[1].split(" /by ", 2);
+        validateParts(deadlineParts, 2, "Oops! You have to include a \"/by deadline\" after your task\n"
+                + "e.g. deadline Assignment2 /by 2021-10-15 1800\n"
+                + "Please try again!");
+        return new AddCommand(new Deadline(deadlineParts[0].trim(), deadlineParts[1].trim()));
+    }
+
+    private static Command handleEventCommand(String[] text) throws TaskmaxException {
+        validateCommand(text, "Oops! You have to include a \"/from start /to end\" after your task\n"
+                + "e.g. event Concert /from 2021-10-15 1800 /to 2021-10-15 2200\n"
+                + "Please try again!");
+        String[] eventParts = text[1].split(" /from | /to ", 3);
+        validateParts(eventParts, 3, "Oops! You have to include a \"/from start /to end\" after your task\n"
+                + "e.g. event Concert /from 2021-10-15 1800 /to 2021-10-15 2200\n"
+                + "Please try again!");
+        return new AddCommand(new Event(eventParts[0].trim(), eventParts[1].trim(), eventParts[2].trim()));
+    }
+
+    private static Command handleFindCommand(String[] text) throws TaskmaxException {
+        validateCommand(text, "Please provide a keyword to search for.");
+        return new FindCommand(text[1].trim());
+    }
+
     /**
      * Validates that the user input contains the expected number of parts.
      *
-     * @param words        The split input command.
+     * @param text        The split input command.
      * @param errorMessage The error message to display if validation fails.
      * @throws TaskmaxException If the command is incomplete.
      */
-    private static void validateCommand(String[] words, String errorMessage) throws TaskmaxException {
-        assert words.length > 1 : "Missing argument in command";
-        if (words.length < 2) {
+    private static void validateCommand(String[] text, String errorMessage) throws TaskmaxException {
+        assert text.length > 1 : "Missing argument in command";
+        if (text.length < 2) {
             throw new TaskmaxException(errorMessage);
         }
     }
@@ -107,6 +134,7 @@ public class Parser {
             throw new TaskmaxException(errorMessage);
         }
     }
+
     /**
      * Returns the help message when an invalid command is entered.
      *

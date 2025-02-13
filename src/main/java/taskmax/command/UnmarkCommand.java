@@ -17,6 +17,7 @@ public class UnmarkCommand extends Command {
      * @param index The one-based index of the task to be unmarked.
      */
     public UnmarkCommand(int index) {
+        assert index >= 0 : "Index should not be negative";
         this.index = index - 1; // Convert one-based index to zero-based index.
     }
 
@@ -46,6 +47,7 @@ public class UnmarkCommand extends Command {
      */
     @Override
     public String executeForGUI(TaskList tasks, Storage storage) throws TaskmaxException {
+        assert tasks != null : "Task list should not be null";
         tasks.markTask(index, false);
         return Ui.LINE
                 + "\nI've unmarked your task.\n"

@@ -17,6 +17,7 @@ public class FindCommand extends Command {
      * @param keyword The keyword to search for in the task descriptions.
      */
     public FindCommand(String keyword) {
+        assert keyword != null : "Keyword should not be null";
         this.keyword = keyword;
     }
 
@@ -46,6 +47,7 @@ public class FindCommand extends Command {
      */
     @Override
     public String executeForGUI(TaskList tasks, Storage storage) throws TaskmaxException {
+        assert tasks != null : "Task list should not be null";
         StringBuilder output = new StringBuilder("\nHere are the matching tasks in your list:\n");
         boolean isFound = false;
 
@@ -57,6 +59,6 @@ public class FindCommand extends Command {
         }
 
         return isFound ? Ui.LINE + output.toString() + Ui.LINE
-                       : Ui.LINE + "\nNo tasks found matching your search keyword.\n" + Ui.LINE;
+                : Ui.LINE + "\nNo tasks found matching your search keyword.\n" + Ui.LINE;
     }
 }

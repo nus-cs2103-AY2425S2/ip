@@ -1,9 +1,10 @@
 package taskmax.command;
 
-import taskmax.exception.TaskmaxException;
 import taskmax.storage.Storage;
 import taskmax.storage.TaskList;
 import taskmax.ui.Ui;
+
+import taskmax.exception.TaskmaxException;
 
 /**
  * Represents a command to list all tasks in the task list.
@@ -36,6 +37,7 @@ public class ListCommand extends Command {
      */
     @Override
     public String executeForGUI(TaskList tasks, Storage storage) throws TaskmaxException {
+        assert tasks != null : "Task list should not be null";
         if (tasks.isEmpty()) {
             return Ui.LINE + "\nYour task list is empty! Start adding tasks to see them in the list.\n" + Ui.LINE;
         } else {

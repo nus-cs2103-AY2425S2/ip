@@ -18,6 +18,7 @@ public class AddCommand extends Command {
      * @param tasksToAdd The tasks to be added to the task list.
      */
     public AddCommand(Task... tasksToAdd) {
+        assert tasksToAdd != null : "Tasks to add should not be null";
         this.tasksToAdd = tasksToAdd;
     }
 
@@ -32,18 +33,13 @@ public class AddCommand extends Command {
      */
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws TaskmaxException {
-        StringBuilder response = new StringBuilder("Got it. I've added the following tasks:\n");
-        for (Task task : tasksToAdd) {
-            tasks.addTask(task);
-            response.append("  ").append(task.toString()).append("\n");
-        }
-        response.append("Now you have ").append(tasks.size()).append(" tasks in the list.");
-        ui.showMessage(response.toString());
+        String response = addTasksToList(tasks);
+        ui.showMessage(response);
         return false;
     }
 
     /**
-     * Executes the command for GUI mode.
+     * Executes the add command for GUI mode.
      *
      * @param tasks   The task list containing the tasks.
      * @param storage The storage handler for saving task updates.
@@ -52,12 +48,25 @@ public class AddCommand extends Command {
      */
     @Override
     public String executeForGUI(TaskList tasks, Storage storage) throws TaskmaxException {
-        StringBuilder response = new StringBuilder(Ui.LINE + "\nGot it. I've added the following tasks:\n");
+        return addTasksToList(tasks);
+    }
+
+    /**
+     * Helper method to add tasks to the task list and return the response message.
+     *
+     * @param tasks The task list containing the tasks.
+     * @return The response message.
+     */
+    private String addTasksToList(TaskList tasks) {
+        assert tasks != null : "Task list should not be null";
+        StringBuilder response = new StringBuilder(Ui.LINE
+                                                   + "\nGot it. I've added the following tasks:\n");
         for (Task task : tasksToAdd) {
+            assert task != null : "Task should not be null";
             tasks.addTask(task);
             response.append("  ").append(task.toString()).append("\n");
         }
-        response.append("Now you have ").append(tasks.size()).append(" tasks in the list.\n").append(Ui.LINE);
+        response.append("Now you have ").append(tasks.size()).append(" tasks in the list.\n" + Ui.LINE);
         return response.toString();
     }
 }

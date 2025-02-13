@@ -20,6 +20,7 @@ public class DeleteCommand extends Command {
      * @param index The one-based index of the task to be deleted.
      */
     public DeleteCommand(int index) {
+        assert index >= 0 : "Index should not be negative";
         this.index = index - 1; // Convert one-based index to zero-based index.
     }
 
@@ -34,10 +35,8 @@ public class DeleteCommand extends Command {
      */
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws TaskmaxException {
-        Task removedTask = tasks.removeTask(index);
-        ui.showMessage("Noted. I've removed this task:\n"
-                + removedTask.toString()
-                + "\nNow you have " + tasks.size() + " tasks in the list.");
+        String response = deleteTaskAndReturnResponse(tasks, storage);
+        ui.showMessage(response);
         return false;
     }
 
@@ -51,6 +50,19 @@ public class DeleteCommand extends Command {
      */
     @Override
     public String executeForGUI(TaskList tasks, Storage storage) throws TaskmaxException {
+        return deleteTaskAndReturnResponse(tasks, storage);
+    }
+
+    /**
+     * Helper method to delete a task and return the response message.
+     *
+     * @param tasks   The task list containing the tasks.
+     * @param storage The storage handler for saving task updates.
+     * @return The response message.
+     * @throws TaskmaxException If the index is invalid.
+     */
+    private String deleteTaskAndReturnResponse(TaskList tasks, Storage storage) throws TaskmaxException {
+        assert tasks != null : "Task list should not be null";
         try {
             Task removedTask = tasks.removeTask(index);
             storage.saveTasks(tasks.getTasks()); // Save changes after deleting
