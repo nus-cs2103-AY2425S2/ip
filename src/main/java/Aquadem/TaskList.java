@@ -10,14 +10,14 @@ public class TaskList implements Serializable {
     protected ArrayList<Task> tasks = new ArrayList<Task>();
 
     /**
-     * Default constructor for tasklist - creates an empty tasklist
+     * constructs a tasklist - creates an empty tasklist
      */
     public TaskList() {
 
     }
 
     /**
-     * Constructor for a tasklist that loads a given tasklist through an arrayList
+     * Constructs a tasklist that loads a given tasklist through an arrayList
      * @param tasks
      */
     public TaskList(ArrayList<Task> tasks) {
