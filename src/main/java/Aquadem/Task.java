@@ -1,7 +1,9 @@
 package Aquadem;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 
 /**
  * Class to encapsulate the behaviour of task in the chatbots tasklist.
@@ -47,12 +49,13 @@ public class Task implements Serializable {
      * @param date
      */
     public void setDate(LocalDateTime date) {
+        assert date.isAfter(LocalDateTime.now()) : "Too old";
         this.taskDate = date;
     }
 
     /**
      * Retrives the date of the class.
-     * @return
+     * @return A date.
      */
     public LocalDateTime getDate(){
         return this.taskDate;
@@ -60,7 +63,7 @@ public class Task implements Serializable {
 
     /**
      * Overrides Object class toString method.
-     * @return
+     * @return A string.
      */
     @Override
     public String toString() {

@@ -1,19 +1,19 @@
 package Aquadem;
 
 /**
- * A class that is used to parse the give user input
+ * A class that is used to parse the give user input.
  */
 
 public class Parser {
     /**
-     * Default constructor for the class Parser
+     * Constructs an empty Parser.
      */
     public Parser() {
         //
     }
 
     /**
-     * Checks if the given string is empty
+     * Checks if the given string is empty.
      * @param detail
      * @throws DetailException
      */
@@ -24,7 +24,7 @@ public class Parser {
     }
 
     /**
-     * Checks if the given string is a number wihtin a given limit
+     * Checks if the given string is a number wihtin a given limit.
      * @param detail
      * @param limit
      * @throws DetailException
@@ -33,6 +33,7 @@ public class Parser {
     public void numCheck(String detail, int limit) throws DetailException {
         try {
             int i = Integer.parseInt(detail)-1;
+
             if (i >= limit || i < 0) {
                 throw new Aquadem.DetailException("that task does not exist... maybe you finished it?");
             }
@@ -45,7 +46,7 @@ public class Parser {
 
 
     /**
-     * Checks if the given String contains a deadline (/by)
+     * Checks if the given String contains a deadline (/by).
      * @param detail
      * @throws DetailException
      */
@@ -61,7 +62,7 @@ public class Parser {
 
 
     /**
-     * Checks if the given String contains /from and /to
+     * Checks if the given String contains /from and /to.
      * @param detail
      * @throws DetailException
      */
@@ -78,7 +79,7 @@ public class Parser {
     }
 
     /**
-     * Checks the given string is not empty
+     * Checks the given string is not empty.
      * @param detail
      * @throws DetailException
      */
@@ -89,7 +90,7 @@ public class Parser {
     }
 
     /**
-     * Checks the given string is not empty.
+     * Checks the given string is not empty and contains after.
      * @param detail
      * @throws DetailException
      */
@@ -101,19 +102,19 @@ public class Parser {
 
     /**
      * Returns an encoded Pair which contians information about parsing.
-     * @param input Given input.
-     * @param size Size of the tasklist.
-     * @return an object of type Pair.
+     * @param input Given input
+     * @param size Size of the tasklist
+     * @return an object of type Pair
      * @throws DetailException
      */
     public Pair encodeCommand(String input, int size) throws DetailException {
         String arr[] = input.split(" ",2);
-
         String command = arr[0];
         String detail = "";
         if (arr.length > 1) {
             detail = arr[1];
         }
+
 
         switch(command) {
         case "list":
@@ -122,6 +123,7 @@ public class Parser {
         case "deadline":
             deadlineCheck(detail);
             String[] deadlineString = detail.split("/by",2);
+            assert !deadlineString[1].isEmpty();
             return new Pair(1, deadlineString);
         case "event":
 
@@ -129,18 +131,18 @@ public class Parser {
             String[] eventString1 = detail.split("/from",2);
             String[] eventString2 = eventString1[1].split("/to",2);
             String[] eventString = {eventString1[0], eventString2[0], eventString2[1]};
-
+            assert !eventString[2].isEmpty();
             return new Pair(2, eventString);
         case "todo":
             todoCheck(detail);
             String[] todoDetail = {detail};
             return new Pair(3, todoDetail);
 
-
         case "mark":
             numCheck(detail, size);
             String[] markDetail = {detail};
             return new Pair(4, markDetail);
+
         case "unmark":
             numCheck(detail, size);
             String[] unmarkDetail = {detail};
