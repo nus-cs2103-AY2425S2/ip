@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 /**
- * Class to encapsulate the behaviour of task in the chatbots tasklist
+ * Class to encapsulate the behaviour of task in the chatbots tasklist.
  */
 public class Task implements Serializable {
 
@@ -18,7 +18,7 @@ public class Task implements Serializable {
     protected String statusIcon = " ";
 
     /**
-     * Constructor for class type of Task
+     * Constructs a Task.
      * @param description
      */
     public Task(String description) {
@@ -28,7 +28,7 @@ public class Task implements Serializable {
     }
 
     /**
-     * Marks a task as done
+     * Marks a task as done.
      */
 
     public void markAsDone() {
@@ -37,7 +37,7 @@ public class Task implements Serializable {
     }
 
     /**
-     * Marks a task as undone
+     * Marks a task as undone.
      */
     public void markAsUndone() {
         this.isDone = false;
@@ -45,7 +45,7 @@ public class Task implements Serializable {
     }
 
     /**
-     * Sets the date of a task to a given date
+     * Sets the date of a task to a given date.
      * @param date
      */
     public void setDate(LocalDateTime date) {
@@ -54,16 +54,16 @@ public class Task implements Serializable {
     }
 
     /**
-     * Retrives the date of the class
-     * @return
+     * Retrives the date of the class.
+     * @return A date.
      */
     public LocalDateTime getDate(){
         return this.taskDate;
     }
 
     /**
-     * Overriding Object class toString method
-     * @return
+     * Overrides Object class toString method.
+     * @return A string.
      */
     @Override
     public String toString() {

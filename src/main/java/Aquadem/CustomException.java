@@ -1,14 +1,14 @@
 package Aquadem;
 
 /**
- * A custom exception class to be used for the chatbot
+ * A custom exception class to be used for the chatbot.
  */
 public class CustomException extends Exception{
     private String msg;
 
     /**
-     * Constructor which takes in a String to be used in the class
-     * @param msg of type <code>String</code>
+     * Constructs a custom exception with message msg.
+     * @param msg of type String.
      */
     public CustomException(String msg){
         super(msg);
@@ -16,8 +16,8 @@ public class CustomException extends Exception{
     }
 
     /**
-     * Overrides the exception class's <code>toString</code> method
-     * @return a <code>String</code>
+     * Overrides the exception class's <code>toString</code> method.
+     * @return a <code>String</code>.
      */
     @Override
     public String getMessage() {

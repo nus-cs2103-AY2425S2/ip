@@ -3,14 +3,14 @@ package Aquadem;
 import java.util.Arrays;
 
 /**
- * A class that represents the encoded version of the parsed user input
+ * A class that represents the encoded version of the parsed user input.
  */
 public class Pair {
     protected int head;
     protected String[] contents;
 
     /**
-     * Constructor for the class Pair
+     * Constructs a pair.
      * @param head
      * @param arr
      */
@@ -36,7 +36,7 @@ public class Pair {
     }
 
     /**
-     * Overriding the equals method of object
+     * Overriding the equals method of object.
      * @param obj
      * @return
      */

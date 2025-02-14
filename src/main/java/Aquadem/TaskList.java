@@ -4,20 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Class to represent the list of tasks in the chatbot
+ * Class to represent the list of tasks in the chatbot.
  */
 public class TaskList implements Serializable {
     protected ArrayList<Task> tasks = new ArrayList<Task>();
 
     /**
-     * constructs a tasklist - creates an empty tasklist
+     * Constructs a tasklist - creates an empty tasklist
      */
     public TaskList() {
 
     }
 
     /**
-     * Constructs a tasklist that loads a given tasklist through an arrayList
+     * Constructs a tasklist that loads a given tasklist through an arrayList.
      * @param tasks
      */
     public TaskList(ArrayList<Task> tasks) {
@@ -25,7 +25,7 @@ public class TaskList implements Serializable {
     }
 
     /**
-     * Retrieves task at given position
+     * Retrieves task at given position.
      * @param i
      * @return
      */
@@ -34,7 +34,7 @@ public class TaskList implements Serializable {
     }
 
     /**
-     * Returns the size of the tasklist
+     * Returns the size of the tasklist.
      * @return
      */
     public int size() {
@@ -42,7 +42,7 @@ public class TaskList implements Serializable {
     }
 
     /**
-     * Adds task to list
+     * Adds task to list.
      * @param t
      */
 
@@ -51,13 +51,18 @@ public class TaskList implements Serializable {
     }
 
     /**
-     * Remvoes task from list
+     * Remvoes task from list.
      * @param i
      */
     public void remove(int i){
         this.tasks.remove(i);
     }
 
+    /**
+     * Finds tasks containing a given string.
+     * @param s
+     * @return A TaskList of tasks containing the string s.
+     */
     public TaskList findTask(String s) {
         TaskList found = new TaskList();
         for (int i = 0; i < this.tasks.size(); i++) {

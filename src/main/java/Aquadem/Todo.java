@@ -2,14 +2,14 @@ package Aquadem;
 
 import java.io.Serializable;
 /**
- * A subclass of the Task class to represent deadlines
+ * A subclass of the Task class to represent deadlines.
  */
 public class Todo extends Task implements Serializable {
 
     protected String by;
 
     /**
-     * Default constructor which takes in a description
+     * Default constructor which takes in a description.
      * @param description
      */
     public Todo(String description) {
@@ -17,7 +17,7 @@ public class Todo extends Task implements Serializable {
     }
 
     /**
-     * Overrding the toString method of the Task class
+     * Overrding the toString method of the Task class.
      * @return
      */
     @Override

@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 
 /**
- * A class that handles the bulk of the logic of the chatbot
+ * A class that handles the bulk of the logic of the chatbot.
  */
 public class Execution {
     public Execution() {
@@ -14,9 +14,9 @@ public class Execution {
     }
 
     /**
-     * Converts a string into an Object of type LocalDateTime
+     * Converts a string into an Object of type LocalDateTime.
      * @param date
-     * @return LocalDateTime corresponding to the date
+     * @return LocalDateTime corresponding to the date.
      */
     public static LocalDateTime dateConvert(String date) {
 
@@ -40,7 +40,7 @@ public class Execution {
 
 
     /**
-     * Executes command based on parsed user input
+     * Executes command based on parsed user input.
      * @param encodedCommand Parsed input
      * @param tasks Tasklist
      * @param storage Storage object to store tasklist
@@ -114,7 +114,13 @@ public class Execution {
             Ui.printFound();
             Ui.printList(found);
             break;
-
+        case 10:
+            Task a1 = new Doafter(parsedDetail[0], parsedDetail[1]);
+            tasks.add(a1);
+            Ui.printAdded(a1);
+            Ui.printRemaining(tasks);
+            storage.saveTasks(tasks);
+            break;
         default:
             Ui.printError();
             break;
