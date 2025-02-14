@@ -21,7 +21,6 @@ public class ExitCommand extends Command {
     public void execute(TaskList tasks, UI ui, Storage storage) {
         ui.showGoodbye();
     }
-
     /**
      * Indicates that this command will terminate the session.
      *

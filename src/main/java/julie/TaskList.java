@@ -1,9 +1,9 @@
 package julie;
 
-import julie.task.Task;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import julie.task.Task;
 
 /**
  * Represents a list of tasks and provides methods to manage them.
@@ -93,7 +93,7 @@ public class TaskList {
      * @return A new list containing all tasks.
      */
     public List<Task> getAllTasks() {
-        return new ArrayList<>(tasks);  // Returns a copy to maintain encapsulation
+        return new ArrayList<>(tasks);
     }
 
     /**

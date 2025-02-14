@@ -1,21 +1,21 @@
 package julie.task;
 
-import julie.exception.WrongFormatException;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import julie.exception.WrongFormatException;
+
 
 /**
  * Represents a task with a deadline.
  * A {@code Deadline} task includes a description and a due date/time.
  */
 public class Deadline extends Task {
-    private final LocalDateTime by;
-    private static final String MARKER = "[D]";
-
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
+    private static final String MARKER = "[D]";
+    private final LocalDateTime by;
 
     /**
      * Constructs a {@code Deadline} task with the given description and due date/time.

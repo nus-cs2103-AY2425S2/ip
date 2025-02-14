@@ -1,6 +1,8 @@
 package julie.command;
 
-import julie.*;
+import julie.Storage;
+import julie.TaskList;
+import julie.UI;
 import julie.exception.WrongFormatException;
 import julie.task.Task;
 
@@ -31,8 +33,8 @@ public class DeleteCommand extends Command {
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
         if (index < 1 || index > tasks.size()) {
-            throw new WrongFormatException("Oops! That task number doesn't exist!\n" +
-                    "Please enter a valid task number.");
+            throw new WrongFormatException("Oops! That task number doesn't exist!\n"
+                    + "Please enter a valid task number.");
         }
         Task removedTask = tasks.getTask(index - 1);
         tasks.deleteTask(index - 1);

@@ -1,11 +1,13 @@
 package julie.task;
 
-import julie.Parser;
-import julie.exception.WrongFormatException;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+import julie.Parser;
+import julie.exception.WrongFormatException;
+
 
 public class ToDoTest {
 
