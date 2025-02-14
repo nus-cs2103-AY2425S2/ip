@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
- * A class that encapsulates the User Interactions and visual output with the chatbot
+ * A class that encapsulates the User Interactions and visual output with the chatbot.
  */
 public class Ui {
     protected final static String bar = "____________________________________________________________";
@@ -12,14 +12,14 @@ public class Ui {
     protected static Scanner inputter = new Scanner(System.in);
 
     /**
-     * Default constructor for the class Ui
+     * Constructs a Ui object.
      */
     public Ui() {
 
     }
 
     /**
-     * Asks for user input while ensuring it is not empty
+     * Asks for user input while ensuring it is not empty.
      * @return
      */
     public static String generateInput(){
@@ -41,14 +41,14 @@ public class Ui {
     }
 
     /**
-     * Prints the bar (visual element) for the chatbot
+     * Prints the bar (visual element) for the chatbot.
      */
     public static void printBar() {
         System.out.println(bar);
     }
 
     /**
-     * Prints the added statement
+     * Prints the added statement.
      * @param t
      */
     public static void printAdded(Task t) {
@@ -56,7 +56,7 @@ public class Ui {
     }
 
     /**
-     * Prints the deleted statement
+     * Prints the deleted statement.
      * @param t
      */
     public static void printDeleted(Task t) {
@@ -64,7 +64,7 @@ public class Ui {
     }
 
     /**
-     * Prints the task remaining statement
+     * Prints the task remaining statement.
      * @param tasks
      */
     public static void printRemaining(TaskList tasks) {
@@ -72,7 +72,7 @@ public class Ui {
     }
 
     /**
-     * Prints the mark statement
+     * Prints the mark statement.
      * @param t
      */
     public static void printMarked(Task t) {
@@ -80,7 +80,7 @@ public class Ui {
     }
 
     /**
-     * Prints the unmarked statement
+     * Prints the unmarked statement.
      * @param t
      */
     public static void printUnmarked(Task t) {
@@ -88,7 +88,7 @@ public class Ui {
     }
 
     /**
-     * Prints the tasklist
+     * Prints the tasklist.
      * @param tasks
      */
     public static void printList(TaskList tasks) {
@@ -101,7 +101,7 @@ public class Ui {
     }
 
     /**
-     * Prints the deadline date statement while checking the task type
+     * Prints the deadline date statement while checking the task type.
      * @param t
      */
     public static void printDate(Task t) {
@@ -119,14 +119,14 @@ public class Ui {
     }
 
     /**
-     * Prints the IDK message/ cant understand userinput message
+     * Prints the IDK message/ cant understand userinput message.
      */
     public static void printError() {
         System.out.println("I don't know what that is sorry : (");
     }
 
     /**
-     * Prints the introduction of the chatbot
+     * Prints the introduction of the chatbot.
      */
     public static void intro() {
         String str =  "\n" +  "Hello! I'm AquaDem\n" +
@@ -136,7 +136,7 @@ public class Ui {
     }
 
     /**
-     * Prints the Ending message/Exit message of the chatbot
+     * Prints the Ending message/Exit message of the chatbot.
      */
     public static void printBye() {
         System.out.println("Ok then bye!!!");
