@@ -1,8 +1,12 @@
 package julie.task;
 
-import julie.exception.WrongFormatException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import julie.exception.WrongFormatException;
+
 
 public class EventTest {
 

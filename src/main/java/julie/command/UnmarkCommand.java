@@ -1,6 +1,8 @@
 package julie.command;
 
-import julie.*;
+import julie.Storage;
+import julie.TaskList;
+import julie.UI;
 import julie.exception.WrongFormatException;
 import julie.task.Task;
 

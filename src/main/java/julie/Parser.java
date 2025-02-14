@@ -1,6 +1,15 @@
 package julie;
 
-import julie.command.*;
+import julie.command.AddDeadlineCommand;
+import julie.command.AddEventCommand;
+import julie.command.AddToDoCommand;
+import julie.command.Command;
+import julie.command.DeleteCommand;
+import julie.command.ExitCommand;
+import julie.command.FindCommand;
+import julie.command.ListCommand;
+import julie.command.MarkCommand;
+import julie.command.UnmarkCommand;
 import julie.exception.WrongFormatException;
 
 /**
@@ -9,16 +18,16 @@ import julie.exception.WrongFormatException;
  * and ensures proper formatting before creating appropriate command objects.
  */
 public class Parser {
-    private static final String TODO_FORMAT = "Oops! The correct format for a todo is:\n" +
-            "todo <description>";
-    private static final String DEADLINE_FORMAT = "The correct format for a deadline is:\n" +
-            "deadline <description> /by <DD-MM-YYYY HHMM>";
+    private static final String TODO_FORMAT = "Oops! The correct format for a todo is:\n"
+            + "todo <description>";
+    private static final String DEADLINE_FORMAT = "The correct format for a deadline is:\n"
+            + "deadline <description> /by <DD-MM-YYYY HHMM>";
 
-    private static final String EVENT_FORMAT = "The correct format for an event is:\n" +
-            "event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>";
+    private static final String EVENT_FORMAT = "The correct format for an event is:\n"
+            + "event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>";
 
-    private static final String NUMBER_FORMAT_ERROR = "Task number must be an integer!\n" +
-            "Correct format: <command> <task number>";
+    private static final String NUMBER_FORMAT_ERROR = "Task number must be an integer!\n"
+            + "Correct format: <command> <task number>";
 
     /**
      * Parses the user input string and returns the corresponding command.
@@ -57,7 +66,7 @@ public class Parser {
             return parseFindCommand(parts);
 
 
-            case "bye":
+        case "bye":
             return new ExitCommand();
 
         default:
@@ -149,21 +158,21 @@ public class Parser {
      */
     private static Command parseIndexCommand(String[] parts, String action) throws WrongFormatException {
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
-            throw new WrongFormatException("Oops! Missing task number for " + action + "!\n" +
-                    "Correct format: " + action + " <task number>");
+            throw new WrongFormatException("Oops! Missing task number for " + action + "!\n"
+                    + "Correct format: " + action + " <task number>");
         }
 
         try {
             int index = Integer.parseInt(parts[1].trim());
             switch (action) {
-                case "delete":
-                    return new DeleteCommand(index);
-                case "mark":
-                    return new MarkCommand(index);
-                case "unmark":
-                    return new UnmarkCommand(index);
-                default:
-                    throw new WrongFormatException("Unknown action: " + action);
+            case "delete":
+                return new DeleteCommand(index);
+            case "mark":
+                return new MarkCommand(index);
+            case "unmark":
+                return new UnmarkCommand(index);
+            default:
+                throw new WrongFormatException("Unknown action: " + action);
             }
         } catch (NumberFormatException e) {
             throw new WrongFormatException(NUMBER_FORMAT_ERROR);
@@ -196,7 +205,7 @@ public class Parser {
      * @return The extracted description.
      */
     private static String extractDescription(String input, String command) {
-        int commandLength = command.length() + 1;  // +1 for space after command
+        int commandLength = command.length() + 1;
         return (input.length() > commandLength)
                 ? input.substring(commandLength).split("/", 2)[0].trim()
                 : "";

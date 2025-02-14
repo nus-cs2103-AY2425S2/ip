@@ -1,11 +1,12 @@
 package julie;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import julie.command.Command;
 import julie.exception.WrongFormatException;
 import julie.task.Task;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents the Julie chatbot, which manages user tasks.

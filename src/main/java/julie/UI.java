@@ -1,7 +1,9 @@
 package julie;
 
-import julie.task.Task;
 import java.util.Scanner;
+
+import julie.task.Task;
+
 
 /**
  * Handles all user interactions for the chatbot.

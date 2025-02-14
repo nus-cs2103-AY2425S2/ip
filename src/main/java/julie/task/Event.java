@@ -1,22 +1,22 @@
 package julie.task;
 
-import julie.exception.WrongFormatException;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import julie.exception.WrongFormatException;
+
 
 /**
  * Represents an event task that occurs within a specific time range.
  * An {@code Event} task includes a description, a start date/time, and an end date/time.
  */
 public class Event extends Task {
-    private final LocalDateTime from;
-    private final LocalDateTime by;
-    private static final String MARKER = "[E]";
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
-
+    private static final String MARKER = "[E]";
+    private final LocalDateTime from;
+    private final LocalDateTime by;
     /**
      * Constructs an {@code Event} task with a description, start time, and end time.
      *
@@ -48,8 +48,8 @@ public class Event extends Task {
      */
     @Override
     public String toFileFormat() {
-        return "E | " + (isDone ? "1" : "0") + " | " + description + " | " +
-                from.format(INPUT_FORMATTER) + " | " + by.format(INPUT_FORMATTER);
+        return "E | " + (isDone ? "1" : "0") + " | " + description + " | "
+                + from.format(INPUT_FORMATTER) + " | " + by.format(INPUT_FORMATTER);
     }
 
     /**
@@ -60,7 +60,7 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return MARKER + " " + super.toString() + " (from: " +
-                from.format(OUTPUT_FORMATTER) + " to: " + by.format(OUTPUT_FORMATTER) + ")";
+        return MARKER + " " + super.toString() + " (from: "
+                + from.format(OUTPUT_FORMATTER) + " to: " + by.format(OUTPUT_FORMATTER) + ")";
     }
 }

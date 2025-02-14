@@ -1,6 +1,8 @@
 package julie.command;
 
-import julie.*;
+import julie.Storage;
+import julie.TaskList;
+import julie.UI;
 import julie.exception.WrongFormatException;
 import julie.task.Task;
 import julie.task.ToDo;
@@ -16,7 +18,7 @@ public class AddToDoCommand extends Command {
      *
      * @param description The description of the ToDo task.
      */
-    public AddToDoCommand(String description){
+    public AddToDoCommand(String description) {
         this.description = description;
     }
 

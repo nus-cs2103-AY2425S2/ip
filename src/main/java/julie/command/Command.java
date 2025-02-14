@@ -10,7 +10,6 @@ import julie.exception.WrongFormatException;
  * Subclasses must implement the {@code execute} method to define specific command behaviors.
  */
 public abstract class Command {
-
     /**
      * Executes the command, performing operations on the task list, UI, and storage.
      *

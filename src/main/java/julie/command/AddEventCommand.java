@@ -1,11 +1,13 @@
 package julie.command;
 
-import julie.*;
+import java.time.format.DateTimeParseException;
+
+import julie.Storage;
+import julie.TaskList;
+import julie.UI;
 import julie.exception.WrongFormatException;
 import julie.task.Event;
 import julie.task.Task;
-
-import java.time.format.DateTimeParseException;
 
 /**
  * Represents a command to add a new event task to the task list.
@@ -42,17 +44,17 @@ public class AddEventCommand extends Command {
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
         if (description.isEmpty() && from.isEmpty() && to.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing description, start date/time, and end date/time!\n" +
-                    "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM >");
+            throw new WrongFormatException("Oops! Missing description, start date/time, and end date/time!\n"
+                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM >");
         } else if (description.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing description of event!\n" +
-                    "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+            throw new WrongFormatException("Oops! Missing description of event!\n"
+                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
         } else if (from.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing event start date/time!\n" +
-                    "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+            throw new WrongFormatException("Oops! Missing event start date/time!\n"
+                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
         } else if (to.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing event end date/time!\n" +
-                    "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+            throw new WrongFormatException("Oops! Missing event end date/time!\n"
+                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
         }
 
         try {
@@ -61,8 +63,8 @@ public class AddEventCommand extends Command {
             storage.saveTasks(tasks.getAllTasks());
             ui.ackMessage(event, tasks.size());
         } catch (DateTimeParseException e) {
-            throw new WrongFormatException("Oops! Wrong date format!\n" +
-                    "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+            throw new WrongFormatException("Oops! Wrong date format!\n"
+                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
         }
     }
 
