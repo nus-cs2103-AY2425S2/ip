@@ -25,6 +25,7 @@ public class Ui extends Application {
         }
 
         Scene scene = new Scene(ap);
+        stage.setTitle("Tasker");
         stage.setScene(scene);
         stage.show();
     }
