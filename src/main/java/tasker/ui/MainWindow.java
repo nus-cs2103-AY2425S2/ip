@@ -1,6 +1,7 @@
 package tasker.ui;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -70,6 +71,7 @@ public class MainWindow extends AnchorPane {
     private void showError(String error) {
         Label label = new Label(error);
         label.setWrapText(true);
+        label.setMinHeight(Double.NEGATIVE_INFINITY);
         dialogContainer.getChildren().add(label);
     }
 }
