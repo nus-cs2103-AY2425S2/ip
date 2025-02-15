@@ -29,28 +29,30 @@ class Parser {
     /**
      * Creates a Todo task from command.
      *
-     * @param commandParts Command information to create the task.
+     * @param desc Command information to create the task.
+     * @param desc Description of the task.
      */
-    private static Todo createTodoTask(String[] commandParts) {
-        return new Todo(commandParts[1]);
+    private static Todo createTodoTask(String desc) {
+        return new Todo(desc);
     }
 
     /**
      * Creates a Deadline task from command.
      *
+     * @param desc                Description of the task.
      * @param args                Arguments to the command.
      * @param dateTimeInputFormat The format of tasks with date and time.
      */
-    private static Deadline createDeadlineTask(String[] args, String dateTimeInputFormat) throws TaskerException {
+    private static Deadline createDeadlineTask(String desc, String[] args) throws TaskerException {
         TaskerException deadlineException = new TaskerException(
-                String.format("Please provide a deadline with: \"/by %s\".", dateTimeInputFormat));
+                String.format("Please provide a deadline with: \"/by %s\".", DateTimeTask.INPUT_FORMAT));
 
-        if (args.length != 2 || !args[1].startsWith("by ")) {
+        if (args.length != 1 || !args[0].startsWith("by ")) {
             throw deadlineException;
         }
 
         try {
-            return new Deadline(args[0], DateTimeTask.parseInput(args[1].substring(3)));
+            return new Deadline(desc, DateTimeTask.parseInput(args[0].substring(3)));
         } catch (DateTimeParseException e) {
             throw deadlineException;
         }
@@ -60,21 +62,23 @@ class Parser {
     /**
      * Creates an Event task from command.
      *
+     * @param desc                Description of the task.
      * @param args                Arguments to the command.
      * @param dateTimeInputFormat The format of tasks with date and time.
      */
-    private static Event createEventTask(String[] args, String dateTimeInputFormat) throws TaskerException {
+    private static Event createEventTask(String desc, String[] args) throws TaskerException {
+        String dateTimeInputFormat = DateTimeTask.INPUT_FORMAT;
         TaskerException eventException = new TaskerException(
                 String.format("Please provide a start and end time with: \"/from %s /to %s\".",
                         dateTimeInputFormat, dateTimeInputFormat));
 
-        if (args.length != 3 || !args[1].startsWith("from ") || !args[2].startsWith("to ")) {
+        if (args.length != 2 || !args[0].startsWith("from ") || !args[1].startsWith("to ")) {
             throw eventException;
         }
 
         try {
-            return new Event(args[0], DateTimeTask.parseInput(args[1].substring(5)),
-                    DateTimeTask.parseInput(args[2].substring(3)));
+            return new Event(desc, DateTimeTask.parseInput(args[0].substring(5)),
+                    DateTimeTask.parseInput(args[1].substring(3)));
         } catch (DateTimeParseException e) {
             throw eventException;
         }
@@ -83,22 +87,56 @@ class Parser {
     /**
      * Creates a FixedDuration task from command.
      *
+     * @param desc Description of the task.
      * @param args Arguments to the command.
      */
-    private static FixedDuration createFixedDuration(String[] args) throws TaskerException {
+    private static FixedDuration createFixedDuration(String desc, String[] args) throws TaskerException {
         TaskerException eventException = new TaskerException(
                 "Please provide a start and end time with: \"/hr h /min m\".");
 
-        if (args.length != 3 || !args[1].startsWith("hr ") || !args[2].startsWith("min ")) {
+        if (args.length != 2 || !args[0].startsWith("hr ") || !args[1].startsWith("min ")) {
             throw eventException;
         }
 
         try {
-            return new FixedDuration(args[0],
-                    Duration.ofHours(Integer.parseInt(args[1].substring(3)))
-                            .plusMinutes(Integer.parseInt(args[2].substring(4))));
+            return new FixedDuration(desc, Duration.ofHours(Integer.parseInt(args[0].substring(3)))
+                    .plusMinutes(Integer.parseInt(args[1].substring(4))));
         } catch (NumberFormatException e) {
             throw eventException;
+        }
+    }
+
+    /**
+     * Creates a command to add a task with individual arguments.
+     *
+     * @param command  The command to determine the task type.
+     * @param desc     Description of the
+     * @param taskInfo Other parts of the command for information.
+     * @returns A command to add the correct task when executed.
+     */
+    private static Task createAddCommandWithArgs(CommandType command, String desc, String[] taskInfo)
+            throws TaskerException {
+        if (taskInfo.length != 2) {
+            throw new TaskerException(String.format("Please provide arguments for command type %s.", command));
+        }
+
+        String[] args = taskInfo[1].split(" /");
+
+        switch (command) {
+        case TODO:
+            return createTodoTask(desc);
+
+        case DEADLINE:
+            return createDeadlineTask(desc, args);
+
+        case EVENT:
+            return createEventTask(desc, args);
+
+        case FIXED:
+            return createFixedDuration(desc, args);
+
+        default:
+            throw new TaskerException("Not a command to add tasks with arguments.");
         }
     }
 
@@ -116,35 +154,19 @@ class Parser {
         }
 
         Task taskToAdd = null;
+        String[] taskInfo = commandParts[1].split(" /", 2);
+        String desc = taskInfo[0];
 
         switch (command) {
         case TODO:
-            taskToAdd = createTodoTask(commandParts);
+            taskToAdd = createTodoTask(desc);
             break;
 
         // Fallthrough
         case DEADLINE:
         case EVENT:
         case FIXED:
-            String[] args = commandParts[1].split(" /");
-            String dateTimeInputFormat = DateTimeTask.INPUT_FORMAT;
-
-            switch (command) {
-            case DEADLINE:
-                taskToAdd = createDeadlineTask(args, dateTimeInputFormat);
-                break;
-
-            case EVENT:
-                taskToAdd = createEventTask(args, dateTimeInputFormat);
-                break;
-
-            case FIXED:
-                taskToAdd = createFixedDuration(args);
-                break;
-
-            default:
-                throw new TaskerException("Not a command to add taks with arguments.");
-            }
+            taskToAdd = createAddCommandWithArgs(command, desc, taskInfo);
             break;
 
         default:
@@ -169,6 +191,7 @@ class Parser {
         }
 
         int index;
+
         try {
             index = Integer.parseInt(commandParts[1]) - 1;
         } catch (NumberFormatException e) {
@@ -287,17 +310,19 @@ class Parser {
      *
      * @param description The description of the task.
      * @param isDone      If the task is complete.
-     * @param parts       Parts of the storage string containing information.
+     * @param args        Additional information from storage for task.
      * @return A dealine task based on the storage information.
      */
-    private static Deadline createDeadlineFromStorage(String description, boolean isDone, String[] parts,
-            TaskerException exception) throws TaskerException {
-        if (parts.length < 4) {
+    private static Deadline createDeadlineFromStorage(String description, boolean isDone, String[] args)
+            throws TaskerException {
+        TaskerException exception = new TaskerException("Incorrect deadline task storage format.");
+
+        if (args.length != 1) {
             throw exception;
         }
 
         try {
-            return new Deadline(description, isDone, LocalDateTime.parse(parts[3]));
+            return new Deadline(description, isDone, LocalDateTime.parse(args[0]));
         } catch (DateTimeParseException e) {
             throw exception;
         }
@@ -309,17 +334,19 @@ class Parser {
      *
      * @param description The description of the task.
      * @param isDone      If the task is complete.
-     * @param parts       Parts of the storage string containing information.
+     * @param args        Additional information from storage for task.
      * @return An event task based on the storage ingormation.
      */
-    private static Event createEventFromStorage(String description, boolean isDone, String[] parts,
-            TaskerException exception) throws TaskerException {
-        if (parts.length < 5) {
+    private static Event createEventFromStorage(String description, boolean isDone, String[] args)
+            throws TaskerException {
+        TaskerException exception = new TaskerException("Incorrect event task storage format.");
+
+        if (args.length != 2) {
             throw exception;
         }
 
         try {
-            return new Event(description, isDone, LocalDateTime.parse(parts[3]), LocalDateTime.parse(parts[4]));
+            return new Event(description, isDone, LocalDateTime.parse(args[0]), LocalDateTime.parse(args[1]));
         } catch (DateTimeParseException e) {
             throw exception;
         }
@@ -330,20 +357,52 @@ class Parser {
      *
      * @param description The description of the task.
      * @param isDone      If the task is complete.
-     * @param parts       Parts of the storage string containing information.
+     * @param args        Additional information from storage for task.
      * @return An event task based on the storage ingormation.
      */
     private static FixedDuration createFixedDurationFromStorage(String description, boolean isDone,
-            String[] parts,
-            TaskerException exception) throws TaskerException {
-        if (parts.length < 4) {
+            String[] args) throws TaskerException {
+        TaskerException exception = new TaskerException("Incorrect fixed duration task storage format.");
+
+        if (args.length != 1) {
             throw exception;
         }
 
         try {
-            return new FixedDuration(description, isDone, Duration.parse(parts[3]));
+            return new FixedDuration(description, isDone, Duration.parse(args[0]));
         } catch (DateTimeParseException e) {
             throw exception;
+        }
+    }
+
+    /**
+     * Parses tasks with individual arguments from the storages into tasks objects.
+     *
+     * @param description The description of the task.
+     * @param isDone      If the task is complete.
+     * @param parts       Parts of the storage string containing information.
+     * @returns The task represented by the line.
+     */
+    private static Task createTaskWithArgs(TaskType type, String description, boolean isDone, String[] parts)
+            throws TaskerException {
+        if (parts.length < 4) {
+            throw new TaskerException(String.format("No storage argument for task type %s.", type));
+        }
+
+        String[] args = parts[3].split("\\|");
+
+        switch (type) {
+        case D:
+            return createDeadlineFromStorage(description, isDone, args);
+
+        case E:
+            return createEventFromStorage(description, isDone, args);
+
+        case F:
+            return createFixedDurationFromStorage(description, isDone, args);
+
+        default:
+            throw new TaskerException(String.format("Unkown task type from storage: %s.", type));
         }
     }
 
@@ -355,7 +414,7 @@ class Parser {
      * @throws TaskerException If there is an error parsing the task.
      */
     public static Task parseStorage(String line) throws TaskerException {
-        String[] parts = line.split("\\|");
+        String[] parts = line.split("\\|", 4);
         TaskerException incorrectFormat = new TaskerException("Incorrect storage format");
 
         if (parts.length < 3) {
@@ -370,14 +429,11 @@ class Parser {
         case T:
             return createTodoFromStorage(description, isDone);
 
+        // Fallthrough
         case D:
-            return createDeadlineFromStorage(description, isDone, parts, incorrectFormat);
-
         case E:
-            return createEventFromStorage(description, isDone, parts, incorrectFormat);
-
         case F:
-            return createFixedDurationFromStorage(description, isDone, parts, incorrectFormat);
+            return createTaskWithArgs(type, description, isDone, parts);
 
         default:
             throw new TaskerException(String.format("Unkown task type from storage: %s.", type));
