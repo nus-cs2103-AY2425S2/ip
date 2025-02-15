@@ -54,7 +54,7 @@ public class MainWindow extends AnchorPane {
         try {
             dialogContainer.getChildren().addAll(
                     DialogBox.getUserDialog(userText),
-                    DialogBox.getDukeDialog(tasker.respond(userText)));
+                    DialogBox.getTaskerDialog(tasker.respond(userText)));
         } catch (TaskerException e) {
             this.showError(e.getMessage());
         }

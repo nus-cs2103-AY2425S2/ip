@@ -64,7 +64,7 @@ class DialogBox extends HBox {
      *
      * @param text The response to the user.
      */
-    static DialogBox getDukeDialog(String text) throws TaskerException {
+    static DialogBox getTaskerDialog(String text) throws TaskerException {
         DialogBox db = new DialogBox(text, taskerImage);
         db.setAlignment(Pos.TOP_LEFT);
         ObservableList<Node> tmp = FXCollections.observableArrayList(db.getChildren());
