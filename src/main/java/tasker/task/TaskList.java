@@ -119,7 +119,7 @@ public class TaskList {
         StringBuilder output = new StringBuilder("Here are the matching tasks in your list:\n");
         return tasks.stream()
                 .filter(task -> task.contains(term))
-                .peek(task -> output.append(task).append("\n"))
+                .peek(task -> output.append("  ").append(task).append("\n"))
                 .count() > 0
                         ? output.toString()
                         : "No tasks contain that term";
