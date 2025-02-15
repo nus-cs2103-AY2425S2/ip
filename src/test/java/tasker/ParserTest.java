@@ -199,6 +199,8 @@ class ParserTest {
                     exception5.getMessage());
             assertEquals(errMsg,
                     exception5.getMessage());
+            assertEquals(errMsg,
+                    exception6.getMessage());
         }
 
         @Test
@@ -309,7 +311,7 @@ class ParserTest {
         }
 
         @Test
-        @DisplayName("Throw exception for fixed furation with invalid duration")
+        @DisplayName("Throw exception for fixed duration with invalid duration")
         void parseCommand_fixedDurationInvalidDuration_exceptionThrown() {
             String input1 = fixedDescription;
             TaskerException exception1 = assertThrows(TaskerException.class, () -> {
