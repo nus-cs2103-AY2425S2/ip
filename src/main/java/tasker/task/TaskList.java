@@ -125,6 +125,15 @@ public class TaskList {
                         : "No tasks contain that term";
     }
 
+    /**
+     * Creates a list of tasks in their storage string form.
+     *
+     * @returns A string of tasks in this list in their storage string.
+     */
+    public List<String> toStorage() {
+        return tasks.stream().map(Task::toStorage).toList();
+    }
+
     @Override
     public String toString() {
         int size = tasks.size();

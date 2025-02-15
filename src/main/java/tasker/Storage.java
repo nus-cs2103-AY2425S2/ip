@@ -44,7 +44,7 @@ public class Storage {
      */
     public void save(TaskList tasks) throws TaskerException {
         try {
-            Files.write(path, tasks.getTasks().stream().map(Task::toStorage).toList());
+            Files.write(path, tasks.toStorage());
         } catch (IOException e) {
             throw new TaskerException("Failed to save tasks to storage.");
         }
