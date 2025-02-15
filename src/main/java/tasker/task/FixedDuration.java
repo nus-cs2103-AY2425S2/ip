@@ -27,7 +27,7 @@ public class FixedDuration extends Task {
      * @param duration    The amount of time it takes to complete the task.
      */
     public FixedDuration(String description, boolean isDone, Duration duration) {
-        super(description, TaskType.F);
+        super(description, TaskType.F, isDone);
         this.duration = duration;
     }
 
