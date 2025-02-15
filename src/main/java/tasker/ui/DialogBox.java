@@ -18,10 +18,6 @@ import tasker.exception.TaskerException;
  * Component for displaying diaglog.
  */
 class DialogBox extends HBox {
-    /** Image of user */
-    private static Image userImage = new Image(DialogBox.class.getResourceAsStream("/images/DaUser.png"));
-    /** Image of Tasker */
-    private static Image taskerImage = new Image(DialogBox.class.getResourceAsStream("/images/DaTasker.png"));
     /** Text content of dialog */
     @FXML
     private Label text;
@@ -56,6 +52,7 @@ class DialogBox extends HBox {
      * @param text The text conveyed.
      */
     static DialogBox getUserDialog(String text) throws TaskerException {
+        Image userImage = new Image(DialogBox.class.getResourceAsStream("/images/DaUser.png"));
         return new DialogBox(text, userImage);
     }
 
@@ -65,6 +62,7 @@ class DialogBox extends HBox {
      * @param text The response to the user.
      */
     static DialogBox getTaskerDialog(String text) throws TaskerException {
+        Image taskerImage = new Image(DialogBox.class.getResourceAsStream("/images/DaTasker.png"));
         DialogBox db = new DialogBox(text, taskerImage);
         db.setAlignment(Pos.TOP_LEFT);
         ObservableList<Node> tmp = FXCollections.observableArrayList(db.getChildren());
