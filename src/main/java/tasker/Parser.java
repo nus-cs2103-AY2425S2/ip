@@ -344,8 +344,8 @@ class Parser {
      * @param args        Additional information from storage for task.
      * @return An event task based on the storage ingormation.
      */
-    private static FixedDuration createFixedDurationFromStorage(String description, boolean isDone,
-            String[] args) throws TaskerException {
+    private static FixedDuration createFixedDurationFromStorage(String description, boolean isDone, String[] args)
+            throws TaskerException {
         TaskerException exception = new TaskerException("Incorrect fixed duration task storage format.");
 
         if (args.length != 1) {
@@ -360,37 +360,6 @@ class Parser {
     }
 
     /**
-     * Parses tasks with individual arguments from the storages into tasks objects.
-     *
-     * @param description The description of the task.
-     * @param isDone      If the task is complete.
-     * @param parts       Parts of the storage string containing information.
-     * @returns The task represented by the line.
-     */
-    private static Task createTaskWithArgs(TaskType type, String description, boolean isDone, String[] parts)
-            throws TaskerException {
-        if (parts.length < 4) {
-            throw new TaskerException(String.format("No storage argument for task type %s.", type));
-        }
-
-        String[] args = parts[3].split("\\|");
-
-        switch (type) {
-        case D:
-            return createDeadlineFromStorage(description, isDone, args);
-
-        case E:
-            return createEventFromStorage(description, isDone, args);
-
-        case F:
-            return createFixedDurationFromStorage(description, isDone, args);
-
-        default:
-            throw new TaskerException(String.format("Unkown task type from storage: %s.", type));
-        }
-    }
-
-    /**
      * Parses tasks from the storages into task objects.
      *
      * @param line The line to parse.
@@ -398,7 +367,7 @@ class Parser {
      * @throws TaskerException If there is an error parsing the task.
      */
     public static Task parseStorage(String line) throws TaskerException {
-        String[] parts = line.split("\\|", 4);
+        String[] parts = line.split("\\|");
         TaskerException incorrectFormat = new TaskerException("Incorrect storage format");
 
         if (parts.length < 3) {
@@ -408,16 +377,20 @@ class Parser {
         TaskType type = TaskType.valueOf(parts[0]);
         boolean isDone = Boolean.parseBoolean(parts[1]);
         String description = parts[2];
+        String[] args = Arrays.copyOfRange(parts, 3, parts.length);
 
         switch (type) {
         case T:
             return createTodoFromStorage(description, isDone);
 
-        // Fallthrough
         case D:
+            return createDeadlineFromStorage(description, isDone, args);
+
         case E:
+            return createEventFromStorage(description, isDone, args);
+
         case F:
-            return createTaskWithArgs(type, description, isDone, parts);
+            return createFixedDurationFromStorage(description, isDone, args);
 
         default:
             throw new TaskerException(String.format("Unkown task type from storage: %s.", type));
