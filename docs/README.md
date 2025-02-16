@@ -7,7 +7,7 @@
 Stay organized, productive, and in control with Tasker, the all-in-one task manager designed to simplify your life. Whether you're managing daily to-dos, tracking deadlines, scheduling events, or handling fixed-duration tasks, Tasker has you covered. With its intuitive interface and powerful features, you'll never miss a beat.
 
 ## Input format
-* `description`: A string.
+* `description`: A string before any ` /`.
 * `deadline`/`start`/`end`: `d/m/yyyy HHMM`.
     * `d`: 1 or 2 digit day,
     * `m`: 1 or 2 digit month
