@@ -1,3 +1,13 @@
+# Class files
+*.class
+
+# Data files
+/data/
+/text-ui-test/data/
+
+# VSCode files
+.vscode/
+
 # IDEA files
 /.idea/
 /out/
@@ -15,3 +25,8 @@ bin/
 
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT
+
+# Nix Package Manager files
+shell.nix
+# Checkstyle file
+checks.xml
