@@ -3,6 +3,7 @@ package tasker;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
+import java.util.Arrays;
 
 import tasker.command.AddCommand;
 import tasker.command.ByeCommand;
@@ -37,6 +38,16 @@ class Parser {
     }
 
     /**
+     * Gets the value of an argument from the split command.
+     *
+     * @param arg The argument string to get the value from.
+     * @returns The string value of the argument.
+     */
+    private static String getArgValue(String arg) {
+        return arg.replaceFirst("^\\S+\\s+", "");
+    }
+
+    /**
      * Creates a Deadline task from command.
      *
      * @param desc                Description of the task.
@@ -47,12 +58,12 @@ class Parser {
         TaskerException deadlineException = new TaskerException(
                 String.format("Please provide a deadline with: \"/by %s\".", DateTimeTask.INPUT_FORMAT));
 
-        if (args.length != 1 || !args[0].startsWith("by ")) {
+        if (args.length != 1 || !args[0].startsWith("/by ")) {
             throw deadlineException;
         }
 
         try {
-            return new Deadline(desc, DateTimeTask.parseInput(args[0].substring(3)));
+            return new Deadline(desc, DateTimeTask.parseInput(getArgValue(args[0])));
         } catch (DateTimeParseException e) {
             throw deadlineException;
         }
@@ -72,13 +83,13 @@ class Parser {
                 String.format("Please provide a start and end time with: \"/from %s /to %s\".",
                         dateTimeInputFormat, dateTimeInputFormat));
 
-        if (args.length != 2 || !args[0].startsWith("from ") || !args[1].startsWith("to ")) {
+        if (args.length != 2 || !args[0].startsWith("/from ") || !args[1].startsWith("/to ")) {
             throw eventException;
         }
 
         try {
-            return new Event(desc, DateTimeTask.parseInput(args[0].substring(5)),
-                    DateTimeTask.parseInput(args[1].substring(3)));
+            return new Event(desc, DateTimeTask.parseInput(getArgValue(args[0])),
+                    DateTimeTask.parseInput(getArgValue(args[1])));
         } catch (DateTimeParseException e) {
             throw eventException;
         }
@@ -94,79 +105,51 @@ class Parser {
         TaskerException eventException = new TaskerException(
                 "Please provide a start and end time with: \"/hr h /min m\".");
 
-        if (args.length != 2 || !args[0].startsWith("hr ") || !args[1].startsWith("min ")) {
+        if (args.length != 2 || !args[0].startsWith("/hr ") || !args[1].startsWith("/min ")) {
             throw eventException;
         }
 
         try {
-            return new FixedDuration(desc, Duration.ofHours(Integer.parseInt(args[0].substring(3)))
-                    .plusMinutes(Integer.parseInt(args[1].substring(4))));
+            return new FixedDuration(desc, Duration.ofHours(Integer.parseInt(getArgValue(args[0])))
+                    .plusMinutes(Integer.parseInt(getArgValue(args[1]))));
         } catch (NumberFormatException e) {
             throw eventException;
         }
     }
 
     /**
-     * Creates a command to add a task with individual arguments.
-     *
-     * @param command  The command to determine the task type.
-     * @param desc     Description of the
-     * @param taskInfo Other parts of the command for information.
-     * @returns A command to add the correct task when executed.
-     */
-    private static Task createAddCommandWithArgs(CommandType command, String desc, String[] taskInfo)
-            throws TaskerException {
-        if (taskInfo.length != 2) {
-            throw new TaskerException(String.format("Please provide arguments for command type %s.", command));
-        }
-
-        String[] args = taskInfo[1].split(" /");
-
-        switch (command) {
-        case TODO:
-            return createTodoTask(desc);
-
-        case DEADLINE:
-            return createDeadlineTask(desc, args);
-
-        case EVENT:
-            return createEventTask(desc, args);
-
-        case FIXED:
-            return createFixedDuration(desc, args);
-
-        default:
-            throw new TaskerException("Not a command to add tasks with arguments.");
-        }
-    }
-
-    /**
      * Creates a command to add a task.
      *
-     * @param command      The command to determine the task type.
-     * @param commandParts Other parts of the command for information.
+     * @param command     The command to determine the task type.
+     * @param commandInfo Other parts of the command for information.
      * @returns A command to add the correct task when executed.
      * @throws TaskerException If there is an error with the command.
      */
-    private static AddCommand createAddCommand(CommandType command, String[] commandParts) throws TaskerException {
-        if (commandParts.length != 2 || commandParts[1].startsWith("/")) {
+    private static AddCommand createAddCommand(CommandType command, String commandInfo) throws TaskerException {
+        if (commandInfo == null || commandInfo.startsWith("/")) {
             throw new TaskerException("Please provide a description for the task.");
         }
 
-        Task taskToAdd = null;
-        String[] taskInfo = commandParts[1].split(" /", 2);
+        String[] taskInfo = commandInfo.split("\\s+(?=/)");
         String desc = taskInfo[0];
+        String[] args = Arrays.copyOfRange(taskInfo, 1, taskInfo.length);
+        Task taskToAdd = null;
 
         switch (command) {
         case TODO:
             taskToAdd = createTodoTask(desc);
             break;
 
-        // Fallthrough
         case DEADLINE:
+            taskToAdd = createDeadlineTask(desc, args);
+            break;
+
         case EVENT:
+            taskToAdd = createEventTask(desc, args);
+            break;
+
         case FIXED:
-            taskToAdd = createAddCommandWithArgs(command, desc, taskInfo);
+            taskToAdd = createFixedDuration(desc, args);
             break;
 
         default:
@@ -180,22 +163,22 @@ class Parser {
     /**
      * Creates a command to modify the task list based on a provided index.
      *
-     * @param command      The command to determine the task type.
-     * @param commandParts Other parts of the command for information.
+     * @param command     The command to determine the task type.
+     * @param commandInfo Other parts of the command for information.
      * @returns A command to modify the task list based on the index in the command.
      * @throws TaskerException If there is an error with the command.
      */
-    private static Command createIndexedCommand(CommandType command, String[] commandParts) throws TaskerException {
-        if (commandParts.length != 2) {
+    private static Command createIndexedCommand(CommandType command, String commandInfo) throws TaskerException {
+        if (commandInfo == null) {
             throw new TaskerException("Please provide a task number.");
         }
 
         int index;
 
         try {
-            index = Integer.parseInt(commandParts[1]) - 1;
+            index = Integer.parseInt(commandInfo) - 1;
         } catch (NumberFormatException e) {
-            throw new TaskerException("Please provide a valid task number.");
+            throw new TaskerException("Please provide a valid number.");
         }
 
         switch (command) {
@@ -216,16 +199,16 @@ class Parser {
     /**
      * Creates a command to find a task with a string.
      *
-     * @param commandParts Other parts of the command for information.
+     * @param commandInfo Other parts of the command for information.
      * @returns A command to find a task with the string.
      * @throws TaskerException If there is an error with the command.
      */
-    private static FindCommand createFindCommand(String[] commandParts) throws TaskerException {
-        if (commandParts.length != 2) {
+    private static FindCommand createFindCommand(String commandInfo) throws TaskerException {
+        if (commandInfo == null) {
             throw new TaskerException("Please provide a search term.");
         }
 
-        return new FindCommand(commandParts[1]);
+        return new FindCommand(commandInfo);
     }
 
     /**
@@ -254,8 +237,9 @@ class Parser {
      * @throws TaskerException If there is an error with the command.
      */
     public static Command parseCommand(String command) throws TaskerException {
-        String[] commandParts = command.split(" ", 2);
+        String[] commandParts = command.strip().split("\\s+", 2);
         CommandType mainPart;
+        String commandInfo = commandParts.length == 2 ? commandParts[1] : null;
         TaskerException unknownCommandException = new TaskerException(String.format("""
                 Unknown command: %s
                 %s""", commandParts[0], CommandType.listCommands()));
@@ -272,16 +256,16 @@ class Parser {
         case EVENT:
         case TODO:
         case FIXED:
-            return createAddCommand(mainPart, commandParts);
+            return createAddCommand(mainPart, commandInfo);
 
         // Fallthrough
         case DELETE:
         case MARK:
         case UNMARK:
-            return createIndexedCommand(mainPart, commandParts);
+            return createIndexedCommand(mainPart, commandInfo);
 
         case FIND:
-            return createFindCommand(commandParts);
+            return createFindCommand(commandInfo);
 
         case LIST:
             return createListCommand();

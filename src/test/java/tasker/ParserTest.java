@@ -219,7 +219,7 @@ class ParserTest {
             TaskerException exception3 = assertThrows(TaskerException.class, () -> {
                 Parser.parseCommand(input3);
             });
-            String errMsg = "Please provide a valid task number.";
+            String errMsg = "Please provide a valid number.";
             assertEquals(errMsg, exception1.getMessage());
             assertEquals(errMsg, exception2.getMessage());
             assertEquals(errMsg, exception3.getMessage());
@@ -247,29 +247,12 @@ class ParserTest {
         }
 
         @Test
-        @DisplayName("Throw exception when tasks that require arguments do not have them")
-        void parseCommand_missingArgs_exceptionThrown() {
+        @DisplayName("Throw exception for deadline with invalid date")
+        void parseCommand_deadlineInvalidDate_exceptionThrown() {
             String input1 = deadlineDescription;
             TaskerException exception1 = assertThrows(TaskerException.class, () -> {
                 Parser.parseCommand(input1);
             });
-            String input2 = eventDescription;
-            TaskerException exception2 = assertThrows(TaskerException.class, () -> {
-                Parser.parseCommand(input2);
-            });
-            String input3 = fixedDescription;
-            TaskerException exception3 = assertThrows(TaskerException.class, () -> {
-                Parser.parseCommand(input3);
-            });
-            String errMsg = "Please provide arguments for command type %s.";
-            assertEquals(exception1.getMessage(), String.format(errMsg, deadline));
-            assertEquals(exception2.getMessage(), String.format(errMsg, event));
-            assertEquals(exception3.getMessage(), String.format(errMsg, fixed));
-        }
-
-        @Test
-        @DisplayName("Throw exception for deadline with invalid date")
-        void parseCommand_deadlineInvalidDate_exceptionThrown() {
             String input2 = deadlineDescription + " /by invalid";
             TaskerException exception2 = assertThrows(TaskerException.class, () -> {
                 Parser.parseCommand(input2);
@@ -280,6 +263,7 @@ class ParserTest {
             });
             String errMsg = String.format("Please provide a deadline with: \"/by %s\".",
                     DateTimeTask.INPUT_FORMAT);
+            assertEquals(exception1.getMessage(), errMsg);
             assertEquals(exception2.getMessage(), errMsg);
             assertEquals(exception3.getMessage(), errMsg);
         }
@@ -287,6 +271,10 @@ class ParserTest {
         @Test
         @DisplayName("Throw exception for event with invalid dates")
         void parseCommand_eventInvalidDate_exceptionThrown() {
+            String input1 = eventDescription;
+            TaskerException exception1 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input1);
+            });
             String input2 = eventDescriptionFrom;
             TaskerException exception2 = assertThrows(TaskerException.class, () -> {
                 Parser.parseCommand(input2);
@@ -313,6 +301,7 @@ class ParserTest {
             });
             String errMsg = String.format("Please provide a start and end time with: \"/from %s /to %s\".",
                     DateTimeTask.INPUT_FORMAT, DateTimeTask.INPUT_FORMAT);
+            assertEquals(exception1.getMessage(), errMsg);
             assertEquals(exception2.getMessage(), errMsg);
             assertEquals(exception3.getMessage(), errMsg);
             assertEquals(exception4.getMessage(), errMsg);
@@ -324,6 +313,10 @@ class ParserTest {
         @Test
         @DisplayName("Throw exception for fixed duration with invalid duration")
         void parseCommand_fixedDurationInvalidDuration_exceptionThrown() {
+            String input1 = fixedDescription;
+            TaskerException exception1 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input1);
+            });
             String input2 = fixedDescriptionHr;
             TaskerException exception2 = assertThrows(TaskerException.class, () -> {
                 Parser.parseCommand(input2);
@@ -349,6 +342,7 @@ class ParserTest {
                 Parser.parseCommand(input7);
             });
             String errMsg = "Please provide a start and end time with: \"/hr h /min m\".";
+            assertEquals(exception1.getMessage(), errMsg);
             assertEquals(exception2.getMessage(), errMsg);
             assertEquals(exception3.getMessage(), errMsg);
             assertEquals(exception4.getMessage(), errMsg);
