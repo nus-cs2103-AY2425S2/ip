@@ -17,11 +17,11 @@ Scooby allows you to add, update, delete, and manage tasks such as ToDos, Deadli
 ## 3. Commands
 
 ### Adding tasks
-| Command | Description |
-|---------|-------------|
-| `todo <task_name>` | Create a new task with `<task_name>.` |
-| `deadline <task_name> /by <deadline>` | Create a Deadline task with `<deadline>.` |
-| `event <task_name> /from <start_time> /to <end_time>` | Create an Event task with `<start_time>` and `<end_time>.` |
+| Command  | Description  |
+|----------|-------------|
+| `todo <task_name>`  | Create a new task with `<task_name>`. |
+| `deadline <task_name> /by <deadline>`  | Create a Deadline task with `<deadline>`. |
+| `event <task_name> /from <start_time> /to <end_time>`  | Create an Event task with `<start_time>` and `<end_time>`. |
 
 Examples:
 
@@ -33,17 +33,17 @@ Examples:
 
 
 ### Modifying Tasks
-| Command | Description |
-|---------|-------------|
-| `list` | Lists all available tasks |
-| `mark <task index>` | Marks tasks at  `<task index>.` |
-| `unmark <task index>` | Unmarks tasks at  `<task index>.` |
-|`delete <task index>`| Deletes tasks at `<task index>`|
-|`update <task index> <new details>`| Updates tasks at `<task index>` with new details|
+| Command  | Description  |
+|----------|-------------|
+| `list`  | Lists all available tasks |
+| `mark <task index>`  | Marks tasks at `<task index>`. |
+| `unmark <task index>`  | Unmarks tasks at `<task index>`. |
+| `delete <task index>`  | Deletes tasks at `<task index>`. |
+| `update <task index> <new details>`  | Updates tasks at `<task index>` with new details. |
 
 ### Miscellaneous Commands:
-| Command | Description |
-|---------|-------------|
-|`find <description>`| Finds all tasks with this exact description |
-| `help` | Lists all available commands |
-| `bye` | Exits the bot |
+| Command  | Description  |
+|----------|-------------|
+| `find <description>`  | Finds all tasks with this exact description. |
+| `help`  | Lists all available commands. |
+| `bye`  | Exits the bot. |
