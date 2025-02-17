@@ -53,6 +53,13 @@ public class Julie {
     }
 
     /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        return "Julie heard: " + input;
+    }
+
+    /**
      * The main entry point of the application.
      * Creates and runs an instance of {@code Julie}.
      *
