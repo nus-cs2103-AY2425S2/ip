@@ -17,6 +17,7 @@ Scooby allows you to add, update, delete, and manage tasks such as ToDos, Deadli
 ## 3. Commands
 
 ### Adding tasks
+
 | Command  | Description  |
 |----------|-------------|
 | `todo <task_name>`  | Create a new task with `<task_name>`. |
@@ -33,6 +34,7 @@ Examples:
 
 
 ### Modifying Tasks
+
 | Command  | Description  |
 |----------|-------------|
 | `list`  | Lists all available tasks |
@@ -41,7 +43,8 @@ Examples:
 | `delete <task index>`  | Deletes tasks at `<task index>`. |
 | `update <task index> <new details>`  | Updates tasks at `<task index>` with new details. |
 
-### Miscellaneous Commands:
+### Miscellaneous Commands
+
 | Command  | Description  |
 |----------|-------------|
 | `find <description>`  | Finds all tasks with this exact description. |
