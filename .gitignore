@@ -7,11 +7,24 @@
 /.gradle/
 /build/
 src/main/resources/docs/
+caches/
+wrapper/
+daemon/
+native/
+
+# Ignore compiled Java class files
+*.class
 
 # MacOS custom attributes files created by Finder
 .DS_Store
 *.iml
 bin/
+/native/
+/caches/
+/daemon/
 
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT
+
+# Data files
+/data/
