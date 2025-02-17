@@ -7,7 +7,7 @@ Scooby allows you to add, update, delete, and manage tasks such as ToDos, Deadli
 ![UI Screenshot](Ui.png)
 
 ## 2. Quick Start
-1. **Download** the latest release from [GitHub Releases](https://github.com/your-repo-url/releases).
+1. **Download** the latest release from [GitHub Releases](https://github.com/cyrolite/ip/releases/tag/A-Release).
 2. **Navigate** to the directory containing `Scooby.jar`.
 3. **Run the application** using:
    ```sh
