@@ -32,40 +32,51 @@ public class Julie {
     }
 
     /**
-     * Starts the chatbot application.
-     * Displays a welcome message and continuously reads and processes user commands
-     * until the exit command is received.
+     * Returns the chatbot's welcome message.
+     * This is used to display the greeting when the GUI starts.
+     *
+     * @return The welcome message as a string.
      */
-    public void run() {
-        ui.showWelcome();
+    public String getWelcomeMessage() {
+        return ui.showWelcome();
+    }
 
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String input = ui.readCommand();
-                Command command = Parser.parse(input);
-                command.execute(tasks, ui, storage);
-                isExit = command.isExit();
-            } catch (WrongFormatException e) {
-                ui.showError(e.getMessage());
+    /**
+     * Processes user input and returns a response (for GUI usage).
+     *
+     * @param input The user input string.
+     * @return The chatbot’s response.
+     */
+    public String getResponse(String input) {
+        try {
+            Command command = Parser.parse(input);
+            String response = executeAndCapture(command);
+
+            if (command.isExit()) {
+                return ui.showGoodbye();
             }
+
+            return response;
+        } catch (WrongFormatException e) {
+            return e.getMessage();
         }
     }
 
-    /**
-     * Generates a response for the user's chat message.
-     */
-    public String getResponse(String input) {
-        return "Julie heard: " + input;
-    }
+
 
     /**
-     * The main entry point of the application.
-     * Creates and runs an instance of {@code Julie}.
+     * Executes a command and captures the UI output as a string.
      *
-     * @param args Command-line arguments (not used).
+     * @param command The command to execute.
+     * @return The formatted response string.
      */
-    public static void main(String[] args) {
-        new Julie().run();
+    private String executeAndCapture(Command command) {
+        ui.enableCaptureMode(); // Start capturing messages
+        try {
+            command.execute(tasks, ui, storage);
+        } catch (WrongFormatException e) {
+            ui.showError(e.getMessage());
+        }
+        return ui.getCapturedResponse(); // Get and return captured messages
     }
 }

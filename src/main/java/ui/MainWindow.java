@@ -27,28 +27,53 @@ public class MainWindow extends AnchorPane {
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/userImage.jpg"));
     private Image julieImage = new Image(this.getClass().getResourceAsStream("/images/julieImage.jpg"));
 
+    /**
+     * Initializes the main window of the chatbot's GUI.
+     * Binds the scroll pane's vertical position to the height of the dialog container
+     * so that new messages are always visible. Also displays the chatbot's welcome
+     * message when the GUI starts.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
+    /** Injects the Julie instance */
     public void setJulie(Julie j) {
         julie = j;
+
+        String welcomeMessage = julie.getWelcomeMessage();
+        dialogContainer.getChildren().add(DialogBox.getJulieDialog(welcomeMessage, julieImage));
     }
 
     /**
-     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
+     * Creates two dialog boxes, one echoing user input and the other containing Julie's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      */
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
         String response = julie.getResponse(input);
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getJulieDialog(response, julieImage)
+                DialogBox.getJulieDialog(response.isEmpty() ? "No response captured!" : response, julieImage)
         );
+
         userInput.clear();
+
+        // 🚀 Check if user typed "bye" and delay before exiting
+        if (input.trim().equalsIgnoreCase("bye")) {
+            new Thread(() -> {
+                try {
+                    Thread.sleep(2000); // ⏳ Wait for 2 seconds
+                    System.exit(0); // 🚀 Exit the application
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
     }
+
+
 }

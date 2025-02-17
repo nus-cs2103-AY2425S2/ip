@@ -1,39 +1,53 @@
 package julie;
 
-import java.util.Scanner;
-
 import julie.task.Task;
-
 
 /**
  * Handles all user interactions for the chatbot.
  * Responsible for displaying messages, reading user input, and formatting responses.
  */
 public class UI {
-    private final Scanner scanner;
+    private StringBuilder responseBuffer;
 
     /**
      * Constructs a new {@code UI} instance.
      * Initializes the scanner to read user input.
      */
     public UI() {
-        scanner = new Scanner(System.in);
+        this.responseBuffer = null;
     }
+
+    public void enableCaptureMode() {
+        responseBuffer = new StringBuilder();
+    }
+
+    public String getCapturedResponse() {
+        String response = responseBuffer.toString().trim();
+        responseBuffer = null; // Disable capture mode
+        return response;
+    }
+
+    /**
+     * Displays a general message.
+     *
+     * @param message The message to display.
+     */
+    public void showMessage(String message) {
+        if (responseBuffer != null) {
+            responseBuffer.append(message).append("\n");
+        } else {
+            System.out.println(message);
+        }
+    }
+
 
     /**
      * Displays the welcome message when the chatbot starts.
+     *
+     * @return
      */
-    public void showWelcome() {
-        drawLine();
-        System.out.println("Hello! I'm julie.Julie.\nWhat can I do for you?");
-        drawLine();
-    }
-
-    /**
-     * Draws a horizontal line for formatting output.
-     */
-    public void drawLine() {
-        System.out.println("______________________________________________");
+    public String showWelcome() {
+        return "Hello! I'm Julie.\nWhat can I do for you?";
     }
 
     /**
@@ -42,9 +56,11 @@ public class UI {
      * @param message The error message to display.
      */
     public void showError(String message) {
-        drawLine();
-        System.out.println(message);
-        drawLine();
+        if (responseBuffer != null) {
+            responseBuffer.append(message).append("\n");
+        } else {
+            System.err.println(message);
+        }
     }
 
     /**
@@ -53,10 +69,7 @@ public class UI {
      * @param tasks The {@code TaskList} containing the tasks to be displayed.
      */
     public void showTaskList(TaskList tasks) {
-        drawLine();
-        System.out.println("Here are your tasks:");
-        tasks.showTasks();
-        drawLine();
+        showMessage(tasks.getTaskListString());
     }
 
     /**
@@ -66,9 +79,7 @@ public class UI {
      * @param keyword The search keyword.
      */
     public void showFoundTaskList(TaskList tasks, String keyword) {
-        drawLine();
-        tasks.showFoundTasks(keyword);
-        drawLine();
+        showMessage(tasks.getFoundTaskListString(keyword));
     }
 
     /**
@@ -78,10 +89,9 @@ public class UI {
      * @param size The new total number of tasks.
      */
     public void ackMessage(Task task, int size) {
-        drawLine();
-        System.out.printf("Got it! I've added this task to the list:%n%s%nNow you have %d tasks in the list.%n",
-                task.toString(), size);
-        drawLine();
+        String msg = "Got it! I've added this task to the list:\n" + task
+                + "\nNow you have " + size + " tasks in the list.\n";
+        showMessage(msg);
     }
 
     /**
@@ -91,12 +101,9 @@ public class UI {
      * @param size The new total number of tasks remaining.
      */
     public void deleteMessage(Task task, int size) {
-        drawLine();
-        System.out.printf(
-                "Noted, the following task has been removed:%n%s%nNow you have %d tasks in the list.%n",
-                task.toString(), size
-        );
-        drawLine();
+        String msg = "Noted, the following task has been removed:\n" + task
+                + "\nNow you have " + size + " tasks in the list.\n";
+        showMessage(msg);
     }
 
     /**
@@ -105,9 +112,7 @@ public class UI {
      * @param task The task that was marked as done.
      */
     public void markMessage(Task task) {
-        drawLine();
-        System.out.printf("Nice! I've marked this task as done!%n%s%n", task.toString());
-        drawLine();
+        showMessage("Nice! I've marked this task as done!\n" + task);
     }
 
     /**
@@ -116,25 +121,23 @@ public class UI {
      * @param task The task that was marked as not done.
      */
     public void unmarkMessage(Task task) {
-        drawLine();
-        System.out.printf("Okay, I have marked this task as undone!%n%s%n", task.toString());
-        drawLine();
+        showMessage("Okay, I have marked this task as undone!\n" + task);
     }
 
-    /**
-     * Reads and returns the user's command input.
-     *
-     * @return A trimmed string containing the user input.
-     */
-    public String readCommand() {
-        return scanner.nextLine().trim();
-    }
+    //    /**
+    //     * Reads and returns the user's command input.
+    //     *
+    //     * @return A trimmed string containing the user input.
+    //     */
+    //    public String readCommand() {
+    //        return scanner.nextLine().trim();
+    //    }
 
     /**
      * Displays the goodbye message when the chatbot exits.
      */
-    public void showGoodbye() {
-        System.out.println("Goodbye. See you later!");
+    public String showGoodbye() {
+        return "Goodbye. See you later!";
     }
 
 }

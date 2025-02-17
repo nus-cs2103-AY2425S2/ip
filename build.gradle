@@ -48,13 +48,30 @@ application {
     mainClass.set("ui.Launcher")
 }
 
+//shadowJar {
+//    archiveFileName = "julie.jar"
+//    archiveBaseName = "julie"
+//    archiveClassifier = null
+//}
+
 shadowJar {
     archiveFileName = "julie.jar"
     archiveBaseName = "julie"
     archiveClassifier = null
+
+    mergeServiceFiles()
+    manifest {
+        attributes(
+                'Main-Class': 'ui.Launcher'
+        )
+    }
 }
 
 run{
+    jvmArgs = [
+            "--module-path", "${System.getProperty('javafx.runtime.version')}",
+            "--add-modules", "javafx.controls,javafx.fxml"
+    ]
     standardInput = System.in
 }
 
