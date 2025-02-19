@@ -1,5 +1,14 @@
 package backend;
 
+import backend.task.EventTask;
+import backend.task.ToDoTask;
+import backend.task.DeadlineTask;
+import backend.task.Task;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.BufferedWriter;
@@ -17,6 +26,59 @@ public class Storage {
      */
     public Storage(String filePath) {
         this.filePath = filePath;
+    }
+
+
+    // @@author testing1234567891011121314
+    // Reused from https://github.com/testing1234567891011121314/ip
+    // with minor modifications
+    /**
+     * Reads File and returns contents as an arraylist of Strings.
+     * @return an arraylist of Tasks
+     */
+    public ArrayList<Task> readDataFromDisk() {
+        ArrayList<Task> contents = new ArrayList<>();
+        try {
+            File f = new File(filePath);
+            Scanner s = new Scanner(f);
+            while (s.hasNextLine()) {
+                contents.add(readEntry(s.nextLine()));
+            }
+            s.close();
+        } catch (FileNotFoundException e) {
+            //throw new ReminderebotException("File not found!");
+        }
+        return contents;
+    }
+
+    /**
+     * Read the string entry and return a task
+     * @param entry
+     * @return Task corresponding to string
+     */
+    private Task readEntry(String entry) {
+        String[] fields = entry.split("\\|");
+        Task taskToAdd;
+        // @@author david-eom
+        // Reused from https://github.com/david-eom/CS2103T-IP
+        // with minor modifications
+        switch (fields[0]) {
+            case "E":
+                taskToAdd = new EventTask(fields[2], fields[3], fields[4]);
+                break;
+            case "D":
+                taskToAdd = new DeadlineTask(fields[2], fields[3]);
+                break;
+            case "T":
+                taskToAdd = new ToDoTask(fields[2]);
+                break;
+            default:
+                throw new RuntimeException("This should not happen");
+        }
+        if ((fields[1]).equals("X")) {
+            taskToAdd.markAsDone();
+        }
+        return taskToAdd;
     }
 
     /**
