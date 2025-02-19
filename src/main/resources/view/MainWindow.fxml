@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+  A bigger window (600x700) that places:
+  1) ScrollPane at the top (fills most space).
+  2) TextField + Send Button at the bottom.
+-->
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="shin.MainWindow"
+            prefWidth="600.0"
+            prefHeight="700.0">
+
+    <children>
+        <!-- SCROLLPANE occupies from top to ~41px above the bottom -->
+        <ScrollPane fx:id="scrollPane"
+                    AnchorPane.topAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0"
+                    AnchorPane.bottomAnchor="41.0"
+                    hbarPolicy="NEVER"
+                    vbarPolicy="ALWAYS">
+            <content>
+                <VBox fx:id="dialogContainer" />
+            </content>
+        </ScrollPane>
+
+        <!-- TEXTFIELD occupies bottom row, minus space for the Send button on the right -->
+        <TextField fx:id="userInput"
+                   onAction="#handleUserInput"
+                   prefHeight="41.0"
+                   AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="76.0"
+                   AnchorPane.bottomAnchor="0.0" />
+
+        <!-- SEND BUTTON sits at bottom-right corner -->
+        <Button fx:id="sendButton"
+                mnemonicParsing="false"
+                onAction="#handleUserInput"
+                prefHeight="41.0"
+                prefWidth="76.0"
+                text="Send"
+                AnchorPane.rightAnchor="0.0"
+                AnchorPane.bottomAnchor="0.0" />
+    </children>
+</AnchorPane>
