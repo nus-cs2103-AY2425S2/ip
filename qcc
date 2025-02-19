@@ -1,0 +1,770 @@
+[33mcommit 7022b355c18438d202749bc76766ad308a2eeac4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Wed Feb 19 14:47:17 2025 +0800
+
+    Remove Ui class and related file containing the Ui variable
+
+[33mcommit 9bc2c0259df76b9805451683059b29c7610e927c[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Wed Feb 19 14:42:55 2025 +0800
+
+    Add Ui to show message
+
+[33mcommit 319fc964ce399fff69b7adc991532a98adb848a4[m[33m ([m[1;33mtag: [m[1;33mA-Checkstyle[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: a9f6eef 649a9c2
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 19:34:18 2025 +0800
+
+    Merge branch 'branch-A-Checkstyle'
+
+[33mcommit 649a9c290763f39e004bdf112b6c2421c54984da[m[33m ([m[1;32mbranch-A-Checkstyle[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 19:34:03 2025 +0800
+
+    Correct some checkstyle error
+
+[33mcommit a9f6eef95a91ef3320301d6fce9af8a7620ac504[m[33m ([m[1;33mtag: [m[1;33mLevel-10[m[33m)[m
+Merge: 08df109 ce15237
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 18:42:49 2025 +0800
+
+    Merge branch 'branch-Level-10'
+
+[33mcommit ce15237282493bbbd56302c2f1c1dc48b7b61f8d[m[33m ([m[1;32mbranch-Level-10[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 18:40:22 2025 +0800
+
+    Make parse a static method
+
+[33mcommit 08df109753cff833ef16307445ef5f91584f9831[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 18:33:54 2025 +0800
+
+    Make parse a static method
+
+[33mcommit 470e2d02dd79b9e0021aa7f9d70ba0be7f54b99d[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 18:33:14 2025 +0800
+
+    Fix typos and add UnmarkCommand back
+
+[33mcommit 7110bfd7cbe3f309911494916e050774f1ab129e[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 17:46:29 2025 +0800
+
+    Add label according to the Command type
+    
+    Let's
+    * get DialogBox with different color for different commandType.
+
+[33mcommit 6c0d4a1f289d0c6a6e072d251cbbfd49b27aafe6[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 17:44:48 2025 +0800
+
+    Add profile images
+
+[33mcommit ac0c84d70105cf5a075a85c6caf44081ff72a253[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 17:42:43 2025 +0800
+
+    Command class: Store task message
+    
+    Let's
+    * set the field message.
+    * get the field message.
+    * to be passed as an argument for Jude:getResponse.
+
+[33mcommit 576c40886b0dd92ff79a8cdf1d8ef2fd4702e8bd[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 17:24:40 2025 +0800
+
+    Add some of worked Javafx GUI
+
+[33mcommit ff488ef6b1fcfda1da189dbd6796654463d353bf[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 17:03:56 2025 +0800
+
+    Replace redundant isExit boolean variable and fix typo in Event header
+    
+    It fixes according to the pull request comments.
+
+[33mcommit e044ec543ae85c909b178d6fe6dcba9e007a4568[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 17:02:48 2025 +0800
+
+    Fix index error not matching
+
+[33mcommit 2d0a8027d6cc351183827e1a7dd1fd804d86dad1[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 8 17:01:15 2025 +0800
+
+    Change formatting in Parser class
+
+[33mcommit 5229f28bd277a603ead00b92f65804e53e39b9c8[m[33m ([m[1;33mtag: [m[1;33mA-JavaDoc[m[33m)[m
+Merge: 9a663be 723cf11
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sun Feb 2 00:24:54 2025 +0800
+
+    Resolve conflict
+
+[33mcommit 9a663bec29e8c9af7766c926bffc757483494278[m[33m ([m[1;33mtag: [m[1;33mA-CodingStandard[m[33m)[m
+Merge: 3842131 395733c
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sun Feb 2 00:23:04 2025 +0800
+
+    Merge branch
+
+[33mcommit 3842131610c538f9ff5bde29ca909917231d6df5[m[33m ([m[1;33mtag: [m[1;33mLevel-9[m[33m)[m
+Merge: e4c00ea b166cb2
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sun Feb 2 00:06:20 2025 +0800
+
+    Merge branch 'branch-Level-9'
+
+[33mcommit b166cb21a18821cd34230e04ef50cee173355ffb[m[33m ([m[1;31morigin/branch-Level-9[m[33m, [m[1;32mbranch-Level-9[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sun Feb 2 00:06:03 2025 +0800
+
+    Add find command
+
+[33mcommit 395733c780e392ba50d1a567ae792caba586df8d[m[33m ([m[1;31morigin/branch-A-CodingStandard[m[33m, [m[1;32mbranch-A-CodingStandard[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sun Feb 2 00:04:25 2025 +0800
+
+    Adjust blank line separation and unused field
+
+[33mcommit 723cf1122682bf8a554938dca49d7f3618fe580a[m[33m ([m[1;31morigin/branch-A-JavaDoc[m[33m, [m[1;32mbranch-A-JavaDoc[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sun Feb 2 00:02:37 2025 +0800
+
+    Write JavaDoc comments for all non-trivial methods and classes
+
+[33mcommit e4c00ea5b6ed36d8b6d3bdc61ceeabcd861f66d4[m[33m ([m[1;33mtag: [m[1;33mA-Jar[m[33m, [m[1;33mtag: [m[1;33mA-JUnit[m[33m)[m
+Merge: 99e463f ee41636
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 23:13:46 2025 +0800
+
+    Merge branch 'branch-A-JUnit'
+
+[33mcommit ee416364f094c8bb3fd9674ef451d89246f7681f[m[33m ([m[1;33mtag: [m[1;33mA-Unit[m[33m, [m[1;31morigin/branch-A-JUnit[m[33m, [m[1;32mbranch-A-JUnit[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 13:47:39 2025 +0800
+
+    Fix UiTest with correct content
+
+[33mcommit bd5040b0268f91300bde3664b3cdb714981eb13a[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 13:41:15 2025 +0800
+
+    Update Gradle configuration
+
+[33mcommit 62f7a3943e45d9e0f791663a5a88f507149c5cf0[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 13:37:52 2025 +0800
+
+    Add Test classes and write test cases in some classes
+
+[33mcommit 99e463f34d0fc6a84e21a645acd6bf7159b3c08b[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 13:25:37 2025 +0800
+
+    Fix unhandled exception and typo
+
+[33mcommit da49a13b14842c305c2f5b006eb768a0a741ff2c[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 13:24:34 2025 +0800
+
+    Override toString in command classes
+
+[33mcommit 2fc99d34ee7e268c5f07c247444f29ee37a65892[m[33m ([m[1;33mtag: [m[1;33mA-Packages[m[33m)[m
+Merge: 970345c 2b01dcf
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 12:45:48 2025 +0800
+
+    Merge branch 'branch-A-Packages'
+
+[33mcommit 970345c612f2635a9ba35e115afeade0736fac40[m
+Merge: 54ae5d2 81a9c53
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 12:38:33 2025 +0800
+
+    Merge branch 'add-gradle-support'
+
+[33mcommit 2b01dcfeb91b8470cf6cb273fcdaf03f12cacecb[m[33m ([m[1;31morigin/branch-A-Packages[m[33m, [m[1;32mbranch-A-Packages[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 12:24:46 2025 +0800
+
+    Update jude package to all class and command, task packages
+
+[33mcommit 54ae5d294636e7065eba0c15a2e9bda4759ae8e0[m[33m ([m[1;33mtag: [m[1;33mA-MoreOOP[m[33m)[m
+Merge: 0d128bc f0b8f4b
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 12:15:42 2025 +0800
+
+    Merge branch 'branch-A-MoreOOP'
+
+[33mcommit f0b8f4b609bdb2b719ab15712bce2acf39147bb0[m[33m ([m[1;31morigin/branch-A-MoreOOP[m[33m, [m[1;32mbranch-A-MoreOOP[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 12:14:02 2025 +0800
+
+    Fix index logic and typo
+    
+    Let's
+    * fix accessing deleted command from list, causing an error
+    * fix index to be zero-indexed in Delete constructor
+    * fix minor typo
+
+[33mcommit 8a73d5b93853d1bc6d002d6633cabd0875fb21bb[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 12:11:16 2025 +0800
+
+    Fix Command and Jude classes
+    
+    Let's
+    * fix delete command to properly delete the index
+    * fix invalid index input
+    * fix typos in command classes
+    * initialize fields in Jude class
+
+[33mcommit dcce7f31357f57aa8b1565840e4be84975961248[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 12:07:48 2025 +0800
+
+    Add more methods
+
+[33mcommit 9d99cca8df582857c8741823174badb91c341baa[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 12:04:34 2025 +0800
+
+    Add Command classes
+
+[33mcommit 2cfc9f2ae499f948871323424f69c00af744ffe0[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 12:00:20 2025 +0800
+
+    Add Storage, TaskList, Ui classes and replace main method appropriately
+
+[33mcommit 0d128bc761bc1b53d40a99c3c4d09d2ea490a77c[m[33m ([m[1;33mtag: [m[1;33mLevel-8[m[33m)[m
+Merge: f57272e 3795984
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 11:54:22 2025 +0800
+
+    Merge branch 'branch-Level-8'
+
+[33mcommit 3795984941fc08c3f7f28a5fd941ffe9805256ce[m[33m ([m[1;31morigin/branch-Level-8[m[33m, [m[1;32mbranch-Level-8[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 11:52:12 2025 +0800
+
+    Ignore jude.txt save file in data directory
+
+[33mcommit d98c2bbf4a51cdefa0fbf4f2194cc380bb177232[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 11:49:34 2025 +0800
+
+    Complete in Replacing Date and Time object to DateTime object
+    There are Time and Date objects in Deadline and Event class.
+    
+    Unifying all those fields improves code quality.
+    
+    Let's:
+    * extract those complicated fields into unified DateTime object
+    * Deadline and Event constructor parameters are simplified
+    * loadFile split logic is simpler.
+
+[33mcommit ac50096e5ff4b40e695b71e900d6dee280d8cc01[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 11:48:18 2025 +0800
+
+    Work in progress: Combine Date and Time object to DateTime object
+
+[33mcommit fab67d2ac82f33ac15502ee62b00ae228440836e[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 11:43:11 2025 +0800
+
+    Complete replacement of String to Time or Date object
+
+[33mcommit 2130e3a9427bb2397b458ef5f10c8091a255bff5[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 11:41:35 2025 +0800
+
+    Work in progress: Replace String date or time in Deadline and Event
+
+[33mcommit f57272e96c101d505c914cac965b4066a577e49e[m[33m ([m[1;33mtag: [m[1;33mLevel-7[m[33m)[m
+Merge: f3471b1 e451862
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 11:23:42 2025 +0800
+
+    Merge branch 'branch-Level-7'
+
+[33mcommit e451862ed2532bda782bbd3cc6479d75d84f2641[m[33m ([m[1;31morigin/branch-Level-7[m[33m, [m[1;32mbranch-Level-7[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Sat Feb 1 11:14:45 2025 +0800
+
+    Add save feature
+
+[33mcommit f3471b192e1a1dabdcac598cbe45f272aefc9d0d[m[33m ([m[1;33mtag: [m[1;33mLevel-6[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 18:12:19 2025 +0800
+
+    Replace Task array to Task Arraylist. Add remove command
+
+[33mcommit 3fee7597a00dc5ff490cdc5cf15ff30cb3eac02b[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 18:06:12 2025 +0800
+
+    Jude: Correct to show full task details when task added
+
+[33mcommit af0495430a04fd4ef4a6836a705de1af24770c3f[m[33m ([m[1;33mtag: [m[1;33mLevel-5[m[33m, [m[1;33mtag: [m[1;33mA-Exceptions[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 18:03:52 2025 +0800
+
+    Add invalid test cases
+
+[33mcommit 84fd5fd2a0976005066a778399c79c51e415c5e0[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 18:02:19 2025 +0800
+
+    Use JudeException in Parser class
+
+[33mcommit d8c1328f0bd06093522d145ca1449ee00857dbbb[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 18:00:55 2025 +0800
+
+    Replace code with JudeException where necessary
+
+[33mcommit 7723a58b5ff5d2aba8b1b606ec966a0881e02dd5[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 18:00:13 2025 +0800
+
+    Add JudeException class handling invalid input
+
+[33mcommit 785cac2640cb9701c92e756ea7975b8841ec8aa0[m[33m ([m[1;33mtag: [m[1;33mA-TextUiTesting[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:58:00 2025 +0800
+
+    Use i/o redirection technique to semi-automate the regression testing
+
+[33mcommit a77d6cabc5017168c0ff8f6119047677986a4d5d[m[33m ([m[1;33mtag: [m[1;33mLevel-4[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:55:59 2025 +0800
+
+    Change reading todo input to to-do input: distinguish with todo comment
+
+[33mcommit 02e291c9fdf0149818c5bc268d6e7502c78ad953[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:54:39 2025 +0800
+
+    Jude class: Add parser object to replace slicing inputs
+
+[33mcommit bd72f1fdaac02edd3e58517c82919b5694ab8b6f[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:43:56 2025 +0800
+
+    Create subclasses of Task
+    
+    There are different tasks which can be grouped into new class.
+    
+    This enables more specific task management.
+    
+    Create subclasses of Task with different fields.
+    
+    Let's
+    * Deadline class: contains information about deadline
+    * Event class: contains from and to date/time
+    * Todo: a simple task without deadline or duration
+    
+    Using inheritance is preferable due to is-a relationship.
+
+[33mcommit e8ee1001d925e49f3730861c8e512ee20f34fdad[m[33m ([m[1;33mtag: [m[1;33mLevel-3[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:41:36 2025 +0800
+
+    Jude class: Add Javadoc
+
+[33mcommit 2d469e35dadcfe0b44869bbf6bc33d11d37f6040[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:40:40 2025 +0800
+
+    Add mark and unmark of tasks in Jude class
+
+[33mcommit 93a2939745c0a26a2110312cb41f685a102ca999[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:36:29 2025 +0800
+
+    Add Javadoc to Task class
+
+[33mcommit ae27939bc21da8aa0c2b8a4a9a714374a9f3f383[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:34:34 2025 +0800
+
+    Task class: Add Task class
+
+[33mcommit 80d3ff2a83f63ee1b089377e2f0bb408ddfc125c[m[33m ([m[1;33mtag: [m[1;33mLevel-2[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:32:35 2025 +0800
+
+    Correct Java layout and add header comments
+
+[33mcommit 3fda988f96bec4a5f235cdd61a26338311bb1da9[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:31:34 2025 +0800
+
+    Store echoing of user input and display upon request
+
+[33mcommit c7f5fb3b94023c471ea5d594dee71a70ddcb1c33[m[33m ([m[1;33mtag: [m[1;33mLevel-1[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:27:20 2025 +0800
+
+    Implement an initial skeletal version
+
+[33mcommit 090373d4d9bcbc63037a4f25a1e736c5ef57874c[m[33m ([m[1;33mtag: [m[1;33mLevel-0[m[33m)[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:18:54 2025 +0800
+
+    Rename chatbot to Jude
+
+[33mcommit 222098efef53de2e391c42aef4385bbc07b147cb[m
+Author: Judy1x4 <e1129873@u.nus.edu>
+Date:   Thu Jan 16 17:17:08 2025 +0800
+
+    Edit .gitignore
+
+[33mcommit 33ea7802dbb84985b5cbd2a8c7d78d92826e21c3[m
+Author: damithc <1673303+damithc@users.noreply.github.com>
+Date:   Sat Jan 4 21:45:23 2025 +0800
+
+    README: Use correct item number in list
+
+[33mcommit ad9696cea37a0b97209fe0282bd95eb764e44946[m
+Author: damithc <1673303+damithc@users.noreply.github.com>
+Date:   Sat Jan 4 21:44:28 2025 +0800
+
+    README: Ask to keep source folder structure
+
+[33mcommit 81a9c537afe8492675eb253968939364d65db091[m[33m ([m[1;31mupstream/add-gradle-support[m[33m, [m[1;31morigin/add-gradle-support[m[33m, [m[1;32madd-gradle-support[m[33m)[m
+Author: aureliony <39163684+aureliony@users.noreply.github.com>
+Date:   Tue Jul 16 23:35:06 2024 +0800
+
+    build.gradle: Prevent generating a second JAR file
+    
+    In build.gradle, the dependencies on distZip and/or distTar causes
+    the shadowJar task to generate a second JAR file for which the
+    mainClass.set("seedu.duke.Duke") does not take effect.
+    Hence, this additional JAR file cannot be run.
+    For this product, there is no need to generate a second JAR file
+    to begin with.
+    
+    Let's remove this dependency from the build.gradle to prevent the
+    shadowJar task from generating the extra JAR file.
+
+[33mcommit 03523ec89e823ff5457b647df22a4e395641da7a[m
+Author: lzq <li.zhaoqi@dhs.sg>
+Date:   Sat Aug 5 15:24:02 2023 +0800
+
+    Bump gradle and lib version
+
+[33mcommit 68c58c12c1d631736a4b25500248a2956171496f[m
+Author: damithc <damithch@damithch-mbp.comp.nus.edu.sg>
+Date:   Mon May 25 00:58:18 2020 +0800
+
+    Add Gradle support
+
+[33mcommit 173d5b34eb98ac960608ca30d3d1c84c5cda2947[m
+Author: damithc <damithc@github>
+Date:   Thu Jul 11 16:50:14 2024 +0800
+
+    README: Update the JDK version 11 -> 17
+
+[33mcommit 55f9f9ff7635cef71b5ee58aec7c1b4ceaffea49[m
+Author: damithc <damithc@github>
+Date:   Sun Jan 7 18:33:52 2024 +0800
+
+    docs/README.md: Tweak document template
+    
+    Let's tweak the docs/README.md (which is used as the user guide)
+    to fit Duke better. Specifically,
+    
+    1. mention product name in the title
+    2. mention adding a product screenshot and a product intro
+    3. tweak the flow to describe feature-by-feature
+
+[33mcommit 3b83789e9ed75b9498c05ee150c073f6492ec6ff[m
+Author: Sean Leong <70213029+seanleong339@users.noreply.github.com>
+Date:   Thu Dec 29 13:56:26 2022 +0800
+
+    .gitignore: Fix ACTUAL.txt -> ACTUAL.TXT  (#73)
+    
+    text-ui-test/runtest.bat|sh scripts generate a file ACTUAL.TXT.
+    However, .gitignore uses ACTUAL.txt, which means the generated
+    file will not be ignored by Git on non-Windows OS.
+    
+    Let's update .gitignore as ACTUAL.txt -> ACTUAL.TXT
+
+[33mcommit e698798c0df9eb614fc9263cf735a609c94e58ba[m
+Author: Damith C. Rajapakse <damith@gmail.com>
+Date:   Thu Jul 29 20:29:39 2021 +0800
+
+    README: Mention the project language level setting
+
+[33mcommit 7bfb6e7cbdc8444041ecc338d625bac60014a630[m
+Author: damithc <damithc@github>
+Date:   Sat Jul 17 16:49:07 2021 +0800
+
+    README.md: Tweak template text
+    
+    * Let's replace 'Feature 1' with 'Feature-ABC'
+      reason: some students kept the 'Feature 1' in the final UG.
+    * Let's tweak the template for features and usage
+      reasons: to fix grammar, to distinguish between output and outcome
+
+[33mcommit eabcfca4d05e76d33f071483bb1d00cc5bdd6f3c[m
+Author: damithc <>
+Date:   Sun Jan 17 12:25:53 2021 +0800
+
+    README: Update setup instructions to match the latest IDE version
+
+[33mcommit 6001e2eb859ce70a5b8ffad77d18410d28c9a9e5[m
+Author: damithc <>
+Date:   Tue Aug 25 17:23:26 2020 +0800
+
+    Improve runtest.* scripts
+    
+    * Improve the javac command to work for multiple java files.
+    * In runtest.bat, delete ACTUAL.TXT only if it exists.
+
+[33mcommit 87eb8b818ae0e244a172420fdab8c46c45c43e0b[m
+Author: Damith C. Rajapakse <damith@gmail.com>
+Date:   Sat Jul 4 01:45:26 2020 +0800
+
+    README.md: Fix typo of => or
+
+[33mcommit ef3c8cd14cc5d9d0350eb62b06f640aab4119f8c[m
+Author: damithc <damithch@damithch-mbp.comp.nus.edu.sg>
+Date:   Mon May 25 00:03:55 2020 +0800
+
+    Add text-ui-test files
+
+[33mcommit 71d7ea84f3d61821643e505e532051fcc09ec2b1[m
+Author: damithc <damithch@damithch-mbp.comp.nus.edu.sg>
+Date:   Sun May 24 23:34:49 2020 +0800
+
+    Remove generic tutorials
+    
+    Let's remove generic tutorials from this repo as they are not specific
+    to this project tempalte
+
+[33mcommit 1416279436d1c0c7c0c87db5dd9fe75a3c72e5bb[m
+Merge: 6f2ddfa 2697ae1
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Wed Feb 12 15:39:44 2020 +0800
+
+    Merge pull request #41 from jiachen247/patch-2
+    
+    Remove unnecessary override annotation
+
+[33mcommit 2697ae1dd966ac2f3ec34eb8a14819b4fa9e6f70[m
+Author: jiachen <jiachen247@users.noreply.github.com>
+Date:   Tue Feb 11 15:13:03 2020 +0800
+
+    Remove unnecessary override annotation
+    
+    Remove extra '@Override' at the start of the code example.
+
+[33mcommit 6f2ddfaef13a62f650128050d8923eff99761f82[m
+Merge: fae28ab 2ca6b28
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Mon Feb 3 23:29:41 2020 +0800
+
+    Merge pull request #35 from j-lum/xplatformjfx
+    
+    JavaFX tutorial: Support cross-platform JARs
+
+[33mcommit 2ca6b28c8d2ebebfe001e1a618a5d5af4094e088[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Fri Sep 20 16:05:59 2019 +0800
+
+    JavaFX tutorial: Support cross-platform JARs
+    
+    The OpenJFX plugin expects applications to be modular and bundled
+    with jlink, resulting in fat jars that are not cross-platform. Let's
+    manually include the required dependencies so that shadow can package
+    them properly.
+
+[33mcommit fae28ab89ea8846e56f2e6df33fbd6f9dd7fbea0[m
+Merge: baa18a5 26a5013
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Sat Aug 31 16:43:08 2019 +0800
+
+    Merge pull request #14 from j-lum/fxml-indent
+    
+    Change indentation in FXML samples to match AB-3
+
+[33mcommit 26a5013d00ef2201cd6433f308f53dc52e277b76[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Sat Aug 31 16:40:20 2019 +0800
+
+    Change indentation in FXML samples to match AB-3
+
+[33mcommit baa18a5b60aee205f3593787bac4dc4a98a7687c[m
+Merge: 999fa98 5df56a8
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Fri Aug 16 16:59:58 2019 +0800
+
+    Merge pull request #8 from j-lum/tutorial-fix
+    
+    Remove references to DukeStub
+
+[33mcommit 5df56a8908679dfc9efc6fcca655b1f9de85d51e[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Fri Aug 16 16:58:43 2019 +0800
+
+    Remove references to DukeStub
+
+[33mcommit 999fa98979ab5be8233b7838451650d8345bb520[m
+Merge: d2ffa00 8d6d6f4
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Thu Aug 15 15:18:12 2019 +0800
+
+    Merge pull request #7 from j-lum/tutorial-fix
+    
+    Address issues #5 and #6
+
+[33mcommit 8d6d6f4b95dd028ee97ba3df4d36b38ffc92d343[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Thu Aug 15 14:05:46 2019 +0800
+
+    Add images to JavaFX tutorial 3
+
+[33mcommit b6df1a32827a0d318ba241a10bfded88101daca3[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Thu Aug 15 13:59:56 2019 +0800
+
+    Fix typo referring to `HelloWorld`
+
+[33mcommit d2ffa00dbe45016b1c087a9a26e2d5be1d595ee4[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Wed Aug 14 15:35:46 2019 +0800
+
+    Update Gradle tutorial to reflect new checkstyle config
+
+[33mcommit f20d61019a2ea5ce166440b47e9a37a8bd373bb0[m
+Merge: 5c47c23 bad66fc
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Wed Aug 14 15:30:37 2019 +0800
+
+    Merge pull request #3 from j-lum/inline-javafx-tutorials
+    
+    Inline JavaFX tutorials
+
+[33mcommit bad66fc459bc2173e26be31598e04c4315df7933[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Mon Aug 12 14:24:27 2019 +0800
+
+    Adapt JavaFX tutorial for Duke
+    
+    Rather than to have distinct tutorials building up to a Duke-like
+    application, let's merge the tutorials into Duke's tutorials
+    to enhance cohesiveness in the course material.
+    
+    We also merge the gradle/gradleless tutorials into one by providing a
+    universal entry point to JavaFX in the style of AddressBook
+    applications.
+    
+    Fix header levels in JavaFX Tutorial 1.
+    
+    Change code samples to use Duke.
+    
+    Add hints on required import statements.
+    
+    Add location hints to code snippets to help students find where to copy
+    and paste them.
+    
+    Remove nitpicks to make the development process smoother.
+    
+    Fix usage of `Collections` to `FXCollections`.
+    
+    Replace image for JavaFX tutorial 3.
+    
+    Specify location to place images.
+    
+    Replace a screenshot that referred to the outdated package structure.
+    
+    Remove reference to DukeStub.
+
+[33mcommit 5c47c238cef0369657cea1f3023dcc053aabe733[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Tue Aug 6 20:38:08 2019 +0800
+
+    Specify checkstyle version
+    
+    Not specifying the checkstyle version causes it to fail with a cryptic
+    error.
+
+[33mcommit a2150c17028761c775b44368ede448060a7ce44e[m
+Author: damithc <damith@gmail.com>
+Date:   Tue Aug 6 20:10:10 2019 +0800
+
+    textUiTestingTutorial.md: mention updating java/javac commands
+
+[33mcommit 2d06f90400a17fd0ad95c0a68edf4917d12ee7ff[m
+Author: damithc <damith@gmail.com>
+Date:   Tue Aug 6 19:54:03 2019 +0800
+
+    textUiTestingTutorial.md: add missing <br>
+
+[33mcommit 5c491d3de4822b43f1db4c3bf806f81eae0c64a0[m
+Author: damithc <damith@gmail.com>
+Date:   Tue Aug 6 19:50:20 2019 +0800
+
+    Add a tutorial on text UI testing
+
+[33mcommit 53c04603712fd4132acd73091ffa37e29b7c0e70[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Tue Aug 6 15:15:04 2019 +0800
+
+    Update list of contributors
+
+[33mcommit 21af6a13f93c15964b20eb0ead90ef50ef70a42b[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Tue Aug 6 15:06:11 2019 +0800
+
+    Fix typo in link to checkstyle config files
+
+[33mcommit 8fe8afd9397509e450f821bc1f5524a3519ab488[m
+Author: damithc <damith@gmail.com>
+Date:   Mon Aug 5 19:29:40 2019 +0800
+
+    README: use numbered list for steps
+
+[33mcommit f20bff25cfb935b211b47aa3bcb5e690bbe614c0[m
+Author: damithc <damith@gmail.com>
+Date:   Mon Aug 5 19:26:04 2019 +0800
+
+    Tweak tutorial text
+
+[33mcommit 6a7120cbb6568134aef5d1d35e9596e4862acae4[m
+Author: damithc <damith@gmail.com>
+Date:   Mon Aug 5 19:08:53 2019 +0800
+
+    Move Duke.java out of the package
+
+[33mcommit 6bb6b9f6c525f5343fdc6dd3a43a086a11e9708e[m
+Author: damithc <damith@gmail.com>
+Date:   Mon Aug 5 19:08:08 2019 +0800
+
+    .gitignore: add *.iml
+
+[33mcommit 946f3bb509aa0710d45d820855ea3aa6cf096071[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Mon Jul 29 17:14:46 2019 +0800
+
+    Import base branch for students to start off
+    
+    As student may not have learnt about branching, let's include a copy of
+    the base branch into the main repository.
+
+[33mcommit 245013d3ac98862fe7c5f52fee9a7b5c389fb7ab[m
+Author: Jeffry Lum <22460123+j-lum@users.noreply.github.com>
+Date:   Mon Jul 29 17:14:46 2019 +0800
+
+    Initial commit
