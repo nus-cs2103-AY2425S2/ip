@@ -48,6 +48,8 @@ public class Julie {
      * @return The chatbot’s response.
      */
     public String getResponse(String input) {
+        assert input != null : "User input is null!";
+
         try {
             Command command = Parser.parse(input);
             String response = executeAndCapture(command);
@@ -69,12 +71,18 @@ public class Julie {
      * @return The formatted response string.
      */
     private String executeAndCapture(Command command) {
+        assert command != null : "Command to execute is null.";
+
         ui.enableCaptureMode();
         try {
             command.execute(tasks, ui, storage);
         } catch (WrongFormatException e) {
             ui.showError(e.getMessage());
         }
+        String capturedResponse = ui.getCapturedResponse();
+        assert capturedResponse != null : "Captured response is null.";
+
         return ui.getCapturedResponse();
     }
 }
+
