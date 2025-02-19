@@ -109,7 +109,7 @@ The `/start` argument identifier must come before the `/end` argument identifier
 Example:
 
 ```text
-doWithinPeriod make presentation slides /from 2/12/2019 1800 /to 4/12/2019 0800
+doWithinPeriod make presentation slides /start 2/12/2019 1800 /end 4/12/2019 0800
 ```
 
 Returns a response on the added do within period task.
