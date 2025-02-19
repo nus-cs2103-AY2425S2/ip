@@ -29,7 +29,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public String toString() {
+    public String getType() {
         return "DeleteCommand";
     }
 }

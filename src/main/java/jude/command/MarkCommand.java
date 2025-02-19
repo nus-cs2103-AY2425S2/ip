@@ -28,7 +28,7 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public String toString() {
+    public String getType() {
         return "MarkCommand";
     }
 }
