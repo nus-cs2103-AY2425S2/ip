@@ -62,8 +62,6 @@ public class Julie {
         }
     }
 
-
-
     /**
      * Executes a command and captures the UI output as a string.
      *
@@ -71,12 +69,12 @@ public class Julie {
      * @return The formatted response string.
      */
     private String executeAndCapture(Command command) {
-        ui.enableCaptureMode(); // Start capturing messages
+        ui.enableCaptureMode();
         try {
             command.execute(tasks, ui, storage);
         } catch (WrongFormatException e) {
             ui.showError(e.getMessage());
         }
-        return ui.getCapturedResponse(); // Get and return captured messages
+        return ui.getCapturedResponse();
     }
 }

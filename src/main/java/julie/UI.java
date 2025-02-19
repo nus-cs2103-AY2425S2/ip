@@ -124,15 +124,6 @@ public class UI {
         showMessage("Okay, I have marked this task as undone!\n" + task);
     }
 
-    //    /**
-    //     * Reads and returns the user's command input.
-    //     *
-    //     * @return A trimmed string containing the user input.
-    //     */
-    //    public String readCommand() {
-    //        return scanner.nextLine().trim();
-    //    }
-
     /**
      * Displays the goodbye message when the chatbot exits.
      */

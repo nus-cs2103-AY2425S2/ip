@@ -1,4 +1,0 @@
-T | 0 | work
-T | 1 | something
-T | 1 | something new
-E | 0 | something new to do | 12-02-2025 1800 | 12-02-2025 1900

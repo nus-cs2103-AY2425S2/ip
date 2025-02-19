@@ -62,12 +62,11 @@ public class MainWindow extends AnchorPane {
 
         userInput.clear();
 
-        // 🚀 Check if user typed "bye" and delay before exiting
         if (input.trim().equalsIgnoreCase("bye")) {
             new Thread(() -> {
                 try {
-                    Thread.sleep(2000); // ⏳ Wait for 2 seconds
-                    System.exit(0); // 🚀 Exit the application
+                    Thread.sleep(2000);
+                    System.exit(0);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
