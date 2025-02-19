@@ -1,0 +1,89 @@
+    ________________________________________
+    Hello there! I'm ThoughtBot
+    How may I help you today?
+    ________________________________________
+
+    ________________________________________
+    The description is empty!
+    The correct format is here.
+    Format: todo <task description>
+    ________________________________________
+
+    ________________________________________
+    A keyword has been typed wrongly or omitted!
+    The correct format is here.
+    Format: deadline <task description> /by <due time>
+    ________________________________________
+
+    ________________________________________
+    A keyword has been typed wrongly or omitted!
+    The correct format is here.
+    Format: deadline <task description> /by <due time>
+    ________________________________________
+
+    ________________________________________
+    A keyword has been typed wrongly or omitted!
+    The correct format is here.
+    Format: deadline <task description> /by <due time>
+    ________________________________________
+
+    ________________________________________
+    The description is empty!
+    The correct format is here.
+    Format: deadline <task description> /by <due time>
+    ________________________________________
+
+    ________________________________________
+    A keyword has been typed wrongly or omitted!
+    The correct format is here.
+    Format: event <task description> /from <from time> /to <to time>
+    ________________________________________
+
+    ________________________________________
+    A keyword has been typed wrongly or omitted!
+    The correct format is here.
+    Format: event <task description> /from <from time> /to <to time>
+    ________________________________________
+
+    ________________________________________
+    A keyword has been typed wrongly or omitted!
+    The correct format is here.
+    Format: event <task description> /from <from time> /to <to time>
+    ________________________________________
+
+    ________________________________________
+    A keyword has been typed wrongly or omitted!
+    The correct format is here.
+    Format: event <task description> /from <from time> /to <to time>
+    ________________________________________
+
+    ________________________________________
+    A keyword has been typed wrongly or omitted!
+    The correct format is here.
+    Format: event <task description> /from <from time> /to <to time>
+    ________________________________________
+
+    ________________________________________
+    A keyword has been typed wrongly or omitted!
+    The correct format is here.
+    Format: event <task description> /from <from time> /to <to time>
+    ________________________________________
+
+    ________________________________________
+    The description is empty!
+    The correct format is here.
+    Format: event <task description> /from <from time> /to <to time>
+    ________________________________________
+
+    ________________________________________
+    The description is empty!
+    The correct format is here.
+    Format: mark <task index number>
+    ________________________________________
+
+    ________________________________________
+    The description is empty!
+    The correct format is here.
+    Format: unmark <task index number>
+    ________________________________________
+

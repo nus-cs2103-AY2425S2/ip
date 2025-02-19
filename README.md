@@ -1,26 +1,54 @@
-# Duke project template
+# ThoughtBot
+![Screenshot of an example use of ThoughtBot.](docs/Ui.png)
+> Thought about it? ThoughtBot it.
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+:rocket: **ThoughtBot** is the all-new CLI-based task management chatbot for all your tracking needs. It currently has the following features:
+- :grey_question: Helpful replies with suggestions on typos
+- :pencil2: Easy to pick up
+- :memo: Memory between multiple sessions
 
-## Setting up in Intellij
+Just follow the below steps to use it right now!
+1. Download the release file from [here](https://github.com/deseansoh/ip/releases/tag/A-Jar)
+2. Launch the app
+3. Explore and use ThoughtBot 👍
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+Current _planned features_ include:
+- [x] 'Find' feature: Finding tasks based on their task descriptions
+- [x] Adding a GUI using JavaFX
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+# Current Available Commands
+### list
+Lists the current tasks that you are tracking
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+Usage: `list`
+### todo
+Add a new normal ToDo task, with no special parameters
+
+Usage: `todo <task description>`
+### deadline
+Add a new Deadline task, with a specific deadline to be completed by
+
+Usage: `deadline <task description> /by YYYY-MM-DD HH:MM`
+### event
+Add a new Event task, with specific to and from times for the event
+
+Usage: `event <task description> /from YYYY-MM-DD HH:MM /to YYYY-MM-DD HH:MM`
+### mark/unmark
+Mark or unmark a task as done
+
+Usage: `mark/unmark <task index number>`
+### delete
+Remove a task from your list of tasks
+
+Usage: `delete <task index number>`
+### find
+Find a task that has a part of the search string
+
+Usage: `find <search string>`
+### remind
+View all the deadline and event tasks that are due/happening within this week
+
+Usage: `remind`
+## bye
+Exit the application
+Usage: `bye`

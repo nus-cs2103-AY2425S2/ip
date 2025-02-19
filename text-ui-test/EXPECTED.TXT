@@ -1,7 +1,119 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+    ________________________________________
+    Hello there! I'm ThoughtBot
+    How may I help you today?
+    ________________________________________
+
+    ________________________________________
+    Added task:
+    [T][ ] read book
+    ________________________________________
+
+    ________________________________________
+    Added task:
+    [T][ ] drink water
+    ________________________________________
+
+    ________________________________________
+    Here are your current tasks:
+    1. [T][ ] read book
+    2. [T][ ] drink water
+    There is/are currently 2 task(s) in the list.
+    ________________________________________
+
+    ________________________________________
+    Added task:
+    [D][ ] homework (by: 2 days later)
+    ________________________________________
+
+    ________________________________________
+    Here are your current tasks:
+    1. [T][ ] read book
+    2. [T][ ] drink water
+    3. [D][ ] homework (by: 2 days later)
+    There is/are currently 3 task(s) in the list.
+    ________________________________________
+
+    ________________________________________
+    I have marked this task as done.
+    [D][X] homework (by: 2 days later)
+    ________________________________________
+
+    ________________________________________
+    Here are your current tasks:
+    1. [T][ ] read book
+    2. [T][ ] drink water
+    3. [D][X] homework (by: 2 days later)
+    There is/are currently 3 task(s) in the list.
+    ________________________________________
+
+    ________________________________________
+    This task has already been marked.
+    ________________________________________
+
+    ________________________________________
+    Here are your current tasks:
+    1. [T][ ] read book
+    2. [T][ ] drink water
+    3. [D][X] homework (by: 2 days later)
+    There is/are currently 3 task(s) in the list.
+    ________________________________________
+
+    ________________________________________
+    Added task:
+    [E][ ] meet up with friends (from: 3pm | to: 9pm)
+    ________________________________________
+
+    ________________________________________
+    Here are your current tasks:
+    1. [T][ ] read book
+    2. [T][ ] drink water
+    3. [D][X] homework (by: 2 days later)
+    4. [E][ ] meet up with friends (from: 3pm | to: 9pm)
+    There is/are currently 4 task(s) in the list.
+    ________________________________________
+
+    ________________________________________
+    I have marked this task as done.
+    [T][X] read book
+    ________________________________________
+
+    ________________________________________
+    Here are your current tasks:
+    1. [T][X] read book
+    2. [T][ ] drink water
+    3. [D][X] homework (by: 2 days later)
+    4. [E][ ] meet up with friends (from: 3pm | to: 9pm)
+    There is/are currently 4 task(s) in the list.
+    ________________________________________
+
+    ________________________________________
+    I have unmarked this task as done.
+    [T][ ] read book
+    ________________________________________
+
+    ________________________________________
+    Here are your current tasks:
+    1. [T][ ] read book
+    2. [T][ ] drink water
+    3. [D][X] homework (by: 2 days later)
+    4. [E][ ] meet up with friends (from: 3pm | to: 9pm)
+    There is/are currently 4 task(s) in the list.
+    ________________________________________
+
+    ________________________________________
+    This task has already been unmarked.
+    ________________________________________
+
+    ________________________________________
+    Here are your current tasks:
+    1. [T][ ] read book
+    2. [T][ ] drink water
+    3. [D][X] homework (by: 2 days later)
+    4. [E][ ] meet up with friends (from: 3pm | to: 9pm)
+    There is/are currently 4 task(s) in the list.
+    ________________________________________
+
+    ________________________________________
+    Goodbye! Have a great week ahead :)
+    ________________________________________
 

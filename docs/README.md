@@ -1,30 +1,54 @@
-# Duke User Guide
+# ThoughtBot
+![Screenshot of an example use of ThoughtBot.](Ui.png)
+> Thought about it? ThoughtBot it.
 
-// Update the title above to match the actual product name
+:rocket: **ThoughtBot** is the all-new CLI-based task management chatbot for all your tracking needs. It currently has the following features:
+- :grey_question: Helpful replies with suggestions on typos
+- :pencil2: Easy to pick up
+- :memo: Memory between multiple sessions
 
-// Product screenshot goes here
+Just follow the below steps to use it right now!
+1. Download the release file from [here](https://github.com/deseansoh/ip/releases/tag/A-Jar)
+2. Launch the app
+3. Explore and use ThoughtBot 👍
 
-// Product intro goes here
+Current _planned features_ include:
+- [x] 'Find' feature: Finding tasks based on their task descriptions
+- [x] Adding a GUI using JavaFX
 
-## Adding deadlines
+# Current Available Commands
+### list
+Lists the current tasks that you are tracking
 
-// Describe the action and its outcome.
+Usage: `list`
+### todo
+Add a new normal ToDo task, with no special parameters
 
-// Give examples of usage
+Usage: `todo <task description>`
+### deadline
+Add a new Deadline task, with a specific deadline to be completed by
 
-Example: `keyword (optional arguments)`
+Usage: `deadline <task description> /by YYYY-MM-DD HH:MM`
+### event
+Add a new Event task, with specific to and from times for the event
 
-// A description of the expected outcome goes here
+Usage: `event <task description> /from YYYY-MM-DD HH:MM /to YYYY-MM-DD HH:MM`
+### mark/unmark
+Mark or unmark a task as done
 
-```
-expected output
-```
+Usage: `mark/unmark <task index number>`
+### delete
+Remove a task from your list of tasks
 
-## Feature ABC
+Usage: `delete <task index number>`
+### find
+Find a task that has a part of the search string
 
-// Feature details
+Usage: `find <search string>`
+### remind
+View all the deadline and event tasks that are due/happening within this week
 
-
-## Feature XYZ
-
-// Feature details
+Usage: `remind`
+## bye
+Exit the application
+Usage: `bye`

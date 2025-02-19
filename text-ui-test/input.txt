@@ -1,0 +1,18 @@
+todo read book
+todo drink water
+list
+deadline homework /by 2 days later
+list
+mark 3
+list
+mark 3
+list
+event meet up with friends /from 3pm /to 9pm
+list
+mark 1
+list
+unmark 1
+list
+unmark 1
+list
+bye
