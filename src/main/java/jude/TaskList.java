@@ -2,7 +2,6 @@ package jude;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BinaryOperator;
 
 import jude.task.Task;
 
@@ -58,20 +57,16 @@ public class TaskList {
 
     /** Returns the String representation of the TaskList to be written in the save file. */
     public String toFileFormat() {
-        StringBuilder sb = new StringBuilder();
-        for (Task task : list) {
-            sb.append(task.toFileFormat()).append("\n");
-        }
-        return sb.toString();
+        return list.stream().map(x -> x.toFileFormat()).reduce("", (x, y) -> y + x + "\n");
     }
 
     /** Returns the String representation of the TaskList to be displayed on the Ui. */
     public String toUiFormat() {
-        StringBuilder sb = new StringBuilder();
+        String string = "";
         for (int i = 0; i < list.size(); i++) {
-            sb.append(String.format("%d. %s\n", (i + 1), list.get(i).toStringDetails()));
+            string += String.format("%d. %s\n", (i + 1), list.get(i).toStringDetails());
         }
-        return sb.toString();
+        return string;
     }
 
     private void validateIndex(int index) throws JudeException {
@@ -84,15 +79,14 @@ public class TaskList {
 
     /** Searches a task with the given keyword from the tasklist. */
     public String search(String keyword) {
-        StringBuilder matches = new StringBuilder();
+        String matches = "";
 
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < size(); i++) {
             Task task = list.get(i);
             if (task.toString().contains(keyword)) {
-                matches.append(String.format("%d. %s\n", (i + 1), task.toStringDetails()));
+                matches += String.format("%d. %s\n", (i + 1), task.toStringDetails());
             }
         }
-
-        return matches.toString();
+        return matches;
     }
 }
