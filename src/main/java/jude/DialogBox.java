@@ -1,4 +1,4 @@
-package jude;
+package jude.ui;
 
 import java.io.IOException;
 
@@ -24,9 +24,9 @@ public class DialogBox extends HBox {
     private ImageView displayPicture;
 
     /**
-     * Initiates DialogBox component by loading fxml file. Then it sets controller and root to load a dialogue box.
-     * Then it sets the text and image of the following dialogue.
-     * It prints the traces when error has been catched.
+     * Represents the dialog box with a profile picture and the message.
+     * @param text the message of users.
+     * @param img the profile picture.
      */
     public DialogBox(String text, Image img) {
         try {
@@ -75,6 +75,12 @@ public class DialogBox extends HBox {
 
     public static DialogBox getUserDialog(String s, Image i) {
         return new DialogBox(s, i);
+    }
+
+    public static DialogBox getJudeDialog(String s, Image i) {
+        var db = new DialogBox(s, i);
+        db.flip();
+        return db;
     }
 
     public static DialogBox getJudeDialog(String s, Image i, String commandType) {
