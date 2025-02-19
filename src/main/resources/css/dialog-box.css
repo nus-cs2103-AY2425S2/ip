@@ -1,0 +1,26 @@
+/* Label styling with modern gradient */
+.label {
+    -fx-background-color: linear-gradient(to bottom right, #4184BB, #39375B);
+    -fx-background-radius: 1em 1em 0 1em;
+    -fx-border-radius: 1em 1em 0 1em;
+    -fx-padding: 10px;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0, 2, 2);
+}
+
+/* Reply label specific styling */
+.reply-label {
+    -fx-background-radius: 1em 1em 1em 0;
+    -fx-border-radius: 1em 1em 1em 0;
+    -fx-background-color: linear-gradient(to bottom right, #4184BB, #39375B);
+}
+
+/* Display picture enhancement */
+#displayPicture {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.5, 5, 5);
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-rotate: 0;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+}

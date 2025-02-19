@@ -1,0 +1,62 @@
+/* Root styles with modern color palette */
+.root {
+    primary-color: #44633F;    /* green */
+    secondary-color: #137dc5;  /* True blue */
+    accent-color: #bf1922;     /* Burning red */
+    background-color: #f7e8d3; /* Cream */
+    -fx-background-color: background-color;
+}
+
+/* Text field styling */
+.text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-font: 20px "Arial";
+    -fx-border-color: primary-color;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+/* Button styling with animations */
+.button {
+    -fx-background-color: primary-color;
+    -fx-font: italic bold 16px "Arial";
+    -fx-border-radius: 10em;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: secondary-color;
+    -fx-font-size: 18px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 6, 0, 0, 3);
+}
+
+.button:pressed {
+    -fx-background-color: accent-color;
+    -fx-font-size: 20px;
+}
+
+/* Scroll pane customization */
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Modern scrollbar styling */
+.scroll-bar {
+    -fx-font-size: 10px;
+    -fx-background-color: background-color;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: primary-color;
+    -fx-background-radius: 1em;
+    -fx-opacity: 0.8;
+}
+
+/* Hide scroll bar buttons */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
