@@ -1,0 +1,24 @@
+todo borrow book
+list
+deadline return book /by 15-12-2025
+list
+event recess week /from 22-02-2025 /to 02-03-2025
+list
+mark 2
+list
+unmark 2
+list
+delete 2
+list
+deadline another task /by 31-03-2025
+list
+mark 3
+list
+invalid command
+mark 5
+unmark -1
+delete 0
+deadline /by 31-05-2025
+event missing argument /from 17-02-2025
+deadline misformatted date /by 351-456-13
+bye
