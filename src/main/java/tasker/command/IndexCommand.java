@@ -8,8 +8,6 @@ import tasker.task.TaskList;
 abstract class IndexCommand extends Command {
     /** Index of task to be operated on */
     private int index;
-    /** Notification when an invalid index is used */
-    private String invalidIndex = String.format("Task %d does not exist.", this.index + 1);
 
     /**
      * Constructor class.
@@ -45,7 +43,7 @@ abstract class IndexCommand extends Command {
      * @return The notification when an invalid index is used.
      */
     String getInvalidIndex() {
-        return this.invalidIndex;
+        return String.format("Task %d does not exist.", this.index + 1);
     }
 
     @Override
