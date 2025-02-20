@@ -182,9 +182,13 @@ class ParserTest {
             TaskerException exception5 = assertThrows(TaskerException.class, () -> {
                 Parser.parseCommand(input5);
             });
-            String input6 = fixed + hr + min;
+            String input6 = fixed;
             TaskerException exception6 = assertThrows(TaskerException.class, () -> {
                 Parser.parseCommand(input6);
+            });
+            String input7 = fixed + hr + min;
+            TaskerException exception7 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input7);
             });
             String errMsg = "Please provide a description for the task.";
             assertEquals(errMsg,
@@ -198,9 +202,40 @@ class ParserTest {
             assertEquals(errMsg,
                     exception5.getMessage());
             assertEquals(errMsg,
-                    exception5.getMessage());
-            assertEquals(errMsg,
                     exception6.getMessage());
+            assertEquals(errMsg,
+                    exception7.getMessage());
+        }
+
+        @Test
+        @DisplayName("Throw exception when \"|\" is in the description")
+        void parseCommand_illegalDescriptionCharacter_exceptionThrown() {
+            String illegal = " |";
+            String input1 = todo + illegal;
+            TaskerException exception1 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input1);
+            });
+            String input2 = deadline + illegal + by;
+            TaskerException exception2 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input2);
+            });
+            String input3 = event + illegal + from + to;
+            TaskerException exception3 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input3);
+            });
+            String input4 = fixed + illegal + hr + min;
+            TaskerException exception4 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input4);
+            });
+            String errMsg = "\"|\" is not allowed in task description.";
+            assertEquals(errMsg,
+                    exception1.getMessage());
+            assertEquals(errMsg,
+                    exception2.getMessage());
+            assertEquals(errMsg,
+                    exception3.getMessage());
+            assertEquals(errMsg,
+                    exception4.getMessage());
         }
 
         @Test

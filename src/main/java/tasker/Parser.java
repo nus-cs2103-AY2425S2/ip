@@ -135,6 +135,10 @@ class Parser {
         String[] args = Arrays.copyOfRange(taskInfo, 1, taskInfo.length);
         Task taskToAdd = null;
 
+        if (desc.contains("|")) {
+            throw new TaskerException("\"|\" is not allowed in task description.");
+        }
+
         switch (command) {
         case TODO:
             taskToAdd = createTodoTask(desc);
