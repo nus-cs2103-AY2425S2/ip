@@ -81,7 +81,7 @@ public class Parser {
         StringBuilder pointer = desc;
 
         for (int i = 1; i < commandComponents.length; i++) {
-            if (commandComponents[i].equals("/by")) {
+            if (commandComponents[i].equalsIgnoreCase("/by")) {
                 pointer = dueBy;
             } else {
                 pointer.append(commandComponents[i]).append(" ");
@@ -112,9 +112,9 @@ public class Parser {
         StringBuilder pointer = desc;
 
         for (int i = 1; i < commandComponents.length; i++) {
-            if (commandComponents[i].equals("/from")) {
+            if (commandComponents[i].equalsIgnoreCase("/from")) {
                 pointer = from;
-            } else if (commandComponents[i].equals("/to")) {
+            } else if (commandComponents[i].equalsIgnoreCase("/to")) {
                 pointer = to;
             } else {
                 pointer.append(commandComponents[i]).append(" ");
@@ -144,7 +144,7 @@ public class Parser {
      */
     public static Command parseFullCommand(String input) throws PixelException {
         String[] components = input.split("\\s+");
-        String keyword = components[0];
+        String keyword = components[0].toLowerCase();
         try {
             return switch (keyword) {
                 case "bye" -> new ExitCommand();
@@ -157,9 +157,9 @@ public class Parser {
                 case "delete" -> new DeleteCommand(Integer.parseInt(components[1]) - 1);
                 case "find" -> new SearchCommand(input.substring(5));
                 case "clear" -> new ClearCommand();
-                case "markAll" -> new UpdateAllCommand(true, Integer.parseInt(components[1]) - 1,
+                case "markall" -> new UpdateAllCommand(true, Integer.parseInt(components[1]) - 1,
                         Integer.parseInt(components[2]) - 1);
-                case "unmarkAll" -> new UpdateAllCommand(false, Integer.parseInt(components[1]) - 1,
+                case "unmarkall" -> new UpdateAllCommand(false, Integer.parseInt(components[1]) - 1,
                         Integer.parseInt(components[2]) - 1);
                 default -> throw new PixelException("Sorry, I'm not sure what that means...");
             };
