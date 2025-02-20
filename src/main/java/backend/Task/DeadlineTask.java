@@ -20,7 +20,8 @@ public class DeadlineTask extends Task {
      *
      * @throws DateTimeParseException if string is in an invalid format
      */
-    public DeadlineTask(String description, String toBeCompletedBy) throws DateTimeParseException {
+    public DeadlineTask(String description, String toBeCompletedBy)
+            throws DateTimeParseException {
         super(description);
         this.toBeCompletedBy = LocalDate.parse(toBeCompletedBy);
     }
