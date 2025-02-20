@@ -1,0 +1,85 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'checkstyle'
+}
+
+checkstyle {
+    configFile = file("./config/checkstyle/checkstyle.xml")
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    javaFxVersion = '17.0.7'
+    osName = System.getProperty("os.name").toLowerCase()
+
+    // Detect OS and set the correct JavaFX classifier
+    if (osName.contains("win")) {
+        javafxClassifier = "win"
+    } else if (osName.contains("mac")) {
+        javafxClassifier = "mac"
+    } else {
+        javafxClassifier = "linux"
+    }
+}
+
+dependencies {
+    implementation "org.openjfx:javafx-base:${javaFxVersion}:${javafxClassifier}"
+    implementation "org.openjfx:javafx-controls:${javaFxVersion}:${javafxClassifier}"
+    implementation "org.openjfx:javafx-fxml:${javaFxVersion}:${javafxClassifier}"
+    implementation "org.openjfx:javafx-graphics:${javaFxVersion}:${javafxClassifier}"
+
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
+    checkstyle 'com.puppycrawl.tools:checkstyle:10.3'
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        events "passed", "skipped", "failed"
+
+        showExceptions true
+        exceptionFormat "full"
+        showCauses true
+        showStackTraces true
+        showStandardStreams = false
+    }
+}
+
+application {
+    mainClass.set("doopies.userinterface.Launcher")
+}
+
+shadowJar {
+    archiveBaseName = "Doopies"
+    archiveClassifier = null
+}
+
+
+run {
+    standardInput = System.in
+    jvmArgs = [
+            "--module-path", classpath.asPath,
+            "--add-modules", "javafx.controls,javafx.fxml"
+    ]
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.build {
+    dependsOn shadowJar
+}
+
+tasks.jar {
+    enabled = false
+}
