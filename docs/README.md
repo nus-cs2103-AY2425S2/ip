@@ -1,6 +1,6 @@
 # Demacia User Guide
 
-![Product Image](https://github.com/Wrongian/ip/blob/master/docs/Ui.png)
+![Product Image](./Ui.png)
 
 Demacia is a chatbot that helps you **keep track of your tasks**. This application is mainly for users that want to obsessively do everything in a **CLI**. You can mark, add dates, add notes and delete tasks and more.
 
