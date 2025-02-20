@@ -46,15 +46,44 @@ public class DialogBox extends HBox {
         Collections.reverse(tmp);
         getChildren().setAll(tmp);
         setAlignment(Pos.TOP_LEFT);
+        dialog.getStyleClass().add("reply-label");
     }
 
+    /**
+     * Returns a DialogBox formatted for displaying user input.
+     *
+     * @param text Input by user
+     * @param img Icon for user
+     * @return DialogBox displaying user input
+     */
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img);
     }
 
+    /**
+     * Returns a DialogBox formatted for displaying response from Pixel after successful operation.
+     *
+     * @param text Response from Pixel
+     * @param img Icon for Pixel
+     * @return DialogBox displaying Pixel response
+     */
     public static DialogBox getPixelDialog(String text, Image img) {
         var db = new DialogBox(text, img);
         db.flip();
+        return db;
+    }
+
+    /**
+     * Returns a DialogBox formatted for displaying error message.
+     *
+     * @param errorMessage Error message of a PixelException
+     * @param img Icon for Pixel
+     * @return DialogBox displaying error message
+     */
+    public static DialogBox getPixelExceptionDialog(String errorMessage, Image img) {
+        var db = new DialogBox(errorMessage, img);
+        db.flip();
+        db.dialog.getStyleClass().add("error-label");
         return db;
     }
 }

@@ -25,13 +25,9 @@ public class Pixel {
         return Ui.GREET;
     }
 
-    public String getResponse(String input) {
-        try {
-            Command c = Parser.parseFullCommand(input);
-            return c.execute(taskList, storage);
-        } catch (PixelException e) {
-            return e.getMessage();
-        }
+    public String getResponse(String input) throws PixelException {
+        Command c = Parser.parseFullCommand(input);
+        return c.execute(taskList, storage);
     }
 
 }

@@ -19,6 +19,12 @@ public class TaskList {
         return this.contents.size();
     }
 
+    /**
+     * Returns the String representation of the contents of the TaskList,
+     * namely the type, completion status, and description of each task.
+     *
+     * @return String representation of tasks in TaskList
+     */
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();

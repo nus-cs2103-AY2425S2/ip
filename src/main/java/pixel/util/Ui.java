@@ -63,6 +63,9 @@ public class Ui {
      * @return String response containing details of all Tasks in the TaskList
      */
     public static String listResponse(TaskList taskList) {
+        if (taskList.getListSize() == 0) {
+            return "There are no tasks in your list.";
+        }
         return "Here are the tasks in your list:\n" + taskList.toString();
     }
 

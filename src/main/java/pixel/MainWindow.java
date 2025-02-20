@@ -9,6 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import pixel.util.PixelException;
+
 /**
  * Controller for the main GUI.
  */
@@ -45,15 +47,19 @@ public class MainWindow extends AnchorPane {
      */
     @FXML
     private void handleUserInput() {
+        String response = null;
         String input = userInput.getText();
-        String response = pixel.getResponse(input);
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getPixelDialog(response, pixelImage)
-        );
-        userInput.clear();
-        if (response.equals(" Goodbye. Hope to see you again soon!")) {
-            closeStage();
+        dialogContainer.getChildren().add(DialogBox.getUserDialog(input, userImage));
+        try {
+            response = pixel.getResponse(input);
+            dialogContainer.getChildren().addAll(DialogBox.getPixelDialog(response, pixelImage));
+            if (response.equals(" Goodbye. Hope to see you again soon!")) {
+                closeStage();
+            }
+        } catch (PixelException e) {
+            dialogContainer.getChildren().add(DialogBox.getPixelExceptionDialog(e.getMessage(), pixelImage));
+        } finally {
+            userInput.clear();
         }
     }
 
