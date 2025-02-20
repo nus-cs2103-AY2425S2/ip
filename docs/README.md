@@ -7,17 +7,17 @@
 Stay organized, productive, and in control with Tasker, the all-in-one task manager designed to simplify your life. Whether you're managing daily to-dos, tracking deadlines, scheduling events, or handling fixed-duration tasks, Tasker has you covered. With its intuitive interface and powerful features, you'll never miss a beat.
 
 ## Input format
-* `description`: A string before any ` /`.
-* `deadline`/`start`/`end`: `d/m/yyyy HHMM`.
-    * `d`: 1 or 2 digit day,
-    * `m`: 1 or 2 digit month
-    * `yyyy`: 4 digit year
-    * `HH`: 2 digit 24H format hour
-    * `MM`: 2 digit minutes
-* `hr`: An integer.
-* `min`: An integer.
+* `description`: A string for the task description before any ` /`.
+* `deadline`/`start`/`end`: A date and time in the format `d/m/yyyy HHMM`.
+    * `d`: 1 or 2 digit of the day.
+    * `m`: 1 or 2 digit of the month.
+    * `yyyy`: 4 digit of the year.
+    * `HH`: 2 digit 24H format of the hour.
+    * `MM`: 2 digit of the minutes.
+* `hr`: An integer of the number of hours required.
+* `min`: An integer of the number of minutes required.
 * `index`: An integer of a task's index.
-* `term`: A string.
+* `term`: A string to search the tasks description with.
 
 # Adding tasks
 ## Todos
@@ -26,7 +26,11 @@ Adds a simple task with a description to be done
 ### Usage
 `todo {description}`
 
-### Example output
+### Example
+#### Input
+`todo Read a book`
+
+#### Output
 ```
 Got it. I've added this task:
   [T][] Read a book
@@ -38,10 +42,14 @@ Adds a task with a description and a deadline to complete it by.
 ### Usage
 `deadline {description} /by {deadline}`
 
-### Expected output
+### Example
+#### Input
+`deadline Complete assignment /by 15/2/2025 1800`
+
+#### Output
 ```
 Got it. I've added this task:
-  [D][] Complete assign (by: Feb 15 2025 1800)
+  [D][] Complete assignment (by: Feb 15 2025 1800H)
 Now you have 2 tasks in the list.
 ```
 ## Events
@@ -50,10 +58,14 @@ Adds a task with a description, a start and and end time.
 ### Usage
 `event {description} /from {start} /to {end}`
 
-### Expected output
+### Example
+#### Input
+`event Company meeting /from 16/2/2025 1400 /to 16/2/2025 1800`
+
+#### Output
 ```
 Got it. I've added this task:
-  [E][] Company meeting (from: Feb 16 2025 1400, to: Feb 16 2025 1800)
+  [E][] Company meeting (from: Feb 16 2025 1400H to: Feb 16 2025 1800H)
 Now you have 3 tasks in the list.
 ```
 
@@ -63,7 +75,11 @@ Adds a task with a description and takes a duration to complete.
 ### Usage
 `fixed {description} /hr {hours} /min {min}`
 
-### Expected output
+### Example
+#### Input
+`fixed Wash clothes /hr 1 /min 45`
+
+#### Output
 ```
 Got it. I've added this task:
   [F][] Wash clothes (needs: 1H 45M)
@@ -77,12 +93,13 @@ Lists all tasks in the list.
 ### Usage
 `list`
 
-### Expected output
+### Example
+#### Output
 ```
 Here are the tasks in your list:
 1.[T][] Read a book
-2.[D][] Complete assign (by: Feb 15 2025 1800)
-3.[E][] Company meeting (from: Feb 16 2025 1400, to: Feb 16 2025 1800)
+2.[D][] Complete assign (by: Feb 15 2025 1800H)
+3.[E][] Company meeting (from: Feb 16 2025 1400H to: Feb 16 2025 1800H)
 4.[F][] Wash clothes (needs: 1H 45M)
 ```
 
@@ -92,7 +109,11 @@ Marks a task as complete.
 ### Usage
 `mark {index}`
 
-### Expected output
+### Example
+#### Input
+`mark 1`
+
+#### Output
 ```
 Nice! I've marked this task as done:
   [T][X] Read a book
@@ -104,25 +125,34 @@ Unmarks a task from being complete.
 ### Usage
 `unmark {index}`
 
-### Expected output
+### Example
+#### Input
+`umark 1`
+
+#### Output
 ```
 Ok, I've marked this task as not done yet:
   [T][] Read a book
 ```
 ## Finding
-Finds a task containing the string in its description.
+Finds a task containing the search term in its description.
 
 ### Usage
-`finding {term}`
+`find {term}`
 
-### Expected output
+### Example
+#### Input
+`find read`
+
+#### Output
 ```
 Here are the matching tasks in your list:
-  [T][X] Read a book
+  [T][] Read a book
 ```
 
 ### Notes
-* Searching is case insensitive.
+* Matches partially.
+* Case insensitive.
 
 ## Deleting
 Deletes a task from the list.
@@ -130,7 +160,11 @@ Deletes a task from the list.
 ### Usage
 `delete {index}`
 
-### Expected output
+### Example
+#### Input
+`delete 1`
+
+#### Output
 ```
 Noted. I've removed this task:
   [T][] Read a book
