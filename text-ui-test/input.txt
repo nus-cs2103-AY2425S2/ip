@@ -1,0 +1,6 @@
+hi
+todo hello
+deadline eat food /by 5pm
+event hello /from 2pm /to 5pm
+list
+bye
