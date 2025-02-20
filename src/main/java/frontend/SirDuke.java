@@ -1,12 +1,14 @@
 package frontend;
 
+import java.io.FileNotFoundException;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 import backend.exceptions.IllegalStartAndEndDateException;
 import backend.ToDoList;
 import backend.Storage;
+import backend.task.Task;
 
-import static frontend.Format.HORIZONTAL_LINE;
 /**
  * Class that acts as the User Interface. This class is responsible for printing
  * all prompts and responses.
@@ -17,7 +19,7 @@ public class SirDuke {
             "____________________________________________________________";
 
     private Storage storage;
-    private ToDoList taskList;
+    private ToDoList toDoList;
 
     private Parser parser;
 
@@ -26,7 +28,13 @@ public class SirDuke {
      */
     public SirDuke() {
         this.storage = new Storage("./data/SirDuke.txt");
-        this.taskList = new ToDoList();
+        ArrayList<Task> temp;
+        try {
+            temp = this.storage.readDataFromDisk(); //read data from file into arraylist
+        } catch (FileNotFoundException e) {
+            temp = new ArrayList<Task>(); //if file not found, create new arraylist
+        }
+        this.toDoList = new ToDoList(temp); //assign arraylist to taskList
         this.parser = new Parser(this);
     }
 
@@ -37,12 +45,13 @@ public class SirDuke {
         System.out.println(HORIZONTAL_LINE + "\n"
                 + "Godspeed.\n"
                 + HORIZONTAL_LINE);
+        storage.saveDataToDisk(this.toDoList);
         System.exit(0);
     }
 
     public void markTaskAsDone(int index) {
         try {
-            this.taskList.markTaskAsDone(index);
+            this.toDoList.markTaskAsDone(index);
             System.out.println(HORIZONTAL_LINE + "\n");
             System.out.println("Well done, I have marked this task as done.");
             System.out.println(HORIZONTAL_LINE + "\n");
@@ -58,7 +67,7 @@ public class SirDuke {
 
     public void unmarkTaskAsDone(int index) {
         try {
-            taskList.unmarkTaskAsDone(index);
+            toDoList.unmarkTaskAsDone(index);
             System.out.println(HORIZONTAL_LINE + "\n");
             System.out.println("Understood, I have unmarked this task as done.");
             System.out.println(HORIZONTAL_LINE + "\n");
@@ -74,7 +83,7 @@ public class SirDuke {
 
     public void deleteTask(int index) {
         try {
-            taskList.deleteTask(index);
+            toDoList.deleteTask(index);
             System.out.println(HORIZONTAL_LINE + "\n");
             System.out.println("Very well, I have deleted this task .");
             System.out.println(HORIZONTAL_LINE + "\n");
@@ -101,23 +110,23 @@ public class SirDuke {
      * Updates and saves to listFile only if a command is SUCCESSFULLY EXECUTED.
      */
     public void start() {
-        ToDoList taskList = new ToDoList();
         System.out.println(HORIZONTAL_LINE + "\n"
                 + "It's a pleasure to meet you. My name is Sir Duke Ellington.\n"
                 + "What can I do you for?\n"
                 + HORIZONTAL_LINE);
-        parser.start();
+        while(true) {
+            parser.parse();
+            System.out.println(HORIZONTAL_LINE + "\n"
+                    + "What else can I do for you?\n"
+                    + HORIZONTAL_LINE);
+        }
     }
 
     public void showList() {
-        this.taskList.showList();
-    }
-    public static void main(String[] args) {
-        SirDuke sirDuke = new SirDuke();
-        sirDuke.start();
+        this.toDoList.showList();
     }
     public void createToDoTask(String description) {
-        taskList.createToDoTask(description);
+        toDoList.createToDoTask(description);
         System.out.println(HORIZONTAL_LINE + "\n"
                 + "I have added the following ToDo to your list: "+ description + "\n"
                 + HORIZONTAL_LINE);
@@ -125,7 +134,7 @@ public class SirDuke {
 
     public void createDeadlineTask(String description, String toBeCompletedBy) {
         try {
-            taskList.createDeadlineTask(description, toBeCompletedBy);
+            toDoList.createDeadlineTask(description, toBeCompletedBy);
             System.out.println(HORIZONTAL_LINE + "\n"
                     + "I have added the following Deadline to your list: "+ description + "\n"
                     + HORIZONTAL_LINE);
@@ -139,7 +148,7 @@ public class SirDuke {
 
     public void createEventTask(String description, String startTime, String endTime) {
         try {
-            taskList.createEventTask(description, startTime, endTime);
+            toDoList.createEventTask(description, startTime, endTime);
         } catch (DateTimeParseException e) {
             System.out.println(HORIZONTAL_LINE + "\n");
             System.out.println("One or more of your dates do not follow a format I understand." +
@@ -182,7 +191,7 @@ public class SirDuke {
                 "Try the same command with an integer instead.");
         System.out.println(HORIZONTAL_LINE + "\n");
     }
-    public static void Main(String[] args) {
+    public static void main(String[] args) {
         SirDuke chatBot = new SirDuke();
         chatBot.start();
     }

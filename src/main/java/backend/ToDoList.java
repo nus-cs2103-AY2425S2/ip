@@ -18,8 +18,11 @@ public class ToDoList {
 
     public static final String HORIZONTAL_LINE =
             "____________________________________________________________";
-    ArrayList<Task> toDoList = new ArrayList<>();
+    ArrayList<Task> tasks;
 
+    public ToDoList(ArrayList<Task> tasks) {
+        this.tasks = tasks;
+    }
     /**
      * Creates a new ToDoTask and adds it to the toDoList.
      * Prints message to inform user that task has been added.
@@ -28,7 +31,7 @@ public class ToDoList {
      */
     public void createToDoTask(String description) {
         ToDoTask toDo = new ToDoTask(description);
-        toDoList.add(toDo);
+        tasks.add(toDo);
     }
 
     /**
@@ -41,7 +44,7 @@ public class ToDoList {
     public void createDeadlineTask(String description, String toBeCompletedBy)
             throws DateTimeParseException {
         Task deadline = new DeadlineTask(description, toBeCompletedBy);
-        toDoList.add(deadline);
+        tasks.add(deadline);
     }
 
     /**
@@ -55,7 +58,7 @@ public class ToDoList {
     public void createEventTask(String description, String startTime, String endTime)
             throws DateTimeParseException, IllegalStartAndEndDateException {
         Task event = new EventTask(description, startTime, endTime);
-        toDoList.add(event);
+        tasks.add(event);
         System.out.println(HORIZONTAL_LINE + "\n"
                 + "I have added the following Event to your list: "+ description + "\n"
                 + HORIZONTAL_LINE);
@@ -67,8 +70,8 @@ public class ToDoList {
      */
     public void showList() {
         System.out.println(HORIZONTAL_LINE + "\n");
-        toDoList.forEach((task) ->
-                System.out.println(toDoList.indexOf(task) + 1 + ". " + task.toString() + "\n"));
+        tasks.forEach((task) ->
+                System.out.println(tasks.indexOf(task) + 1 + ". " + task.toString() + "\n"));
         System.out.println(HORIZONTAL_LINE + "\n");
     }
 
@@ -80,7 +83,7 @@ public class ToDoList {
      * @throws IndexOutOfBoundsException in the case that the task does not exist
      */
     public void markTaskAsDone(int index) throws IndexOutOfBoundsException {
-        Task task = toDoList.get(index);
+        Task task = tasks.get(index);
         task.markAsDone();
     }
 
@@ -91,7 +94,7 @@ public class ToDoList {
      * @param index the index of the task in the <code>ArrayList toDoList</code>
      */
     public void unmarkTaskAsDone (int index) throws IndexOutOfBoundsException {
-        Task task = toDoList.get(index);
+        Task task = tasks.get(index);
         task.unmarkAsDone();
     }
 
@@ -102,20 +105,20 @@ public class ToDoList {
      * @param index the index of the task in the <code>ArrayList toDoList</code>
      */
     public void deleteTask(int index) throws IndexOutOfBoundsException {
-        Task task = toDoList.remove(index);
+        Task task = tasks.remove(index);
     }
 
     public Task getTask(int index) {
-        return toDoList.get(index);
+        return tasks.get(index);
     }
 
     public int getLength() {
-        return this.toDoList.size();
+        return this.tasks.size();
     }
 
     @Override public String toString() {
         StringBuilder temp = new StringBuilder();
-        for (Task task : toDoList) {
+        for (Task task : tasks) {
             temp.append(task.toString()).append("\n");
         }
         return temp.toString();

@@ -34,20 +34,18 @@ public class Storage {
     // with minor modifications
     /**
      * Reads File and returns contents as an arraylist of Strings.
+     *
      * @return an arraylist of Tasks
+     * @throws FileNotFoundException if file is not found
      */
-    public ArrayList<Task> readDataFromDisk() {
+    public ArrayList<Task> readDataFromDisk() throws FileNotFoundException {
         ArrayList<Task> contents = new ArrayList<>();
-        try {
-            File f = new File(filePath);
-            Scanner s = new Scanner(f);
-            while (s.hasNextLine()) {
-                contents.add(readEntry(s.nextLine()));
-            }
-            s.close();
-        } catch (FileNotFoundException e) {
-            //throw new ReminderebotException("File not found!");
+        File f = new File(filePath);
+        Scanner s = new Scanner(f);
+        while (s.hasNextLine()) {
+            contents.add(readEntry(s.nextLine()));
         }
+        s.close();
         return contents;
     }
 
