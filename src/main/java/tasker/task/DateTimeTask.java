@@ -48,6 +48,6 @@ public abstract class DateTimeTask extends Task {
      * @return The date and time as a String.
      */
     String formatOutput(LocalDateTime dateTime) {
-        return dateTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy HHmm"));
+        return dateTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy HHmm")) + "H";
     }
 }
