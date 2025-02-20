@@ -8,8 +8,8 @@ Stay organized, productive, and in control with Tasker, the all-in-one task mana
 
 ## Input format
 * `description`: A string for the task description.
-    * `|` character is not allowed.
-    * Ends before any ` /` as input after those are arguments to the command.
+    * `|` is not allowed.
+    * Ends before any whitespace followed by `/` as input after it are arguments to the command.
 * `deadline`/`start`/`end`: A date and time in the format `d/m/yyyy HHMM`.
     * `d`: 1 or 2 digit of the day.
     * `m`: 1 or 2 digit of the month.
@@ -20,6 +20,8 @@ Stay organized, productive, and in control with Tasker, the all-in-one task mana
 * `min`: An integer of the number of minutes required.
 * `index`: An integer of a task's index.
 * `term`: A string to search the tasks description with.
+
+Whitespaces between command parts are ignored
 
 # Adding tasks
 ## Todos
