@@ -53,7 +53,12 @@ class DialogBox extends HBox {
      */
     static DialogBox getUserDialog(String text) throws TaskerException {
         Image userImage = new Image(DialogBox.class.getResourceAsStream("/images/DaUser.png"));
-        return new DialogBox(text, userImage);
+
+        try {
+            return new DialogBox(text, userImage);
+        } catch (TaskerException e) {
+            throw new TaskerException(String.format("%s You said:\n%s", e.getMessage(), text));
+        }
     }
 
     /**
@@ -63,7 +68,14 @@ class DialogBox extends HBox {
      */
     static DialogBox getTaskerDialog(String text) throws TaskerException {
         Image taskerImage = new Image(DialogBox.class.getResourceAsStream("/images/DaTasker.png"));
-        DialogBox db = new DialogBox(text, taskerImage);
+        DialogBox db;
+
+        try {
+            db = new DialogBox(text, taskerImage);
+        } catch (TaskerException e) {
+            throw new TaskerException(String.format("%s Tasker said:\n%s", e.getMessage(), text));
+        }
+
         db.setAlignment(Pos.TOP_LEFT);
         ObservableList<Node> tmp = FXCollections.observableArrayList(db.getChildren());
         FXCollections.reverse(tmp);
