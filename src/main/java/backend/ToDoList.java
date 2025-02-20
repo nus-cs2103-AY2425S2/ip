@@ -77,8 +77,6 @@ public class ToDoList {
 
     /**
      * Marks tasks in the list as done.
-     * If the task does not exist, informs user that the task does not exist.
-     *
      * @param index the index of the task in the <code>ArrayList toDoList</code>
      * @throws IndexOutOfBoundsException in the case that the task does not exist
      */
@@ -89,9 +87,8 @@ public class ToDoList {
 
     /**
      * Marks tasks in the list as done.
-     * If the task does not exist, informs user that the task does not exist.
-     *
      * @param index the index of the task in the <code>ArrayList toDoList</code>
+     * @throws IndexOutOfBoundsException in the case that the task does not exist
      */
     public void unmarkTaskAsDone (int index) throws IndexOutOfBoundsException {
         Task task = tasks.get(index);
@@ -100,12 +97,11 @@ public class ToDoList {
 
     /**
      * Delete a task in the list.
-     * If the task does not exist, informs user that the task does not exist.
-     *
      * @param index the index of the task in the <code>ArrayList toDoList</code>
+     * @throws IndexOutOfBoundsException in the case that the task does not exist
      */
     public void deleteTask(int index) throws IndexOutOfBoundsException {
-        Task task = tasks.remove(index);
+        tasks.remove(index);
     }
 
     public Task getTask(int index) {
