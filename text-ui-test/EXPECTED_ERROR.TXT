@@ -1,0 +1,79 @@
+Hello I'm Amara
+What can I do for you?
+OOPS!!! I'm sorry, but I don't know what that means. :(
+OOPS!!! The format for todo parameter(s) is/are empty!
+  Usage: todo <description>  
+Got it. I've added this task:
+  [T][ ] read CM4215 lecture notes
+Now you have 1 tasks in the list.
+OOPS!!! The format for deadline parameter(s) is/are empty!
+  Usage: deadline <description> /by <time> 
+OOPS!!! The format for deadline parameter(s) is/are empty!
+  Usage: deadline <description> /by <time> 
+OOPS!!! The format for deadline parameter(s) is/are empty!
+  Usage: deadline <description> /by <time> 
+Got it. I've added this task:
+  [D][ ] CM3221 tutorial (by: Jan 31 2025, 4:00 PM)
+Now you have 2 tasks in the list.
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+OOPS!!! The format for event parameter(s) is/are empty!
+  Usage: event <description> /from <start time> /to <end time>
+Got it. I've added this task:
+  [E][ ] CM4288 meeting (from: Feb 2 2025, 3:00 PM to: Feb 2 2025, 4:00 PM)
+Now you have 3 tasks in the list.
+Here are the tasks in your list:
+1. [T][ ] read CM4215 lecture notes
+2. [D][ ] CM3221 tutorial (by: Jan 31 2025, 4:00 PM)
+3. [E][ ] CM4288 meeting (from: Feb 2 2025, 3:00 PM to: Feb 2 2025, 4:00 PM)
+OOPS!!! The word that you entered is not a number or empty. :(
+OOPS!!! The word that you entered is not a number or empty. :(
+OOPS!!! The index you want to mark/unmark/delete is out of bounds. :(
+OOPS!!! The index you want to mark/unmark/delete is out of bounds. :(
+Here are the tasks in your list:
+1. [T][ ] read CM4215 lecture notes
+2. [D][ ] CM3221 tutorial (by: Jan 31 2025, 4:00 PM)
+3. [E][ ] CM4288 meeting (from: Feb 2 2025, 3:00 PM to: Feb 2 2025, 4:00 PM)
+Nice! I've marked this task as done:
+  [T][X] read CM4215 lecture notes
+Nice! I've marked this task as done:
+  [D][X] CM3221 tutorial (by: Jan 31 2025, 4:00 PM)
+Nice! I've marked this task as done:
+  [E][X] CM4288 meeting (from: Feb 2 2025, 3:00 PM to: Feb 2 2025, 4:00 PM)
+Here are the tasks in your list:
+1. [T][X] read CM4215 lecture notes
+2. [D][X] CM3221 tutorial (by: Jan 31 2025, 4:00 PM)
+3. [E][X] CM4288 meeting (from: Feb 2 2025, 3:00 PM to: Feb 2 2025, 4:00 PM)
+OOPS!!! The word that you entered is not a number or empty. :(
+OOPS!!! The word that you entered is not a number or empty. :(
+OOPS!!! The index you want to mark/unmark/delete is out of bounds. :(
+OOPS!!! The index you want to mark/unmark/delete is out of bounds. :(
+Here are the tasks in your list:
+1. [T][X] read CM4215 lecture notes
+2. [D][X] CM3221 tutorial (by: Jan 31 2025, 4:00 PM)
+3. [E][X] CM4288 meeting (from: Feb 2 2025, 3:00 PM to: Feb 2 2025, 4:00 PM)
+Noted. I've removed this task:
+  [E][X] CM4288 meeting (from: Feb 2 2025, 3:00 PM to: Feb 2 2025, 4:00 PM)
+Now you have 2 tasks in the list.
+Noted. I've removed this task:
+  [T][X] read CM4215 lecture notes
+Now you have 1 tasks in the list.
+Here are the tasks in your list:
+1. [D][X] CM3221 tutorial (by: Jan 31 2025, 4:00 PM)
+Bye. Hope to see you again soon! <3
