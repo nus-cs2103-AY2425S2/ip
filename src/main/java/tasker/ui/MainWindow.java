@@ -1,6 +1,7 @@
 package tasker.ui;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -44,17 +45,37 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
+     * Adds a dialog to the chat.
+     *
+     * @param dialog The dialog content to add.
+     */
+    private void addDialog(Node dialog) {
+        dialogContainer.getChildren().add(dialog);
+    }
+
+    /**
      * Creates a dialog box containing user input, and appends it to
      * the dialog container. Clears the user input after processing.
      */
     @FXML
     private void handleUserInput() {
         String userText = userInput.getText();
+        String response;
 
         try {
-            dialogContainer.getChildren().addAll(
-                    DialogBox.getUserDialog(userText),
-                    DialogBox.getTaskerDialog(tasker.respond(userText)));
+            this.addDialog(DialogBox.getUserDialog(userText));
+        } catch (TaskerException e) {
+            this.showError(e.getMessage());
+        }
+
+        try {
+            response = tasker.respond(userText);
+        } catch (TaskerException e) {
+            response = e.getMessage();
+        }
+
+        try {
+            this.addDialog(DialogBox.getTaskerDialog(response));
         } catch (TaskerException e) {
             this.showError(e.getMessage());
         }
@@ -63,7 +84,7 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Displays an error message on the UI.
+     * Displays an error in a lable if DialogBoxes fail to render.
      *
      * @param error The error message.
      */
@@ -71,6 +92,6 @@ public class MainWindow extends AnchorPane {
         Label label = new Label(error);
         label.setWrapText(true);
         label.setMinHeight(Double.NEGATIVE_INFINITY);
-        dialogContainer.getChildren().add(label);
+        this.addDialog(label);
     }
 }
