@@ -17,11 +17,15 @@ public abstract class Task {
      * @param description name of the task
      */
     public Task(String description) {
-        this.description = description;
+        this.description = description.trim();
         this.isDone = false;
     }
 
     public abstract String toFileEntry();
+
+    public String toString() {
+        return "[" + getStatusIcon() + "] " + description;
+    }
 
     /**
      * @return "X" if done, to show that task has been marked as done and " " otherwise
@@ -48,5 +52,9 @@ public abstract class Task {
      */
     public void unmarkAsDone() {
         this.isDone = false;
+    }
+
+    public boolean contains(String keyword) {
+        return this.description.contains(keyword);
     }
 }

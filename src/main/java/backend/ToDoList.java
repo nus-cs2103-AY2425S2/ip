@@ -116,6 +116,17 @@ public class ToDoList {
         return this.tasks.size();
     }
 
+    public String findTask(String keyword) {
+        ArrayList<Task> tasksFound = new ArrayList<>();
+        for (int i = 0; i < tasks.size(); i++) {
+            Task task = tasks.get(i);
+            if (task.contains(keyword)) {
+                tasksFound.add(task);
+            }
+        }
+        return tasksFound.toString();
+    }
+
     @Override public String toString() {
         StringBuilder temp = new StringBuilder();
         for (Task task : tasks) {
