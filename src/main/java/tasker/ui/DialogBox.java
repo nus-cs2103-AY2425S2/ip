@@ -39,7 +39,7 @@ class DialogBox extends HBox {
         try {
             fxmlLoader.load();
         } catch (IOException e) {
-            throw new TaskerException("Faied to render dialog.");
+            throw new TaskerException("Failed to render dialog.");
         }
 
         text.setText(textContent);
