@@ -1,0 +1,53 @@
+newTask
+list
+todo borrow book
+todo
+list
+deadline return book /by 2/12/2019 1800
+deadline     /by 2/12/2019 1800
+deadline return book /by
+deadline return book
+deadline return book 2 /by2/12/2019 1800
+deadline return book /by notADate
+list
+event project meeting /from 2/12/2019 1800 /to 4/12/2019 0800
+event project meeting /from  /to 2/12/2019 1800
+event project meeting /from/to 2/12/2019 1800
+event project meeting /from 2/12/2019 1800 /to
+event /from 2/12/2019 1800 /to 4/12/2019 0800
+event project meeting /to 4/12/2019 0800 /from 2/12/2019 1800
+event /to 4/12/2019 0800 /from 2/12/2019 1800
+event project meeting 2 /fromtest/to 4/12/2019 0800
+event project meeting /from notADate /to 4/12/2019 0800
+event project meeting /from 2/12/2019 1800 /to notADate
+doWithinPeriod project meeting /start 2/12/2019 1800 /end 4/12/2019 0800
+doWithinPeriod project meeting /start  /end 2/12/2019 1800
+doWithinPeriod project meeting /start/end 2/12/2019 1800
+doWithinPeriod project meeting /start 2/12/2019 1800 /end
+doWithinPeriod /start 2/12/2019 1800 /end 4/12/2019 0800
+doWithinPeriod project meeting /end 4/12/2019 0800 /start 2/12/2019 1800
+doWithinPeriod /end 4/12/2019 0800 /start 2/12/2019 1800
+doWithinPeriod project meeting 2 /starttest/end 4/12/2019 0800
+doWithinPeriod project meeting /start notADate /end 4/12/2019 0800
+doWithinPeriod project meeting /start 2/12/2019 1800 /end notADate
+list
+testing unknown command
+list
+mark a
+mark 0
+mark 1
+mark 2
+list
+unmark a
+unmark 2
+unmark 3
+unmark 8
+list
+delete 8
+delete a
+delete 1
+list
+find book
+find
+find z
+bye

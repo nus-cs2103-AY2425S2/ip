@@ -1,7 +1,172 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+=======================
+Hello! I'm Aurora.
+What can I do for you?
+=======================
+=======================
+Unknown command: newTask
+=======================
+=======================
+=======================
+=======================
+I've added this task:
+[T][ ] borrow book
+Now you have 1 tasks in the list!
+=======================
+=======================
+Missing argument: "Description".
+Usage: "todo Description"
+=======================
+=======================
+1. [T][ ] borrow book
+=======================
+=======================
+I've added this task:
+[D][ ] return book (by: Dec 2 2019 6:00pm)
+Now you have 2 tasks in the list!
+=======================
+=======================
+Missing argument: "Description".
+Usage: "deadline Description /by By"
+=======================
+=======================
+Missing argument: "By" in "/by By".
+Usage: "deadline Description /by By"
+=======================
+=======================
+Missing argument: "/by By".
+Usage: "deadline Description /by By"
+=======================
+=======================
+Missing argument: "/by By".
+Usage: "deadline Description /by By"
+=======================
+=======================
+Invalid format: "By" must be a valid date format of dd/mm/yyyy hhmm.
+Usage: "deadline Description /by By"
+=======================
+=======================
+1. [T][ ] borrow book
+2. [D][ ] return book (by: Dec 2 2019 6:00pm)
+=======================
+=======================
+I've added this task:
+[E][ ] project meeting (from: Dec 2 2019 6:00pm to: Dec 4 2019 8:00am)
+Now you have 3 tasks in the list!
+=======================
+=======================
+Missing argument: "From" in "/from From".
+Usage: "event Description /from From /to To"
+=======================
+=======================
+Missing argument: "/from From".
+Usage: "event Description /from From /to To"
+=======================
+=======================
+Missing argument: "To" in "/to To".
+Usage: "event Description /from From /to To"
+=======================
+=======================
+Missing argument: "Description".
+Usage: "event Description /from From /to To"
+=======================
+=======================
+Invalid format: "/from From" must be before "/to To".
+Usage: "event Description /from From /to To"
+=======================
+=======================
+Missing argument: "Description".
+Usage: "event Description /from From /to To"
+=======================
+=======================
+Missing argument: "/from From".
+Usage: "event Description /from From /to To"
+=======================
+=======================
+Invalid format: "From" must be a valid date format of dd/mm/yyyy hhmm.
+Usage: "event Description /from From /to To"
+=======================
+=======================
+Invalid format: "To" must be a valid date format of dd/mm/yyyy hhmm.
+Usage: "event Description /from From /to To"
+=======================
+=======================
+1. [T][ ] borrow book
+2. [D][ ] return book (by: Dec 2 2019 6:00pm)
+3. [E][ ] project meeting (from: Dec 2 2019 6:00pm to: Dec 4 2019 8:00am)
+=======================
+=======================
+Unknown command: testing unknown command
+=======================
+=======================
+1. [T][ ] borrow book
+2. [D][ ] return book (by: Dec 2 2019 6:00pm)
+3. [E][ ] project meeting (from: Dec 2 2019 6:00pm to: Dec 4 2019 8:00am)
+=======================
+=======================
+Invalid arguments: index must be a valid integer value.
+Usage: "mark Index"
+=======================
+=======================
+Argument provided "0" must be between bounds of 1 and 3.
+=======================
+=======================
+This task has been marked as done:
+[T][X] borrow book
+=======================
+=======================
+This task has been marked as done:
+[D][X] return book (by: Dec 2 2019 6:00pm)
+=======================
+=======================
+1. [T][X] borrow book
+2. [D][X] return book (by: Dec 2 2019 6:00pm)
+3. [E][ ] project meeting (from: Dec 2 2019 6:00pm to: Dec 4 2019 8:00am)
+=======================
+=======================
+Invalid arguments: Index must be a valid integer value.
+Usage: "unmark Index"
+=======================
+=======================
+This task has been marked as not done:
+[D][ ] return book (by: Dec 2 2019 6:00pm)
+=======================
+=======================
+This task has been marked as not done:
+[E][ ] project meeting (from: Dec 2 2019 6:00pm to: Dec 4 2019 8:00am)
+=======================
+=======================
+Argument provided "8" must be between bounds of 1 and 3.
+=======================
+=======================
+1. [T][X] borrow book
+2. [D][ ] return book (by: Dec 2 2019 6:00pm)
+3. [E][ ] project meeting (from: Dec 2 2019 6:00pm to: Dec 4 2019 8:00am)
+=======================
+=======================
+Argument provided "8" must be between bounds of 1 and 3.
+=======================
+=======================
+Invalid arguments: index must be a valid integer value.
+Usage: "delete Index"
+=======================
+=======================
+I've removed this task:
+[T][X] borrow book
+Now you have 2 tasks in the list!
+=======================
+=======================
+1. [D][ ] return book (by: Dec 2 2019 6:00pm)
+2. [E][ ] project meeting (from: Dec 2 2019 6:00pm to: Dec 4 2019 8:00am)
+=======================
+=======================
+1. [D][ ] return book (by: Dec 2 2019 6:00pm)
+=======================
+=======================
+Missing argument: "Keyword".
+Usage: "find Keyword"
+=======================
+=======================
+=======================
+=======================
+Bye. Hope to see you again soon!
+=======================
