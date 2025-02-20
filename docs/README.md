@@ -10,7 +10,7 @@ Demacia is a chatbot that helps you **keep track of your tasks**. This applicati
 ## How To Run The application
 1. Download the latest release file(it is a **.jar** file)
 2. Copy the .jar file into a preferably empty folder
-3. Double click the .jar file to run the application
+3. Double click the .jar file to run the application.
 Alternatively, can change directory to the folder where the .jar file is and enter `java -jar demacia.jar` to run the application
 
 
