@@ -1,7 +1,147 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+    ============================================================
+      __  __       _   _
+     |  \/  | ___ | |_(_)_   ____ _
+     | |\/| |/ _ \| __| \ \ / / _` |
+     | |  | | (_) | |_| |\ V / (_| |
+     |_|  |_|\___/ \__|_| \_/ \__,_|
+     Hello! I'm Motiva.
+     What can I do for you?
+    ============================================================
+
+    ============================================================
+     Got it. I've added this task:
+       [T][ ] read book
+     Now you have 1 tasks in the list.
+    ============================================================
+
+    ============================================================
+     Got it. I've added this task:
+       [D][ ] return book (by: Dec 31 2024, 11:59 pm)
+     Now you have 2 tasks in the list.
+    ============================================================
+
+    ============================================================
+     Got it. I've added this task:
+       [E][ ] project meeting (from: Dec 31 2024, 12:00 am to: Jan 22 2025, 11:59 pm)
+     Now you have 3 tasks in the list.
+    ============================================================
+
+    ============================================================
+     Invalid todo format. Please use:
+     todo <task description>
+     Where:
+       - <task description> is a description of the task (cannot be empty).
+    ============================================================
+
+    ============================================================
+     Invalid deadline format. Please use:
+     deadline <task description> /by <due date>
+     Where:
+       - <task description> is a description of the task (cannot be empty).
+       - <due date> must be in one of the following formats:
+         - yyyy-MM-dd (e.g., 2025-12-31)
+         - yyyy-MM-dd HHmm (e.g., 2025-12-31 2359)
+    ============================================================
+
+    ============================================================
+     Invalid event format. Please use:
+     event <task description> /from <fromDate> /to <toDate>
+     Where:
+       - <task description> is a description of the task (cannot be empty).
+       - <fromDate> & <toDate> must be in one of the following formats:
+         - yyyy-MM-dd (e.g., 2025-12-31)
+         - yyyy-MM-dd HHmm (e.g., 2025-12-31 2359)
+    ============================================================
+
+    ============================================================
+     Here are the tasks in your list:
+     1.[T][ ] read book
+     2.[D][ ] return book (by: Dec 31 2024, 11:59 pm)
+     3.[E][ ] project meeting (from: Dec 31 2024, 12:00 am to: Jan 22 2025, 11:59 pm)
+    ============================================================
+
+    ============================================================
+     Nice! I've marked this task as done:
+       [T][X] read book
+    ============================================================
+
+    ============================================================
+     Nice! I've marked this task as done:
+       [D][X] return book (by: Dec 31 2024, 11:59 pm)
+    ============================================================
+
+    ============================================================
+     Invalid mark format. Please use:
+     mark <index>
+    ============================================================
+
+    ============================================================
+     Here are the tasks in your list:
+     1.[T][X] read book
+     2.[D][X] return book (by: Dec 31 2024, 11:59 pm)
+     3.[E][ ] project meeting (from: Dec 31 2024, 12:00 am to: Jan 22 2025, 11:59 pm)
+    ============================================================
+
+    ============================================================
+     Invalid unmark format. Please use:
+     unmark <index>
+    ============================================================
+
+    ============================================================
+     OK, I've marked this task as not done yet:
+       [D][ ] return book (by: Dec 31 2024, 11:59 pm)
+    ============================================================
+
+    ============================================================
+     "[D][ ] return book (by: Dec 31 2024, 11:59 pm)" is already unmarked
+    ============================================================
+
+    ============================================================
+     Invalid unmark format. Please use:
+     unmark <index>
+    ============================================================
+
+    ============================================================
+     Noted. I've removed this task:
+       [D][ ] return book (by: Dec 31 2024, 11:59 pm)
+     Now you have 2 tasks in the list.
+    ============================================================
+
+    ============================================================
+     Invalid delete format. Please use:
+     delete <index>
+    ============================================================
+
+    ============================================================
+     Here are the tasks in your list:
+     1.[T][X] read book
+     2.[E][ ] project meeting (from: Dec 31 2024, 12:00 am to: Jan 22 2025, 11:59 pm)
+    ============================================================
+
+    ============================================================
+     Noted. I've removed this task:
+       [E][ ] project meeting (from: Dec 31 2024, 12:00 am to: Jan 22 2025, 11:59 pm)
+     Now you have 1 tasks in the list.
+    ============================================================
+
+    ============================================================
+     Here are the tasks in your list:
+     1.[T][X] read book
+    ============================================================
+
+    ============================================================
+     Invalid command. Please try one of the following commands:
+     	list
+     	bye
+     	mark <index>
+     	unmark <index>
+     	delete <index>
+     	todo <task description>
+     	deadline <task description> /by <due date>
+     	event <task description> /from <fromDate> /to <toDate>
+    ============================================================
+
+    ============================================================
+     Bye. Hope to see you again soon!
+    ============================================================
 
