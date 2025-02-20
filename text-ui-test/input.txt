@@ -1,0 +1,22 @@
+hi
+todo borrow book
+list
+deadline return book /by 2024-12-01
+event project meeting /from 2024-12-01 /to 2024-12-02
+list
+todo
+deadline do homework /by no idea :-p
+list
+event mysterious meeting
+find book
+deadline mysterious deadline
+delete 1
+list
+mark 2
+unmark 2
+delete 10
+undo
+mark 2
+undo
+list
+bye
