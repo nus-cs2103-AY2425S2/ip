@@ -21,7 +21,7 @@ public class Main extends Application {
             stage.setScene(scene);
             stage.setTitle("Pixel");
             stage.getIcons().add(new Image(this.getClass().getResourceAsStream("/images/robot-idle.png")));
-            fxmlLoader.<MainWindow>getController().setPixel(pixel);  // inject the Duke instance
+            fxmlLoader.<MainWindow>getController().setPixel(pixel);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

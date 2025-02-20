@@ -45,7 +45,8 @@ public class AddCommand extends Command {
             break;
         case DEADLINE:
             components = Parser.parseDeadline(this.args);
-            response = Ui.addResponse(taskList.addTask(new Deadline(components[0], Parser.parseDateTime(components[1]))),
+            response = Ui.addResponse(taskList.addTask(new Deadline(components[0],
+                            Parser.parseDateTime(components[1]))),
                     taskList.getListSize());
             break;
         case EVENT:
