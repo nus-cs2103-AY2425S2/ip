@@ -1,0 +1,62 @@
+/* Background colour for whole application */
+.root {
+    -fx-background-color: #121212; /* Dark background */
+}
+
+/* ScrollPane styling */
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: #1E1E1E; /* Slightly lighter dark */
+}
+
+/* Text field for user input */
+.text-field {
+    -fx-background-color: #2A2A2A;  /* Dark gray input */
+    -fx-text-fill: white;  /* White text */
+    -fx-font-size: 18px;
+    -fx-border-color: #FFB300; /* Orange border */
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: linear-gradient(to bottom right, #D35400, #FFA000); /* Burnt orange to deep yellow-orange */
+    -fx-border-color: #B34700; /* Strong deep orange border */
+    -fx-text-fill: black;
+    -fx-font: bold 16px "Arial";
+    -fx-border-radius: 5px;
+}
+
+/* Hover effect */
+.button:hover {
+    -fx-background-color: #FFA000; /* Slightly darker yellow-orange */
+}
+
+/* Pressed button effect */
+.button:pressed {
+    -fx-background-color: #FF8F00; /* Darker orange */
+}
+
+/* ScrollBar */
+.scroll-bar {
+    -fx-background-color: #1E1E1E;
+}
+
+/* ScrollBar Thumb */
+.scroll-bar .thumb {
+    -fx-background-color: #FFB300; /* Orange scrollbar */
+    -fx-background-radius: 1em;
+}
+
+/* Chat bubbles */
+#dialogContainer {
+    -fx-background-color: #1E1E1E; /* Dark chat background */
+    -fx-padding: 10px;
+}
+
+/* Chat text */
+.text {
+    -fx-fill: #060606; /* White text */
+    -fx-font-weight: bold;
+}
