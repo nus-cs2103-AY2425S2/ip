@@ -1,0 +1,9 @@
+list
+todo tidy room
+deadline submit assignment /by Friday 4pm
+event meeting /from Wed 2pm /to 5pm
+mark 2
+mark 1
+unmark 2
+list
+bye
