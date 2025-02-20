@@ -21,6 +21,10 @@ public abstract class Task {
         this.isDone = false;
     }
 
+    /**
+     * @return string representing the Task in a format that is readable by storage
+     * @see backend.Storage, to ensure that readEntry(String entry) can read this format
+     */
     public abstract String toFileEntry();
 
     /**
