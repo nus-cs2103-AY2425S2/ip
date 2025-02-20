@@ -77,6 +77,13 @@ public class Parser {
                     chatbot.informThatTaskIndexIsNotInteger();
                 }
                 break;
+            case "find":
+                try {
+                    chatbot.findTask(parsedCommand[1]);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    chatbot.informThatCommandIsIncomplete(); //missing keyword
+                }
+                break;
             default:
                 chatbot.informThatCommandIsInvalid();
                 break;

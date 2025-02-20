@@ -161,6 +161,12 @@ public class SirDuke {
         }
     }
 
+    public void findTask(String keyword) {
+        System.out.println(HORIZONTAL_LINE + "\n");
+        System.out.println(toDoList.findTask(keyword));
+        System.out.println(HORIZONTAL_LINE + "\n");
+    }
+
     public void informThatCommandIsInvalid() {
         System.out.println(HORIZONTAL_LINE + "\n");
         System.out.println("I'm afraid I don't understand what you mean.");
@@ -189,6 +195,12 @@ public class SirDuke {
         System.out.println(HORIZONTAL_LINE + "\n");
         System.out.println("You have not provided me with a valid task index. " +
                 "Try the same command with an integer instead.");
+        System.out.println(HORIZONTAL_LINE + "\n");
+    }
+
+    public void informThatTaskIsNotFound() {
+        System.out.println(HORIZONTAL_LINE + "\n");
+        System.out.println("Unfortunately, I do not see any tasks with that keyword in my list.");
         System.out.println(HORIZONTAL_LINE + "\n");
     }
     public static void main(String[] args) {
