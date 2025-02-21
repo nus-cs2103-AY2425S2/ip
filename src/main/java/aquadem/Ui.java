@@ -114,7 +114,6 @@ public class Ui {
 
         } else {
             System.out.println("This task has no deadline date");
-            System.out.println(bar);
         }
     }
 

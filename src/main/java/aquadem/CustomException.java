@@ -22,6 +22,6 @@ public class CustomException extends Exception{
     @Override
     public String getMessage() {
 
-        return "Ohno somethings not right! : " + msg + "\n"+ Ui.getBar();
+        return "Ohno somethings not right! : " + msg + "\n";
     }
 }
