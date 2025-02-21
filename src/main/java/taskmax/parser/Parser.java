@@ -91,11 +91,11 @@ public class Parser {
     }
 
     private static Command handleDeadlineCommand(String[] text) throws TaskmaxException {
-        validateCommand(text, "Oops! You have to include a \"/by deadline\" after your task\n"
+        validateCommand(text, "Oops! You have to include a \"/by <deadline>\" \"priority <priority_number>\" after your task\n"
                 + "e.g. deadline Assignment2 /by 2021-10-15 1800 priority 2\n");
         String[] deadlineParts = text[1].split(" /by ", 2);
-        validateParts(deadlineParts, 2, "Oops! You have to include a \"/by deadline\" after your task\n"
-                + "e.g. deadline Assignment2 /by 2021-10-15 1800\n"
+        validateParts(deadlineParts, 2, "Oops! You have to include a \"/by deadline\" \"priority <priority_number>\" after your task\n"
+                + "e.g. deadline Assignment2 /by 2021-10-15 1800 priority 2\n"
                 + "Please try again!");
         String[] priorityParts = deadlineParts[1].split(" priority ");
         if (priorityParts.length < 2) {
@@ -106,10 +106,10 @@ public class Parser {
     }
 
     private static Command handleEventCommand(String[] text) throws TaskmaxException {
-        validateCommand(text, "Oops! You have to include a \"/from start /to end\" after your task\n"
+        validateCommand(text, "Oops! You have to include a \"/from start /to end\" \"priority <priority_number>\" after your task\n"
                 + "e.g. event Concert /from 2021-10-15 1800 /to 2021-10-15 2200 priority 1");
         String[] eventParts = text[1].split(" /from | /to ", 3);
-        validateParts(eventParts, 3, "Oops! You have to include a \"/from start /to end\" after your task\n"
+        validateParts(eventParts, 3, "Oops! You have to include a \"/from start /to end\" \"priority <priority_number>\" after your task\n"
                 + "e.g. event Concert /from 2021-10-15 1800 /to 2021-10-15 2200 priority 1");
         String priorityPart = text[1].substring(text[1].lastIndexOf("priority") + 9).trim();
         int priority;
@@ -185,15 +185,15 @@ public class Parser {
         return Ui.LINE + "\nHey there! There are 9 things I can help you with! \n"
                 + "\n1. List: Enter \"list\" and I will list out all the tasks you have given me!\n"
                 + "2. Todo: Enter \"todo <theTaskName> priority <number>\" to add a task you plan to do!\n"
-                + "3. Deadlines: Enter \"deadline <theTaskName> /by <yyyy-mm-dd> <24hrTime> priority <number>\" to add a task with a specific deadline!\n"
-                + "4. Events: Enter \"event <theTaskName> /from <yyyy-mm-dd> <24hrTime> /to <yyyy-mm-dd> <24hrTime> priority <number>\" to add an event!\n"
+                + "3. Deadlines: Enter \"deadline <theTaskName> /by <yyyy-mm-dd> <24hrTime> priority <number>\" to add a task with a \n   specific deadline!\n"
+                + "4. Events: Enter \"event <theTaskName> /from <yyyy-mm-dd> <24hrTime> /to <yyyy-mm-dd> <24hrTime> priority\n    <number>\" to add an event!\n"
                 + "5. Delete: Enter \"delete <theTaskListNumber>\" to delete a task from the list!\n"
                 + "6. Mark as done: Enter \"mark <TaskListNumber>\" to mark the task as complete in the list!\n"
                 + "7. Mark as undone: Enter \"unmark <TaskListNumber>\" to mark the task as incomplete in the list!\n"
                 + "8. Find: Enter \"find <Word(s)YouWantToFind>\" to find tasks that match the keyword in the description.\n"
                 + "9. Sort: Enter \"sort priority\" and I will sort the tasks by their priority!\n"  // Updated line for sort instruction
                 + "\nIf you need a refresher, just enter any word!"
-                + "\nIf you are satisfied with your service, enter \"bye\" to save your task list and exit!\n"
+                + "\nIf you are satisfied with your service, enter \"bye\" to save your task list and exit!"
                 + "\nDo remember that my input receptors are sensitive so please be careful with your spelling"
                 + "\nand capital letters for commands!\n"
                 + "\nThat is all and happy scheduling! ~Taskmax :D\n" + Ui.LINE;

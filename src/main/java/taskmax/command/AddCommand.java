@@ -4,9 +4,6 @@ import taskmax.storage.Storage;
 import taskmax.storage.TaskList;
 import taskmax.task.Task;
 import taskmax.ui.Ui;
-import taskmax.task.ToDo;
-import taskmax.task.Deadline;
-import taskmax.task.Event;
 import taskmax.exception.TaskmaxException;
 
 /**
@@ -14,7 +11,7 @@ import taskmax.exception.TaskmaxException;
  */
 public class AddCommand extends Command {
     private final Task[] tasksToAdd;
-    private final int priority; // Add the priority field
+    private final int priority;
 
     /**
      * Constructs an AddCommand with one or more tasks and a priority.
