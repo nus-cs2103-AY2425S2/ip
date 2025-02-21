@@ -22,6 +22,8 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+            stage.setTitle("Scooby");
+
             fxmlLoader.<MainWindow>getController().setScooby(scooby);  // Fix: Pass correct instance
             stage.show();
         } catch (IOException e) {
