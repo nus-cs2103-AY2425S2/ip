@@ -397,6 +397,29 @@ class ParserTest {
         }
 
         @Test
+        @DisplayName("Throw exception for fixed duration with negative duration")
+        void parseCommand_fixedDurationNegativeDuration_exceptionThrown() {
+            String negHr = " /hr -1";
+            String negMin = " /min -1";
+            String input1 = fixedDescriptionHr + negMin;
+            TaskerException exception1 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input1);
+            });
+            String input2 = fixedDescription + negHr + min;
+            TaskerException exception2 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input2);
+            });
+            String input3 = fixedDescription + negHr + negMin;
+            TaskerException exception3 = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input3);
+            });
+            String errMsg = "Hours and minutes must be positive.";
+            assertEquals(exception1.getMessage(), errMsg);
+            assertEquals(exception2.getMessage(), errMsg);
+            assertEquals(exception3.getMessage(), errMsg);
+        }
+
+        @Test
         @DisplayName("Throw exception when find search term is missing")
         void parseCommand_missingSearch_exceptionThrown() {
             String input = find;

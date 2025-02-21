@@ -82,13 +82,12 @@ class Parser {
         TaskerException formatException = new TaskerException(
                 String.format("Please provide a start and end time with: \"/from %s /to %s\".",
                         dateTimeInputFormat, dateTimeInputFormat));
+        LocalDateTime from;
+        LocalDateTime to;
 
         if (args.length != 2 || !args[0].startsWith("/from ") || !args[1].startsWith("/to ")) {
             throw formatException;
         }
-
-        LocalDateTime from;
-        LocalDateTime to;
 
         try {
             from = DateTimeTask.parseInput(getArgValue(args[0]));
@@ -113,17 +112,25 @@ class Parser {
     private static FixedDuration createFixedDuration(String desc, String[] args) throws TaskerException {
         TaskerException eventException = new TaskerException(
                 "Please provide a start and end time with: \"/hr h /min m\".");
+        int hr;
+        int min;
 
         if (args.length != 2 || !args[0].startsWith("/hr ") || !args[1].startsWith("/min ")) {
             throw eventException;
         }
 
         try {
-            return new FixedDuration(desc, Duration.ofHours(Integer.parseInt(getArgValue(args[0])))
-                    .plusMinutes(Integer.parseInt(getArgValue(args[1]))));
+            hr = Integer.parseInt(getArgValue(args[0]));
+            min = Integer.parseInt(getArgValue(args[1]));
         } catch (NumberFormatException e) {
             throw eventException;
         }
+
+        if (hr < 0 || min < 0) {
+            throw new TaskerException("Hours and minutes must be positive.");
+        }
+
+        return new FixedDuration(desc, Duration.ofHours(hr).plusMinutes(min));
     }
 
     /**
