@@ -1,0 +1,11 @@
+todo go to Tet holiday
+todo hanging out with girlfriend
+todo eat year end party
+list
+mark 1
+unmark 2
+list
+deadline do assignment /by midnight
+event fireworks display /from 11pm /to 1am
+list
+bye
