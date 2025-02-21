@@ -30,6 +30,26 @@ public class AddDeadlineCommand extends Command {
     }
 
     /**
+     * Validates the input fields for a deadline task.
+     *
+     * @throws WrongFormatException If any required field is missing.
+     */
+    private void validateInput() throws WrongFormatException {
+        if (description.isEmpty() && dateTime.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing both description and due date/time!\n"
+                    + "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
+        }
+        if (description.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing description!\n"
+                    + "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
+        }
+        if (dateTime.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing due date and time!\n"
+                    + "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
+        }
+    }
+
+    /**
      * Executes the command to add a new deadline task.
      * The task is added to the task list, saved to storage, and acknowledged via the UI.
      *
@@ -41,16 +61,7 @@ public class AddDeadlineCommand extends Command {
      * */
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
-        if (description.isEmpty() && dateTime.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing both description and due date/time!\n"
-                    + "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
-        } else if (description.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing description!\n"
-                    + "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
-        } else if (dateTime.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing due date and time!\n"
-                    + "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
-        }
+        validateInput();
 
         try {
             Task deadline = new Deadline(description, dateTime);

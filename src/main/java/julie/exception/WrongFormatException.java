@@ -4,7 +4,6 @@ package julie.exception;
  * Exception thrown when a command input does not follow the expected syntax.
  * This helps in enforcing proper command formatting by the user using the chatbot.
  */
-
 public class WrongFormatException extends Exception {
 
     /**
@@ -16,4 +15,3 @@ public class WrongFormatException extends Exception {
         super(message);
     }
 }
-

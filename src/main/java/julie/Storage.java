@@ -17,8 +17,7 @@ import julie.task.ToDo;
 
 
 /**
- * Handles file storage operations for loading and saving tasks.
- * This class is responsible for persisting task data to a file and retrieving it upon initialization.
+ * Manages file persistence for task storage and retrieval.
  */
 public class Storage {
     private final String filePath;
@@ -54,7 +53,7 @@ public class Storage {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            System.err.println("Error reading file: " + e.getMessage());
         }
         return tasks;
     }

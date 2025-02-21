@@ -32,10 +32,8 @@ public class DeleteCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
-        if (index < 1 || index > tasks.size()) {
-            throw new WrongFormatException("Oops! That task number doesn't exist!\n"
-                    + "Please enter a valid task number.");
-        }
+        validateIndex(index, tasks);
+
         Task removedTask = tasks.getTask(index - 1);
         tasks.deleteTask(index - 1);
         storage.saveTasks(tasks.getAllTasks());

@@ -32,6 +32,30 @@ public class AddEventCommand extends Command {
     }
 
     /**
+     * Validates the input fields for an event task.
+     *
+     * @throws WrongFormatException If any required field is missing.
+     */
+    private void validateInput() throws WrongFormatException {
+        if (description.isEmpty() && from.isEmpty() && to.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing description, start date/time, and end date/time!\n"
+                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+        }
+        if (description.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing description of event!\n"
+                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+        }
+        if (from.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing event start date/time!\n"
+                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+        }
+        if (to.isEmpty()) {
+            throw new WrongFormatException("Oops! Missing event end date/time!\n"
+                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+        }
+    }
+
+    /**
      * Executes the command to add a new event task.
      * The task is added to the task list, saved to storage, and acknowledged via the UI.
      *
@@ -43,19 +67,7 @@ public class AddEventCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
-        if (description.isEmpty() && from.isEmpty() && to.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing description, start date/time, and end date/time!\n"
-                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM >");
-        } else if (description.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing description of event!\n"
-                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
-        } else if (from.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing event start date/time!\n"
-                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
-        } else if (to.isEmpty()) {
-            throw new WrongFormatException("Oops! Missing event end date/time!\n"
-                    + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
-        }
+        validateInput();
 
         try {
             Task event = new Event(description, from, to);

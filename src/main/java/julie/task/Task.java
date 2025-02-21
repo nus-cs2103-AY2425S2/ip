@@ -1,6 +1,5 @@
 package julie.task;
 
-
 /**
  * Represents an abstract task that can be marked as done or undone.
  * This serves as a base class for specific task types such as ToDo, Deadline, and Event.
@@ -40,9 +39,16 @@ public abstract class Task {
      *
      * @return The status icon string.
      */
-    public String statusIcon() {
+    public String getStatusIcon() {
         return (isDone ? "[X]" : "[ ]");
     }
+
+    /**
+     * Abstract method for subclasses to provide their own marker.
+     *
+     * @return The marker for the task type.
+     */
+    protected abstract String getMarker();
 
     /**
      * Returns the formatted string to be stored in a file.
@@ -59,7 +65,7 @@ public abstract class Task {
      * @return The string representation of the task.
      */
     public String toString() {
-        return this.statusIcon() + " " + this.description;
+        return this.getStatusIcon() + " " + this.description;
     }
 
 }

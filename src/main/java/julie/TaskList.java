@@ -10,7 +10,7 @@ import julie.task.Task;
  * This class allows tasks to be added, deleted, retrieved, and displayed.
  */
 public class TaskList {
-    private final ArrayList<Task> tasks;
+    private final List<Task> tasks;
 
     /**
      * Constructs an empty {@code TaskList}.
@@ -47,7 +47,7 @@ public class TaskList {
     }
 
     /**
-     * Retrieves a task from the list by its 1-based index.
+     * Retrieves a task from the list using a 1-based index.
      *
      * @param index The 1-based index of the task.
      * @return The task at the specified index.

@@ -23,7 +23,7 @@ public class UI {
 
     public String getCapturedResponse() {
         String response = responseBuffer.toString().trim();
-        responseBuffer = null; // Disable capture mode
+        responseBuffer = null;
         return response;
     }
 
@@ -40,11 +40,10 @@ public class UI {
         }
     }
 
-
     /**
      * Displays the welcome message when the chatbot starts.
      *
-     * @return
+     * @return The welcome message as a string
      */
     public String showWelcome() {
         return "Hello! I'm Julie.\nWhat can I do for you?";
@@ -85,8 +84,8 @@ public class UI {
     /**
      * Acknowledges the successful addition of a task.
      *
-     * @param task The task that was added.
-     * @param size The new total number of tasks.
+     * @param task The newly added task.
+     * @param size The total number of tasks after addition.
      */
     public void ackMessage(Task task, int size) {
         String msg = "Got it! I've added this task to the list:\n" + task
