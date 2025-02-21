@@ -67,7 +67,7 @@ public class TaskList {
      * @return True if valid, false otherwise.
      */
     public boolean isValidIndex(int index) {
-        return index < tasks.size();
+        return index >= 0 && index < tasks.size();
     }
 
     /**
