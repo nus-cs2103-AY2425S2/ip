@@ -1,7 +1,42 @@
 Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+ _____   _   __  _   __  ______
+|  ___| | | / / | | / / |  __  | 
+| |___  | '/ /  | '/ /  | |  | | 
+|  ___| | |\ \  | |\ \  | |  | |
+| |___  | | \ \ | | \ \ | |__| | 
+|_____| |_|  \_\|_|  \_\|______|
+Hello! I'm EKKO 
+What can I do for you?
+(Input 'bye' to exit)
+=============================================
+Ekko: Got it! I've added this task: 
+[T] [ ] running
+Now you have 1 task(s) in the list. 
+=============================================
+Ekko: Got it! I've added this task: 
+[D] [ ] hi  (by:  1pm)
+Now you have 2 task(s) in the list. 
+=============================================
+Ekko: Yippee! One task off the list: 
+[D] [X] hi  (by:  1pm) 
+=============================================
+Ekko: Got it! I've added this task: 
+[E] [ ] hi  (from:  1  to:  2)
+Now you have 3 task(s) in the list. 
+=============================================
+Ekko: Yippee! One task off the list: 
+[E] [X] hi  (from:  1  to:  2) 
+=============================================
+Ekko: Meow, please remember to do it still...
+[D] [ ] hi  (by:  1pm) 
+=============================================
+Ekko: Ekko has eaten your task!
+[T] [ ] running
+Only 2 tasks left! Jiayouu 
+=============================================
+Here are the tasks in your list:
+1. [D] [ ] hi  (by:  1pm) 
+2. [E] [X] hi  (from:  1  to:  2) 
+=============================================
+Ekko: Bye. Hope to see you again soon!  
+=============================================

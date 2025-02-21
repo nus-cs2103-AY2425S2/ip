@@ -1,0 +1,9 @@
+todo running
+deadline hi /by 1pm
+mark 2
+event hi /from 1 /to 2
+mark 3
+unmark 2
+delete 1
+list
+bye
