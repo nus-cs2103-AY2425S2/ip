@@ -1,0 +1,16 @@
+TODOs right before submitting:
+- (Codestyle) Cannot do
+      f(a,b)
+  Need space in between like
+      f(a, b)
+- Delete Playground.java (?)
+
+
+
+TODOs
+
+
+
+Misc
+- https://nus-cs2103-ay2425s2.github.io/website/admin/
+  appendixB-policies.html#giving-credit-for-reused-work
