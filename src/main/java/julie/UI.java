@@ -14,11 +14,19 @@ public class UI {
      * Initializes the scanner to read user input.
      */
     public UI() {
-        this.responseBuffer = null;
+        this.responseBuffer = new StringBuilder();
     }
 
+    /**
+     * Enables capture mode for storing responses.
+     * Initializes the response buffer if it is null, or clears its contents if it already exists.
+     */
     public void enableCaptureMode() {
-        responseBuffer = new StringBuilder();
+        if (responseBuffer == null) {
+            responseBuffer = new StringBuilder();
+        } else {
+            responseBuffer.setLength(0);
+        }
     }
 
     public String getCapturedResponse() {

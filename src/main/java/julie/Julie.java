@@ -79,7 +79,7 @@ public class Julie {
         String capturedResponse = ui.getCapturedResponse();
         assert capturedResponse != null : "Captured response is null.";
 
-        return ui.getCapturedResponse();
+        return capturedResponse;
     }
 }
 
