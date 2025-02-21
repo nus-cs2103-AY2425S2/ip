@@ -1,6 +1,6 @@
 # AquaDem User Guide
 
-![Ui image](../src/main/resources/images/Ui.png)
+![Ui image](Ui.png)
 
 Aquadem is your chatbot for all your needs!
 It keeps track of your tasks for you and can store various 
