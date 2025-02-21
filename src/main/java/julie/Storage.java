@@ -28,6 +28,7 @@ public class Storage {
      * @param filePath The path of the file where tasks are stored.
      */
     public Storage(String filePath) {
+        assert filePath != null && !filePath.isEmpty() : "File path should not be null or empty";
         this.filePath = filePath;
     }
 
@@ -48,6 +49,7 @@ public class Storage {
             String line;
             while ((line = br.readLine()) != null) {
                 Task task = parseTask(line);
+                assert task != null : "Parsed task is null for line: " + line;
                 if (task != null) {
                     tasks.add(task);
                 }
@@ -55,6 +57,7 @@ public class Storage {
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
+        assert tasks != null : "Loaded task list should not be null";
         return tasks;
     }
 
@@ -64,8 +67,10 @@ public class Storage {
      * @param tasks The list of tasks to be saved.
      */
     public void saveTasks(List<Task> tasks) {
+        assert tasks != null : "Tasks list should not be null before saving";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
             for (Task task : tasks) {
+                assert task != null : "Task to be saved is null";
                 bw.write(task.toFileFormat());
                 bw.newLine();
             }
@@ -82,8 +87,11 @@ public class Storage {
      * @return A reconstructed {@code Task} object, or {@code null} if the line is corrupted.
      */
     private Task parseTask(String line) {
+        assert line != null && !line.isEmpty() : "Line to parse should not be null or empty";
         try {
             String[] parts = line.split(" \\| ");
+            assert parts.length >= 3 : "Malformed task entry: " + line;
+
             String type = parts[0];
             boolean isDone = parts[1].equals("1");
             String description = parts[2];
@@ -115,3 +123,4 @@ public class Storage {
 
 
 }
+

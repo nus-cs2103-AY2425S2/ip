@@ -35,7 +35,12 @@ public class Parser {
      * @throws WrongFormatException If the input format is incorrect or unrecognized.
      */
     public static Command parse(String input) throws WrongFormatException {
+        assert input != null : "Input command string is null.";
+        assert !input.trim().isEmpty() : "Input command string is empty.";
+
         String[] parts = input.split(" ", 2);
+        assert parts.length > 0 : "Command word extraction failed.";
+
         String commandWord = parts[0];
 
         switch (commandWord) {
@@ -71,6 +76,7 @@ public class Parser {
      */
     private static Command parseToDoCommand(String input) throws WrongFormatException {
         String desc = extractDescription(input, "todo");
+        assert desc != null : "Extracted ToDo description is null.";
 
         if (desc.isEmpty()) {
             throw new WrongFormatException(TODO_FORMAT);
@@ -172,6 +178,9 @@ public class Parser {
      * @throws WrongFormatException If the task number is missing, invalid, or the action is unrecognized.
      */
     private static Command parseIndexCommand(String[] parts, String action) throws WrongFormatException {
+        assert parts != null : "Input parts array is null.";
+        assert parts.length > 0 : "Command parts array is empty.";
+
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
             throw new WrongFormatException("Oops! Missing task number for " + action + "!\n"
                     + "Correct format: " + action + " <task number>");
@@ -215,7 +224,11 @@ public class Parser {
      * @throws WrongFormatException If the search keyword is missing.
      */
     private static Command parseFindCommand(String[] parts) throws WrongFormatException {
+        assert parts != null : "Input parts array is null.";
+        assert parts.length > 0 : "Command parts array is empty.";
+
         String keyword = (parts.length > 1) ? parts[1].trim() : "";
+        assert keyword != null : "Extracted find keyword is null.";
 
         if (keyword.isEmpty()) {
             throw new WrongFormatException("Oops! The correct format for find is:\nfind <keyword>");
@@ -232,6 +245,11 @@ public class Parser {
      * @return The extracted description.
      */
     private static String extractDescription(String input, String command) {
+        assert input != null : "Input string for extraction is null.";
+        assert command != null : "Command keyword for extraction is null.";
+        assert !input.isEmpty() : "Input string for extraction is empty.";
+        assert !command.isEmpty() : "Command keyword for extraction is empty.";
+
         int commandLength = command.length() + 1;
         return (input.length() > commandLength)
                 ? input.substring(commandLength).split("/", 2)[0].trim()
