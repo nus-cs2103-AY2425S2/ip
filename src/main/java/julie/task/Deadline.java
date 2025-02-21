@@ -14,8 +14,7 @@ import julie.exception.WrongFormatException;
 public class Deadline extends Task {
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
-    private static final String MARKER = "[D]";
-    private final LocalDateTime by;
+    private final LocalDateTime dueDateTime;
 
     /**
      * Constructs a {@code Deadline} task with the given description and due date/time.
@@ -27,10 +26,21 @@ public class Deadline extends Task {
     public Deadline(String description, String by) throws WrongFormatException {
         super(description);
         try {
-            this.by = LocalDateTime.parse(by, INPUT_FORMATTER);
+            this.dueDateTime = LocalDateTime.parse(by, INPUT_FORMATTER);
         } catch (DateTimeParseException e) {
             throw new WrongFormatException("Invalid date/time format!\nCorrect format: DD-MM-YYYY HHMM");
         }
+    }
+
+    /**
+     * Returns the marker representing a Deadline task.
+     * The marker "[D]" signifies that this task has a due date.
+     *
+     * @return The string marker "[D]".
+     */
+    @Override
+    protected String getMarker() {
+        return "[D]";
     }
 
     /**
@@ -41,7 +51,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toFileFormat() {
-        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + by.format(INPUT_FORMATTER);
+        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + dueDateTime.format(INPUT_FORMATTER);
     }
 
     /**
@@ -52,6 +62,6 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return MARKER + " " + super.toString() + " (by: " + by.format(OUTPUT_FORMATTER) + ")";
+        return this.getMarker() + " " + super.toString() + " (by: " + dueDateTime.format(OUTPUT_FORMATTER) + ")";
     }
 }

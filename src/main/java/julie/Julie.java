@@ -7,12 +7,9 @@ import julie.command.Command;
 import julie.exception.WrongFormatException;
 import julie.task.Task;
 
-
 /**
- * Represents the Julie chatbot, which manages user tasks.
- * It handles user input, executes commands, and manages task persistence.
+ * Manages user tasks, handles input, executes commands, and manages task persistence.
  */
-
 public class Julie {
     private static final String FILE_PATH = "./data/julie.txt";
     private final UI ui;

@@ -14,9 +14,9 @@ import julie.exception.WrongFormatException;
 public class Event extends Task {
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a");
-    private static final String MARKER = "[E]";
-    private final LocalDateTime from;
-    private final LocalDateTime by;
+    private final LocalDateTime startDateTime;
+    private final LocalDateTime endDateTime;
+
     /**
      * Constructs an {@code Event} task with a description, start time, and end time.
      *
@@ -28,16 +28,27 @@ public class Event extends Task {
     public Event(String description, String from, String by) throws WrongFormatException {
         super(description);
         try {
-            this.from = LocalDateTime.parse(from, INPUT_FORMATTER);
-            this.by = LocalDateTime.parse(by, INPUT_FORMATTER);
+            this.startDateTime = LocalDateTime.parse(from, INPUT_FORMATTER);
+            this.endDateTime = LocalDateTime.parse(by, INPUT_FORMATTER);
 
-            if (!this.by.isAfter(this.from)) {
+            if (!this.endDateTime.isAfter(this.startDateTime)) {
                 throw new WrongFormatException("The end date/time of an event must be after the start date/time!");
             }
         } catch (DateTimeParseException e) {
             throw new WrongFormatException("Invalid date/time format!\nCorrect format: DD-MM-YYYY HHMM");
         }
 
+    }
+
+    /**
+     * Returns the marker representing an Event task.
+     * The marker "[E]" signifies that this task has a start and end time.
+     *
+     * @return The string marker "[E]".
+     */
+    @Override
+    protected String getMarker() {
+        return "[E]";
     }
 
     /**
@@ -49,7 +60,7 @@ public class Event extends Task {
     @Override
     public String toFileFormat() {
         return "E | " + (isDone ? "1" : "0") + " | " + description + " | "
-                + from.format(INPUT_FORMATTER) + " | " + by.format(INPUT_FORMATTER);
+                + startDateTime.format(INPUT_FORMATTER) + " | " + endDateTime.format(INPUT_FORMATTER);
     }
 
     /**
@@ -60,7 +71,7 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return MARKER + " " + super.toString() + " (from: "
-                + from.format(OUTPUT_FORMATTER) + " to: " + by.format(OUTPUT_FORMATTER) + ")";
+        return this.getMarker() + " " + super.toString() + " (from: "
+                + startDateTime.format(OUTPUT_FORMATTER) + " to: " + endDateTime.format(OUTPUT_FORMATTER) + ")";
     }
 }

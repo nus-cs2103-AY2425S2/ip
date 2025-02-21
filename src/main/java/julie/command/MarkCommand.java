@@ -32,9 +32,7 @@ public class MarkCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
-        if (index < 1 || index > tasks.size()) {
-            throw new WrongFormatException("Oops! That task number doesn't exist!");
-        }
+        validateIndex(index, tasks);
         Task task = tasks.getTask(index - 1);
         task.markDone();
         storage.saveTasks(tasks.getAllTasks());

@@ -5,7 +5,6 @@ package julie.task;
  * A ToDo task contains only a description without any date or time constraints.
  */
 public class ToDo extends Task {
-    private static final String MARKER = "[T]";
 
     /**
      * Constructs a ToDo task with the given description.
@@ -14,6 +13,17 @@ public class ToDo extends Task {
      */
     public ToDo(String description) {
         super(description);
+    }
+
+    /**
+     * Returns the marker representing a ToDo task.
+     * The marker "[T]" signifies that this task is a ToDo.
+     *
+     * @return The string marker "[T]".
+     */
+    @Override
+    protected String getMarker() {
+        return "[T]";
     }
 
     /**
@@ -34,8 +44,6 @@ public class ToDo extends Task {
      */
     @Override
     public String toString() {
-        return MARKER + " " + super.toString();
+        return this.getMarker() + " " + super.toString();
     }
 }
-
-

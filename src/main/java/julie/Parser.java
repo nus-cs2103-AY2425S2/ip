@@ -22,11 +22,9 @@ public class Parser {
             + "todo <description>";
     private static final String DEADLINE_FORMAT = "The correct format for a deadline is:\n"
             + "deadline <description> /by <DD-MM-YYYY HHMM>";
-
     private static final String EVENT_FORMAT = "The correct format for an event is:\n"
             + "event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>";
-
-    private static final String NUMBER_FORMAT_ERROR = "Task number must be an integer!\n"
+    private static final String INVALID_NUMBER_FORMAT = "Task number must be an integer!\n"
             + "Correct format: <command> <task number>";
 
     /**
@@ -43,32 +41,22 @@ public class Parser {
         switch (commandWord) {
         case "todo":
             return parseToDoCommand(input);
-
         case "deadline":
             return parseDeadlineCommand(input);
-
         case "event":
             return parseEventCommand(input);
-
         case "delete":
             return parseIndexCommand(parts, "delete");
-
         case "mark":
             return parseIndexCommand(parts, "mark");
-
         case "unmark":
             return parseIndexCommand(parts, "unmark");
-
         case "list":
             return new ListCommand();
-
         case "find":
             return parseFindCommand(parts);
-
-
         case "bye":
             return new ExitCommand();
-
         default:
             throw new WrongFormatException("Sorry, I didn't understand what you said!");
         }
@@ -103,6 +91,20 @@ public class Parser {
         String[] getDeadline = input.split("/by ", 2);
         String dateTime = (getDeadline.length > 1) ? getDeadline[1].trim() : "";
 
+        validateDeadlineInput(desc, dateTime);
+
+        return new AddDeadlineCommand(desc, dateTime);
+    }
+
+    /**
+     * Validates the input for a deadline task.
+     * Ensures that both the description and due date/time are provided.
+     *
+     * @param desc     The description of the deadline task.
+     * @param dateTime The due date and time of the deadline task.
+     * @throws WrongFormatException If either the description or due date/time is missing.
+     */
+    private static void validateDeadlineInput(String desc, String dateTime) throws WrongFormatException {
         if (desc.isEmpty() && dateTime.isEmpty()) {
             throw new WrongFormatException("Oops! Missing both the deadline description and due date/time!\n"
                     + DEADLINE_FORMAT);
@@ -113,8 +115,6 @@ public class Parser {
         if (dateTime.isEmpty()) {
             throw new WrongFormatException("Oops! Missing due date and time!\n" + DEADLINE_FORMAT);
         }
-
-        return new AddDeadlineCommand(desc, dateTime);
     }
 
     /**
@@ -132,6 +132,22 @@ public class Parser {
                 ? getEvent[1].split("/to", 2)[1].trim()
                 : "";
 
+        validateEventInput(desc, dateTimeFrom, dateTimeTo);
+
+        return new AddEventCommand(desc, dateTimeFrom, dateTimeTo);
+    }
+
+    /**
+     * Validates the input for an event task.
+     * Ensures that the description, start date/time, and end date/time are provided.
+     *
+     * @param desc         The description of the event task.
+     * @param dateTimeFrom The start date and time of the event.
+     * @param dateTimeTo   The end date and time of the event.
+     * @throws WrongFormatException If any of the required fields (description, start time, or end time) is missing.
+     */
+    private static void validateEventInput(String desc, String dateTimeFrom, String dateTimeTo)
+            throws WrongFormatException {
         if (desc.isEmpty() && dateTimeFrom.isEmpty() && dateTimeTo.isEmpty()) {
             throw new WrongFormatException("Oops! Missing event description, start, and end times!\n" + EVENT_FORMAT);
         }
@@ -144,17 +160,16 @@ public class Parser {
         if (dateTimeTo.isEmpty()) {
             throw new WrongFormatException("Oops! Missing event end time!\n" + EVENT_FORMAT);
         }
-
-        return new AddEventCommand(desc, dateTimeFrom, dateTimeTo);
     }
 
     /**
-     * Parses commands that require an integer index (e.g., delete, mark, unmark).
+     * Parses a command that requires an integer index (e.g., "delete", "mark", "unmark").
+     * Extracts the task index from user input and returns the corresponding command.
      *
-     * @param parts  The split user input.
-     * @param action The command action (e.g., "delete", "mark", "unmark").
-     * @return The corresponding command object.
-     * @throws WrongFormatException If the task number is missing or invalid.
+     * @param parts  The split user input containing the command and index.
+     * @param action The action to perform (e.g., "delete", "mark", "unmark").
+     * @return The corresponding {@code Command} object.
+     * @throws WrongFormatException If the task number is missing, invalid, or the action is unrecognized.
      */
     private static Command parseIndexCommand(String[] parts, String action) throws WrongFormatException {
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
@@ -164,18 +179,31 @@ public class Parser {
 
         try {
             int index = Integer.parseInt(parts[1].trim());
-            switch (action) {
-            case "delete":
-                return new DeleteCommand(index);
-            case "mark":
-                return new MarkCommand(index);
-            case "unmark":
-                return new UnmarkCommand(index);
-            default:
-                throw new WrongFormatException("Unknown action: " + action);
-            }
+            return createIndexCommand(action, index);
         } catch (NumberFormatException e) {
-            throw new WrongFormatException(NUMBER_FORMAT_ERROR);
+            throw new WrongFormatException(INVALID_NUMBER_FORMAT);
+        }
+    }
+
+    /**
+     * Creates a command that operates on a task by index.
+     * Supports "delete", "mark", and "unmark" actions.
+     *
+     * @param action The action to perform (e.g., "delete", "mark", "unmark").
+     * @param index  The index of the task to operate on.
+     * @return The corresponding {@code Command} object.
+     * @throws WrongFormatException If the action is unrecognized.
+     */
+    private static Command createIndexCommand(String action, int index) throws WrongFormatException {
+        switch (action) {
+        case "delete":
+            return new DeleteCommand(index);
+        case "mark":
+            return new MarkCommand(index);
+        case "unmark":
+            return new UnmarkCommand(index);
+        default:
+            throw new WrongFormatException("Unknown action: " + action);
         }
     }
 
@@ -195,7 +223,6 @@ public class Parser {
 
         return new FindCommand(keyword);
     }
-
 
     /**
      * Extracts the task description from a user command.
