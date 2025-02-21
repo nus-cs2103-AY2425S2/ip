@@ -1,30 +1,130 @@
-# Duke User Guide
+# **Oogway User Guide**
 
-// Update the title above to match the actual product name
+![](Ui.png)
 
-// Product screenshot goes here
+Oogway is a task management chatbot designed to help users keep track of their tasks. 
+It offers both a **command-line interface (CLI)** and a **graphical user interface (GUI)**, 
+making task management simple and intuitive.
 
-// Product intro goes here
+---
+# **Getting Started with Oogway**
 
-## Adding deadlines
+### **Running Oogway**
+Oogway supports both a **Graphical User Interface (GUI)** and a **Command-Line Interface (CLI)**.
 
-// Describe the action and its outcome.
+- To run Oogway with the **GUI**, simply execute:
+  ```
+  java -jar oogway.jar
+  ```
+- To run Oogway in **CLI mode**, use:
+  ```
+  java -jar oogway.jar cli
+  ```
+---
+## **Features**
 
-// Give examples of usage
+### **Adding Tasks**
+Oogway supports three types of tasks:
 
-Example: `keyword (optional arguments)`
+- **Todo** – A simple task with no time constraints.
+- **Deadline** – A task with a specific due date and time.
+- **Event** – A task that occurs within a specific time range.
 
-// A description of the expected outcome goes here
-
+#### **Usage:**
 ```
-expected output
+todo <description>  
+deadline <description> /by <yyyy-MM-dd HHmm>  
+event <description> /from <yyyy-MM-dd HHmm> /to <HHmm>  
 ```
 
-## Feature ABC
+#### **Examples:**
+```
+todo Meditate
+deadline Finish assignment /by 2025-02-25 2359
+event Bday party /from 2025-03-03 1000 /to 1300
+```
 
-// Feature details
+---
 
+### **Viewing Tasks**
+Users can view tasks in two ways:
 
-## Feature XYZ
+#### **List all tasks**
+Displays all tasks currently stored.
+```
+list
+```
+Example output:
+```
+Here are the tasks in your list:
+1. [D][X] Finish assignment (by: Feb 25 2025 (11:59 pm))
+2. [E][ ] Bday party (at: Mar 03 2025 (10:00 am to 1:00 pm))
+3. [T][ ] Meditate
+```
 
-// Feature details
+#### **Find specific tasks**
+Search for tasks that contain a keyword.
+```
+find <keyword>
+```
+Example:
+```
+find assignment
+```
+Expected output:
+```
+Here are the matching tasks in your list:
+1.[D][ ] Finish assignment (by: Feb 25 2025 (11:59 pm))
+```
+
+---
+
+### **Modifying Tasks**
+Users can **mark, unmark or remove** tasks using the following commands:
+
+- **Mark as completed**
+  ```
+  mark <index>
+  ```
+- **Unmark as incomplete**
+  ```
+  unmark <index>
+  ```
+- **Delete a task**
+  ```
+  delete <index>
+  ```
+
+Example usage:
+```
+mark 1
+unmark 2
+delete 3
+```
+
+---
+
+### **General Commands**
+- **Help** – Displays a list of available commands.
+  ```
+  help
+  ```
+- **Exit the application**
+  ```
+  bye
+  ```
+
+## **Oogway Command Summary**
+
+| Command | Description |
+|---------|-------------|
+| `help` | Displays a list of available commands. |
+| `bye` | Exits the application. |
+| `list` | Lists all tasks currently stored. |
+| `find <keyword>` | Searches for tasks containing the specified keyword. |
+| `todo <description>` | Adds a to-do task. |
+| `deadline <description> /by <yyyy-MM-dd HHmm>` | Adds a task with a deadline. |
+| `event <description> /from <yyyy-MM-dd HHmm> /to <HHmm>` | Adds an event with a specific time range. |
+| `mark <index>` | Marks a task as completed. |
+| `unmark <index>` | Marks a task as incomplete. |
+| `delete <index>` | Removes a task from the list. |

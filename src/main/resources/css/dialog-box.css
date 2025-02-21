@@ -1,0 +1,22 @@
+.label {
+    -fx-background-color: linear-gradient(to bottom right, #4A3C2A, #6B563C);
+    -fx-border-color: primary-color;
+    -fx-background-radius: 1em 1em 0 1em;
+    -fx-border-radius: 1em 1em 0 1em;
+    -fx-text-fill: text-color;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.reply-label {
+    -fx-background-radius: 1em 1em 1em 0;
+    -fx-border-radius: 1em 1em 1em 0;
+}
+
+.error-label {
+    -fx-background-color: #a43d2e;
+    -fx-border-color: white;
+    -fx-text-fill: text-color;
+    -fx-font-weight: bold;
+}
