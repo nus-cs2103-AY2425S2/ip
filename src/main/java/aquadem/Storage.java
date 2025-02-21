@@ -22,7 +22,8 @@ public class Storage {
         this.filePath = path;
     }
 
-    private String filePath = "./src/main/data/Aquadem.ser";
+    private String home = System.getProperty("user.home");
+    private String filePath = home + "/Aquadata/Aquadem.ser";
 
     /**
      * Saves given tasklist to local file using ObjectStream and FileStream.
@@ -30,7 +31,9 @@ public class Storage {
      */
     public void saveTasks(TaskList tasks){
         try {
+
             File dataList = new File(this.filePath);
+            dataList.getParentFile().mkdirs();
             if(dataList.createNewFile()) {
                 //
             } else {
@@ -40,6 +43,7 @@ public class Storage {
             ObjectOutputStream taskSerialized = new ObjectOutputStream(fileSerialized);
             taskSerialized.writeObject(tasks);
         } catch (IOException e) {
+//            System.out.println(e.getStackTrace());
             System.out.println(e.getMessage());
             //
         }
