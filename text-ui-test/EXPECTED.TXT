@@ -1,7 +1,83 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Hello! I'm Bob and Steve 
+What can I do for you?
 
+_______
+Here are the tasks in your list:
+_______
+_______
+Got it. I've added this task:
+[T][ ] borrow book
+Now you have 1 tasks in the list.
+_______
+_______
+Here are the tasks in your list:
+1.[T][ ] borrow book
+_______
+_______
+Got it. I've added this task:
+[D][ ] return book (by: Jan 20 2025 10:30 AM)
+Now you have 2 tasks in the list.
+_______
+_______
+Got it. I've added this task:
+[E][ ] project meeting2 (from: Jan 20 2025 10:30 AM to: Jan 21 2025 12:30 PM)
+Now you have 3 tasks in the list.
+_______
+_______
+Got it. I've added this task:
+[E][ ] project meeting (at: Jan 20 2025 10:30 AM - 12:30 PM)
+Now you have 4 tasks in the list.
+_______
+_______
+Here are the matching tasks in your list:
+3.[E][ ] project meeting2 (from: Jan 20 2025 10:30 AM to: Jan 21 2025 12:30 PM)
+4.[E][ ] project meeting (at: Jan 20 2025 10:30 AM - 12:30 PM)
+_______
+_______
+Nice! I've marked this task as done:
+[T][X] borrow book
+_______
+_______
+Here are the tasks in your list:
+1.[T][X] borrow book
+2.[D][ ] return book (by: Jan 20 2025 10:30 AM)
+3.[E][ ] project meeting2 (from: Jan 20 2025 10:30 AM to: Jan 21 2025 12:30 PM)
+4.[E][ ] project meeting (at: Jan 20 2025 10:30 AM - 12:30 PM)
+_______
+_______
+OK, I've marked this task as not done yet:
+[T][ ] borrow book
+_______
+_______
+Here are the tasks in your list:
+1.[T][ ] borrow book
+2.[D][ ] return book (by: Jan 20 2025 10:30 AM)
+3.[E][ ] project meeting2 (from: Jan 20 2025 10:30 AM to: Jan 21 2025 12:30 PM)
+4.[E][ ] project meeting (at: Jan 20 2025 10:30 AM - 12:30 PM)
+_______
+_______
+Noted. I've removed this task:
+[T][ ] borrow book
+Now you have 3 tasks in the list.
+_______
+_______
+Nice! I've marked this task as done:
+[D][X] return book (by: Jan 20 2025 10:30 AM)
+_______
+_______
+Noted. I've removed this task:
+[D][X] return book (by: Jan 20 2025 10:30 AM)
+Now you have 2 tasks in the list.
+_______
+_______
+Noted. I've removed this task:
+[E][ ] project meeting2 (from: Jan 20 2025 10:30 AM to: Jan 21 2025 12:30 PM)
+Now you have 1 tasks in the list.
+_______
+_______
+Here are the tasks in your list:
+1.[E][ ] project meeting (at: Jan 20 2025 10:30 AM - 12:30 PM)
+_______
+_______
+Bye. Hope to see you again soon!
+_______

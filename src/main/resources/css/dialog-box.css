@@ -1,0 +1,22 @@
+.bob-chat {
+    -fx-background-color: #02343F;
+    -fx-border-width: 2px;
+    -fx-background-radius: 1em 1em 1em 1em;
+    -fx-padding: 5px;
+    -fx-border-radius: 1em 1em 1em 1em;
+    -fx-text-fill: white;
+}
+
+.steve-chat {
+ -fx-background-color: #F08C00;
+     -fx-border-width: 2px;
+     -fx-background-radius: 1em 1em 1em 1em;
+     -fx-padding: 5px;
+     -fx-border-radius: 1em 1em 1em 1em;
+     -fx-text-fill: white;
+}
+
+#displayPicture {
+    -fx-effect: none;
+}
+

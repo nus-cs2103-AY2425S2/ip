@@ -1,0 +1,17 @@
+list
+todo borrow book
+list
+deadline return book /by 2025-01-20 10:30
+event project meeting2 /from 2025-01-20 10:30 /to 2025-01-21 12:30
+event project meeting /from 2025-01-20 10:30 /to 2025-01-20 12:30
+find project
+mark 1
+list
+unmark 1
+list
+delete 1
+mark 1
+delete 1
+delete 1
+list
+bye

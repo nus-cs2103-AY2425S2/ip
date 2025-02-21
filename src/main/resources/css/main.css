@@ -1,0 +1,47 @@
+.root {
+    -fx-background-color: #F0EDCC; /* Set background color of root to light color */
+}
+
+.text-field {
+    -fx-background-color: #02343F; /* Dark background for the text field */
+    -fx-font: 20px "Roboto";
+    -fx-text-fill: white; /* White text for visibility */
+}
+
+.button {
+    -fx-background-color: #02343F; /* Dark background for buttons */
+    -fx-font: 20px "Roboto";
+    -fx-text-fill: white; /* White text for buttons */
+}
+
+.button:hover {
+    -fx-background-color: #F0E4CC; /* Light color for hover effect */
+    -fx-text-fill: #02343F; /* Dark text when hovered */
+    -fx-font-size: 18px;
+}
+
+.button:pressed {
+    -fx-background-color: #F0EDCC; /* Light color on press */
+    -fx-font-size: 20px;
+}
+
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: transparent; /* Transparent background for scroll pane */
+}
+
+.scroll-bar {
+    -fx-font-size: 10px;
+    -fx-background-color: #F0EDCC; /* Light color for scroll bar */
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #02343F; /* Dark color for scroll thumb */
+    -fx-background-radius: 1em;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
