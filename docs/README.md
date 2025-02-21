@@ -10,15 +10,15 @@ Stay organized, productive, and in control with Tasker, the all-in-one task mana
 * `description`: A string for the task description.
     * `|` is not allowed.
     * Ends before any whitespace followed by `/` as input after it are arguments to the command.
-* `deadline`/`start`/`end`: A date and time in the format `d/m/yyyy HHMM`.
+* `datetime: A date and time in the format `d/m/yyyy HHMM`.
     * `d`: 1 or 2 digit of the day.
     * `m`: 1 or 2 digit of the month.
     * `yyyy`: 4 digit of the year.
     * `HH`: 2 digit 24H format of the hour.
     * `MM`: 2 digit of the minutes.
-* `hr`: An integer of the number of hours required.
-* `min`: An integer of the number of minutes required.
-* `index`: An integer of a task's index.
+* `hours`: An integer of the number of hours required.
+* `minutes`: An integer of the number of minutes required.
+* `index`: An integer of a task's index, obtained from the number beside it in the list command.
 * `term`: A string to search the tasks description with.
 
 Whitespaces between command parts are ignored
@@ -40,11 +40,15 @@ Got it. I've added this task:
   [T][] Read a book
 Now you have 1 tasks in the list.
 ```
+
+### Note
+* Todo task label is `T`
+
 ## Deadlines
 Adds a task with a description and a deadline to complete it by.
 
 ### Usage
-`deadline {description} /by {deadline}`
+`deadline {description} /by {datetime}`
 
 ### Example
 #### Input
@@ -56,11 +60,15 @@ Got it. I've added this task:
   [D][] Complete assignment (by: Feb 15 2025 1800H)
 Now you have 2 tasks in the list.
 ```
+
+### Note
+* Deadline task label is `D`
+
 ## Events
 Adds a task with a description, a start and and end time.
 
 ### Usage
-`event {description} /from {start} /to {end}`
+`event {description} /from {datetime} /to {datetime}`
 
 ### Example
 #### Input
@@ -73,11 +81,14 @@ Got it. I've added this task:
 Now you have 3 tasks in the list.
 ```
 
+### Note
+* Event task label is `E`
+
 ## Fixed duration tasks
 Adds a task with a description and takes a duration to complete.
 
 ### Usage
-`fixed {description} /hr {hours} /min {min}`
+`fixed {description} /hr {hours} /min {minutes}`
 
 ### Example
 #### Input
@@ -89,6 +100,9 @@ Got it. I've added this task:
   [F][] Wash clothes (needs: 1H 45M)
 Now you have 4 tasks in the list.
 ```
+
+### Note
+* Fixed duration task label is `F`
 
 # Managing tasks
 ## Listing
