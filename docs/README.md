@@ -65,7 +65,7 @@ Now you have 2 tasks in the list.
 * Deadline task label is `D`
 
 ## Events
-Adds a task with a description, a start and and end time.
+Adds a task with a description, a start and an end time.
 
 ### Usage
 `event {description} /from {datetime} /to {datetime}`
@@ -83,6 +83,7 @@ Now you have 3 tasks in the list.
 
 ### Note
 * Event task label is `E`
+* `datetime` for `/from` must not be after that fo `/to`
 
 ## Fixed duration tasks
 Adds a task with a description and takes a duration to complete.

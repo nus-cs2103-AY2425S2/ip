@@ -346,6 +346,16 @@ class ParserTest {
         }
 
         @Test
+        @DisplayName("Throw exception for event with start after end")
+        void parseCommand_eventStartAfterEnd_exceptionThrown() {
+            String input = eventDescription + " /from 26/01/2025 1200" + " /to 26/1/2025 1000";
+            TaskerException exception = assertThrows(TaskerException.class, () -> {
+                Parser.parseCommand(input);
+            });
+            assertEquals(exception.getMessage(), "Start time cannot be after end time.");
+        }
+
+        @Test
         @DisplayName("Throw exception for fixed duration with invalid duration")
         void parseCommand_fixedDurationInvalidDuration_exceptionThrown() {
             String input1 = fixedDescription;

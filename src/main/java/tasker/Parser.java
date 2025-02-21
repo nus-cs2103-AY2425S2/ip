@@ -79,20 +79,29 @@ class Parser {
      */
     private static Event createEventTask(String desc, String[] args) throws TaskerException {
         String dateTimeInputFormat = DateTimeTask.INPUT_FORMAT;
-        TaskerException eventException = new TaskerException(
+        TaskerException formatException = new TaskerException(
                 String.format("Please provide a start and end time with: \"/from %s /to %s\".",
                         dateTimeInputFormat, dateTimeInputFormat));
 
         if (args.length != 2 || !args[0].startsWith("/from ") || !args[1].startsWith("/to ")) {
-            throw eventException;
+            throw formatException;
         }
 
+        LocalDateTime from;
+        LocalDateTime to;
+
         try {
-            return new Event(desc, DateTimeTask.parseInput(getArgValue(args[0])),
-                    DateTimeTask.parseInput(getArgValue(args[1])));
+            from = DateTimeTask.parseInput(getArgValue(args[0]));
+            to = DateTimeTask.parseInput(getArgValue(args[1]));
         } catch (DateTimeParseException e) {
-            throw eventException;
+            throw formatException;
         }
+
+        if (from.isAfter(to)) {
+            throw new TaskerException("Start time cannot be after end time.");
+        }
+
+        return new Event(desc, from, to);
     }
 
     /**
