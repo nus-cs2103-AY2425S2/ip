@@ -8,8 +8,8 @@ Stay organized, productive, and in control with Tasker, the all-in-one task mana
 
 ## Input format
 * `description`: A string for the task description.
-    * `|` is not allowed.
-    * Ends before any whitespace followed by `/` as input after it are arguments to the command.
+    * The character `|` is not allowed.
+    * The description ends when a whitespace followed by `/` is encountered, as everything after is treated as command arguments.
 * `datetime`: A date and time in the format `d/m/yyyy HHMM`.
     * `d`: 1 or 2 digit of the day.
     * `m`: 1 or 2 digit of the month.
@@ -18,10 +18,10 @@ Stay organized, productive, and in control with Tasker, the all-in-one task mana
     * `MM`: 2 digit of the minutes.
 * `hours`: A positive integer of the hours required.
 * `minutes`: A positive integer of the minutes required.
-* `index`: An integer of a task's index, obtained from the number beside it in the list command.
+* `index`: An integer representing a task's index, obtained from the number beside it in the list command..
 * `term`: A string to search the tasks description with.
 
-Whitespaces between command parts are ignored
+Whitespaces between command parts are ignored.
 
 # Adding tasks
 ## Todos
@@ -63,7 +63,7 @@ Now you have 2 tasks in the list.
 
 ### Note
 * Deadline task label is `D`
-* May be in the past
+* Can be in the past
 
 ## Events
 Adds a task with a description, a start and an end time.
@@ -84,11 +84,11 @@ Now you have 3 tasks in the list.
 
 ### Note
 * Event task label is `E`
-* `datetime` for `/from` must not be after that fo `/to`
-* May be in the past
+* `datetime` for `/from` must not be after that for `/to`
+* Can be in the past
 
 ## Fixed duration tasks
-Adds a task with a description and takes a duration to complete.
+Adds a task with a description and a required duration to complete
 
 ### Usage
 `fixed {description} /hr {hours} /min {minutes}`
@@ -119,7 +119,7 @@ Lists all tasks in the list.
 ```
 Here are the tasks in your list:
 1.[T][] Read a book
-2.[D][] Complete assign (by: Feb 15 2025 1800H)
+2.[D][] Complete assignment (by: Feb 15 2025 1800H)
 3.[E][] Company meeting (from: Feb 16 2025 1400H to: Feb 16 2025 1800H)
 4.[F][] Wash clothes (needs: 1H 45M)
 ```
@@ -140,7 +140,7 @@ Nice! I've marked this task as done:
   [T][X] Read a book
 ```
 ### Notes
-* Marking an already mark task gives the same output, and keeps the task marked.
+* Marking an already marked task produces the same output, and keeps the task marked.
 
 ## Unmarking
 Unmarks a task from being complete.
@@ -150,10 +150,10 @@ Unmarks a task from being complete.
 
 ### Example
 #### Input
-`umark 1`
+`unmark 1`
 
 ### Notes
-* Unmarking a task that is not marked gives the same output, and keeps the task unmarked.
+* Unmarking an already unmarked tasks produces the same output and keeps the task unmarked.
 
 #### Output
 ```
