@@ -1,0 +1,11 @@
+E | 0 | project meeting | Aug 6th | 4pm
+T | 1 | join sports club
+T | 0 | return book before Dec 02 2019 1800
+D | 0 | return book | Dec 02 2019 1800
+D | 1 | finish homework | 7pm
+T | 0 | sleep
+E | 1 | sleep | now | 9am
+T | 0 | sleepsss
+D | 0 | sleep | 5pm
+E | 0 | sleep | now | now
+T | 0 | work on assignments
