@@ -1,6 +1,6 @@
 # AquaDem User Guide
 
-// Product screenshot goes here
+![Ui image](../src/main/resources/images/Ui.png)
 
 Aquadem is your chatbot for all your needs!
 It keeps track of your tasks for you and can store various 
@@ -24,6 +24,7 @@ There are some other features as well!
 - Find a task 🔎
 - Mark and unmark a Task ✅
 - Delete a Task ␡
+- Get the task date 📅
 
 
 ## Viewing tasks
@@ -78,7 +79,7 @@ Add an event to the task list.
 
 Format: `event (your task)  /from (startdate) /to (finishdate)`
 
-Note: Date formatting is not yet supported here , so any text
+Note: Precise date formatting is not yet supported here , so any text
 will work.
 
 An example using `list`
@@ -137,7 +138,7 @@ Add a doafter to the task list.
 
 Format: `doafter (your task) /after (afterdate)`
 
-Note: Date formatting is not yet supported here , so any text
+Note: Precise date formatting is not yet supported here , so any text
 will work.
 
 An example using `list`
@@ -238,4 +239,23 @@ followed by `list`
 1: [E][X] homework2  (from: today to: tommorow)
 2: [T][ ] homework3
 3: [A][ ] homework4  (after: 20th January 2026)
+```
+
+### Retrieving the task date
+
+Get the date of a task (Currently only supports deadlines).
+
+Format: getdate (tasknumber)
+
+An example using `list`
+
+```
+1: [E][ ]  (from: today to: tommorow)
+2: [D][ ] finish hw2  (by: 2025-02-25 23:59)
+```
+followed by `getdate 2`
+
+```
+Your deadline date is: 
+Feb 25 2025 23:59
 ```
