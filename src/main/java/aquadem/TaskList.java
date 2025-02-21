@@ -1,4 +1,4 @@
-package Aquadem;
+package aquadem;
 
 import java.io.Serializable;
 import java.util.ArrayList;

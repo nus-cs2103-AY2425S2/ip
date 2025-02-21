@@ -1,10 +1,10 @@
-package Aquadem;
+package aquadem;
 
 /**
  * An exception which is a subclass of CustomException
  * It is thrown when parsing through the user input.
  */
-public class DetailException extends Aquadem.CustomException {
+public class DetailException extends CustomException {
 
     /**
      * Constrcuts a DetailException

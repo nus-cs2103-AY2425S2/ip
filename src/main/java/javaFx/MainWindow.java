@@ -1,6 +1,6 @@
 package javaFx;
 
-import Aquadem.AquaDem;
+import aquadem.Aquadem;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -28,19 +28,25 @@ public class MainWindow extends AnchorPane {
     private Button sendButton;
 
     private Stage mainStage;
-    private AquaDem aquadem;
+    private Aquadem aquadem;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("../images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("../images/DaAquaDem.png"));
+    private Image aquaImage = new Image(this.getClass().getResourceAsStream("../images/DaAquaDem.png"));
 
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
-    public void setAquadem(AquaDem d) {
+    public void showIntro() {
+        String welcome = aquadem.getIntro();
+        dialogContainer.getChildren().add(DialogBox.getAquaDemDialog(welcome, aquaImage));
+    }
+
+    /** Injects the Aquadem instance */
+    public void setAquadem(Aquadem d) {
         aquadem = d;
+        showIntro();
     }
 
 
@@ -52,9 +58,9 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = aquadem.getResponse(input);
-        Platform.runLater(() ->dialogContainer.getChildren().addAll(
+        Platform.runLater(()->dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getAquaDemDialog(response, dukeImage))
+                DialogBox.getAquaDemDialog(response, aquaImage))
         );
         userInput.clear();
 

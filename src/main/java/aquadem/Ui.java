@@ -1,4 +1,4 @@
-package Aquadem;
+package aquadem;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;

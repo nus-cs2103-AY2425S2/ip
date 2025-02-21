@@ -1,4 +1,4 @@
-package Aquadem;
+package aquadem;
 
 /**
  * A custom exception class to be used for the chatbot.

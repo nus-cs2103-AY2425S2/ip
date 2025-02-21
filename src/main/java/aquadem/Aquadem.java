@@ -1,4 +1,4 @@
-package Aquadem;
+package aquadem;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * The main class through which the chatbot is initiated and run.
  */
-public class AquaDem implements Serializable{
+public class Aquadem implements Serializable{
     protected TaskList tasks;
     protected Storage storage;
 
@@ -15,7 +15,7 @@ public class AquaDem implements Serializable{
      * Constructs an instance of AquaDem.
      * @param storage of type <code>Storage</code> to load saved tasks.
      */
-    public AquaDem(Storage storage){
+    public Aquadem(Storage storage){
         this.storage = storage;
         this.tasks = this.storage.loadTasks();
     }
@@ -46,7 +46,6 @@ public class AquaDem implements Serializable{
                 Ui.printBar();
             } catch (DetailException e) {
                 System.out.println(e.getMessage());
-                Ui.printBar();
             }
 
         }
@@ -54,7 +53,7 @@ public class AquaDem implements Serializable{
 
     /**
      * Gets the response for javafx to use and display, Printstream is redirected
-     * from console toa special ByteArrayOutputStream.
+     * from console to a special ByteArrayOutputStream.
      * @param input
      * @return
      */
@@ -75,7 +74,6 @@ public class AquaDem implements Serializable{
 
         } catch (DetailException e) {
             System.out.println(e.getMessage());
-            Ui.printBar();
         }
 
         System.out.flush();
@@ -84,8 +82,24 @@ public class AquaDem implements Serializable{
         return output;
     }
 
+    /**
+     * Gets the chatbot intro to display in a DialogBox
+     * @return String for DialogBox output.
+     */
+    public String getIntro(){
+        String output;
+        ByteArrayOutputStream redirect = new ByteArrayOutputStream();
+        PrintStream holder = new PrintStream(redirect);
+        PrintStream current = System.out;
+        System.setOut(holder);
+        Ui.intro();
+        System.out.flush();
+        System.setOut(current);
+        output = redirect.toString();
+        return output;
+    }
     public static void main(String[] args) {
-        AquaDem chatbot = new AquaDem(new Storage());
+        Aquadem chatbot = new Aquadem(new Storage());
         chatbot.intro();
         chatbot.running();
 

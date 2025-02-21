@@ -1,7 +1,6 @@
-package Aquadem;
+package aquadem;
 
 import java.io.*;
-import java.util.ArrayList;
 
 /**
  * Class that encapsulates the storage functionality of the chatbot.

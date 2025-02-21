@@ -1,7 +1,6 @@
-package Aquadem;
+package aquadem;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * A subclass of the Task class to represent deadlines.

@@ -1,4 +1,4 @@
-package Aquadem;
+package aquadem;
 
 import org.junit.jupiter.api.Test;
 

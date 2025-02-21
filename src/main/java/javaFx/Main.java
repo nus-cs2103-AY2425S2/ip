@@ -1,11 +1,11 @@
 package javaFx;
 
-import Aquadem.AquaDem;
+import aquadem.Aquadem;
 
 
 import java.io.IOException;
 
-import Aquadem.Storage;
+import aquadem.Storage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private AquaDem aquaDem = new AquaDem(new Storage());
+    private Aquadem aquadem = new Aquadem(new Storage());
 
     private Stage mainStage;
 
@@ -34,7 +34,7 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setAquadem(aquaDem);  // inject the Duke instance
+            fxmlLoader.<MainWindow>getController().setAquadem(aquadem);  // inject the Aquadem instance
             fxmlLoader.<MainWindow>getController().setStage(stage);
             this.mainStage = stage;
             stage.show();
