@@ -31,6 +31,22 @@ public class MainWindow extends AnchorPane {
     private Tasker tasker;
 
     /**
+     * Displays a dialog by Tasker, falling back to a label if it fails to render.
+     *
+     * @param msg The message in the dialog.
+     */
+    private void safeTaskerDialog(String msg) {
+        try {
+            this.addDialog(DialogBox.getTaskerDialog(msg));
+        } catch (Exception e) {
+            Label label = new Label(e.getMessage());
+            label.setWrapText(true);
+            label.setMinHeight(Double.NEGATIVE_INFINITY);
+            this.addDialog(label);
+        }
+    }
+
+    /**
      * Controller initializer.
      */
     @FXML
@@ -40,8 +56,10 @@ public class MainWindow extends AnchorPane {
         try {
             tasker = new Tasker();
         } catch (TaskerException e) {
-            this.showError(e.getMessage());
+            this.safeTaskerDialog(e.getMessage());
         }
+
+        this.safeTaskerDialog("Hello! How can i help you?");
     }
 
     /**
@@ -65,7 +83,7 @@ public class MainWindow extends AnchorPane {
         try {
             this.addDialog(DialogBox.getUserDialog(userText));
         } catch (TaskerException e) {
-            this.showError(e.getMessage());
+            this.safeTaskerDialog(e.getMessage());
         }
 
         try {
@@ -74,24 +92,8 @@ public class MainWindow extends AnchorPane {
             response = e.getMessage();
         }
 
-        try {
-            this.addDialog(DialogBox.getTaskerDialog(response));
-        } catch (TaskerException e) {
-            this.showError(e.getMessage());
-        }
+        this.safeTaskerDialog(response);
 
         userInput.clear();
-    }
-
-    /**
-     * Displays an error in a lable if DialogBoxes fail to render.
-     *
-     * @param error The error message.
-     */
-    private void showError(String error) {
-        Label label = new Label(error);
-        label.setWrapText(true);
-        label.setMinHeight(Double.NEGATIVE_INFINITY);
-        this.addDialog(label);
     }
 }
