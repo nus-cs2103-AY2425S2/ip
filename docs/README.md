@@ -122,6 +122,8 @@ Marks a task as complete.
 Nice! I've marked this task as done:
   [T][X] Read a book
 ```
+### Notes
+* Marking an already mark task gives the same output, and keeps the task marked.
 
 ## Unmarking
 Unmarks a task from being complete.
@@ -132,6 +134,9 @@ Unmarks a task from being complete.
 ### Example
 #### Input
 `umark 1`
+
+### Notes
+* Unmarking a task that is not marked gives the same output, and keeps the task unmarked.
 
 #### Output
 ```
