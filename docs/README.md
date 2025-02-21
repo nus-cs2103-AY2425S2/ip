@@ -10,14 +10,14 @@ Stay organized, productive, and in control with Tasker, the all-in-one task mana
 * `description`: A string for the task description.
     * `|` is not allowed.
     * Ends before any whitespace followed by `/` as input after it are arguments to the command.
-* `datetime: A date and time in the format `d/m/yyyy HHMM`.
+* `datetime`: A date and time in the format `d/m/yyyy HHMM`.
     * `d`: 1 or 2 digit of the day.
     * `m`: 1 or 2 digit of the month.
     * `yyyy`: 4 digit of the year.
     * `HH`: 2 digit 24H format of the hour.
     * `MM`: 2 digit of the minutes.
-* `hours`: An integer of the number of hours required.
-* `minutes`: An integer of the number of minutes required.
+* `hours`: A positive integer of the hours required.
+* `minutes`: A positive integer of the minutes required.
 * `index`: An integer of a task's index, obtained from the number beside it in the list command.
 * `term`: A string to search the tasks description with.
 
@@ -63,6 +63,7 @@ Now you have 2 tasks in the list.
 
 ### Note
 * Deadline task label is `D`
+* May be in the past
 
 ## Events
 Adds a task with a description, a start and an end time.
@@ -84,6 +85,7 @@ Now you have 3 tasks in the list.
 ### Note
 * Event task label is `E`
 * `datetime` for `/from` must not be after that fo `/to`
+* May be in the past
 
 ## Fixed duration tasks
 Adds a task with a description and takes a duration to complete.
