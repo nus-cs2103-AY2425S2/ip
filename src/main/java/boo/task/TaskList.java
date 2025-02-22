@@ -216,7 +216,9 @@ public class TaskList {
     private Task getTask(int taskId) throws BooException {
         Task task = tasksMap.get(taskId);
         if (task == null) {
-            throw new BooException("Task with ID " + taskId + " not found.");
+            throw new BooException("Oops! Boo could not find Task with ID " + taskId + " :(\n"
+                    + "Maybe you mixed up the task IDs? Please try again!\n"
+                    + "There are currently " + tasksMap.size() + " tasks in your task list\n");
         }
         return task;
     }
