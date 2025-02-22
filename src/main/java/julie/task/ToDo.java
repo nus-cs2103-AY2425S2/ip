@@ -16,6 +16,25 @@ public class ToDo extends Task {
     }
 
     /**
+     * Checks if this ToDo task is equal to another object.
+     * Two ToDo tasks are considered equal if they have the same description.
+     *
+     * @param obj The object to compare with this ToDo task.
+     * @return {@code true} if the given object is a ToDo task with the same description, {@code false} otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof ToDo)) {
+            return false;
+        }
+        ToDo other = (ToDo) obj;
+        return this.description.equals(other.description);
+    }
+
+    /**
      * Returns the marker representing a ToDo task.
      * The marker "[T]" signifies that this task is a ToDo.
      *

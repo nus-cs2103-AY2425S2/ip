@@ -77,6 +77,8 @@ public class AddEventCommand extends Command {
         } catch (DateTimeParseException e) {
             throw new WrongFormatException("Oops! Wrong date format!\n"
                     + "Correct format: event <description> /from <DD-MM-YYYY HHMM> /to <DD-MM-YYYY HHMM>");
+        } catch (IllegalArgumentException e) {
+            ui.showMessage(e.getMessage());
         }
     }
 

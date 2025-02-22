@@ -20,6 +20,17 @@ public abstract class Task {
     }
 
     /**
+     * Checks whether this task is equal to another object.
+     * Subclasses must implement this method to define equality based on task type, description,
+     * and other relevant attributes (e.g., due date for deadlines, start and end times for events).
+     *
+     * @param obj The object to compare with this task.
+     * @return {@code true} if the specified object is equal to this task, {@code false} otherwise.
+     */
+    @Override
+    public abstract boolean equals(Object obj);
+
+    /**
      * Marks the task as done.
      */
     public void markDone() {
