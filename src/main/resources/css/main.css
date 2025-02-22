@@ -1,0 +1,56 @@
+.root {
+    -fx-light-color: rgb(245, 245, 245);
+    -fx-dark-color: rgb(30, 30, 30);
+    -fx-primary-color: #2E8B57;
+    -fx-secondary-color: #FFC107;
+
+    /* Default Light Mode */
+    -fx-background-color: -fx-light-color;
+    -fx-text-fill: black;
+}
+
+.root.dark-mode {
+    -fx-background-color: -fx-dark-color;
+    -fx-text-fill: white;
+}
+
+/* Text Fields */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font: 16px "Verdana";
+}
+
+.text-field:focused {
+    -fx-border-color: -fx-primary-color;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 5, 0, 2, 2);
+}
+
+.button:hover {
+    -fx-background-color: derive(-fx-primary-color, -15%);
+}
+
+.button:pressed {
+    -fx-background-color: derive(-fx-primary-color, -35%);
+}
+
+/* Scroll Bar */
+.scroll-pane, .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -fx-secondary-color;
+    -fx-background-radius: 5px;
+}
