@@ -9,7 +9,7 @@
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="taskmax.ui.MainWindow"
-            prefHeight="1000.0"
+            prefHeight="700.0"
             prefWidth="900.0">
 
     <children>

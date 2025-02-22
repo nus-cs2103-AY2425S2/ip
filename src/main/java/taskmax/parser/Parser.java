@@ -205,9 +205,9 @@ public class Parser {
                 + "8. Find: Enter \"find <Word(s)YouWantToFind>\" to find tasks that match the keyword in the description.\n"
                 + "9. Sort: Enter \"sort priority\" and I will sort the tasks by their priority!\n"
                 + "\nIf you need a refresher, just enter any word!"
-                + "\nIf you are satisfied with your service, enter \"bye\" to save your task list and exit!"
-                + "\nDo remember that my input receptors are sensitive so please be careful with your spelling"
-                + "\nand capital letters for commands!\n"
+                + "\nIf you are satisfied with your service, enter \"bye\" to save your task list and exit!\n"
+                + "\nYou can resize my window as you wish and do remember that my input receptors are sensitive"
+                + "\nso please be careful with your spelling and capital letters for commands!\n"
                 + "\nThat is all and happy scheduling! ~Taskmax :D\n" + Ui.LINE;
     }
 }

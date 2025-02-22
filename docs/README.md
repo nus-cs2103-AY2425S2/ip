@@ -36,8 +36,9 @@ If you need a rundown of the available commands, simply type any word that is no
 >
 > If you need a refresher, just enter any word!  
 > If you are satisfied with your service, enter "bye" to save your task list and exit!  
-> Do remember that my input receptors are sensitive so please be careful with your spelling   
-> and capital letters for commands!
+> 
+> You can resize my window as you wish and do remember that my input receptors are sensitive  
+> so please be careful with your spelling and capital letters for commands!
 >
 > That is all and happy scheduling! ~Taskmax :D
 
