@@ -33,7 +33,7 @@ public class UnmarkCommand extends Command {
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
         validateIndex(index, tasks);
-        Task task = tasks.getTask(index - 1);
+        Task task = tasks.getTask(index);
         task.markUndone();
         storage.saveTasks(tasks.getAllTasks());
         ui.unmarkMessage(task);
