@@ -37,9 +37,7 @@ public class Boo {
         ui.printGreeting();
         try {
             if (input.equalsIgnoreCase("bye")) {
-                String goodbyeMessage = ui.printGoodbyeMessage();
-                System.exit(0);
-                return goodbyeMessage;
+                return handleExit();
             }
             if (input.equalsIgnoreCase("list")) {
                 return ui.printTaskHistory(taskList.getTaskMap());
@@ -57,6 +55,22 @@ public class Boo {
         } catch (BooException e) {
             return e.getMessage();
         }
+    }
+
+    private String handleExit() {
+        String goodbyeMessage = ui.printGoodbyeMessage();
+
+        // Delay exit to display message
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000); // 1-second delay before exiting
+                System.exit(0);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }).start();
+
+        return goodbyeMessage;
     }
 
     public Ui getUi() {

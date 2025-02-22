@@ -53,7 +53,6 @@ public class Storage {
                 int taskId = entry.getKey();
                 Task task = entry.getValue();
                 assert task != null : "Task should not be null";
-
                 String taskString = formatTask(entry.getKey(), entry.getValue());
                 writer.write(taskString + "\n");
             }
@@ -65,16 +64,16 @@ public class Storage {
 
 
     private String formatTask(int taskId, Task task) {
-        String formattedTask = "taskID: " + taskId + " || " + task.getClass().getSimpleName() + " task || ";
-        formattedTask += "isDone: " + task.isDone() + " || ";
-
+        String formattedTask = "taskID: " + taskId + " || " + task.getClass().getSimpleName() + " task || "
+                + "isDone: " + task.isDone() + " || ";
         // Handle the task description based on its type
         String description = task.getDescription();
         assert description != null && !description.trim().isEmpty() : "Task description should not be empty";
         if (task instanceof Deadline deadlineTask) {
             formattedTask += description + " (by: " + deadlineTask.getFormattedDeadline() + ")";
         } else if (task instanceof Event eventTask) {
-            formattedTask += description + " (from: " + eventTask.getFormattedStartTime() + " to: " + eventTask.getFormattedEndTime() + ")";
+            formattedTask += description + " (from: " + eventTask.getFormattedStartTime()
+                    + " to: " + eventTask.getFormattedEndTime() + ")";
         } else {
             formattedTask += description;
         }
@@ -173,7 +172,8 @@ public class Storage {
 
     private String convertToFormattedDateTime(String dateTime) throws BooException {
         try {
-            LocalDateTime parsedDateTime = LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern("dd MMM yyyy h:mm a"));
+            LocalDateTime parsedDateTime = LocalDateTime.parse(
+                    dateTime, DateTimeFormatter.ofPattern("dd MMM yyyy h:mm a"));
             return parsedDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm"));
         } catch (Exception e) {
             throw new BooException("Invalid date-time format: " + dateTime);

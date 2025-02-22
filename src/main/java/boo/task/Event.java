@@ -26,7 +26,8 @@ public class Event extends Task {
      */
     public Event(String description, String startTime, String endTime) throws BooException {
         super(description);
-        assert description != null && !description.trim().isEmpty() : "Description for Event task should not be empty";
+        assert description != null && !description.trim().isEmpty() :
+                "Description for Event task should not be empty";
 
         this.startTime = Parser.parseDateTime(startTime);
         this.endTime = Parser.parseDateTime(endTime);
