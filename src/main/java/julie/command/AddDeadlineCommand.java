@@ -56,7 +56,7 @@ public class AddDeadlineCommand extends Command {
      * @param tasks The task list where the new deadline task will be added.
      * @param ui The user interface to display feedback to the user.
      * @param storage The storage system to persist the task list.
-     * @throws WrongFormatException If the deadline description or date/time is missing or if the date/time format is
+     * @throws WrongFormatException If the deadline description or date or time is missing or if the date/time format is
      *      incorrect.
      * */
     @Override
