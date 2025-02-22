@@ -13,5 +13,15 @@ src/main/resources/docs/
 *.iml
 bin/
 
+# Java files
+*.class
+
+# IDE files
+.classpath
+.project
+/.settings/
+
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT
+/data/
+data/
