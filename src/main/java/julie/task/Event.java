@@ -41,6 +41,28 @@ public class Event extends Task {
     }
 
     /**
+     * Checks if this Event task is equal to another object.
+     * Two Event tasks are considered equal if they have the same description, start date/time, and end date/time.
+     *
+     * @param obj The object to compare with this Event task.
+     * @return {@code true} if the given object is an Event task with the same description, start date/time,
+     *         and end date/time, {@code false} otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Event)) {
+            return false;
+        }
+        Event other = (Event) obj;
+        return this.description.equals(other.description)
+                && this.startDateTime.equals(other.startDateTime)
+                && this.endDateTime.equals(other.endDateTime);
+    }
+
+    /**
      * Returns the marker representing an Event task.
      * The marker "[E]" signifies that this task has a start and end time.
      *

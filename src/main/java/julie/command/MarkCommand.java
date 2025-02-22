@@ -33,7 +33,7 @@ public class MarkCommand extends Command {
     @Override
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
         validateIndex(index, tasks);
-        Task task = tasks.getTask(index - 1);
+        Task task = tasks.getTask(index);
         task.markDone();
         storage.saveTasks(tasks.getAllTasks());
         ui.markMessage(task);

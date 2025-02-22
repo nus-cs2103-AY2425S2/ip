@@ -32,8 +32,12 @@ public class TaskList {
      * Adds a task to the task list.
      *
      * @param task The task to be added.
+     * @throws IllegalArgumentException if the task already exists in the list.
      */
     public void addTask(Task task) {
+        if (tasks.contains(task)) {
+            throw new IllegalArgumentException("Oops! This task already exists.");
+        }
         tasks.add(task);
     }
 

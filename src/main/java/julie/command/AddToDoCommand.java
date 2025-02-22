@@ -37,8 +37,12 @@ public class AddToDoCommand extends Command {
             throw new WrongFormatException("Oops! Missing todo description!\nCorrect format: todo <description>");
         }
         Task todo = new ToDo(description);
-        tasks.addTask(todo);
-        storage.saveTasks(tasks.getAllTasks());
-        ui.ackMessage(todo, tasks.size());
+        try {
+            tasks.addTask(todo);
+            storage.saveTasks(tasks.getAllTasks());
+            ui.ackMessage(todo, tasks.size());
+        } catch (IllegalArgumentException e) {
+            ui.showMessage(e.getMessage());
+        }
     }
 }

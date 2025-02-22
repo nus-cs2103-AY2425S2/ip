@@ -71,6 +71,8 @@ public class AddDeadlineCommand extends Command {
         } catch (DateTimeParseException e) {
             throw new WrongFormatException("Oops! Wrong date format!\n"
                     + "Correct format: deadline <description> /by <DD-MM-YYYY HHMM>");
+        } catch (IllegalArgumentException e) {
+            ui.showMessage(e.getMessage());
         }
     }
 }
