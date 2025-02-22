@@ -1,0 +1,19 @@
+T | 1 | read book
+T | 1 | write book
+T | 1 | sleep
+T | 0 | play
+T | 0 | add task 7
+T | 1 | ass 
+T | 1 | play football
+E | 1 | project meeting | 2pm | 4pm
+E | 0 | project meeting | 2pm | 4pm
+D | 0 | return love | 2033-10-15
+D | 0 | return book | 2025-09-15
+D | 0 | finish 2103T | 2025-02-21
+T | 0 | stay hungry
+T | 0 | like
+E | 0 | stay foolish | 7pm | 9pm
+E | 0 | be foolish | 7pm | 9pm
+D | 0 | ip | 2025-02-21
+D | 0 | iptasks | 2025-02-21
+D | 0 | return book | 2025-02-01
