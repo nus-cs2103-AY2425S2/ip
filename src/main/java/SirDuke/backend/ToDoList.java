@@ -1,10 +1,10 @@
-package backend;
+package SirDuke.backend;
 
-import backend.exceptions.IllegalStartAndEndDateException;
-import backend.task.Task;
-import backend.task.ToDoTask;
-import backend.task.DeadlineTask;
-import backend.task.EventTask;
+import SirDuke.backend.task.DeadlineTask;
+import SirDuke.backend.task.ToDoTask;
+import SirDuke.backend.exceptions.IllegalStartAndEndDateException;
+import SirDuke.backend.task.Task;
+import SirDuke.backend.task.EventTask;
 
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;

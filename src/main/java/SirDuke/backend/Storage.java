@@ -1,9 +1,9 @@
-package backend;
+package SirDuke.backend;
 
-import backend.task.EventTask;
-import backend.task.ToDoTask;
-import backend.task.DeadlineTask;
-import backend.task.Task;
+import SirDuke.backend.task.DeadlineTask;
+import SirDuke.backend.task.Task;
+import SirDuke.backend.task.ToDoTask;
+import SirDuke.backend.task.EventTask;
 
 import java.util.ArrayList;
 import java.util.Scanner;

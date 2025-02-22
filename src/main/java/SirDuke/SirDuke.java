@@ -1,13 +1,13 @@
-package frontend;
+package SirDuke;
 
 import java.io.FileNotFoundException;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
-import backend.exceptions.IllegalStartAndEndDateException;
-import backend.ToDoList;
-import backend.Storage;
-import backend.task.Task;
+import SirDuke.backend.Storage;
+import SirDuke.backend.ToDoList;
+import SirDuke.backend.exceptions.IllegalStartAndEndDateException;
+import SirDuke.backend.task.Task;
 
 /**
  * Class that acts as the User Interface. This class is responsible for printing
@@ -20,7 +20,6 @@ public class SirDuke {
 
     private Storage storage;
     private ToDoList toDoList;
-
     private Parser parser;
 
     /**
@@ -203,9 +202,12 @@ public class SirDuke {
         System.out.println("Unfortunately, I do not see any tasks with that keyword in my list.");
         System.out.println(HORIZONTAL_LINE + "\n");
     }
-    public static void main(String[] args) {
-        SirDuke chatBot = new SirDuke();
-        chatBot.start();
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        return "SirDuke heard: " + input;
     }
 }
 

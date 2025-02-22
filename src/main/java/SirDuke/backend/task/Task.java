@@ -1,4 +1,6 @@
-package backend.task;
+package SirDuke.backend.task;
+
+import SirDuke.backend.Storage;
 
 /**
  * Represents a task. A <code>Task<code> object has
@@ -23,7 +25,7 @@ public abstract class Task {
 
     /**
      * @return string representing the Task in a format that is readable by storage
-     * @see backend.Storage, to ensure that readEntry(String entry) can read this format
+     * @see Storage , to ensure that readEntry(String entry) can read this format
      */
     public abstract String toFileEntry();
 

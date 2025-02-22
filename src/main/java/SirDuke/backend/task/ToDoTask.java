@@ -1,4 +1,4 @@
-package backend.task;
+package SirDuke.backend.task;
 
 /**
  * Represents a task without a start date or a deadline.

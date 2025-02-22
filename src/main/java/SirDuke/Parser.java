@@ -1,11 +1,9 @@
-package frontend;
+package SirDuke;
 
-import backend.exceptions.IllegalStartAndEndDateException;
+import SirDuke.backend.exceptions.IllegalStartAndEndDateException;
 
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
-
-import static frontend.Format.HORIZONTAL_LINE;
 
 public class Parser {
     Scanner scanner = new Scanner(System.in);
