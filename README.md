@@ -1,4 +1,7 @@
 # Tasker: Your Ultimate Task Management Companion
+
+![Screenshot](docs/Ui.png)
+
 Tasker is an all-in-one task manager designed to simplify your life. Whether you're managing daily to-dos, tracking deadlines, scheduling events, or handling fixed-duration tasks, Tasker has you covered. With its intuitive interface and powerful features, you'll never miss a beat.
 
 ## Features
