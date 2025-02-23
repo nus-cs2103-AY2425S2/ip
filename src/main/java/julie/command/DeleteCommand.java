@@ -34,9 +34,14 @@ public class DeleteCommand extends Command {
     public void execute(TaskList tasks, UI ui, Storage storage) throws WrongFormatException {
         validateIndex(index, tasks);
 
-        Task removedTask = tasks.getTask(index - 1);
-        tasks.deleteTask(index - 1);
+        Task removedTask = tasks.getTask(index);
+        tasks.deleteTask(index);
         storage.saveTasks(tasks.getAllTasks());
-        ui.deleteMessage(removedTask, tasks.size());
+
+        if (tasks.size() == 0) {
+            ui.showMessage("Your list is now empty!");
+        } else {
+            ui.deleteMessage(removedTask, tasks.size());
+        }
     }
 }

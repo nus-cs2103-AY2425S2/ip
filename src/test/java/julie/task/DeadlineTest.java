@@ -11,7 +11,7 @@ public class DeadlineTest {
     @Test
     public void testDeadlineCreation() throws WrongFormatException {
         Deadline deadline = new Deadline("Submit report", "10-02-2025 1800");
-        assertEquals("[D] [ ] Submit report (by: Feb 10 2025, 06:00 pm)",
+        assertEquals("[L] [D] [ ] Submit report (by: Feb 10 2025, 06:00 pm)",
                 deadline.toString(),
                 "Deadline string representation is incorrect!");
     }
@@ -20,7 +20,7 @@ public class DeadlineTest {
     public void testMarkDone() throws WrongFormatException {
         Deadline deadline = new Deadline("Submit report", "10-02-2025 1800");
         deadline.markDone();
-        assertEquals("[D] [X] Submit report (by: Feb 10 2025, 06:00 pm)",
+        assertEquals("[L] [D] [X] Submit report (by: Feb 10 2025, 06:00 pm)",
                 deadline.toString(),
                 "Marking Deadline as done failed!");
     }
@@ -30,7 +30,7 @@ public class DeadlineTest {
         Deadline deadline = new Deadline("Submit report", "10-02-2025 1800");
         deadline.markDone();
         deadline.markUndone();
-        assertEquals("[D] [ ] Submit report (by: Feb 10 2025, 06:00 pm)",
+        assertEquals("[L] [D] [ ] Submit report (by: Feb 10 2025, 06:00 pm)",
                 deadline.toString(),
                 "Unmarking Deadline as undone failed!");
     }
@@ -38,12 +38,12 @@ public class DeadlineTest {
     @Test
     public void testToFileFormat() throws WrongFormatException {
         Deadline deadline = new Deadline("Submit report", "10-02-2025 1800");
-        assertEquals("D | 0 | Submit report | 10-02-2025 1800",
+        assertEquals("D | 0 | Submit report | 10-02-2025 1800 | L",
                 deadline.toFileFormat(),
                 "ToFileFormat representation is incorrect!");
 
         deadline.markDone();
-        assertEquals("D | 1 | Submit report | 10-02-2025 1800",
+        assertEquals("D | 1 | Submit report | 10-02-2025 1800 | L",
                 deadline.toFileFormat(),
                 "ToFileFormat after marking done is incorrect!");
     }

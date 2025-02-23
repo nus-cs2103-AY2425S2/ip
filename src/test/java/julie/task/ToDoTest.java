@@ -14,7 +14,7 @@ public class ToDoTest {
     @Test
     public void testToDoCreation() {
         ToDo todo = new ToDo("Read a book");
-        assertEquals("[T] [ ] Read a book",
+        assertEquals("[L] [T] [ ] Read a book",
                 todo.toString(),
                 "ToDo string representation is incorrect!");
     }
@@ -23,7 +23,7 @@ public class ToDoTest {
     public void testMarkDone() {
         ToDo todo = new ToDo("Read a book");
         todo.markDone();
-        assertEquals("[T] [X] Read a book", todo.toString(), "Marking ToDo as done failed!");
+        assertEquals("[L] [T] [X] Read a book", todo.toString(), "Marking ToDo as done failed!");
     }
 
     @Test
@@ -31,18 +31,18 @@ public class ToDoTest {
         ToDo todo = new ToDo("Read a book");
         todo.markDone();
         todo.markUndone();
-        assertEquals("[T] [ ] Read a book", todo.toString(), "Marking ToDo as undone failed!");
+        assertEquals("[L] [T] [ ] Read a book", todo.toString(), "Marking ToDo as undone failed!");
     }
 
     @Test
     public void testToFileFormat() {
         ToDo todo = new ToDo("Read a book");
-        assertEquals("T | 0 | Read a book",
+        assertEquals("T | 0 | Read a book | L",
                 todo.toFileFormat(),
                 "ToFileFormat representation is incorrect!");
 
         todo.markDone();
-        assertEquals("T | 1 | Read a book",
+        assertEquals("T | 1 | Read a book | L",
                 todo.toFileFormat(),
                 "ToFileFormat representation is incorrect");
     }

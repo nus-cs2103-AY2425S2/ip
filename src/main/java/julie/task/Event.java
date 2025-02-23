@@ -82,7 +82,8 @@ public class Event extends Task {
     @Override
     public String toFileFormat() {
         return "E | " + (isDone ? "1" : "0") + " | " + description + " | "
-                + startDateTime.format(INPUT_FORMATTER) + " | " + endDateTime.format(INPUT_FORMATTER);
+                + startDateTime.format(INPUT_FORMATTER) + " | " + endDateTime.format(INPUT_FORMATTER)
+                + " | " + priority;
     }
 
     /**
@@ -93,7 +94,7 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return this.getMarker() + " " + super.toString() + " (from: "
+        return this.getPriorityIcon() + " " + this.getMarker() + " " + super.toString() + " (from: "
                 + startDateTime.format(OUTPUT_FORMATTER) + " to: " + endDateTime.format(OUTPUT_FORMATTER) + ")";
     }
 }

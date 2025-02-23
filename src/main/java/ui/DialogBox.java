@@ -25,8 +25,9 @@ public class DialogBox extends HBox {
 
     /**
      * Shows the dialog box.
+     *
      * @param text String to be visible
-     * @param img Image of user/julie
+     * @param img  Image of user/julie
      */
     public DialogBox(String text, Image img) {
         try {
@@ -59,6 +60,14 @@ public class DialogBox extends HBox {
     public static DialogBox getJulieDialog(String text, Image img) {
         var db = new DialogBox(text, img);
         db.flip();
+
+        // Ensure the background remains the same
+        db.dialog.getStyleClass().add("label");
+
         return db;
     }
 }
+
+
+
+

@@ -57,7 +57,7 @@ public class MainWindow extends AnchorPane {
 
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getJulieDialog(response.isEmpty() ? "No response captured!" : response, julieImage)
+                DialogBox.getJulieDialog(response, julieImage)
         );
 
         userInput.clear();

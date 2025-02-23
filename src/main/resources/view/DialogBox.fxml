@@ -15,14 +15,16 @@
          </padding>
          <HBox.margin>
             <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-         </HBox.margin></Label>
+         </HBox.margin>
+        </Label>
+
         <ImageView fx:id="displayPicture" fitHeight="85.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
             <clip>
                 <javafx.scene.shape.Circle fx:id="clipCircle" radius="40" centerX="42.5" centerY="42.5"/>
             </clip>
         </ImageView>
-
     </children>
+
     <padding>
         <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
     </padding>
