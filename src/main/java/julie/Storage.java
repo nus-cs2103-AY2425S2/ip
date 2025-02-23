@@ -90,8 +90,6 @@ public class Storage {
         assert line != null && !line.isEmpty() : "Line to parse should not be null or empty";
         try {
             String[] parts = line.split(" \\| ");
-            assert parts.length >= 3 : "Malformed task entry: " + line;
-
             String type = parts[0];
             boolean isDone = parts[1].equals("1");
             String description = parts[2];
@@ -100,12 +98,15 @@ public class Storage {
             switch (type) {
             case "T":
                 task = new ToDo(description);
+                task.setPriority(Task.Priority.valueOf(parts[3]));
                 break;
             case "D":
                 task = new Deadline(description, parts[3]);
+                task.setPriority(Task.Priority.valueOf(parts[4]));
                 break;
             case "E":
                 task = new Event(description, parts[3], parts[4]);
+                task.setPriority(Task.Priority.valueOf(parts[5]));
                 break;
             default:
                 return null;

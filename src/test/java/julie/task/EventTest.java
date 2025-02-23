@@ -13,7 +13,7 @@ public class EventTest {
     @Test
     public void testEventCreation() throws WrongFormatException {
         Event event = new Event("Project meeting", "10-02-2025 1400", "10-02-2025 1600");
-        assertEquals("[E] [ ] Project meeting (from: Feb 10 2025, 02:00 pm to: Feb 10 2025, 04:00 pm)",
+        assertEquals("[L] [E] [ ] Project meeting (from: Feb 10 2025, 02:00 pm to: Feb 10 2025, 04:00 pm)",
                 event.toString(),
                 "Event string representation is incorrect!");
     }
@@ -22,7 +22,7 @@ public class EventTest {
     public void testMarkDone() throws WrongFormatException {
         Event event = new Event("Project meeting", "10-02-2025 1400", "10-02-2025 1600");
         event.markDone();
-        assertEquals("[E] [X] Project meeting (from: Feb 10 2025, 02:00 pm to: Feb 10 2025, 04:00 pm)",
+        assertEquals("[L] [E] [X] Project meeting (from: Feb 10 2025, 02:00 pm to: Feb 10 2025, 04:00 pm)",
                 event.toString(),
                 "Marking Event as done failed!");
     }
@@ -32,7 +32,7 @@ public class EventTest {
         Event event = new Event("Project meeting", "10-02-2025 1400", "10-02-2025 1600");
         event.markDone();
         event.markUndone();
-        assertEquals("[E] [ ] Project meeting (from: Feb 10 2025, 02:00 pm to: Feb 10 2025, 04:00 pm)",
+        assertEquals("[L] [E] [ ] Project meeting (from: Feb 10 2025, 02:00 pm to: Feb 10 2025, 04:00 pm)",
                 event.toString(),
                 "Unmarking Event as undone failed!");
     }
@@ -40,12 +40,12 @@ public class EventTest {
     @Test
     public void testToFileFormat() throws WrongFormatException {
         Event event = new Event("Project meeting", "10-02-2025 1400", "10-02-2025 1600");
-        assertEquals("E | 0 | Project meeting | 10-02-2025 1400 | 10-02-2025 1600",
+        assertEquals("E | 0 | Project meeting | 10-02-2025 1400 | 10-02-2025 1600 | L",
                 event.toFileFormat(),
                 "ToFileFormat representation is incorrect!");
 
         event.markDone();
-        assertEquals("E | 1 | Project meeting | 10-02-2025 1400 | 10-02-2025 1600",
+        assertEquals("E | 1 | Project meeting | 10-02-2025 1400 | 10-02-2025 1600 | L",
                 event.toFileFormat(),
                 "ToFileFormat after marking done is incorrect!");
     }

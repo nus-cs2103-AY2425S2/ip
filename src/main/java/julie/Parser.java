@@ -9,8 +9,10 @@ import julie.command.ExitCommand;
 import julie.command.FindCommand;
 import julie.command.ListCommand;
 import julie.command.MarkCommand;
+import julie.command.SetPriorityCommand;
 import julie.command.UnmarkCommand;
 import julie.exception.WrongFormatException;
+import julie.task.Task;
 
 /**
  * Parses user input and returns the corresponding command.
@@ -38,7 +40,7 @@ public class Parser {
         assert input != null : "Input command string is null.";
         assert !input.trim().isEmpty() : "Input command string is empty.";
 
-        String[] parts = input.split(" ", 2);
+        String[] parts = input.split(" ");
         assert parts.length > 0 : "Command word extraction failed.";
 
         String commandWord = parts[0];
@@ -60,6 +62,8 @@ public class Parser {
             return new ListCommand();
         case "find":
             return parseFindCommand(parts);
+        case "priority":
+            return parsePriorityCommand(parts);
         case "bye":
             return new ExitCommand();
         default:
@@ -254,5 +258,29 @@ public class Parser {
         return (input.length() > commandLength)
                 ? input.substring(commandLength).split("/", 2)[0].trim()
                 : "";
+    }
+
+    /**
+     * Parses a priority command.
+     *
+     * @param parts The split user input.
+     * @return A {@code SetPriorityCommand} instance.
+     * @throws WrongFormatException If the priority command is incorrectly formatted.
+     */
+    private static Command parsePriorityCommand(String[] parts) throws WrongFormatException {
+        if (parts.length != 3) {
+            throw new WrongFormatException("Oops! The correct format for setting priority is:\n"
+                    + "priority <task_number> <H/M/L>");
+        }
+
+        try {
+            int index = Integer.parseInt(parts[1]);
+            Task.Priority priority = Task.Priority.valueOf(parts[2].toUpperCase());
+            return new SetPriorityCommand(index, priority);
+        } catch (NumberFormatException e) {
+            throw new WrongFormatException("Task number must be an integer!");
+        } catch (IllegalArgumentException e) {
+            throw new WrongFormatException("Invalid priority! Please use H, M, or L.");
+        }
     }
 }

@@ -7,7 +7,13 @@ package julie.task;
 public abstract class Task {
     protected String description;
     protected boolean isDone;
-
+    protected Priority priority;
+    /**
+     * Represents priority levels for tasks.
+     */
+    public enum Priority {
+        H, M, L
+    }
     /**
      * Constructs a new {@code Task} with the specified description.
      * The task is initially marked as not done.
@@ -17,6 +23,7 @@ public abstract class Task {
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        this.priority = Priority.L;
     }
 
     /**
@@ -29,6 +36,27 @@ public abstract class Task {
      */
     @Override
     public abstract boolean equals(Object obj);
+
+    /**
+     * Sets the priority of the task.
+     *
+     * @param priority The priority level (H, M, L).
+     */
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+    /**
+     * Gets the priority level of the task.
+     *
+     * @return The priority level of the task.
+     */
+    public Priority getPriority() {
+        return priority;
+    }
 
     /**
      * Marks the task as done.
@@ -52,6 +80,10 @@ public abstract class Task {
      */
     public String getStatusIcon() {
         return (isDone ? "[X]" : "[ ]");
+    }
+
+    public String getPriorityIcon() {
+        return "[" + this.getPriority() + "]";
     }
 
     /**

@@ -71,7 +71,8 @@ public class Deadline extends Task {
      */
     @Override
     public String toFileFormat() {
-        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + dueDateTime.format(INPUT_FORMATTER);
+        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + dueDateTime.format(INPUT_FORMATTER)
+                + " | " + priority;
     }
 
     /**
@@ -82,6 +83,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return this.getMarker() + " " + super.toString() + " (by: " + dueDateTime.format(OUTPUT_FORMATTER) + ")";
+        return this.getPriorityIcon() + " " + this.getMarker() + " " + super.toString()
+                + " (by: " + dueDateTime.format(OUTPUT_FORMATTER) + ")";
     }
 }

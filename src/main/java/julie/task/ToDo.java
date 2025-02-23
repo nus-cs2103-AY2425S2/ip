@@ -53,7 +53,7 @@ public class ToDo extends Task {
      */
     @Override
     public String toFileFormat() {
-        return "T | " + (isDone ? "1" : "0") + " | " + description;
+        return "T | " + (isDone ? "1" : "0") + " | " + description + " | " + priority;
     }
 
     /**
@@ -63,6 +63,6 @@ public class ToDo extends Task {
      */
     @Override
     public String toString() {
-        return this.getMarker() + " " + super.toString();
+        return this.getPriorityIcon() + " " + this.getMarker() + " " + super.toString();
     }
 }
