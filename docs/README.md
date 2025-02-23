@@ -2,27 +2,72 @@
 
 ![Ui](/Ui.png)
 
-// Product intro goes here
+Jude the chatbot, a personal assistant that will help you manage your tasks.
 
-## Adding deadlines
+## Prerequisite
+Go to the [latest release page](https://github.com/Judy1x4/ip/releases), and download jude.jar file in an empty folder in your local computer.
 
-// Describe the action and its outcome.
+Then, open a terminal to navigate to the jar location, then run the `java -jar "JAR_FILE_NAME"` command.
 
-// Give examples of usage
+## Adding tasks
 
-Example: `keyword (optional arguments)`
+* You can add three different types of tasks:
 
-// A description of the expected outcome goes here
+
+- [ ] to-do
+- [ ] event
+- [ ] deadline
+
+
+* Each task type can be added with the formats below:
+
+    - `to-do [description]`
+    - `deadline [description] /by [date_and_time]`
+    - `event [description] /from [date_and_time] /to [date_and_time]`
+
+      where date_and_time has a format `d/M/yyyy HHmm`
+
+
+* Example input:
 
 ```
-expected output
+to-do study 
+deadline homework /by 1/10/2024 1600
+event Lecture /from 29/9/2020 1600 /to 29/9/2020 1800
 ```
 
-## Feature ABC
+## Commands
+> Refer to Detailed Explanations section below for more detailed explanation of some commands.
 
-// Feature details
+`list`: shows the current tasklist status.
+
+`sort`: sorts the tasklist by earliest occurring.
+
+`bye`: ends the chat.
+
+`delete [index]`: removes the task with its index of current tasklist.
+
+`mark [index]`: marks a task as done with its index of current tasklist.
+
+`unmark [index]`: undoes marking a task as done with its index of current tasklist.
+
+`find [keyword]`: shows all tasks with descriptions containing the keyword.
 
 
-## Feature XYZ
+## Detailed Explanations
 
-// Feature details
+`sort`: The priority is such that Deadline task is determined with its deadline, Event task is determined with the beginning timing, and To-do tasks are considered the lowest priority.
+
+For example,
+```
+1. [T][] take a screenshot
+2. [D][] homework (by: Sep 29 2020 12:00)
+3. [E][] Lecture (from: Sep 29 2020 16:00 to: Sep 29 2020 18:00)
+```
+will be sorted to
+```
+1. [D][] homework (by: Sep 29 2020 12:00)
+2. [E][] Lecture (from: Sep 29 2020 16:00 to: Sep 29 2020 18:00)
+3. [T][] take a screenshot
+```
+this.
