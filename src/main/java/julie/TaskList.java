@@ -129,19 +129,4 @@ public class TaskList {
     public int size() {
         return tasks.size();
     }
-
-    /**
-     * Retrieves the priority of a task based on its description.
-     *
-     * @param description The task description.
-     * @return The priority of the matching task, or L if not found.
-     */
-    public Task.Priority getPriorityByDescription(String description) {
-        for (Task task : tasks) {
-            if (task.getDescription().equalsIgnoreCase(description)) {
-                return task.getPriority();
-            }
-        }
-        return Task.Priority.L; // Default priority
-    }
 }

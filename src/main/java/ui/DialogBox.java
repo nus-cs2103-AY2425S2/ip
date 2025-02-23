@@ -60,8 +60,6 @@ public class DialogBox extends HBox {
     public static DialogBox getJulieDialog(String text, Image img) {
         var db = new DialogBox(text, img);
         db.flip();
-
-        // Ensure the background remains the same
         db.dialog.getStyleClass().add("label");
 
         return db;
