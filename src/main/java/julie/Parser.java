@@ -199,7 +199,7 @@ public class Parser {
     }
 
     /**
-     * Creates a command that operates on a task by index.
+     * Creates a command that operates on tasks by index.
      * Supports "delete", "mark", and "unmark" actions.
      *
      * @param action The action to perform (e.g., "delete", "mark", "unmark").
