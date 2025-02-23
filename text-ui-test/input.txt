@@ -1,0 +1,10 @@
+todo buy milk
+todo clean house
+list
+mark 1
+mark 2
+unmark 1
+deadline return book /by Sunday
+event team meeting /from 2pm /to 3pm
+list
+bye
