@@ -1,0 +1,54 @@
+.root {
+    main-color: #d2aea4;       /* Create a looked-up color called "main-color" within root. */
+    -fx-background-color: main-color;
+}
+
+.text-field {
+    -fx-background-color: #dfc6c0;
+    -fx-font: 18px "Trebuchet MS";
+    -fx-highlight-fill: #bf997e;
+}
+
+.text-field .prompt-text {
+    -fx-fill: gray;
+    -fx-font-style: italic;
+}
+
+.button {
+    -fx-background-color: #b27463;
+    -fx-font: italic bold 16px "Trebuchet MS";
+    -fx-text-fill: #ffffff;
+}
+
+.button:hover {
+    -fx-background-color: #513128;
+    -fx-font-size: 18px;
+}
+
+.button:pressed {
+    -fx-background-color: #2b1a15;
+    -fx-font-size: 20px;
+}
+
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-font-size: 10px;  /* Change width of scroll bar. */
+    -fx-background-color: main-color;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #2b1a15;
+    -fx-background-radius: 1em;
+    fx-min-height: 20px;
+}
+
+/* Hides the increment and decrement buttons. */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
