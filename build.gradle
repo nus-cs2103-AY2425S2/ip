@@ -45,11 +45,11 @@ test {
 }
 
 application {
-    mainClass.set("jude.ui.Main")
+    mainClass.set("jude.Main")
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "jude"
     archiveClassifier = null
 }
 
