@@ -1,0 +1,48 @@
+# Workflow taken from CS2103T website
+name: Java CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        platform: [macos-latest]
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: Set up repository
+        uses: actions/checkout@master
+
+      - name: Set up repository
+        uses: actions/checkout@master
+        with:
+          ref: master
+
+      - name: Merge to master
+        run: git checkout --progress --force ${{ github.sha }}
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: "17"
+          java-package: jdk+fx
+
+      - name: Build and check with Gradle
+        run: ./gradlew check
+
+      - name: Perform IO redirection test (*NIX)
+        if: runner.os == 'Linux'
+        run: ./gradlew clean test
+
+      - name: Perform IO redirection test (MacOS)
+        if: always() && runner.os == 'macOS'
+        run: ./gradlew clean test
+
+      - name: Perform IO redirection test (Windows)
+        if: always() && runner.os == 'Windows'
+        shell: cmd
+        run: ./gradlew clean test

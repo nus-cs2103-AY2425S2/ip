@@ -1,0 +1,90 @@
+/* ChatGPT was used to aid the css styling. */
+.text-flow {
+  background-color: black;
+  -fx-background-color: black;
+  border-color: yellow;
+  -fx-border-color: yellow;
+  border-width: 2px;
+  -fx-border-width: 2px;
+  border-radius: 10px;
+  -fx-border-radius: 10px;
+  padding: 10px;
+  -fx-padding: 10px;
+  -fx-text-fill: white;
+  font-weight: bold;
+  -fx-font-weight: bold;
+  font: bold 16px "Barmeno BQ Regular";
+  -fx-font: bold 16px "Barmeno BQ Regular";
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);
+}
+
+.reply-label {
+  background-color: linear-gradient(to right, #003366, #0055aa);
+  -fx-background-color: linear-gradient(to right, #003366, #0055aa);
+  border-color: #00ccff;
+  -fx-border-color: #00ccff;
+  border-width: 2px;
+  -fx-border-width: 2px;
+  -fx-background-radius: 2em;
+  border-radius: 2em;
+  -fx-border-radius: 2em;
+  padding: 10px;
+  -fx-padding: 10px;
+  -fx-text-fill: white;
+  font-weight: bold;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 204, 255, 0.7), 10, 0, 0, 0);
+  -fx-padding: 15px;
+  -fx-padding: 15px;
+  font: bold 14px "Barmeno BQ Regular";
+  -fx-font: bold 14px "Barmeno BQ Regular";
+}
+
+.error-reply-label {
+  background-color: linear-gradient(to right, #cc3333, #ff4444);
+  -fx-background-color: linear-gradient(to right, #cc3333, #ff4444);
+  border-color: #ff9999;
+  -fx-border-color: #ff9999;
+  border-width: 3px;
+  -fx-border-width: 3px;
+  border-style: solid;
+  border-radius: 2em;
+  -fx-background-radius: 2em;
+  -fx-border-radius: 2em;
+  padding: 10px;
+  -fx-padding: 10px;
+  -fx-text-fill: white;
+  font-weight: bold;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 102, 102, 0.5), 10, 0, 0, 0);
+  -fx-padding: 15px;
+  font: bold 14px "Barmeno BQ Regular";
+  -fx-font: bold 14px "Barmeno BQ Regular";
+}
+
+.command-word {
+  fill: yellow;
+  -fx-fill: yellow;
+  font-weight: bold;
+  -fx-font-weight: bold;
+  font-size: 16px;
+  -fx-font-size: 16px;
+}
+
+.rest-text {
+  fill: white;
+  -fx-fill: white;
+  font-weight: bold;
+  -fx-font-weight: bold;
+  font-size: 16px;
+  -fx-font-size: 16px;
+}
+
+.reply-text {
+  fill: white;
+  -fx-fill: white;
+  font-weight: bold;
+  -fx-font-weight: bold;
+  font-size: 16px;
+  -fx-font-size: 16px;
+}
