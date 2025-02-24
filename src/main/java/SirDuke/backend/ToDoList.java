@@ -2,7 +2,7 @@ package SirDuke.backend;
 
 import SirDuke.backend.task.DeadlineTask;
 import SirDuke.backend.task.ToDoTask;
-import SirDuke.backend.exceptions.IllegalStartAndEndDateException;
+import SirDuke.backend.exception.IllegalStartAndEndDateException;
 import SirDuke.backend.task.Task;
 import SirDuke.backend.task.EventTask;
 
@@ -27,10 +27,9 @@ public class ToDoList {
      * Creates a new ToDoTask and adds it to the toDoList.
      * Prints message to inform user that task has been added.
      *
-     * @param description name of the task
      */
     public void createToDoTask(String description) {
-        ToDoTask toDo = new ToDoTask(description);
+        Task toDo = new ToDoTask(description);
         tasks.add(toDo);
     }
 
@@ -68,11 +67,11 @@ public class ToDoList {
      * Prints the index and string representation of every task in the toDoList.
      * Index starts from 0 in ArrayList, but will be printed out as starting from 1.
      */
-    public void showList() {
-        System.out.println(HORIZONTAL_LINE + "\n");
+    public String showList() {
+        StringBuilder temp = new StringBuilder();
         tasks.forEach((task) ->
-                System.out.println(tasks.indexOf(task) + 1 + ". " + task.toString() + "\n"));
-        System.out.println(HORIZONTAL_LINE + "\n");
+                temp.append(tasks.indexOf(task) + 1 + ". " + task.toString() + "\n"));
+        return temp.toString();
     }
 
     /**

@@ -1,5 +1,5 @@
 package SirDuke.backend.task;
-import SirDuke.backend.exceptions.IllegalStartAndEndDateException;
+import SirDuke.backend.exception.IllegalStartAndEndDateException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -46,6 +46,10 @@ public class EventTask extends Task {
                 + startTime + "|" + endTime;
     }
 
+    @Override
+    public String getTaskType() {
+        return "EVENT";
+    }
     @Override
     public String toString() {
         return "[E]" + super.toString()

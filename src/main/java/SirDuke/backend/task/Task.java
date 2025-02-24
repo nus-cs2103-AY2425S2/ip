@@ -29,6 +29,12 @@ public abstract class Task {
      */
     public abstract String toFileEntry();
 
+    public abstract String getTaskType();
+
+    public String getDescription() {
+        return this.description;
+    };
+
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
     }

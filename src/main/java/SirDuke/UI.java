@@ -1,6 +1,78 @@
 package SirDuke;
 import java.util.ArrayList;
+import java.util.Locale;
 
+import SirDuke.backend.ToDoList;
+import SirDuke.backend.task.DeadlineTask;
+import SirDuke.backend.task.EventTask;
 import SirDuke.backend.task.Task;
+import SirDuke.backend.task.ToDoTask;
+
 public class UI {
+
+    public static String sayBye() {
+        return "Godspeed.";
+    }
+
+    public static String markTaskAsDone(int index) {
+        return "Well done, I have marked this task as done.";
+    }
+
+    public static String unmarkTaskAsDone() {
+        return "Understood, I have unmarked this task as done.";
+    }
+
+    public static String informThatTaskDeleteIsSuccessful() {
+        return "Very well, I have deleted this task.";
+    }
+
+    public static String sayHello() {
+        return "It's a pleasure to meet you. My name is Sir Duke Ellington. What can I do you for?\"";
+    }
+
+    public static String showList(ToDoList toDoList) {
+        return toDoList.showList();
+    }
+    public static String informThatTaskHasBeenCreated(Task task) {
+        StringBuilder temp = new StringBuilder();
+        temp.append("I have added the following ");
+        temp.append(task.getTaskType().toLowerCase());
+        temp.append(" to your list: ");
+        temp.append(task.getDescription());
+        return temp.toString();
+    }
+
+    public static String findTask(ToDoList toDoList, String keyword) {
+        return toDoList.findTask(keyword);
+    }
+
+    public static String informThatCommandIsInvalid() {
+        return "I'm afraid I don't understand what you mean.";
+    }
+
+    public static String informThatCommandIsIncomplete() {
+        return "Your command is incomplete.";
+    }
+
+    public static String informThatTaskDoesNotExist() {
+        return "I do not have this task in my list.";
+    }
+
+    public static String informThatTaskIndexIsMissing() {
+        return "You have not provided me with a valid task index.";
+    }
+
+    public static String informThatTaskIndexIsInvalid() {
+        return "The task index you have provided me with is invalid. Try the same command with an integer instead.";
+    }
+
+
+    public static String informThatTaskIsNotFound() {
+        return "Unfortunately, I do not see any tasks with that keyword in my list.";
+    }
+
+    public static String informThatDateIsInvalid() {
+        return "One or more of your dates do not follow a format I understand." +
+                " Use the following format: yyyy-mm-dd";
+    }
 }

@@ -1,4 +1,4 @@
-package SirDuke.backend.exceptions;
+package SirDuke.backend.exception;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
