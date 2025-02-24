@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<fx:root alignment="BOTTOM_RIGHT" maxWidth="-Infinity" type="HBox" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox HBox.hgrow="ALWAYS">
+         <children>
+            <TextField fx:id="nameField" maxWidth="600.0">
+               <font>
+                  <Font name="TikTok Sans Regular" size="14.0" />
+               </font>
+            </TextField>
+            <TextArea fx:id="messageArea" editable="false" maxHeight="1.7976931348623157E308" maxWidth="600.0">
+               <font>
+                  <Font name="TikTok Sans Regular" size="12.0" />
+               </font></TextArea>
+         </children>
+      </VBox>
+      <Circle fx:id="imageCircle" fill="DODGERBLUE" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" top="10.0" />
+   </padding>
+</fx:root>

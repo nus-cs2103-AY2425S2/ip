@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="440.0" spacing="10.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Command Guide">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label text="&quot;why not just help us both by leaving me alone&quot; ~ alice">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
+      <TextArea prefHeight="482.0" prefWidth="390.0" text="bye&#10;- Exits the application.&#10;&#10;list&#10;- Lists all tasks.&#10;&#10;mark &lt;index&gt;&#10;- Marks the task at the specified index as done.&#10;- Example: `mark 1`&#10;&#10;unmark &lt;index&gt;&#10;- Unmarks the task at the specified index.&#10;- Example: `unmark 1`&#10;&#10;delete &lt;index&gt;&#10;- Deletes the task at the specified index.&#10;- Example: `delete 1`&#10;&#10;todo &lt;task description&gt;&#10;- Adds a new todo task.&#10;- Example: `todo read book`&#10;&#10;deadline &lt;task description&gt; /by &lt;date-time&gt;&#10;- Adds a new task with a deadline.&#10;- Example: `deadline submit report /by 2023-12-31 23:59`&#10;&#10;event &lt;task description&gt; /from &lt;start date-time&gt; /to &lt;end date-time&gt;&#10;- Adds a new event task.&#10;- Example: `event project meeting /from 2023-12-01 10:00 /to 2023-12-01 12:00`&#10;&#10;find &lt;keyword&gt;&#10;- Finds tasks that match the given keyword.&#10;- Example: `find book`" wrapText="true">
+         <font>
+            <Font name="TikTok Sans Regular" size="14.0" />
+         </font>
+      </TextArea>
+   </children>
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+</VBox>

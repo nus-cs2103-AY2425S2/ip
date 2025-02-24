@@ -1,3 +1,6 @@
+.gitignore
+settings.json
+
 # IDEA files
 /.idea/
 /out/
@@ -6,12 +9,15 @@
 # Gradle build files
 /.gradle/
 /build/
-src/main/resources/docs/
+/src/main/resources/docs/
+/src/main/java/data
 
 # MacOS custom attributes files created by Finder
 .DS_Store
 *.iml
 bin/
 
+/src/main/java/data
 /text-ui-test/ACTUAL.TXT
+/text-ui-test/data
 text-ui-test/EXPECTED-UNIX.TXT

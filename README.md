@@ -1,26 +1,87 @@
-# Duke project template
+# alice – tsundere productivity chatbot😒
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+> “shut up nerd” –alice
 
-## Setting up in Intellij
+![](https://kerktaiheng.github.io/ip/Ui.png)
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+Alice, the bot that hates you, is here to help you free your mind of having to remember things you need to do. It’s:
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+- **Command-based** (because in her eyes you can't handle more than that)
+- **Easy to learn** (but literally impossible to master)
+- **Incredibly motivational** (in an optimistic sense)
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+# Usage guide:
+
+1. Don't
+
+Ok, for real
+
+1. `git clone`
+2. `gradle clean build run`
+
+# Command Help Guide
+
+This guide provides an overview of the commands supported by the application.
+
+### Bye Command
+- **Format:** `bye`
+- **Description:** Exits the application.
+
+### List Command
+- **Format:** `list`
+- **Description:** Lists all tasks.
+
+### Mark Command
+- **Format:** `mark <index>`
+- **Description:** Marks the task at the specified index as done.
+- **Example:** `mark 1`
+
+### Unmark Command
+- **Format:** `unmark <index>`
+- **Description:** Unmarks the task at the specified index.
+- **Example:** `unmark 1`
+
+### Delete Command
+- **Format:** `delete <index>`
+- **Description:** Deletes the task at the specified index.
+- **Example:** `delete 1`
+
+### Todo Command
+- **Format:** `todo <task description>`
+- **Description:** Adds a new todo task.
+- **Example:** `todo read book`
+
+### Deadline Command
+- **Format:** `deadline <task description> /by <date-time>`
+- **Description:** Adds a new task with a deadline.
+- **Example:** `deadline submit report /by 2023-12-31 23:59`
+
+### Event Command
+- **Format:** `event <task description> /from <start date-time> /to <end date-time>`
+- **Description:** Adds a new event task.
+- **Example:** `event project meeting /from 2023-12-01 10:00 /to 2023-12-01 12:00`
+
+### Find Command
+- **Format:** `find <keyword>`
+- **Description:** Finds tasks that match the given keyword.
+- **Example:** `find book`
+
+# Features:
+- Managing todos, events, and deadlines
+- Find stuff with fuzzy search
+- Get "motivated" when you make mistakes and fail to achieve your goals
+- Watch her get more and more "excited" as you give her more commands
+
+[mandatory link](https://ozpropets.com/wp-content/uploads/2022/01/5-Signs-Your-Cat-Hates-YOU_00-jpg.webp)
+
+mandatory task list in alice's pov
+- [X] go away
+- [ ] come back 
+
+mandatory codeblock
+```java
+public class Main {
+    public static void main(String[] args) {
+        goAway();
+    }
+}
