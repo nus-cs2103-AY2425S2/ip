@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Judy.ui.MainWindow">
+
+    <!-- Chat messages container -->
+    <ScrollPane fx:id="scrollPane"
+                fitToWidth="true"
+                fitToHeight="true"
+                hbarPolicy="NEVER"
+                vbarPolicy="ALWAYS"
+                AnchorPane.topAnchor="0"
+                AnchorPane.leftAnchor="0"
+                AnchorPane.rightAnchor="0"
+                AnchorPane.bottomAnchor="50">
+        <content>
+            <VBox fx:id="dialogContainer"
+                  spacing="10"
+                  prefWidth="388.0"
+                  fillWidth="true">
+            </VBox>
+        </content>
+    </ScrollPane>
+
+    <!-- Input field and send button container -->
+    <HBox fx:id="inputContainer"
+          spacing="10"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0"
+          AnchorPane.bottomAnchor="0"
+          prefHeight="50.0">
+        <TextField fx:id="userInput"
+                   HBox.hgrow="ALWAYS"
+                   onAction="#handleUserInput"
+                   promptText="Type your message..." />
+        <Button fx:id="sendButton"
+                text="Send"
+                onAction="#handleUserInput"/>
+    </HBox>
+
+</AnchorPane>
