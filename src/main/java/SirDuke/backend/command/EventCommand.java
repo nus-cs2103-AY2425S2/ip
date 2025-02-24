@@ -4,8 +4,6 @@ import SirDuke.UI;
 import SirDuke.backend.Storage;
 import SirDuke.backend.ToDoList;
 import SirDuke.backend.exception.IllegalStartAndEndDateException;
-import SirDuke.backend.task.DeadlineTask;
-import SirDuke.backend.task.EventTask;
 import SirDuke.backend.task.Task;
 
 import java.time.format.DateTimeParseException;
@@ -34,6 +32,7 @@ public class EventCommand extends Command{
             String[] startAndEnd = eventName[1].split(" /end ");
             toDoList.createEventTask(eventName[0], startAndEnd[0], startAndEnd[1]);
             Task eventTask = toDoList.getTask(toDoList.getLength() - 1);
+            assert (eventTask != null) : "Task should not be null";
             return UI.informThatTaskHasBeenCreated(eventTask);
         } catch (DateTimeParseException e) {
             return UI.informThatDateIsInvalid();

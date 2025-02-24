@@ -4,7 +4,6 @@ import SirDuke.backend.Storage;
 import SirDuke.backend.ToDoList;
 import SirDuke.UI;
 import SirDuke.backend.task.Task;
-import SirDuke.backend.task.ToDoTask;
 
 /**
  * The ToDoCommand class represents a command to create a ToDo.
@@ -38,6 +37,7 @@ public class ToDoCommand extends Command {
     public String execute(ToDoList toDoList, Storage storage) {
         toDoList.createToDoTask(input);
         Task toDoTask = toDoList.getTask(toDoList.getLength() - 1);
+        assert (toDoTask != null) : "Task should not be null";
         return UI.informThatTaskHasBeenCreated(toDoTask);
     }
 }
