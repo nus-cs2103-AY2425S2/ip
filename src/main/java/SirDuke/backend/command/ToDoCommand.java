@@ -37,6 +37,7 @@ public class ToDoCommand extends Command {
     public String execute(ToDoList toDoList, Storage storage) {
         toDoList.createToDoTask(input);
         Task toDoTask = toDoList.getTask(toDoList.getLength() - 1);
+        assert (toDoTask != null) : "Task should not be null";
         return UI.informThatTaskHasBeenCreated(toDoTask);
     }
 }

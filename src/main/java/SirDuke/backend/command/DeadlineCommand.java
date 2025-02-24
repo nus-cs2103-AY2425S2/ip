@@ -31,6 +31,7 @@ public class DeadlineCommand extends Command{
             String[] split = input.split(" /by ");
             toDoList.createDeadlineTask(split[0], split[1]);
             Task deadlineTask = toDoList.getTask(toDoList.getLength() - 1);
+            assert (deadlineTask != null) : "Task should not be null";
             return UI.informThatTaskHasBeenCreated(deadlineTask);
         } catch (ArrayIndexOutOfBoundsException e) { //command is incomplete
                 return UI.informThatCommandIsIncomplete();
