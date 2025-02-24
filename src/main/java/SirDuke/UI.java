@@ -14,8 +14,8 @@ public class UI {
         return "Godspeed.";
     }
 
-    public static String markTaskAsDone(int index) {
-        return "Well done, I have marked this task as done.";
+    public static String markTaskAsDone(Task task) {
+        return "Well done, I have marked " + task.getDescription() + " as done.";
     }
 
     public static String unmarkTaskAsDone() {
@@ -30,9 +30,6 @@ public class UI {
         return "It's a pleasure to meet you. My name is Sir Duke Ellington. What can I do you for?\"";
     }
 
-    public static String showList(ToDoList toDoList) {
-        return toDoList.showList();
-    }
     public static String informThatTaskHasBeenCreated(Task task) {
         StringBuilder temp = new StringBuilder();
         temp.append("I have added the following ");
@@ -41,11 +38,6 @@ public class UI {
         temp.append(task.getDescription());
         return temp.toString();
     }
-
-    public static String findTask(ToDoList toDoList, String keyword) {
-        return toDoList.findTask(keyword);
-    }
-
     public static String informThatCommandIsInvalid() {
         return "I'm afraid I don't understand what you mean.";
     }
@@ -56,10 +48,6 @@ public class UI {
 
     public static String informThatTaskDoesNotExist() {
         return "I do not have this task in my list.";
-    }
-
-    public static String informThatTaskIndexIsMissing() {
-        return "You have not provided me with a valid task index.";
     }
 
     public static String informThatTaskIndexIsInvalid() {
