@@ -1,7 +1,261 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Failed to load tasks..data\duke.txt (The system cannot find the path specified)
+________________________________________
+Hello! I'm Javen
+What do you need help with?
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+A todo needs to have a description!
+________________________________________
+
+Folder created: D:\cs2103\text-ui-test\.data
+________________________________________
+Hmm... There's something wrong with your input!
+A deadline requires a description and a end date!
+Slash is necessary.
+E.g. (deadline return book /by Sunday)
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+An event requires a description a start date, and a end date!
+Slash is necessary.
+E.g. (event project meeting /from Mon 2pm /to 4pm)
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+Enter the integer tagged to the task!
+input "list" to check the integer
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+Enter the integer tagged to the task!
+input "list" to check the integer
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+Enter the integer tagged to the task!
+input "list" to check the integer
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+Enter the integer tagged to the task!
+input "list" to check the integer
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+Enter the integer tagged to the task!
+input "list" to check the integer
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+Enter the integer tagged to the task!
+input "list" to check the integer
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+Enter the integer tagged to the task!
+input "list" to check the integer
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+Enter the integer tagged to the task!
+input "list" to check the integer
+________________________________________
+
+________________________________________
+added:[T][ ] borrow books
+You have 1 tasks in the list!
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+A deadline requires a description and a end date!
+Slash is necessary.
+E.g. (deadline return book /by Sunday)
+________________________________________
+
+________________________________________
+Error: Invalid format.
+E.g. deadline borrow books /by 2022-01-05 1800
+E.g. event meeting /from 2022-01-05 1800 /to 2022-01-05 1900
+________________________________________
+
+
+________________________________________
+Error: Sunday, Invalid date format. Expected format is yyyy-mm-dd HH:mm
+________________________________________
+
+
+________________________________________
+Error: 123, Invalid date format. Expected format is yyyy-mm-dd HH:mm
+________________________________________
+
+________________________________________
+added:[D][ ] return book by: Jan 1 2022 18:00
+You have 2 tasks in the list!
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+An event requires a description a start date, and a end date!
+Slash is necessary.
+E.g. (event project meeting /from Mon 2pm /to 4pm)
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+An event requires a description a start date, and a end date!
+Slash is necessary.
+E.g. (event project meeting /from Mon 2pm /to 4pm)
+________________________________________
+
+
+________________________________________
+Error: Mon 2pm, Invalid date format. Expected format is yyyy-mm-dd HH:mm
+________________________________________
+
+________________________________________
+Error: 4pm, Invalid date format. Expected format is yyyy-mm-dd HH:mm
+________________________________________
+
+
+________________________________________
+Error: 123, Invalid date format. Expected format is yyyy-mm-dd HH:mm
+________________________________________
+
+________________________________________
+Error: 123, Invalid date format. Expected format is yyyy-mm-dd HH:mm
+________________________________________
+
+
+________________________________________
+Error: 11111111111111111111, Invalid date format. Expected format is yyyy-mm-dd HH:mm
+________________________________________
+
+________________________________________
+added:[E][ ] project meeting from: Jan 1 2022 19:00 to: Jan 1 2022 20:00
+You have 3 tasks in the list!
+________________________________________
+
+________________________________________
+These are your tasks!
+1. [T][ ] borrow books
+2. [D][ ] return book by: Jan 1 2022 18:00
+3. [E][ ] project meeting from: Jan 1 2022 19:00 to: Jan 1 2022 20:00
+________________________________________
+
+________________________________________
+Task is marked!
+[T][X] borrow books
+________________________________________
+
+________________________________________
+Task is marked!
+[D][X] return book by: Jan 1 2022 18:00
+________________________________________
+
+________________________________________
+Task is marked!
+[E][X] project meeting from: Jan 1 2022 19:00 to: Jan 1 2022 20:00
+________________________________________
+
+________________________________________
+These are your tasks!
+1. [T][X] borrow books
+2. [D][X] return book by: Jan 1 2022 18:00
+3. [E][X] project meeting from: Jan 1 2022 19:00 to: Jan 1 2022 20:00
+________________________________________
+
+________________________________________
+Task is deleted!
+[E][X] project meeting from: Jan 1 2022 19:00 to: Jan 1 2022 20:00
+________________________________________
+
+________________________________________
+These are your tasks!
+1. [T][X] borrow books
+2. [D][X] return book by: Jan 1 2022 18:00
+________________________________________
+
+________________________________________
+Task is deleted!
+[T][X] borrow books
+________________________________________
+
+________________________________________
+These are your tasks!
+1. [D][X] return book by: Jan 1 2022 18:00
+________________________________________
+
+________________________________________
+Task is deleted!
+[D][X] return book by: Jan 1 2022 18:00
+________________________________________
+
+________________________________________
+These are your tasks!
+________________________________________
+
+________________________________________
+added:[T][ ] books
+You have 1 tasks in the list!
+________________________________________
+
+________________________________________
+added:[T][ ] fire
+You have 2 tasks in the list!
+________________________________________
+
+________________________________________
+added:[T][ ] book
+You have 3 tasks in the list!
+________________________________________
+
+________________________________________
+Hmm... There's something wrong with your input!
+Enter the keyword that u want to search!
+input "list" to check the task u have!
+________________________________________
+
+________________________________________
+No tasks were found under 1
+________________________________________
+
+________________________________________
+1.[T][ ] books
+3.[T][ ] book
+________________________________________
+
+________________________________________
+1.[T][ ] books
+________________________________________
+
+________________________________________
+2.[T][ ] fire
+________________________________________
+
+________________________________________
+These are your tasks!
+1. [T][ ] books
+2. [T][ ] fire
+3. [T][ ] book
+________________________________________
+
+________________________________________
+Bye! See you soon :)
+________________________________________
 
