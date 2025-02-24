@@ -32,10 +32,10 @@ public class DeadlineCommand extends Command{
             toDoList.createDeadlineTask(split[0], split[1]);
             Task deadlineTask = toDoList.getTask(toDoList.getLength() - 1);
             return UI.informThatTaskHasBeenCreated(deadlineTask);
+        } catch (ArrayIndexOutOfBoundsException e) { //command is incomplete
+                return UI.informThatCommandIsIncomplete();
         } catch (DateTimeParseException e) { //date is invalid
             return UI.informThatDateIsInvalid();
-        } catch (ArrayIndexOutOfBoundsException e) { //command is incomplete
-            return UI.informThatCommandIsIncomplete();
         }
     }
 }
