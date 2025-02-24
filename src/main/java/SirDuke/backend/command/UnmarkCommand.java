@@ -1,8 +1,9 @@
 package SirDuke.backend.command;
 
+import SirDuke.UI;
 import SirDuke.backend.Storage;
 import SirDuke.backend.ToDoList;
-import SirDuke.UI;
+
 /**
  * The UnmarkCommand class represents a command to mark a task in tasklist as undone.
  */

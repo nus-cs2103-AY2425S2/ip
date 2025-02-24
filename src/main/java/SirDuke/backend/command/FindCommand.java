@@ -1,8 +1,9 @@
 package SirDuke.backend.command;
 
+import SirDuke.UI;
 import SirDuke.backend.Storage;
 import SirDuke.backend.ToDoList;
-import SirDuke.UI;
+
 
 public class FindCommand extends Command {
 
