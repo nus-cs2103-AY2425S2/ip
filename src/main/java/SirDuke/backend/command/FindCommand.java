@@ -21,6 +21,11 @@ public class FindCommand extends Command {
 
     @Override
     public String execute(ToDoList toDoList, Storage storage) {
-        return toDoList.findTask(input);
+        String temp = toDoList.findTask(input);
+        if (temp != "[]") {
+            return temp;
+        } else {
+            return UI.informThatTaskIsNotFound();
+        }
     }
 }
