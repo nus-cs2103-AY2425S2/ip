@@ -1,0 +1,33 @@
+list
+mark
+mark 1
+hello
+todo hello
+list
+unmark 1
+mark 1
+mark 1
+event test event /from 2025-01-31 /to 2025-01-28
+event test event /from 2025-01-31 /to 2025-02-28
+event test
+event test /from today yayayayay yay yay yay
+mark 2
+mark 3
+mark 20
+list
+unmark 2
+deadline today
+deadline testdeadline /by 2025-10-20
+deadline /by today
+list
+mark 3
+list
+delete
+delete 4
+list
+delete 1
+list
+delete 2
+delete 1
+list
+bye
