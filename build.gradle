@@ -73,6 +73,8 @@ run{
             "--add-modules", "javafx.controls,javafx.fxml"
     ]
     standardInput = System.in
+    enableAssertions = true
+
 }
 
 checkstyle {
