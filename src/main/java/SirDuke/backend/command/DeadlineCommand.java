@@ -33,10 +33,10 @@ public class DeadlineCommand extends Command{
             Task deadlineTask = toDoList.getTask(toDoList.getLength() - 1);
             assert (deadlineTask != null) : "Task should not be null";
             return UI.informThatTaskHasBeenCreated(deadlineTask);
+        } catch (ArrayIndexOutOfBoundsException e) { //command is incomplete
+                return UI.informThatCommandIsIncomplete();
         } catch (DateTimeParseException e) { //date is invalid
             return UI.informThatDateIsInvalid();
-        } catch (ArrayIndexOutOfBoundsException e) { //command is incomplete
-            return UI.informThatCommandIsIncomplete();
         }
     }
 }
