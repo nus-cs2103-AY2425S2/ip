@@ -1,8 +1,9 @@
 package SirDuke.backend.command;
 
+import SirDuke.UI;
 import SirDuke.backend.Storage;
 import SirDuke.backend.ToDoList;
-import SirDuke.UI;
+
 /**
  * The UnmarkCommand class represents a command to mark a task in tasklist as undone.
  */
@@ -36,10 +37,10 @@ public class UnmarkCommand extends Command {
         try {
             toDoList.unmarkTaskAsDone(Integer.parseInt(input) - 1);
             return UI.unmarkTaskAsDone();
-        } catch (IndexOutOfBoundsException e) { //task is not in toDoList
-            return UI.informThatTaskDoesNotExist();
         } catch (NumberFormatException e) { //input is not an integer
             return UI.informThatTaskIndexIsInvalid();
+        } catch (IndexOutOfBoundsException e) { //task is not in toDoList
+            return UI.informThatTaskDoesNotExist();
         }
     }
 }

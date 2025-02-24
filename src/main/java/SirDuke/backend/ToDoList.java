@@ -58,9 +58,6 @@ public class ToDoList {
             throws DateTimeParseException, IllegalStartAndEndDateException {
         Task event = new EventTask(description, startTime, endTime);
         tasks.add(event);
-        System.out.println(HORIZONTAL_LINE + "\n"
-                + "I have added the following Event to your list: "+ description + "\n"
-                + HORIZONTAL_LINE);
     }
 
     /**

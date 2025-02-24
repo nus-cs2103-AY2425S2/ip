@@ -24,10 +24,10 @@ public class DeleteCommand extends Command {
         try {
             toDoList.deleteTask(Integer.parseInt(input) - 1);
             return UI.informThatTaskDeleteIsSuccessful();
-        } catch (IndexOutOfBoundsException e) {
-            return UI.informThatTaskDoesNotExist();
         } catch (NumberFormatException e) {
             return UI.informThatTaskIndexIsInvalid();
+        } catch (IndexOutOfBoundsException e) {
+            return UI.informThatTaskDoesNotExist();
         }
     }
 }
