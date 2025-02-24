@@ -3,7 +3,7 @@
 > Need help planning and remembering all your tasks? 
 > Julie is here to help!
 
-![Ui.png](Ui.png)
+![Ui.png](docs/Ui.png)
 
 Julie is your friendly chatbot who helps you keep track
 of all your tasks, from simple to-do's to deadlines you have to
