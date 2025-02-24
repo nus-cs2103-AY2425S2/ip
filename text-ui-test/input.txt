@@ -1,0 +1,9 @@
+todo CS2103 Bot
+deadline Cut Hair /by Friday
+event Lecture /from 2pm /to 4pm
+mark 1
+list
+unmark 1
+list
+bye
+
