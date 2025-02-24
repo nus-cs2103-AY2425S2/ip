@@ -34,12 +34,18 @@ public class EventTask extends Task {
             throw new IllegalStartAndEndDateException(this.startTime, this.endTime);
         }
     }
+    public void setStartTime(String newStartTime) throws DateTimeParseException {
+        this.startTime = LocalDate.parse(newStartTime);
+    }
+
+    public void setEndTime(String newEndTime) throws DateTimeParseException {
+        this.endTime = LocalDate.parse(newEndTime);
+    }
 
     /**
      * Creates an entry to a file from an Event.
      * @return string representing the Event
      */
-
     @Override
     public String toFileEntry() {
         return "E|" + getStatusIcon() + "|" + description + "|"

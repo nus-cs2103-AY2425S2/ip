@@ -63,4 +63,12 @@ public class UI {
         return "One or more of your dates do not follow a format I understand." +
                 " Use the following format: yyyy-mm-dd";
     }
+
+    public static String informThatTaskHasBeenEdited() {
+        return "I have successfully updated the requested task";
+    }
+
+    public static String informThatCommandDoesNotWorkOnTask(Task task) {
+        return "I'm afraid this command does not work on " + task.getTaskType().toLowerCase() + " tasks.";
+    }
 }

@@ -19,7 +19,7 @@ public class Parser {
     public Command parse(String input) {
         String regex = " ";
         String[] parsedInput = input.split(regex, 2);
-        String commandType = parsedInput[0];
+        String commandType = parsedInput[0].toLowerCase();
         try {
             switch (commandType) { //first word of the command
                 case "bye":
@@ -40,6 +40,8 @@ public class Parser {
                     return new DeleteCommand(parsedInput[1]);
                 case "find":
                     return new FindCommand(parsedInput[1]);
+                case "edit":
+                    return new EditCommand(parsedInput[1]);
                 default:
                     return new InvalidCommand();
             }

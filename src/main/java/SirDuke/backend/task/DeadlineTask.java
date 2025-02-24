@@ -3,6 +3,7 @@ package SirDuke.backend.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 
 /**
  * Represents a task with a deadline. A <code>DeadlineTask<code> object has a
@@ -24,6 +25,10 @@ public class DeadlineTask extends Task {
             throws DateTimeParseException {
         super(description);
         this.toBeCompletedBy = LocalDate.parse(toBeCompletedBy);
+    }
+
+    public void setToBeCompletedBy(String newToBeCompletedBy) throws DateTimeParseException {
+        this.toBeCompletedBy = LocalDate.parse(newToBeCompletedBy);
     }
 
     @Override

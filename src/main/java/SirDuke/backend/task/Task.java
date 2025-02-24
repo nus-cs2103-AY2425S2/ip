@@ -35,6 +35,10 @@ public abstract class Task {
         return this.description;
     };
 
+    public void setDescription(String newDescription) {
+        this.description = newDescription;
+    }
+
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
     }
