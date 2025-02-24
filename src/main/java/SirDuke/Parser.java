@@ -41,7 +41,18 @@ public class Parser {
                 case "find":
                     return new FindCommand(parsedInput[1]);
                 case "edit":
-                    return new EditCommand(parsedInput[1]);
+                    String[] parsedEditInput = parsedInput[1].split(regex, 2);
+                    String editType = parsedEditInput[0];
+                    switch (editType) {
+                        case "description":
+                            return new EditDescriptionCommand(parsedEditInput[1]);
+                        case "by":
+                            return new EditToBeCompletedByCommand(parsedEditInput[1]);
+                        case "start":
+                            return new EditStartTimeCommand(parsedEditInput[1]);
+                        case "end":
+                            return new EditEndTimeCommand(parsedEditInput[1]);
+                    }
                 default:
                     return new InvalidCommand();
             }

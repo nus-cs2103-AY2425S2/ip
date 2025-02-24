@@ -100,7 +100,7 @@ public class ToDoList {
         tasks.remove(index);
     }
 
-    public Task getTask(int index) {
+    public Task getTask(int index) throws IndexOutOfBoundsException {
         return tasks.get(index);
     }
 
