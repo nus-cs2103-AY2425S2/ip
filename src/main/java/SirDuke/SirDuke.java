@@ -17,9 +17,6 @@ import SirDuke.backend.task.Task;
  */
 public class SirDuke {
 
-    public static final String HORIZONTAL_LINE =
-            "____________________________________________________________";
-
     private Storage storage;
     private ToDoList toDoList;
 
