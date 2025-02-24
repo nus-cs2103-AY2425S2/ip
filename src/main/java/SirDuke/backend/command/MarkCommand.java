@@ -37,10 +37,10 @@ public class MarkCommand extends Command {
             int index = Integer.parseInt(input) - 1;
             toDoList.markTaskAsDone(index);
             return UI.markTaskAsDone(toDoList.getTask(index));
-        } catch (IndexOutOfBoundsException e) { //task does not exist in toDoList
-            return UI.informThatTaskDoesNotExist();
         } catch (NumberFormatException e) { //input is not an integer
             return UI.informThatTaskIndexIsInvalid();
+        } catch (IndexOutOfBoundsException e) { //task does not exist in toDoList
+            return UI.informThatTaskDoesNotExist();
         }
     }
 }

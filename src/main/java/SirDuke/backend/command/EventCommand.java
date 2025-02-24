@@ -33,12 +33,12 @@ public class EventCommand extends Command{
             toDoList.createEventTask(eventName[0], startAndEnd[0], startAndEnd[1]);
             Task eventTask = toDoList.getTask(toDoList.getLength() - 1);
             return UI.informThatTaskHasBeenCreated(eventTask);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return UI.informThatCommandIsIncomplete();
         } catch (DateTimeParseException e) {
             return UI.informThatDateIsInvalid();
         } catch (IllegalStartAndEndDateException e) {
             return e.toString();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return UI.informThatCommandIsIncomplete();
         }
     }
 }

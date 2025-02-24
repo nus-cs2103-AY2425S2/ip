@@ -37,10 +37,10 @@ public class UnmarkCommand extends Command {
         try {
             toDoList.unmarkTaskAsDone(Integer.parseInt(input) - 1);
             return UI.unmarkTaskAsDone();
-        } catch (IndexOutOfBoundsException e) { //task is not in toDoList
-            return UI.informThatTaskDoesNotExist();
         } catch (NumberFormatException e) { //input is not an integer
             return UI.informThatTaskIndexIsInvalid();
+        } catch (IndexOutOfBoundsException e) { //task is not in toDoList
+            return UI.informThatTaskDoesNotExist();
         }
     }
 }
