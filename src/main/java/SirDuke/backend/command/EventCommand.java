@@ -32,6 +32,7 @@ public class EventCommand extends Command{
             String[] startAndEnd = eventName[1].split(" /end ");
             toDoList.createEventTask(eventName[0], startAndEnd[0], startAndEnd[1]);
             Task eventTask = toDoList.getTask(toDoList.getLength() - 1);
+            assert (eventTask != null) : "Task should not be null";
             return UI.informThatTaskHasBeenCreated(eventTask);
         } catch (DateTimeParseException e) {
             return UI.informThatDateIsInvalid();
