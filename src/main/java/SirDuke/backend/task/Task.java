@@ -2,6 +2,8 @@ package SirDuke.backend.task;
 
 import SirDuke.backend.Storage;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  * Represents a task. A <code>Task<code> object has
  * a <code>description<code> String member that is the name of the task
@@ -10,6 +12,9 @@ import SirDuke.backend.Storage;
 public abstract class Task {
     protected String description;
     protected boolean isDone;
+
+    protected final DateTimeFormatter parsingFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+    protected final DateTimeFormatter printingFormatter = DateTimeFormatter.ofPattern("MMM d yyyy hhmm a");
 
     /**
      * Constructor for a Task object

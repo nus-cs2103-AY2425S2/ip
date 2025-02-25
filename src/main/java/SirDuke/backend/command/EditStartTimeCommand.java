@@ -3,6 +3,7 @@ package SirDuke.backend.command;
 import SirDuke.backend.Storage;
 import SirDuke.backend.ToDoList;
 import SirDuke.UI;
+import SirDuke.backend.exception.IllegalStartAndEndTimeException;
 import SirDuke.backend.task.EventTask;
 import SirDuke.backend.task.Task;
 
@@ -40,6 +41,8 @@ public class EditStartTimeCommand extends Command {
             return UI.informThatTaskIndexIsInvalid();
         } catch (IndexOutOfBoundsException e) {
             return UI.informThatTaskDoesNotExist();
+        } catch (IllegalStartAndEndTimeException e) {
+            return e.toString();
         }
     }
 }

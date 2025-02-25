@@ -1,8 +1,7 @@
 package SirDuke.backend.task;
-import SirDuke.backend.exception.IllegalStartAndEndDateException;
+import SirDuke.backend.exception.IllegalStartAndEndTimeException;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 /**
@@ -12,8 +11,9 @@ import java.time.format.DateTimeParseException;
  */
 public class EventTask extends Task {
 
-    protected LocalDate startTime;
-    protected LocalDate endTime;
+    protected LocalDateTime startTime;
+    protected LocalDateTime endTime;
+
 
     /**
      * Constructor for an Event object
@@ -26,20 +26,28 @@ public class EventTask extends Task {
      * @throws IllegalArgumentException if startTime is after endTime
      */
     public EventTask(String description, String startTime, String endTime)
-            throws DateTimeParseException, IllegalStartAndEndDateException {
+            throws DateTimeParseException, IllegalStartAndEndTimeException {
         super(description);
-        this.startTime = LocalDate.parse(startTime);
-        this.endTime = LocalDate.parse(endTime);
+        this.startTime = LocalDateTime.parse(startTime, parsingFormatter);
+        this.endTime = LocalDateTime.parse(endTime, parsingFormatter);
         if (this.startTime.isAfter(this.endTime)) {
-            throw new IllegalStartAndEndDateException(this.startTime, this.endTime);
+            throw new IllegalStartAndEndTimeException(this.startTime, this.endTime);
         }
     }
-    public void setStartTime(String newStartTime) throws DateTimeParseException {
-        this.startTime = LocalDate.parse(newStartTime);
+    public void setStartTime(String newStartTime) throws DateTimeParseException, IllegalStartAndEndTimeException {
+        LocalDateTime proposedNewStartTime = LocalDateTime.parse(newStartTime, parsingFormatter);
+        if (proposedNewStartTime.isAfter(this.endTime)) {
+            throw new IllegalStartAndEndTimeException(proposedNewStartTime, this.endTime);
+        }
+        this.startTime = proposedNewStartTime;
     }
 
-    public void setEndTime(String newEndTime) throws DateTimeParseException {
-        this.endTime = LocalDate.parse(newEndTime);
+    public void setEndTime(String newEndTime) throws DateTimeParseException, IllegalStartAndEndTimeException {
+        LocalDateTime proposedNewEndTime = LocalDateTime.parse(newEndTime, parsingFormatter);
+        if (this.startTime.isAfter(proposedNewEndTime)) {
+            throw new IllegalStartAndEndTimeException(this.startTime, proposedNewEndTime);
+        }
+        this.endTime = proposedNewEndTime;
     }
 
     /**
@@ -49,7 +57,7 @@ public class EventTask extends Task {
     @Override
     public String toFileEntry() {
         return "E|" + getStatusIcon() + "|" + description + "|"
-                + startTime + "|" + endTime;
+                + startTime.format(parsingFormatter) + "|" + endTime.format(parsingFormatter);
     }
 
     @Override
@@ -59,7 +67,7 @@ public class EventTask extends Task {
     @Override
     public String toString() {
         return "[E]" + super.toString()
-                + " (start: " + this.startTime.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
-                + ", end: " + this.endTime.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
+                + " (start: " + this.startTime.format(printingFormatter)
+                    + ", end: " + this.endTime.format(printingFormatter) + ")";
     }
 }

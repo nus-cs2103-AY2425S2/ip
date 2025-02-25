@@ -1,9 +1,8 @@
 package SirDuke.backend.task;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Date;
 
 /**
  * Represents a task with a deadline. A <code>DeadlineTask<code> object has a
@@ -11,7 +10,8 @@ import java.util.Date;
  */
 public class DeadlineTask extends Task {
 
-    protected LocalDate toBeCompletedBy;
+    protected LocalDateTime toBeCompletedBy;
+
 
     /**
      * Constructor for an Event object
@@ -24,16 +24,17 @@ public class DeadlineTask extends Task {
     public DeadlineTask(String description, String toBeCompletedBy)
             throws DateTimeParseException {
         super(description);
-        this.toBeCompletedBy = LocalDate.parse(toBeCompletedBy);
+        this.toBeCompletedBy = LocalDateTime.parse(toBeCompletedBy, parsingFormatter);
     }
 
     public void setToBeCompletedBy(String newToBeCompletedBy) throws DateTimeParseException {
-        this.toBeCompletedBy = LocalDate.parse(newToBeCompletedBy);
+        this.toBeCompletedBy = LocalDateTime.parse(newToBeCompletedBy, parsingFormatter);
     }
 
     @Override
     public String toFileEntry() {
-        return "D|" + getStatusIcon() + "|" + description + "|" + toBeCompletedBy;
+        return "D|" + getStatusIcon() + "|"
+                + description + "|" + toBeCompletedBy.format(parsingFormatter);
     }
 
     @Override
@@ -44,6 +45,6 @@ public class DeadlineTask extends Task {
     @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: "
-                + toBeCompletedBy.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
+                + toBeCompletedBy.format(printingFormatter) + ")";
     }
 }

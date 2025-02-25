@@ -2,7 +2,7 @@ package SirDuke.backend;
 
 import SirDuke.backend.task.DeadlineTask;
 import SirDuke.backend.task.ToDoTask;
-import SirDuke.backend.exception.IllegalStartAndEndDateException;
+import SirDuke.backend.exception.IllegalStartAndEndTimeException;
 import SirDuke.backend.task.Task;
 import SirDuke.backend.task.EventTask;
 
@@ -55,7 +55,7 @@ public class ToDoList {
      * @param endTime the time that the event ends
      */
     public void createEventTask(String description, String startTime, String endTime)
-            throws DateTimeParseException, IllegalStartAndEndDateException {
+            throws DateTimeParseException, IllegalStartAndEndTimeException {
         Task event = new EventTask(description, startTime, endTime);
         tasks.add(event);
     }

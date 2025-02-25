@@ -3,7 +3,7 @@ package SirDuke.backend.command;
 import SirDuke.UI;
 import SirDuke.backend.Storage;
 import SirDuke.backend.ToDoList;
-import SirDuke.backend.exception.IllegalStartAndEndDateException;
+import SirDuke.backend.exception.IllegalStartAndEndTimeException;
 import SirDuke.backend.task.Task;
 
 import java.time.format.DateTimeParseException;
@@ -38,7 +38,7 @@ public class EventCommand extends Command{
             return UI.informThatCommandIsIncomplete();
         } catch (DateTimeParseException e) {
             return UI.informThatDateIsInvalid();
-        } catch (IllegalStartAndEndDateException e) {
+        } catch (IllegalStartAndEndTimeException e) {
             return e.toString();
         }
     }

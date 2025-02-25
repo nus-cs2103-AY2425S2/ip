@@ -61,7 +61,7 @@ public class UI {
 
     public static String informThatDateIsInvalid() {
         return "One or more of your dates do not follow a format I understand." +
-                " Use the following format: yyyy-mm-dd";
+                " Use the following format: dd/MM/yyyy HHmm";
     }
 
     public static String informThatTaskHasBeenEdited() {
