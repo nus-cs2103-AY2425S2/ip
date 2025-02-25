@@ -1,0 +1,7 @@
+todo code
+deadline quiz /4pm
+event meeting /3 /4pm
+mark 1
+list
+unmark 1
+bye
