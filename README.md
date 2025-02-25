@@ -204,8 +204,8 @@ To sort your tasks by priority, use the `sort` command. It rearranges the list f
 
 ## Exiting Taskmax
 
-To exit Taskmax and save your tasks, use the `bye` command   
-(For CLI Version only, it does not exit in the JavaFX Version)
+To save your tasks and exit Taskmax, use the `bye` command   
+(Only exits in the CLI Version, not the JavaFX Version)
 
 **Format:**  
 `bye`
