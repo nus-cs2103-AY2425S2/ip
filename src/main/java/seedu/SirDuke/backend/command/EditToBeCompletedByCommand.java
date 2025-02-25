@@ -62,18 +62,3 @@ public class EditToBeCompletedByCommand extends Command {
         }
     }
 }
-
-//            assert (task != null) : "Task should not be null";
-//            if (task instanceof DeadlineTask) {
-//                ((DeadlineTask) task).setDescription(newDescription);
-//            } else if (task instanceof EventTask) {
-//                ((EventTask) task).setDescription(newDescription);
-//            } else {
-//                task.setDescription(newDescription);
-//            }
-//            return UI.informThatDescriptionHasBeenEdited(task);
-//        } catch (NumberFormatException e) {
-//            return UI.informThatTaskIndexIsInvalid();
-//        } catch (IndexOutOfBoundsException e) {
-//            return UI.informThatTaskDoesNotExist();
-//        }
