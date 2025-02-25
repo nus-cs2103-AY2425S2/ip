@@ -1,0 +1,14 @@
+deadline watch lecture /by 07/05/2025
+event meeting /from 09/02/2025 /to 10/02/2025
+todo tutorial
+list
+mark 2
+mark 1
+list
+unmark 2
+list
+delete 3
+hi
+todo
+find lecture
+bye
