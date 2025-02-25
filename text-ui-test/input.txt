@@ -1,0 +1,31 @@
+todo borrow book
+todo help the librarian out
+list
+deadline deal with the loud noise problem /by Sunday noon
+event The great gatsby reading /from 29 june 2025 /to 12 july 2025
+list
+mark 2
+mark 3
+list
+mark 10
+todo clean up the trash
+list
+unmark 3
+event National Librarian's day celebration /from 18 june 2pm /to 8pm
+list
+mark 1
+unmark 2
+list
+asflkjasd
+event The colors of the rainbow reading /from 19 june 2025
+event The colors of the rainbow reading /to 12 july 2025
+event The colors of the rainbow reading /from 19 june 2025 /to 19 july 2025
+deadline horror movie catalog
+deadline horror movie catalog /by today
+list
+remove 10
+remove 2
+list
+remove 1
+remove 4
+list
