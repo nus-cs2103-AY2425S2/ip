@@ -1,0 +1,5 @@
+[T][ ] read book
+[D][ ] return book (by: Feb 02 2024, 6:00 pm)
+[T][X] join sports club
+[E][X] CS2103T project meeting (from: Feb 28 2024, 6:00 am to: Mar 03 2024, 8:00 am)
+[DW][ ] collect certificate between: Jan 15 2024, 6:00 pm and Jan 25 2024, 6:00 pm
