@@ -11,7 +11,8 @@ public class UnmarkCommand extends Command {
 
     /**
      * Create an Unmark command.
-     * @param input
+     * @param input The un-parsed input from the user,
+     *               which will be parsed in the <c>execute()</c> method as an index.
      */
     public UnmarkCommand(String input) {
         super(input);
@@ -27,10 +28,9 @@ public class UnmarkCommand extends Command {
     }
 
     /**
-     * Marks task as undone.
-     * @param toDoList
-     * @param storage
-     * @return String representing Unmark command
+     * Un-marks task as done.
+     * @param toDoList toDoList to un-mark task as done in
+     * @return String representing the UnmarkCommand's execution status
      */
     @Override
     public String execute(ToDoList toDoList, Storage storage) {
@@ -39,7 +39,7 @@ public class UnmarkCommand extends Command {
             return UI.unmarkTaskAsDone();
         } catch (NumberFormatException e) { //input is not an integer
             return UI.informThatTaskIndexIsInvalid();
-        } catch (IndexOutOfBoundsException e) { //task is not in toDoList
+        } catch (IndexOutOfBoundsException e) { //task index is out of bounds, i.e. task does not exist
             return UI.informThatTaskDoesNotExist();
         }
     }

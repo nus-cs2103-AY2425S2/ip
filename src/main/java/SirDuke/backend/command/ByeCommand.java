@@ -1,8 +1,8 @@
 package SirDuke.backend.command;
 
+import SirDuke.UI;
 import SirDuke.backend.Storage;
 import SirDuke.backend.ToDoList;
-import SirDuke.UI;
 
 // @@author testing1234567891011121314
 // Reused from https://github.com/testing1234567891011121314/ip
@@ -31,9 +31,9 @@ public class ByeCommand extends Command {
 
     /**
      * Saves data and exits SirDuke
-     * @param toDoList
-     * @param storage
-     * @return String representing exit command
+     * @param toDoList the list of tasks to write to disk
+     * @param storage the storage object to save data to disk
+     * @return String representing ByeCommand's execution status
      */
     @Override
     public String execute(ToDoList toDoList, Storage storage) {

@@ -14,6 +14,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Responsible for the storage of the tasks to and from disk in the chatbot.
+ */
 public class Storage {
 
     String filePath;
@@ -50,7 +53,7 @@ public class Storage {
 
     /**
      * Read the string entry and return a task
-     * @param entry
+     * @param entry the entry representing a task object
      * @return Task corresponding to string
      */
     private Task readEntry(String entry) {
@@ -83,7 +86,7 @@ public class Storage {
      * If a directory existed before, no directory will be created.
      * If the file existed before, it's contents will be overwritten with the new content of the ToDoList.
      * Otherwise, a new parent directory will be created for the file
-     * and the file will be created andwritten to.
+     * and the file will be created and written to.
      *
      * @param taskList the ToDoList containing the tasks to be written to the file
      */

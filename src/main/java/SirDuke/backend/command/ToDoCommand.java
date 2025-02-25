@@ -29,9 +29,8 @@ public class ToDoCommand extends Command {
 
     /**
      * Create a ToDo in toDolist.
-     * @param toDoList
-     * @param storage
-     * @return String representing ToDo command
+     * @param toDoList toDoList to create ToDo in and add the task to
+     * @return String representing the ToDoCommand's execution status
      */
     @Override
     public String execute(ToDoList toDoList, Storage storage) {

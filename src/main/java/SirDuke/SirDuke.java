@@ -12,8 +12,7 @@ import SirDuke.backend.task.Task;
 
 
 /**
- * Class that acts as the User Interface. This class is responsible for printing
- * all prompts and responses.
+ * Class that executes the functionality of the chatbot.
  */
 public class SirDuke {
 
@@ -23,7 +22,7 @@ public class SirDuke {
     private Parser parser;
 
     /**
-     * Creates new SirDuke chatbot class
+     * Create a new SirDuke chatbot class
      */
     public SirDuke() {
         this.storage = new Storage("./data/SirDuke.txt");
@@ -36,16 +35,6 @@ public class SirDuke {
         this.toDoList = new ToDoList(temp); //assign arraylist to taskList
         this.parser = new Parser(this.toDoList);
     }
-
-
-    /**
-     * Prints welcome message and allows the SirDuke chatbot to start receiving commands.
-     * Reads user input from console and interprets them as commands.
-     * Executes commands accordingly.
-     * Updates and saves to listFile only if a command is SUCCESSFULLY EXECUTED.
-     */
-
-
 
 
     /**

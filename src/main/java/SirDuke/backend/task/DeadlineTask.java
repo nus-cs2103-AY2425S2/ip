@@ -1,12 +1,11 @@
 package SirDuke.backend.task;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 /**
- * Represents a task with a deadline. A <code>DeadlineTask<code> object has a
- * <code>description<code> String toBeCompletedBy that is the time that the task must be completed by.
+ * Represents a task with a deadline. A <c>DeadlineTask</c> object has a
+ * <c>LocalDateTime toBeCompletedBy</c> that is the time that the task must be completed by.
  */
 public class DeadlineTask extends Task {
 
@@ -27,6 +26,9 @@ public class DeadlineTask extends Task {
         this.toBeCompletedBy = LocalDateTime.parse(toBeCompletedBy, parsingFormatter);
     }
 
+    /**
+     * @throws DateTimeParseException if string is in an invalid format
+     */
     public void setToBeCompletedBy(String newToBeCompletedBy) throws DateTimeParseException {
         this.toBeCompletedBy = LocalDateTime.parse(newToBeCompletedBy, parsingFormatter);
     }

@@ -1,12 +1,6 @@
 package SirDuke;
-import java.util.ArrayList;
-import java.util.Locale;
 
-import SirDuke.backend.ToDoList;
-import SirDuke.backend.task.DeadlineTask;
-import SirDuke.backend.task.EventTask;
 import SirDuke.backend.task.Task;
-import SirDuke.backend.task.ToDoTask;
 
 public class UI {
 
@@ -54,12 +48,11 @@ public class UI {
         return "The task index you have provided me with is invalid. Try the same command with an integer instead.";
     }
 
-
     public static String informThatTaskIsNotFound() {
         return "Unfortunately, I do not see any tasks with that keyword in my list.";
     }
 
-    public static String informThatDateIsInvalid() {
+    public static String informThatDateTimeIsInvalid() {
         return "One or more of your dates do not follow a format I understand." +
                 " Use the following format: dd/MM/yyyy HHmm";
     }

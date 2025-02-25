@@ -8,16 +8,23 @@ import SirDuke.backend.task.Task;
 
 import java.time.format.DateTimeParseException;
 
+/**
+ * The EventCommand class represents a command to create a DeadlineTask.
+ */
 public class EventCommand extends Command{
 
     /**
-     * Create a Delete command.
+     * Create an Event command.
+     *
+     * @param input The un-parsed input from the user,
+     *              which will be parsed in the <c>execute()</c> method as an index.
      */
     public EventCommand(String input) {
         super(input);
     }
+
     /**
-     * Deadline does not exit.
+     * EventCommand does not exit.
      * @return false
      */
     @Override
@@ -25,6 +32,12 @@ public class EventCommand extends Command{
         return false;
     }
 
+    /**
+     * Parses input into the respective fields required for an EventTask,
+     * then creates an EventTask and adds it to the toDoList
+     * via <c>toDoList.createEventTask()</c>.
+     * @return String representing EventCommand's execution status
+     */
     @Override
     public String execute(ToDoList toDoList, Storage storage) {
         try {
@@ -34,11 +47,11 @@ public class EventCommand extends Command{
             Task eventTask = toDoList.getTask(toDoList.getLength() - 1);
             assert (eventTask != null) : "Task should not be null";
             return UI.informThatTaskHasBeenCreated(eventTask);
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) { //command is incomplete
             return UI.informThatCommandIsIncomplete();
-        } catch (DateTimeParseException e) {
-            return UI.informThatDateIsInvalid();
-        } catch (IllegalStartAndEndTimeException e) {
+        } catch (DateTimeParseException e) { //date is not in the correct format
+            return UI.informThatDateTimeIsInvalid();
+        } catch (IllegalStartAndEndTimeException e) { //start time is after end time
             return e.toString();
         }
     }

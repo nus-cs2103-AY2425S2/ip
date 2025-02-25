@@ -1,23 +1,25 @@
 package SirDuke.backend.command;
 
+import SirDuke.UI;
 import SirDuke.backend.Storage;
 import SirDuke.backend.ToDoList;
-import SirDuke.UI;
 /**
- * The UnmarkCommand class represents a command to mark a task in tasklist as undone.
+ * The MarkCommand class represents a command to mark a task in toDolist as undone.
  */
 public class MarkCommand extends Command {
 
     /**
      * Create a Mark command.
-     * @param input
+     * @param input The un-parsed input from the user,
+     *              which will be parsed in the <c>execute()</c> method as an index.
+     *
      */
     public MarkCommand(String input) {
         super(input);
     }
 
     /**
-     * Unmark command does not exit.
+     * Mark command does not exit.
      * @return false
      */
     @Override
@@ -26,10 +28,9 @@ public class MarkCommand extends Command {
     }
 
     /**
-     * Marks task as undone.
-     * @param toDoList
-     * @param storage
-     * @return String representing Unmark command
+     * Marks a task as done.
+     * @param toDoList toDoList to mark task as done in
+     * @return String representing the MarkCommand's execution status
      */
     @Override
     public String execute(ToDoList toDoList, Storage storage) {
@@ -39,7 +40,7 @@ public class MarkCommand extends Command {
             return UI.markTaskAsDone(toDoList.getTask(index));
         } catch (NumberFormatException e) { //input is not an integer
             return UI.informThatTaskIndexIsInvalid();
-        } catch (IndexOutOfBoundsException e) { //task does not exist in toDoList
+        } catch (IndexOutOfBoundsException e) { //task index is out of bounds, i.e. task does not exist
             return UI.informThatTaskDoesNotExist();
         }
     }

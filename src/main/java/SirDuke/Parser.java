@@ -3,10 +3,10 @@ package SirDuke;
 import SirDuke.backend.ToDoList;
 import SirDuke.backend.command.*;
 
-import java.util.Scanner;
-
+/**
+ * The Parser class is responsible for parsing user input and returning the corresponding command.
+ */
 public class Parser {
-    Scanner scanner = new Scanner(System.in);
 
     Parser(ToDoList toDoList) {
         this.toDoList = toDoList;
@@ -14,7 +14,8 @@ public class Parser {
     ToDoList toDoList;
 
     /**
-     * Parses the user input and executes the corresponding command.
+     * Parses the user input and returns the corresponding command.
+     * @return Command object corresponding to the user input
      */
     public Command parse(String input) {
         String regex = " ";

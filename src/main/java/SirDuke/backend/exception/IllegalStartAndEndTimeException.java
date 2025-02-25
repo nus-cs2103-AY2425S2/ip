@@ -12,6 +12,13 @@ public class IllegalStartAndEndTimeException extends IllegalArgumentException {
     LocalDateTime endTime;
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+
+    /**
+     * Create an IllegalStartAndEndTimeException.
+     *
+     * @param startTime The start time of the event task.
+     * @param endTime The end time of the event task.
+     */
     public IllegalStartAndEndTimeException(LocalDateTime startTime, LocalDateTime endTime) {
         this.startTime = startTime;
         this.endTime = endTime;

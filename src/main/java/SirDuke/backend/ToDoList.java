@@ -16,17 +16,15 @@ import java.util.ArrayList;
  */
 public class ToDoList {
 
-    public static final String HORIZONTAL_LINE =
-            "____________________________________________________________";
     ArrayList<Task> tasks;
 
     public ToDoList(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
+
     /**
      * Creates a new ToDoTask and adds it to the toDoList.
-     * Prints message to inform user that task has been added.
-     *
+     * @param description name of the task
      */
     public void createToDoTask(String description) {
         Task toDo = new ToDoTask(description);
@@ -35,8 +33,6 @@ public class ToDoList {
 
     /**
      * Creates a new DeadlineTask and adds it to the toDoList.
-     * Prints message to inform user that task has been added.
-     *
      * @param description name of the task
      * @param toBeCompletedBy the time that the task must be completed by
      */
@@ -48,8 +44,6 @@ public class ToDoList {
 
     /**
      * Creates a new EventTask and adds it to the toDoList.
-     * Prints message to inform user that task has been added.
-     *
      * @param description name of the task
      * @param startTime the time that the event starts
      * @param endTime the time that the event ends
@@ -100,6 +94,12 @@ public class ToDoList {
         tasks.remove(index);
     }
 
+    /**
+     * Get a task from the list.
+     * @param index the index of the task in the <code>ArrayList toDoList</code>
+     * @return the task at the specified index
+     * @throws IndexOutOfBoundsException in the case that the task does not exist
+     */
     public Task getTask(int index) throws IndexOutOfBoundsException {
         return tasks.get(index);
     }
@@ -108,6 +108,13 @@ public class ToDoList {
         return this.tasks.size();
     }
 
+    /**
+     * Finds tasks in the list that contain the keyword.
+     * @param keyword the keyword of the task in the <code>ArrayList toDoList</code>
+     * @throws IndexOutOfBoundsException in the case that the task does not exist
+     * @return String representation of the ArrayList of tasks with the keyword.
+     * Will return empty String representation of ArrayList if no tasks are found.
+     */
     public String findTask(String keyword) {
         ArrayList<Task> tasksFound = new ArrayList<>();
         for (int i = 0; i < tasks.size(); i++) {

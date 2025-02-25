@@ -1,13 +1,14 @@
 package SirDuke.backend.task;
+
 import SirDuke.backend.exception.IllegalStartAndEndTimeException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 /**
- * Represents an event task. A <code>EventTask<code> object has
- * a <code>description<code> String startTime that is the time that the event starts and
- * a <code>description<code> String endTime that is the time that the event ends
+ * Represents an event task. A <c>EventTask</c> object has
+ * a <c>LocalDateTime startTime</c> that is the time that the event starts and
+ * a <c>LocalDateTime</c> endTime that is the time that the event ends
  */
 public class EventTask extends Task {
 
@@ -34,6 +35,11 @@ public class EventTask extends Task {
             throw new IllegalStartAndEndTimeException(this.startTime, this.endTime);
         }
     }
+
+    /**
+     * @throws DateTimeParseException if string is in an invalid format
+     * @throws IllegalStartAndEndTimeException if startTime is after endTime
+     */
     public void setStartTime(String newStartTime) throws DateTimeParseException, IllegalStartAndEndTimeException {
         LocalDateTime proposedNewStartTime = LocalDateTime.parse(newStartTime, parsingFormatter);
         if (proposedNewStartTime.isAfter(this.endTime)) {
@@ -42,6 +48,10 @@ public class EventTask extends Task {
         this.startTime = proposedNewStartTime;
     }
 
+    /**
+     * @throws DateTimeParseException if string is in an invalid format
+     * @throws IllegalStartAndEndTimeException if startTime is after endTime
+     */
     public void setEndTime(String newEndTime) throws DateTimeParseException, IllegalStartAndEndTimeException {
         LocalDateTime proposedNewEndTime = LocalDateTime.parse(newEndTime, parsingFormatter);
         if (this.startTime.isAfter(proposedNewEndTime)) {

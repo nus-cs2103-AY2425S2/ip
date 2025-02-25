@@ -13,10 +13,15 @@ import SirDuke.backend.ToDoList;
  */
 public abstract class Command {
 
+    /**
+     * This is the input string that may be used as a placeholder
+     * for the un-parsed input fields of the command
+     */
     String input;
     public Command(String input) {
         this.input = input;
     }
+
     /**
      * Check if the app should exit
      * @return true if the command is bye
