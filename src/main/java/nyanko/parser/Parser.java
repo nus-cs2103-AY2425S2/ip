@@ -34,7 +34,7 @@ public class Parser {
         case "EVENT":
                 command = new EventCommand(argument);
                 break;
-            case "FIND":
+        case "FIND":
                 command = new FindCommand(argument);
                 break;
         default:

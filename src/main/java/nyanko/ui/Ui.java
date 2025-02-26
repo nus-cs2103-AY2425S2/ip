@@ -1,13 +1,10 @@
 package nyanko.ui;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Ui {
     private Scanner sc = new Scanner(System.in);
-    private String lastResponse = "";
-    private List<String> responseBuffer = new ArrayList<>();
+    private StringBuilder responseBuffer = new StringBuilder();
 
     /**
      * Reads the next command from the user (CLI mode).
@@ -18,47 +15,40 @@ public class Ui {
         return sc.nextLine();
     }
 
-    public void showWelcome() {
-        lastResponse = "HEEHAW I'M NYANKO \uD83D\uDC31\nToday's a good day to chill and slack!\nzzzzzz";
-        System.out.println(lastResponse);
-        addResponse("HEEHAW I'M NYANKO 🐱\nToday's a good day to chill and slack!\nzzzzzz");
+    /**
+     * Stores a message and prints it to the CLI.
+     *
+     * @param message The message to store.
+     */
+    public void showMessage(String message) {
+        responseBuffer.append(message).append("\n");
+        System.out.println(message); // Keep CLI functionality
     }
 
-    /**
-     * Displays an error message.
-     *
-     * @param message The error message.
-     */
+    public void showWelcome() {
+        showMessage("HEEHAW I'M NYANKO 🐱\nToday's a good day to chill and slack!\nzzzzzz");
+    }
+
     public void showError(String message) {
-        lastResponse = message;
-        System.out.println(message);
-        addResponse(message);
+        showMessage(message);
     }
 
     public void showLoadingError() {
-        lastResponse = "Error loading tasks";
-        System.out.println(lastResponse);
-        addResponse(lastResponse);
+        showMessage("boooo... error loading tasks!");
     }
 
     public void showGoodbye() {
-        lastResponse = "Good night... I'm going to nap zzzzz";
-        System.out.println(lastResponse);
-        addResponse(lastResponse);
-    }
-
-    public void addResponse(String message) {
-        responseBuffer.add(message);
+        showMessage("Good night... I'm going to nap zzzzz");
     }
 
     /**
-     * Retrieves all stored responses for GUI.
+     * Retrieves the accumulated response stored in the buffer for GUI display.
      *
-     * @return A concatenated string of responses.
+     * @return The accumulated response as a string.
      */
-    public String getResponse() {
-        String response = String.join("\n", responseBuffer);
-        responseBuffer.clear(); // Clear after retrieval
-        return response;
+    public String getLastResponse() {
+        String result = responseBuffer.toString();
+        responseBuffer.setLength(0); // Clear buffer after retrieving response
+        return result;
     }
 }

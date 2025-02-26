@@ -1,5 +1,8 @@
 package nyanko.command;
 
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
+import javafx.util.Duration;
 import nyanko.storage.Storage;
 import nyanko.task.TaskList;
 import nyanko.ui.Ui;
@@ -19,6 +22,13 @@ public class ByeCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showGoodbye();
+
+        PauseTransition delay = new PauseTransition(Duration.seconds(1.5));
+        delay.setOnFinished(event -> {
+            Platform.exit(); // Close JavaFX GUI
+            System.exit(0);  // Ensure full program termination
+        });
+        delay.play();
     }
 
     @Override

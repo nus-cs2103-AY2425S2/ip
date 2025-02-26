@@ -19,7 +19,7 @@ public class DeleteCommand extends Command {
             throw new InvalidTaskNumberException("Task number " + (index + 1) + " is invalid!!");
         }
         tasks.removeTask(index);
-        System.out.println("You're goofy but I deleted your task");
+        ui.showMessage("You're goofy but I deleted your task");
         storage.save(tasks.getTasks());
     }
 }

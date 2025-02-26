@@ -35,7 +35,7 @@ public class Nyanko {
             ui.showLoadingError();
             tasks = new TaskList();
         }
-        ui.showWelcome(); // Ensure welcome message is stored for GUI
+        ui.showWelcome();
     }
 
     /**
@@ -48,7 +48,7 @@ public class Nyanko {
         try {
             Command command = Parser.parse(input);
             command.execute(tasks, ui, storage);
-            return ui.getResponse(); // Returns all responses for GUI
+            return ui.getLastResponse();
         } catch (Exception e) {
             return "Oops! Something went wrong: " + e.getMessage();
         }

@@ -38,12 +38,12 @@ public class FindCommand extends Command {
 
 
         if (matchingTasks.isEmpty()) {
-            System.out.println("No matching tasks found!");
+            ui.showMessage("stewpid! no matching tasks found!");
         } else {
             for (int i = 0; i < matchingTasks.size(); i++) {
-                findString = findString + (i + 1) + "." + matchingTasks.get(i) + "\n";
+                findString = findString + (i + 1) + ". " + matchingTasks.get(i) + "\n";
             }
-            System.out.println(findString);
+            ui.showMessage(findString);
         }
     }
 }

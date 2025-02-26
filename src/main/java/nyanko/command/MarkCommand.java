@@ -22,7 +22,7 @@ public class MarkCommand extends Command {
         Task task = tasks.getTask(index);
         task.markAsDone();
         String markString = "zzzz... oh WHAT you're done already?\n  " + task.toString();
-        System.out.println(markString);
+        ui.showMessage(markString);
         storage.save(tasks.getTasks());
     }
 }

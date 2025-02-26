@@ -13,6 +13,7 @@ import nyanko.ui.Ui;
  */
 public class DeadlineCommand extends Command {
     private String description;
+    private String by;
 
     /**
      * Constructs a {@code DeadlineCommand} with the given task description.
@@ -20,7 +21,12 @@ public class DeadlineCommand extends Command {
      * @param argument The description of the deadline task.
      */
     public DeadlineCommand(String argument) {
-        this.description = argument;
+        String[] parts = argument.split("\\\\", 2);
+        if (parts.length < 2) {
+            throw new IllegalArgumentException("Invalid deadline format! Use: deadline description\\due_date");
+        }
+        this.description = parts[0].trim();
+        this.by = parts[1].trim();
     }
 
     /**
@@ -35,19 +41,17 @@ public class DeadlineCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
-        while (true) {
-            try {
-                System.out.println("When is it due? (format: yyyy-MM-dd HHmm)");
-                String by = ui.readCommand();
-                Deadline deadline = new Deadline(description, by);
-                tasks.addTask(deadline);
-                System.out.println("WOW you're so hardworking\nok fine... your task has been added!\nadded: " + deadline.toString());
-                System.out.println("Oh my! You have " + tasks.size() + " tasks!");
-                storage.save(tasks.getTasks());
-                break;
-            } catch (DateTimeParseException e) {
-                ui.showError("Your date/time format is incorrect! Don't be dumb! Try again!");
-            }
+        try {
+            Deadline deadline = new Deadline(description, by);
+            tasks.addTask(deadline);
+            String message = "WOW you're so hardworking\n"
+                    + "ok fine... your task has been added!\nadded: "
+                    + deadline.toString()
+                    + "\nOh my! You have " + tasks.size() + " tasks!";
+            ui.showMessage(message);
+            storage.save(tasks.getTasks());
+        } catch (DateTimeParseException e) {
+            ui.showError("Your date/time format is incorrect! Don't be dumb! Use yyyy-MM-dd HHmm!");
         }
     }
 }

@@ -24,7 +24,7 @@ public class TodoCommand extends Command {
                 + "\nOh my! You have "
                 + tasks.size()
                 + " tasks!";
-        System.out.println(toDoString);
+        ui.showMessage(toDoString);
         storage.save(tasks.getTasks());
     }
 }
