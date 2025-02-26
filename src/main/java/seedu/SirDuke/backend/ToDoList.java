@@ -90,8 +90,8 @@ public class ToDoList {
      * @param index the index of the task in the <code>ArrayList toDoList</code>
      * @throws IndexOutOfBoundsException in the case that the task does not exist
      */
-    public void deleteTask(int index) throws IndexOutOfBoundsException {
-        tasks.remove(index);
+    public Task deleteTask(int index) throws IndexOutOfBoundsException {
+        return tasks.remove(index);
     }
 
     /**
@@ -116,11 +116,11 @@ public class ToDoList {
      * Will return empty String representation of ArrayList if no tasks are found.
      */
     public String findTask(String keyword) {
-        ArrayList<Task> tasksFound = new ArrayList<>();
+        StringBuilder tasksFound = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
             if (task.contains(keyword)) {
-                tasksFound.add(task);
+                tasksFound.append(tasks.indexOf(task) + 1).append(". ").append(task.toString()).append("\n");
             }
         }
         return tasksFound.toString();

@@ -5,7 +5,7 @@ import seedu.SirDuke.backend.task.Task;
 public class UI {
 
     public static String sayBye() {
-        return "Godspeed.";
+        return "Godspeed. I will see you soon.";
     }
 
     public static String markTaskAsDone(Task task) {
@@ -16,8 +16,8 @@ public class UI {
         return "Understood, I have unmarked this task as done.";
     }
 
-    public static String informThatTaskDeleteIsSuccessful() {
-        return "Very well, I have deleted this task.";
+    public static String informThatTaskDeleteIsSuccessful(Task task) {
+        return "Very well, I have deleted this task: " + task.getDescription();
     }
 
     public static String sayHello() {
@@ -58,7 +58,7 @@ public class UI {
     }
 
     public static String informThatTaskHasBeenEdited() {
-        return "I have successfully updated the requested task";
+        return "I have successfully updated the requested task.";
     }
 
     public static String informThatCommandDoesNotWorkOnTask(Task task) {
