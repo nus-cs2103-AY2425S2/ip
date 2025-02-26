@@ -18,7 +18,6 @@ public class SirDuke {
 
     private Storage storage;
     private ToDoList toDoList;
-
     private Parser parser;
 
     /**
