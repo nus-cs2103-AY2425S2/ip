@@ -18,8 +18,13 @@ public class TodoCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         ToDo todo = new ToDo(description);
         tasks.addTask(todo);
-        System.out.println("WOW you're so hardworking\nok fine... your task has been added!\nadded: " + todo.toString());
-        System.out.println("Oh my! You have " + tasks.size() + " tasks!");
+        String toDoString = "WOW you're so hardworking\n"
+                + "ok fine... your task has been added!\nadded: "
+                + todo.toString()
+                + "\nOh my! You have "
+                + tasks.size()
+                + " tasks!";
+        System.out.println(toDoString);
         storage.save(tasks.getTasks());
     }
 }
