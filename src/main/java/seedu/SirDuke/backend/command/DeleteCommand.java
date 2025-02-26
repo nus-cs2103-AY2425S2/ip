@@ -3,6 +3,7 @@ package seedu.SirDuke.backend.command;
 import seedu.SirDuke.UI;
 import seedu.SirDuke.backend.Storage;
 import seedu.SirDuke.backend.ToDoList;
+import seedu.SirDuke.backend.task.Task;
 
 
 /**
@@ -37,8 +38,8 @@ public class DeleteCommand extends Command {
     @Override
     public String execute(ToDoList toDoList, Storage storage) {
         try {
-            toDoList.deleteTask(Integer.parseInt(input) - 1);
-            return UI.informThatTaskDeleteIsSuccessful();
+            Task task = toDoList.deleteTask(Integer.parseInt(input) - 1);
+            return UI.informThatTaskDeleteIsSuccessful(task);
         } catch (NumberFormatException e) { //input is not an integer
             return UI.informThatTaskIndexIsInvalid();
         } catch (IndexOutOfBoundsException e) { //task index is out of bounds, i.e. task does not exist
