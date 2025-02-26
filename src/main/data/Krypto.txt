@@ -1,0 +1,11 @@
+T |  | read book
+D | X | return book | 2024-02-03 12:30
+E |  | project meeting | 2014-02-03 12:30 | 2014-02-03 14:30
+D |  | ip deadline | 2023-07-07 19:25
+E |  | cycling wcp | 2025-02-03 09:00 | 2025-02-03 11:00
+T |  | sleep
+D | X | return book | 2025-02-25 09:00
+T |  | finish ip CS2103
+T |  | go gym
+E |  | dinner with friends | 2025-02-26 18:00 | 2025-02-26 20:00
+T | X | submit ip release

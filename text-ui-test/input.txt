@@ -1,0 +1,12 @@
+todo borrow book
+deadline Finish 2103 work /by Friday 4PM
+event project meeting /from Saturday 8pm /to 9pm
+list
+mark 2
+list
+delete 3
+blah
+todo Do online quiz /by friday @4PM
+deadline IP 2103
+event Hack n Roll/from 3PM 16 Jan
+bye
