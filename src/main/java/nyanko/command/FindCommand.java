@@ -1,11 +1,11 @@
 package nyanko.command;
 
+import java.util.ArrayList;
+
 import nyanko.storage.Storage;
 import nyanko.task.Task;
 import nyanko.task.TaskList;
 import nyanko.ui.Ui;
-
-import java.util.ArrayList;
 
 /**
  * Represents a command to find tasks based on a keyword in the description.

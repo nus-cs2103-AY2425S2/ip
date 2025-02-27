@@ -7,12 +7,11 @@ import java.time.format.DateTimeFormatter;
  * Represents an Event task with a start and end time.
  */
 public class Event extends Task {
-    protected LocalDateTime from;
-    protected LocalDateTime to;
-
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter DISPLAY_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
 
+    protected LocalDateTime from;
+    protected LocalDateTime to;
 
     /**
      * Constructs an Event task with the given description, start time, and end time.
@@ -27,6 +26,11 @@ public class Event extends Task {
         this.to = LocalDateTime.parse(to, INPUT_FORMAT);
     }
 
+    /**
+     * Gets the start time of the event in input format.
+     *
+     * @return The start time formatted as "yyyy-MM-dd HHmm".
+     */
     public String getFrom() {
         return this.from.format(INPUT_FORMAT);
     }
@@ -65,6 +69,13 @@ public class Event extends Task {
                 this.from.format(formatter), this.to.format(formatter));
     }
 
+    /**
+     * Creates an Event task from a save file format.
+     *
+     * @param saveFormat The saved task string in the format: Event|doneStatus|description|startTime|endTime.
+     * @return The reconstructed Event task.
+     * @throws InvalidTaskFormatException If the format is invalid.
+     */
     public static Task fromSaveFormat(String saveFormat) throws InvalidTaskFormatException {
         String[] parts = saveFormat.split("\\|");
         if (parts.length < 5) {

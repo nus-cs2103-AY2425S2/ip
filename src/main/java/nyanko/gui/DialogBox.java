@@ -1,4 +1,4 @@
-package nyanko.GUI;
+package nyanko.gui;
 
 import java.io.IOException;
 import java.util.Collections;

@@ -50,7 +50,8 @@ public class ToDo extends Task {
         }
 
         if (!parts[1].equals("0") && !parts[1].equals("1")) {
-            throw new InvalidTaskFormatException("Invalid completion status in ToDo task: " + parts[1] + ". Expected '0' or '1'.");
+            throw new InvalidTaskFormatException("Invalid completion status in ToDo task: "
+                    + parts[1] + ". Expected '0' or '1'.");
         }
 
         boolean isDone = parts[1].equals("1");

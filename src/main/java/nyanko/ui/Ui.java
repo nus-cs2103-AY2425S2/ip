@@ -2,6 +2,10 @@ package nyanko.ui;
 
 import java.util.Scanner;
 
+/**
+ * Handles user interaction for the Nyanko application.
+ * This class supports both CLI-based and GUI-based outputs.
+ */
 public class Ui {
     private Scanner sc = new Scanner(System.in);
     private StringBuilder responseBuffer = new StringBuilder();
@@ -25,18 +29,32 @@ public class Ui {
         System.out.println(message); // Keep CLI functionality
     }
 
+    /**
+     * Displays a welcome message.
+     */
     public void showWelcome() {
         showMessage("HEEHAW I'M NYANKO 🐱\nToday's a good day to chill and slack!\nzzzzzz");
     }
 
+    /**
+     * Displays an error message.
+     *
+     * @param message The error message to be displayed.
+     */
     public void showError(String message) {
         showMessage(message);
     }
 
+    /**
+     * Displays an error message when loading tasks fails.
+     */
     public void showLoadingError() {
         showMessage("boooo... error loading tasks!");
     }
 
+    /**
+     * Displays a goodbye message when the program exits.
+     */
     public void showGoodbye() {
         showMessage("Good night... I'm going to nap zzzzz");
     }

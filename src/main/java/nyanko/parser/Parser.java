@@ -1,8 +1,29 @@
 package nyanko.parser;
 
-import nyanko.command.*;
+import nyanko.command.ByeCommand;
+import nyanko.command.Command;
+import nyanko.command.DeadlineCommand;
+import nyanko.command.DeleteCommand;
+import nyanko.command.EventCommand;
+import nyanko.command.FindCommand;
+import nyanko.command.InvalidCommand;
+import nyanko.command.ListCommand;
+import nyanko.command.MarkCommand;
+import nyanko.command.SnoozeCommand;
+import nyanko.command.TodoCommand;
+import nyanko.command.UnmarkCommand;
 
+/**
+ * Parses user input and returns the corresponding command.
+ */
 public class Parser {
+
+    /**
+     * Parses the given input string and returns the corresponding Command.
+     *
+     * @param fullCommand The full input string entered by the user.
+     * @return The corresponding {@link Command} object.
+     */
     public static Command parse(String fullCommand) {
         String[] parts = fullCommand.split(" ", 2);
         String commandWord = parts[0];

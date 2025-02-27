@@ -25,8 +25,8 @@ public class ByeCommand extends Command {
 
         PauseTransition delay = new PauseTransition(Duration.seconds(1.5));
         delay.setOnFinished(event -> {
-            Platform.exit(); // Close JavaFX GUI
-            System.exit(0);  // Ensure full program termination
+            Platform.exit();
+            System.exit(0);
         });
         delay.play();
     }

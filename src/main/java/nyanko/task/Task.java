@@ -42,9 +42,9 @@ public class Task {
         this.isDone = true;
     }
 
-/**
- * Marks the task as not done.
- */
+    /**
+    * Marks the task as not done.
+    */
     public void markAsNotDone() {
         this.isDone = false;
     }
@@ -82,22 +82,22 @@ public class Task {
         Task task;
         switch (type) {
         case "ToDo":
-                task = new ToDo(description);
-                break;
+            task = new ToDo(description);
+            break;
         case "Deadline":
-                if (parts.length < 4) {
-                    throw new InvalidTaskFormatException("Invalid deadline format: " + saveFormat);
-                }
-                task = new Deadline(description, parts[3]);
-                break;
+            if (parts.length < 4) {
+                throw new InvalidTaskFormatException("Invalid deadline format: " + saveFormat);
+            }
+            task = new Deadline(description, parts[3]);
+            break;
         case "Event":
-                if (parts.length < 5) {
-                    throw new InvalidTaskFormatException("Invalid event format: " + saveFormat);
-                }
-                task = new Event(description, parts[3], parts[4]);
-                break;
+            if (parts.length < 5) {
+                throw new InvalidTaskFormatException("Invalid event format: " + saveFormat);
+            }
+            task = new Event(description, parts[3], parts[4]);
+            break;
         default:
-                throw new InvalidTaskFormatException("Unknown task type: " + type);
+            throw new InvalidTaskFormatException("Unknown task type: " + type);
         }
 
         if (isDone) {

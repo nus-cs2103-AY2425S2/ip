@@ -7,11 +7,9 @@ import java.time.format.DateTimeFormatter;
  * Represents a Deadline task with a due date and time.
  */
 public class Deadline extends Task {
-    protected LocalDateTime by;
-
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter DISPLAY_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
-
+    protected LocalDateTime by;
     /**
      * Constructs a Deadline task with the given description and due date.
      *
@@ -54,7 +52,8 @@ public class Deadline extends Task {
     @Override
     public String toSaveFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-        return String.format("%s|%d|%s|%s", this.getClass().getSimpleName(), isDone ? 1 : 0, description, this.by.format(formatter));
+        return String.format("%s|%d|%s|%s", this.getClass().getSimpleName(),
+                isDone ? 1 : 0, description, this.by.format(formatter));
     }
 
     /**

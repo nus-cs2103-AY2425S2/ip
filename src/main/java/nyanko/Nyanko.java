@@ -1,14 +1,13 @@
 package nyanko;
 
+import java.io.IOException;
+
 import nyanko.command.Command;
-import nyanko.command.InvalidTaskNumberException;
 import nyanko.parser.Parser;
 import nyanko.storage.Storage;
 import nyanko.task.InvalidTaskFormatException;
 import nyanko.task.TaskList;
 import nyanko.ui.Ui;
-
-import java.io.IOException;
 
 /**
  * The main entry point for Nyanko (GUI version).
@@ -26,7 +25,6 @@ public class Nyanko {
      */
     public Nyanko(String filePath) {
         assert filePath != null && !filePath.isEmpty() : "File path should not be null or empty";
-        
         ui = new Ui();
         storage = new Storage(filePath);
         try {

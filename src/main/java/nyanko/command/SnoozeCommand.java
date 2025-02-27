@@ -1,14 +1,13 @@
 package nyanko.command;
 
+import java.io.IOException;
+
 import nyanko.storage.Storage;
 import nyanko.task.Deadline;
 import nyanko.task.Event;
 import nyanko.task.Task;
 import nyanko.task.TaskList;
 import nyanko.ui.Ui;
-
-import java.io.IOException;
-import java.time.format.DateTimeParseException;
 
 /**
  * Represents a command to snooze (postpone/reschedule) a Deadline or Event task.
@@ -42,11 +41,11 @@ public class SnoozeCommand extends Command {
         String oldDateTime = "";
 
         if (task instanceof Deadline) {
-            oldDateTime = ((Deadline) task).getBy();
-            ((Deadline) task).snooze(newDateTime);
+            oldDateTime = ((Deadline) task).getBy(); (
+                    (Deadline) task).snooze(newDateTime);
         } else if (task instanceof Event) {
-            oldDateTime = ((Event) task).getFrom();
-            ((Event) task).snooze(newDateTime);
+            oldDateTime = ((Event) task).getFrom(); (
+                    (Event) task).snooze(newDateTime);
         } else {
             ui.showError("Only Deadlines and Events can be postponed!");
             return;
@@ -54,8 +53,8 @@ public class SnoozeCommand extends Command {
 
         storage.save(tasks.getTasks());
 
-        ui.showMessage("Task snoozed successfully!\n" +
-                "Previous Date/Time: " + oldDateTime + "\n" +
-                "Updated Task: " + task.toString());
+        ui.showMessage("Task snoozed successfully!\n"
+                + "Previous Date/Time: " + oldDateTime + "\n"
+                + "Updated Task: " + task.toString());
     }
 }

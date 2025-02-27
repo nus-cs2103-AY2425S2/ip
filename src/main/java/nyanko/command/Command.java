@@ -1,15 +1,17 @@
 package nyanko.command;
 
-/**
- * Represents an abstract command that can be executed in the Nyanko application.
- * All specific commands should extend this class and implement the execute method.
- */
 import java.io.IOException;
+
 import nyanko.storage.Storage;
 import nyanko.task.TaskList;
 import nyanko.ui.Ui;
 
+/**
+ * Represents an abstract command that can be executed in the Nyanko application.
+ * All specific commands should extend this class and implement the execute method.
+ */
 public abstract class Command {
+
     /**
      * Executes the command, performing the necessary actions on the task list,
      * UI, and storage system.
