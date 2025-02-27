@@ -1,26 +1,138 @@
-# Duke project template
-
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
-
-## Setting up in Intellij
-
-Prerequisites: JDK 17, update Intellij to the most recent version.
-
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
+# YasuMax (安Max) - Your Personal Study Companion! 🧑‍🎓👩‍🎓
+YasuMax is a user-friendly academic task tracker designed to help students manage their study commitments with ease.<br>
+It is optimised for use via a **Command Line Interface** (CLI) while having a nice *Graphical User Interface* (GUI).<br>
+Whether you're juggling assignment deadlines in JC, hackathon project TODOs in poly, or your upcoming university FYPs,
+YasuMax keeps you on track for a stress-free academic life!
+---
+## Why YasuMax? 🤔
+"Yasu" means peace in Japanese, and BayMax is the gentle giant (*~aww~*) we all adored in Disney's Big Hero 6 (2014).<br>
+When school feels overwhelming and tasks seem endless, we yearn for a reliable companion to assist us.<br>
+While BayMax isn't real...YasuMax is! Try it below and call it your dedicated study buddy today!
+---
+## User Guide Summary
+- Installation Guide
+- Quick Demo
+- Features
+   - Task Insertion
+      - Adding a todo task: `todo [description]`
+      - Adding a deadline task: `deadline [description] /by [datetime]`
+      - Adding an event task: `event [description] /from [datetime] /to [datetime]`
+   - Task Deletion
+      - Deleting a task by insertion index: `delete [index]`
+      - Clearing all tasks: `clear`
+   - Task Annotation
+      - Marking a task as complete: `mark [index]`
+      - Unmarking a task as incomplete: `unmark [index]`
+   - Task Search
+      - Finding a task by insertion index: `find_index [index]`
+      - Finding a task by character(s): `find [keyword]`
+      - Listing all tasks: `list`
+   - Miscellaneous Features
+      - Viewing general help: `help`
+      - Viewing specific help: `help [valid_command]`
+      - Exiting app: `bye`
+---
+## Installation Guide
+1. Ensure you have Java `17` or above installed in your Computer.<br>
+   **Mac users:** Ensure you have the precise JDK version [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).<br>
+   You can check your Java version on any OS by running in your terminal: `java -version`
+2. Navigate to the [YasuMax GitHub Releases](https://github.com/Mingyuan03/ip/releases) page.
+3. Download the latest `YasuMax.jar` file to a local home directory of your choice.
+4. Run `YasuMax` via this command in your terminal: `java -jar YasuMax.jar`. This should launch YasuMax in GUI mode ![here](images/Start.png).
+---
+## Quick Demo
+1. Type `help` in GUI mode for all available commands alongside their formats. A resizable pop-up window should appear:![here](images/Help.png)
+   1. Take note that this pop-up window must be closed explicitly to ensure you have read through them thoroughly!
+   2. `YasuMax` allows you to further customise your `help` by specifying 1 additional command to get its format!<b>
+      E.g.: Running `help help` (which is distinct from `help`!) should render:![here](images/Help-help.png)
+2. Try out the following sample commands in sequence:
    ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
-
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+   help help
+   deadline CS2103T /by 20250224
+   list
+   mark 1
+   event NUS Math Underground Seminar /from 20250224 /to 2025028
+   todo send-off papa at Changi Terminal 2
+   find_index 2
+   find 2
+   mark 3
+   unmark 1
+   list
+   delete 3
+   clear
+   bye
+3. Ensure you get the result for Step 2 as depicted in the 6 images below:
+   ![sample-1](images/Sample-1.png)<b>
+   ![sample-2](images/Sample-2.png)<b>
+   ![sample-3](images/Sample-3.png)<b>
+   ![sample-4](images/Sample-4.png)<b>
+   ![sample-5](images/Sample-5.png)<b>
+   ![sample-6](images/Sample-6.png)<b>
+4. You are good to go, captain!
+---
+## Features
+### Adding a todo task
+- Format: `todo [description]`
+- Notes 📝:
+   - Description cannot be empty, else `YasuMax` kindly gives a `todo` custom help message akin to `help todo`.
+### Adding a deadline task:
+- Format: `deadline [description] /by [datetime]`
+- Notes 📝:
+   - Description and datetime cannot be empty, else `YasuMax` kindly gives a `deadline` custom help message
+     akin to `help deadline`.
+### Adding an event task:
+- Format: `event [description] /from [datetime] /to [datetime]`
+- Notes 📝:
+   - Description and both datetime cannot be empty, else `YasuMax` kindly gives a `event` custom help message
+     akin to `help event`.
+   - Both datetime cannot be invalid, else `YasuMax` kindly gives a list of valid ISO8601-like datetime it recognises,
+     as seen here: ![here](images/Invalid-datetime.png)
+### Deleting a task by insertion index:
+- Format: `delete [index]`
+- Notes 📝:
+   - Index must be a positive integer and not out of bound. If no tasks are stored, `YasuMax` short-circuits successfully
+     independent of index's validity.
+### Clearing all tasks:
+- Format: `clear`
+- Notes 📝:
+   - Any text following this command is ignored.
+### Marking a task as complete:
+- Format: `mark [index]`
+- Notes 📝:
+   - Index must be a positive integer and not out of bound. If no tasks are stored, `YasuMax` short-circuits successfully
+     independent of index's validity.
+### Unmarking a task as incomplete:
+- Format: `unmark [index]`
+- Notes 📝:
+   - Index must be a positive integer and not out of bound. If no tasks are stored, `YasuMax` short-circuits successfully
+     independent of index's validity.
+### Finding a task by insertion index:
+- Format: `find_index [index]`
+- Notes 📝:
+   - Index must be a positive integer and not out of bound. If no tasks are stored, `YasuMax` short-circuits successfully
+     independent of index's validity.
+### Finding a task by character(s):
+- Format: `find [keyword]`
+- Notes 📝:
+   - This command is more flexible than a pedantic search, i.e. it finds all matching char sequences no matter if they
+     form a separate word in each task. This better mimics app search in real-life.
+### Listing all tasks:
+- Format: `list`
+- Notes 📝:
+   - Any text following this command is ignored.
+### Viewing general help:
+- Format: `help`
+- Notes 📝:
+   - This command defaults to getting full help message if no text follows, else it requires a single-word valid command.
+### Viewing specific help:
+- Format: `help [valid_command]`
+- Notes 📝:
+   - If text following `help` is invalid or not a single word, this command defaults back to getting full help message
+     akin to standalone `help` above.
+### Exiting app:
+- Format: `bye`
+- Notes 📝:
+   - Special command to terminate bot interaction normally.<b>
+   - **BEWARE** force-closure of GUI window via builtin top-right
+     ❌ button won't properly save data from past sessions to cache, likely corrupting data.
+---

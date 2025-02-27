@@ -1,7 +1,145 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Hello! I'm YasuMax, your personal study companion!
+What can I do for you?
+____________________________________________________________
+You typed an invalid command!
 
+Valid commands alongside their formats are:
+FOR TASK INSERTION:
+DEADLINE:<description> /by <time>
+EVENT:description> /from <time> /to <time>
+TODO:<description>
+
+FOR TASK DELETION:
+DELETE:<index>
+CLEAR:No requirements to this command
+
+FOR TASK ANNOTATION:
+MARK:<index>
+UNMARK:<index>
+
+FOR TASK SEARCH:
+FIND:<keyword>
+FIND_INDEX:<index>
+LIST:No requirements to this command
+
+FOR MISCELLANEOUS FUNCTIONALITIES:
+HELP:<keyword> or no requirements to this command
+BYE:No requirements to this command
+____________________________________________________________
+You have no tasks in your list.
+____________________________________________________________
+Got it. I've added this task:
+[D][ ] CS2103T (by: 2025-02-07T16:00)
+Now you have 1 task in the list.
+____________________________________________________________
+Here is the task in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+____________________________________________________________
+Got it. I've added this task:
+[E][ ] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
+Now you have 2 tasks in the list.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[E][ ] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
+____________________________________________________________
+Got it. I've added this task:
+[T][ ] Visit cousins in Taiwan
+Now you have 3 tasks in the list.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[E][ ] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
+3.[T][ ] Visit cousins in Taiwan
+____________________________________________________________
+Nice! I've marked this task as done:
+[D][X] CS2103T (by: 2025-02-07T16:00)
+____________________________________________________________
+Nice! I've marked this task as done:
+[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
+____________________________________________________________
+Nice! I've marked this task as done:
+[T][X] Visit cousins in Taiwan
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][X] CS2103T (by: 2025-02-07T16:00)
+2.[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
+3.[T][X] Visit cousins in Taiwan
+____________________________________________________________
+OK, I've marked this task as not done yet:
+[D][ ] CS2103T (by: 2025-02-07T16:00)
+____________________________________________________________
+Oops! This task is already marked as done.
+____________________________________________________________
+Oops! This task is already marked as done.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
+3.[T][X] Visit cousins in Taiwan
+____________________________________________________________
+Oops! This task is already marked as undone.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
+3.[T][X] Visit cousins in Taiwan
+____________________________________________________________
+Noted. I've removed this task:
+[E][X] ST1131 (from: 2025-02-02T00:00 to: 2025-02-16T23:59)
+Now you have 2 tasks in the list.
+____________________________________________________________
+Here are the tasks in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[T][X] Visit cousins in Taiwan
+____________________________________________________________
+Here are the matching tasks in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+2.[T][X] Visit cousins in Taiwan
+____________________________________________________________
+Here is the task in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+____________________________________________________________
+Noted. I've removed this task:
+[T][X] Visit cousins in Taiwan
+Now you have 1 task in the list.
+____________________________________________________________
+Here is the task in your list:
+1.[D][ ] CS2103T (by: 2025-02-07T16:00)
+____________________________________________________________
+Noted. I've removed this task:
+[D][ ] CS2103T (by: 2025-02-07T16:00)
+Now you have no tasks in the list.
+____________________________________________________________
+You have no tasks in your list.
+____________________________________________________________
+Oops! There are no matching tasks for keyword: 0
+____________________________________________________________
+Hello! I'm YasuMax, your personal study companion!
+I am here to assist you.
+
+Valid commands alongside their formats are:
+FOR TASK INSERTION:
+DEADLINE:<description> /by <time>
+EVENT:description> /from <time> /to <time>
+TODO:<description>
+
+FOR TASK DELETION:
+DELETE:<index>
+CLEAR:No requirements to this command
+
+FOR TASK ANNOTATION:
+MARK:<index>
+UNMARK:<index>
+
+FOR TASK SEARCH:
+FIND:<keyword>
+FIND_INDEX:<index>
+LIST:No requirements to this command
+
+FOR MISCELLANEOUS FUNCTIONALITIES:
+HELP:<keyword> or no requirements to this command
+BYE:No requirements to this command
+____________________________________________________________
+Bye! Hope to see you again soon!
+____________________________________________________________
