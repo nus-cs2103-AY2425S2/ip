@@ -11,35 +11,38 @@ public class Parser {
         Command command;
         switch (commandWord.toUpperCase()) {
         case "BYE":
-                command = new ByeCommand();
-                break;
+            command = new ByeCommand();
+            break;
         case "LIST":
-                command = new ListCommand();
-                break;
+            command = new ListCommand();
+            break;
         case "MARK":
-                command = new MarkCommand(argument);
-                break;
+            command = new MarkCommand(argument);
+            break;
         case "UNMARK":
-                command = new UnmarkCommand(argument);
-                break;
+            command = new UnmarkCommand(argument);
+            break;
         case "DELETE":
-                command = new DeleteCommand(argument);
-                break;
+            command = new DeleteCommand(argument);
+            break;
         case "DEADLINE":
-                command = new DeadlineCommand(argument);
-                break;
+            command = new DeadlineCommand(argument);
+            break;
         case "TODO":
-                command = new TodoCommand(argument);
-                break;
+            command = new TodoCommand(argument);
+            break;
         case "EVENT":
-                command = new EventCommand(argument);
-                break;
+            command = new EventCommand(argument);
+            break;
         case "FIND":
-                command = new FindCommand(argument);
-                break;
+            command = new FindCommand(argument);
+            break;
+        case "SNOOZE":
+            command = new SnoozeCommand(argument);
+            break;
         default:
-                command = new InvalidCommand();
-                break;
+            command = new InvalidCommand();
+            break;
         }
         return command;
     }

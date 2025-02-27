@@ -7,8 +7,10 @@ import java.time.format.DateTimeFormatter;
  * Represents a Deadline task with a due date and time.
  */
 public class Deadline extends Task {
-
     protected LocalDateTime by;
+
+    private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter DISPLAY_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
 
     /**
      * Constructs a Deadline task with the given description and due date.
@@ -18,8 +20,20 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String by) {
         super(description);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-        this.by = LocalDateTime.parse(by, formatter);
+        this.by = LocalDateTime.parse(by, INPUT_FORMAT);
+    }
+
+    public String getBy() {
+        return this.by.format(INPUT_FORMAT);
+    }
+
+    /**
+     * Updates the deadline date/time.
+     *
+     * @param newDateTime The new due date/time in "yyyy-MM-dd HHmm" format.
+     */
+    public void snooze(String newDateTime) {
+        this.by = LocalDateTime.parse(newDateTime, INPUT_FORMAT);
     }
 
     /**
@@ -29,8 +43,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
-        return "[D]" + super.toString() + " (by: " + this.by.format(formatter) + ")";
+        return "[D]" + super.toString() + " (by: " + this.by.format(DISPLAY_FORMAT) + ")";
     }
 
     /**

@@ -17,7 +17,7 @@ public class MarkCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, InvalidTaskNumberException {
         if (index >= tasks.size() || index < 0) {
-            throw new InvalidTaskNumberException("Task number " + (index + 1) + " is invalid!!");
+            throw new InvalidTaskNumberException("Oi! Task number " + (index + 1) + " is invalid!!");
         }
         Task task = tasks.getTask(index);
         task.markAsDone();

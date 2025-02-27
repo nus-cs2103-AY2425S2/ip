@@ -7,9 +7,12 @@ import java.time.format.DateTimeFormatter;
  * Represents an Event task with a start and end time.
  */
 public class Event extends Task {
-
     protected LocalDateTime from;
     protected LocalDateTime to;
+
+    private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+    private static final DateTimeFormatter DISPLAY_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
+
 
     /**
      * Constructs an Event task with the given description, start time, and end time.
@@ -20,9 +23,22 @@ public class Event extends Task {
      */
     public Event(String description, String from, String to) {
         super(description);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-        this.from = LocalDateTime.parse(from, formatter);
-        this.to = LocalDateTime.parse(to, formatter);
+        this.from = LocalDateTime.parse(from, INPUT_FORMAT);
+        this.to = LocalDateTime.parse(to, INPUT_FORMAT);
+    }
+
+    public String getFrom() {
+        return this.from.format(INPUT_FORMAT);
+    }
+
+    /**
+     * Updates the event start and end time.
+     *
+     * @param newDateTime The new start date/time in "yyyy-MM-dd HHmm" format.
+     */
+    public void snooze(String newDateTime) {
+        this.from = LocalDateTime.parse(newDateTime, INPUT_FORMAT);
+        this.to = from.plusHours(2); // Default duration 2 hours
     }
 
     /**
@@ -32,8 +48,9 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
-        return "[E]" + super.toString() + " (from: " + this.from.format(formatter) + " to: " + this.to.format(formatter) + ")";
+        return "[E]" + super.toString()
+                + " (from: " + this.from.format(DISPLAY_FORMAT)
+                + " to: " + this.to.format(DISPLAY_FORMAT) + ")";
     }
 
     /**
@@ -44,7 +61,8 @@ public class Event extends Task {
     @Override
     public String toSaveFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-        return String.format("%s|%d|%s|%s|%s", this.getClass().getSimpleName(), isDone ? 1 : 0, description, this.from.format(formatter), this.to.format(formatter));
+        return String.format("%s|%d|%s|%s|%s", this.getClass().getSimpleName(), isDone ? 1 : 0, description,
+                this.from.format(formatter), this.to.format(formatter));
     }
 
     public static Task fromSaveFormat(String saveFormat) throws InvalidTaskFormatException {
