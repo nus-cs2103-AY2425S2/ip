@@ -18,6 +18,7 @@ Nyanko is a **simple, text-based** task manager that helps you keep track of **T
 
 - ✅ **Manage Tasks Efficiently**
 - 📌 **Supports Three Types of Tasks** (ToDos, Deadlines, Events)
+- 😴 **Snooze Tasks**
 - 🔍 **Find Tasks Using Keywords**
 - 💾 **Persistent Storage** - Saves tasks to a file
 - 🎭 **Intuitive Command-Based Interface**
