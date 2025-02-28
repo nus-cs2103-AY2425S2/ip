@@ -3,7 +3,6 @@ plugins {
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'checkstyle'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
 }
 
 repositories {
@@ -11,8 +10,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
+
     String javaFxVersion = '17.0.7'
 
     implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'win'
@@ -29,21 +29,12 @@ dependencies {
     implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'linux'
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
-javafx {
-    version = "17"
-    modules = ['javafx.controls', 'javafx.fxml']
-}
-
-tasks.withType(Test).configureEach {
+test {
     useJUnitPlatform()
 
     testLogging {
         events "passed", "skipped", "failed"
+
         showExceptions true
         exceptionFormat "full"
         showCauses true
@@ -53,17 +44,12 @@ tasks.withType(Test).configureEach {
 }
 
 application {
-    mainClass.set("lechatbot.ui.Main")
+    mainClass.set("lechatbot.Launcher")
 }
 
 shadowJar {
     archiveBaseName.set("LeChatBot")
-    archiveClassifier.set("")
-    manifest {
-        attributes(
-                'Main-Class': 'lechatbot.LeChatBot'
-        )
-    }
+    archiveClassifier = null
 }
 
 checkstyle {
@@ -72,4 +58,5 @@ checkstyle {
 
 run {
     standardInput = System.in
+    enableAssertions = true
 }
