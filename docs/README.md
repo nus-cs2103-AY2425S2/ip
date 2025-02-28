@@ -1,30 +1,91 @@
-# Duke User Guide
+# GPTZeroFive User Guide
 
-// Update the title above to match the actual product name
+GPTZeroFive is a command-line task manager that helps you efficiently manage tasks, deadlines, events, and notes through simple commands.
 
-// Product screenshot goes here
+![alt text](Ui.png)
 
-// Product intro goes here
+## Command Examples
 
-## Adding deadlines
+Below are some example commands and their expected outputs:
+ 
+- Adding a todo:
+  ```
+  Input: todo finish homework
+  Output:
+  Got it. I've added this task:
+    [T][ ] finish homework
+  Now you have 1 tasks in the list.
+  ```
 
-// Describe the action and its outcome.
+- Adding a deadline:
+  ```
+  Input: deadline submit report /by 16/10/2023 2359
+  Output:
+  Got it. I've added this task:
+    [D][ ] submit report (by: 16/10/2023 2359)
+  Now you have 2 tasks in the list.
+  ```
 
-// Give examples of usage
+- Adding an event:
+  ```
+  Input: event team meeting /from 17/10/2023 1000 /to 17/10/2023 1200
+  Output:
+  Got it. I've added this task:
+    [E][ ] team meeting (from: 17/10/2023 1000 to: 17/10/2023 1200)
+  Now you have 3 tasks in the list.
+  ```
 
-Example: `keyword (optional arguments)`
+- Marking a task as done:
+  ```
+  Input: mark 1
+  Output:
+  Nice! I've marked this task as done:
+    [T][X] finish homework
+  ```
 
-// A description of the expected outcome goes here
+- Deleting a task:
+  ```
+  Input: delete 2
+  Output:
+  Noted. I've removed this task:
+    [D][ ] submit report (by: 16/10/2023 2359)
+  Now you have 2 tasks in the list.
+  ```
 
-```
-expected output
-```
+- Finding tasks by keyword:
+  ```
+  Input: find meeting
+  Output:
+  1. [E][ ] team meeting (from: 17/10/2023 1000 to: 17/10/2023 1200)
+  ```
 
-## Feature ABC
+- Adding a note:
+  ```
+  Input: newNote 3 Remember to prepare slides
+  Output:
+  Got it. I've added a note to this task:
+    [E][ ] team meeting (from: 17/10/2023 1000 to: 17/10/2023 1200)
+  ```
 
-// Feature details
+- Showing a note:
+  ```
+  Input: showNote 3
+  Output:
+  Remember to prepare slides
+  ```
 
+- Editing a note:
+  ```
+  Input: editNote 3 Prepare slides for the meeting
+  Output:
+  Got it. I've edited the note for this task:
+    [E][ ] team meeting (from: 17/10/2023 1000 to: 17/10/2023 1200)
+  ```
 
-## Feature XYZ
-
-// Feature details
+- Deleting a note:
+  ```
+  Input: deleteNote 3
+  Output:
+  Got it. I've removed the note from this task:
+    [E][ ] team meeting (from: 17/10/2023 1000 to: 17/10/2023 1200)
+  ```
