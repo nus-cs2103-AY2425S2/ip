@@ -1,7 +1,36 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+	Howdy! How's it going?
+	 _          _
+	| |        | |
+	| |__   ___| |__   ___  _ __
+	| '_ \ / _ \ '_ \ / _ \| '_ \
+	| |_) |  __/ |_) | (_) | |_) |
+	|_.__/ \___|_.__/ \___/| .__/
+	                       | |
+	                       |_|
+	What will you be doing today?
+	__________________________________
+	You got it buddy, get it done quick :D
+	[T] [ ] borrow book
+	1 tasks to be done
+	__________________________________
+	1 [T] [ ] borrow book
+	__________________________________
+	Deadlines, shag ah bro ;(.
+	[D] [ ] return book (by: Sunday)
+	2 tasks to be done
+	__________________________________
+	Yippee, hope it's a fun even :D
+	[E] [ ] project meeting (from: Mon 2pm to: 4pm)
+	3 tasks to be done
+	__________________________________
+	Good Job! I've marked the task as done!
+	[D] [ ] return book (by: Sunday)
+	__________________________________
+	Alright! Let's get this done soon :)
+	[D] [ ] return book (by: Sunday)
+	__________________________________
+	1 [T] [ ] borrow book
+	2 [D] [ ] return book (by: Sunday)
+	3 [E] [ ] project meeting (from: Mon 2pm to: 4pm)
+	__________________________________
+	Have a nice day :D, see you soon!
