@@ -1,0 +1,16 @@
+todo bruh
+mark 1
+unmark 1
+deadline breh -by 2005-12-05
+mark 2
+unmark 2
+event rofl -start 2025-03-12 -end 2025-05-17
+mark 3
+unmark 3
+list
+find breh
+delete 1
+delete 1
+delete 1
+list
+bye
