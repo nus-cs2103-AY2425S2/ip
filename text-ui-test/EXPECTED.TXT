@@ -1,7 +1,73 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+-----------------------------------------------
+Hello there! My name is DiligentPenguin
+Tell me what you want to do!
+-----------------------------------------------
+Uuh, I don't know what you mean
+-----------------------------------------------
+Noted. I will write this down for you!
+Error detected!
+Did you forget to specify name or start time / end time of the task?
+You can try again!
+-----------------------------------------------
+Uuh, I don't know what you mean
+-----------------------------------------------
+Noted. I will write this down for you!
+I have noted down a total of 1 tasks for you
+-----------------------------------------------
+-----------------------------------------------
+Noted. I will write this down for you!
+I have noted down a total of 2 tasks for you
+-----------------------------------------------
+-----------------------------------------------
+Noted. I will write this down for you!
+I have noted down a total of 3 tasks for you
+-----------------------------------------------
+-----------------------------------------------
+Here is the list of items I noted down
+1. [T][ ] homework
+2. [D][ ] homework (by: Saturday)
+3. [D][ ] go to class (from: 10am to: 12pm)
 
+-----------------------------------------------
+Noted! I'll mark task 1 as done:
+[T][X] homework
+-----------------------------------------------
+Here is the list of items I noted down
+1. [T][X] homework
+2. [D][ ] homework (by: Saturday)
+3. [D][ ] go to class (from: 10am to: 12pm)
+
+-----------------------------------------------
+Error detected!
+That's not a valid item index!
+You can try again!
+-----------------------------------------------
+Noted! I'll unmark task 1 as undone:
+[T][ ] homework
+-----------------------------------------------
+Here is the list of items I noted down
+1. [T][ ] homework
+2. [D][ ] homework (by: Saturday)
+3. [D][ ] go to class (from: 10am to: 12pm)
+
+-----------------------------------------------
+-----------------------------------------------
+Noted. I will write this down for you!
+Error detected!
+Did you forget to specify name or deadline of the task?
+You can try again!
+-----------------------------------------------
+-----------------------------------------------
+Noted. I will write this down for you!
+I have noted down a total of 4 tasks for you
+-----------------------------------------------
+Noted! I'll delete task 2 from the list:
+[D][ ] homework (by: Saturday)
+Noted! I'll delete task 4 from the list:
+Error detected!
+That's not a valid item index!
+You can try again!
+-----------------------------------------------
+-----------------------------------------------
+Bye bye. Come back to me soon!
+-----------------------------------------------
