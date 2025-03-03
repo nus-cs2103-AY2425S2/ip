@@ -1,0 +1,24 @@
+.root {
+    /* A pastel green background for the entire app window */
+    -fx-background-color: #D8FEE2;
+}
+
+.text-field {
+    -fx-font: 14px "Arial";
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+
+.button {
+    -fx-background-color: #D3D3D3;
+    -fx-font: bold 16px "Arial";
+}
+.button:hover {
+    -fx-background-color: #E0E0E0;
+}
+.button:pressed {
+    -fx-background-color: #A9A9A9;
+}
+
+/* If you have leftover .scroll-pane rules, unify them or remove duplicates. */
