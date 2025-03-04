@@ -1,0 +1,4 @@
+[D][ ] a (by: Jan 1 2024)
+[E][ ] a (from: Jan 1 2024 to: Jan 1 2024)
+[E][ ] a (from: Jan 2 2024 to: Jan 2 2024)
+[T][ ] a
