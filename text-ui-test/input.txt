@@ -1,0 +1,16 @@
+todo Read book
+todo   
+deadline Submit assignment /by Monday
+deadline  /by Tuesday
+event Team meeting /from Wednesday /to Friday
+event /from Thursday /to Saturday
+list
+
+mark 2
+mark 5
+
+todo Read book
+list
+
+mark 10
+bye
