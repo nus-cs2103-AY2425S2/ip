@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
-    id 'org.openjfx.javafxplugin' version '0.0.14'
 }
 
 repositories {
@@ -10,15 +9,37 @@ repositories {
 }
 
 dependencies {
+    String javaFxVersion = '17.0.7'
+
+    // Test dependencies
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-}
 
-// JavaFX configuration using the javafxplugin
-javafx {
-    version = '17.0.14'
-    modules = ['javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.base']
+    // Dynamically include JavaFX dependencies based on the operating system
+    String osName = System.getProperty('os.name').toLowerCase()
+    String platform = ''
+
+    if (osName.contains('win')) {
+        platform = 'win'
+    } else if (osName.contains('linux')) {
+        platform = 'linux'
+    } else if (osName.contains('mac')) {
+        // Check for Apple Silicon (ARM64) or Intel (x86_64)
+        String osArch = System.getProperty('os.arch').toLowerCase()
+        if (osArch.contains('aarch64') || osArch.contains('arm64')) {
+            platform = 'mac-aarch64'
+        } else {
+            platform = 'mac'
+        }
+    } else {
+        throw new GradleException("Unsupported operating system: ${osName}")
+    }
+
+    // Add JavaFX dependencies for the detected platform
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: platform
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: platform
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: platform
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: platform
 }
 
 test {
@@ -40,9 +61,22 @@ application {
 shadowJar {
     archiveBaseName = "babe"
     archiveClassifier = null
-    archiveFileName = 'babe.jar'
 }
 
 run {
     standardInput = System.in
+    jvmArgs = [
+            '--module-path', classpath.asPath,
+            '--add-modules', 'javafx.controls,javafx.fxml,javafx.graphics,javafx.base',
+            // Allow private reflection required by FXMLLoader
+            '--add-opens', 'javafx.graphics/javafx.scene=ALL-UNNAMED',
+            '--add-opens', 'javafx.controls/javafx.scene.control=ALL-UNNAMED',
+            '--add-opens', 'javafx.controls/javafx.scene.control.skin=ALL-UNNAMED',
+            '--add-opens', 'javafx.base/javafx.binding=ALL-UNNAMED',
+            '--add-opens', 'javafx.base/javafx.event=ALL-UNNAMED',
+            '--add-opens', 'javafx.base/javafx.beans=ALL-UNNAMED',
+            '--add-opens', 'javafx.base/javafx.beans.value=ALL-UNNAMED',
+            '--add-opens', 'javafx.base/javafx.collections=ALL-UNNAMED',
+            '--add-opens', 'javafx.fxml/javafx.fxml=ALL-UNNAMED'
+    ]
 }
