@@ -1,30 +1,87 @@
-# Duke User Guide
+# Yale User Guide
 
-// Update the title above to match the actual product name
+![Ui](Ui.png)
 
-// Product screenshot goes here
+Yale is a chatbot that can help you manage your tasks.\
+You can add and delete tasks, and track their completion.
 
-// Product intro goes here
+## Viewing help: `help`
 
-## Adding deadlines
+Lists out all the commands and their details.
 
-// Describe the action and its outcome.
+Format: `help`
 
-// Give examples of usage
+## Exiting the program: `bye`
 
-Example: `keyword (optional arguments)`
+Exits the application.
 
-// A description of the expected outcome goes here
+Format: 'bye'
 
-```
-expected output
-```
+## Listing all tasks: `list`
 
-## Feature ABC
+Lists out all the tasks in order.
 
-// Feature details
+Format: `list`
 
+## Adding todos: `todo`
 
-## Feature XYZ
+Adds a new task with no due date to the task list.
 
-// Feature details
+Format: `todo [name]`
+
+Example: `todo read a book` adds the task `read a book`.
+
+## Adding deadlines: `deadline`
+
+Adds a new task with a due date to the task list.
+
+Format: `deadline [name] /by [date]`
+
+Example: `deadline submit iP /by Friday`
+adds the task `submit iP` which is due by `Friday`.
+
+## Adding events: `event`
+
+Adds a new task with a start and end date to the task list.
+
+Format: `event [name] /from [start] /to [end]`
+
+Example: `event recess week /from 23 Feb /to 1 Mar`
+adds the task `recess week` which lasts from
+`23 Feb` to `1 Mar`.
+
+## Marking tasks: `mark`
+
+Marks the task at index `[id]` as completed.
+
+Note that `[id]` needs to be a positive number, from 1
+to however many tasks you have in the list.
+
+Format: `mark [id]`
+
+Example: `mark 2` marks the second task as complete.
+
+## Unmarking tasks: `unmark`
+
+Marks the task at index `[id]` as incomplete.
+
+Format: `unmark [id]`
+
+Example: `mark 3` marks the third task as incomplete.
+
+## Deleting tasks: `delete`
+
+Deletes the task at index [id].
+
+Format: `delete [id]`
+
+Example: `delete 1` deletes the first task in the list.
+
+## Finding tasks: `find`
+
+Lists out all the tasks that contain the keywords.
+
+Format: `find [keyword]`
+
+Example: If the task `read a book` is in the list,
+the command `find read` will list it out as one of the tasks.
