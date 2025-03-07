@@ -15,31 +15,22 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
 
-    // Dynamically include JavaFX dependencies based on the operating system
-    String osName = System.getProperty('os.name').toLowerCase()
-    String platform = ''
+    // JavaFX dependencies for all platforms
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'linux'
 
-    if (osName.contains('win')) {
-        platform = 'win'
-    } else if (osName.contains('linux')) {
-        platform = 'linux'
-    } else if (osName.contains('mac')) {
-        // Check for Apple Silicon (ARM64) or Intel (x86_64)
-        String osArch = System.getProperty('os.arch').toLowerCase()
-        if (osArch.contains('aarch64') || osArch.contains('arm64')) {
-            platform = 'mac-aarch64'
-        } else {
-            platform = 'mac'
-        }
-    } else {
-        throw new GradleException("Unsupported operating system: ${osName}")
-    }
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'linux'
 
-    // Add JavaFX dependencies for the detected platform
-    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: platform
-    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: platform
-    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: platform
-    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: platform
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'linux'
+
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'linux'
 }
 
 test {
