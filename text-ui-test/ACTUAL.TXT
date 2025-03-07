@@ -1,14 +1,14 @@
  ____   ____   _ __  __ ____   __  _ 
 | _) \ / () \ | |\ \/ // () \ |  \| |
 |____//__/\__\|_| |__|/__\/__\|_|\__|
+
 __________________________________________
-Hello I'm app.Daiyan
-What can I do for you?
+Hello I'm app.Daiyan What can I do for you?
 __________________________________________
 
 How may I assist you commander?
 __________________________________________
-Commander, currently you have no outstanding abstractTask
+Commander, currently you have no outstanding task
 __________________________________________
 
 Task has been successfully added
@@ -16,30 +16,22 @@ Task has been successfully added
 Commander, you currently have 1 tasks
 __________________________________________
 
-Task has been successfully added
-[D][ ] abstractTask (by: 1600)
-Commander, you currently have 2 tasks
+Invalid date format Commander. Pleaser use d/M/yyyy HHmm (e.g., 2/12/1989 1800).
 __________________________________________
 
-Task has been successfully added
-[E][ ] abstractTask (from: 1600 to: 1900)
-Commander, you currently have 3 tasks
+Invalid date format Commander. Pleaser use d/M/yyyy HHmm (e.g., 2/12/1989 1800).
 __________________________________________
 
 1. [T][ ] abstractTask
-2. [D][ ] abstractTask (by: 1600)
-3. [E][ ] abstractTask (from: 1600 to: 1900)
 
 __________________________________________
 
-Commander, the abstractTask has been successfully deleted
+Commander, the task has been successfully deleted
 [T][ ] abstractTask
-Commander, you currently have 2 tasks
+Commander, you currently have 0 tasks
 __________________________________________
 
-1. [D][ ] abstractTask (by: 1600)
-2. [E][ ] abstractTask (from: 1600 to: 1900)
-
+Commander, currently you have no outstanding task
 __________________________________________
 
 Sorry Commander, but I do not understand your orders.
@@ -72,10 +64,10 @@ __________________________________________
 Apologies Commander, invalid Deadline format. Please use (deadline <Task> /by <Time>).
 __________________________________________
 
-Sorry Commander, but there is missing data
+Invalid date format Commander. Pleaser use d/M/yyyy HHmm (e.g., 2/12/1989 1800).
 __________________________________________
 
-Sorry Commander, but there is missing data
+Invalid date format Commander. Pleaser use d/M/yyyy HHmm (e.g., 2/12/1989 1800).
 __________________________________________
 
 Bye, hope to see you again Commander.
