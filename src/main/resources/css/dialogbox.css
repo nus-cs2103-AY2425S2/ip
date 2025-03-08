@@ -1,0 +1,39 @@
+/* Dialog box for the sender */
+.label {
+    -fx-background-color:#ebe3d8;
+    -fx-border-color: #715f3e;
+    -fx-border-width: 2px;
+    -fx-background-radius: 1em 1em 0 1em;
+    -fx-border-radius: 1em 1em 0 1em;
+}
+
+
+.reply-label {
+    -fx-background-radius: 1em 1em 1em 0;
+    -fx-border-radius: 1em 1em 1em 0;
+}
+/* Add padding around the dialog box text */
+#dialog {
+    -fx-padding: 10px; /* Add padding to the text inside the dialog box */
+}
+
+/* Display picture styling */
+#displayPicture {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 5, 5);
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-rotate: 0;
+}
+
+/* Container styling (HBox) */
+#dialogContainer {
+    -fx-padding: 15px; /* Add padding to the entire container */
+    -fx-spacing: 10px; /* Space between the label and image */
+    -fx-alignment: CENTER_RIGHT; /* Align the content to the right for sender */
+}
+
+/* Reply dialog: Flip the content and set pointy tip to left */
+#dialogContainer.reply {
+    -fx-translate-x: 0%; /* No flip */
+    -fx-alignment: CENTER_LEFT; /* Align the content to the left for replies */
+}
