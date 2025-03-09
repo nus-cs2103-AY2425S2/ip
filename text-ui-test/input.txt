@@ -1,0 +1,19 @@
+list
+mark 1
+unmark 1
+list
+deadline Submit report /by 25/12/2023 2359
+deadline Submit report /by 25/12/2023 23:59
+deadline Submit report /by 25/12/2023 23
+deadline Submit report /by 25-12-2023 2359
+deadline Submit report /by 25-12-2023 23:59
+deadline Submit report /by 25-12-2023 23
+deadline Submit report /by 2023-12-25 23:59
+list
+todo clean room
+todo clean house
+todo eat food
+todo do homework
+mark 1
+find clean
+bye
