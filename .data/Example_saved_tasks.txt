@@ -1,0 +1,5 @@
+T | X | IS2218 Lecture Video
+D | X | IS2218 assignment 1 | 2025-03-25
+D | X | CS2103 tut2 | 2025-02-25
+E |   | Career Fair | 2025-02-10 | 2025-02-21
+T |   | CS2103 Tut
