@@ -15,3 +15,18 @@ bin/
 
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT
+src/main/java/SirDuke.class
+src/main/java/backend/Task.class
+src/main/java/backend/ToDoList.class
+src/main/java/frontend/Format.class
+data/sirDuke.txt
+src/main/java/backend/task/Task.class
+text-ui-test/level1input.txt
+src/main/java/Main.class
+src/main/java/backend/Storage.class
+src/main/java/backend/exceptions/IllegalStartAndEndDateException.class
+src/main/java/backend/task/DeadlineTask.class
+src/main/java/backend/task/EventTask.class
+src/main/java/backend/task/ToDoTask.class
+src/main/java/frontend/Parser.class
+src/main/java/frontend/SirDuke.class
