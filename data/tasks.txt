@@ -1,0 +1,4 @@
+E | [X] | project meeting | Mon 2pm | 4pm
+T | [X] | read
+D | [ ] | return book | 2nd of December 2019, 6:00 pm
+T | [ ] | read
