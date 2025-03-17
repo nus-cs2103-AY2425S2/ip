@@ -1,0 +1,9 @@
+hello
+list
+todo shopping
+deadline report /by sunday
+event meeting /from 1pm /to 2pm
+list
+mark 1
+unmark 1
+bye

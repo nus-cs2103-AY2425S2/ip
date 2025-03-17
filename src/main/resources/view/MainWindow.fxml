@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="taskmax.ui.MainWindow"
+            prefHeight="700.0"
+            prefWidth="900.0">
+
+    <children>
+        <ScrollPane fx:id="scrollPane" 
+                    AnchorPane.topAnchor="10.0"
+                    AnchorPane.leftAnchor="10.0"
+                    AnchorPane.rightAnchor="10.0"
+                    AnchorPane.bottomAnchor="55.0"
+                    fitToWidth="true" 
+                    fitToHeight="true"
+                    vbarPolicy="ALWAYS">
+            <content>
+                <VBox fx:id="dialogContainer" spacing="20.0"
+                      alignment="TOP_LEFT"
+                      minWidth="-Infinity"
+                      minHeight="-Infinity"
+                      style="-fx-background-image: url('images/wallpaper.png');
+                             -fx-background-size: auto;
+                             -fx-background-repeat: repeat;
+                             -fx-background-position: top left;">
+                </VBox>
+            </content>
+        </ScrollPane>
+
+        <TextField fx:id="userInput"
+                   AnchorPane.leftAnchor="10.0"
+                   AnchorPane.bottomAnchor="10.0"
+                   AnchorPane.rightAnchor="65.0"
+                   onAction="#handleUserInput"/>
+
+        <Button fx:id="sendButton"
+                AnchorPane.rightAnchor="10.0"
+                AnchorPane.bottomAnchor="10.0"
+                mnemonicParsing="false"
+                onAction="#handleUserInput"
+                text="Send"/>
+    </children>
+
+</AnchorPane>
