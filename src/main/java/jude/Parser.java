@@ -47,17 +47,17 @@ public class Parser {
 
         try {
             return switch (header) {
-                case "bye" -> getSingleCommand(header, description);
-                case "list" -> getSingleCommand(header, description);
-                case "sort" -> getSingleCommand(header, description);
-                case "mark" -> getIndexCommand(header, description);
-                case "unmark" -> getIndexCommand(header, description);
-                case "delete" -> getIndexCommand(header, description);
-                case "find" -> new FindCommand(description);
-                case "to-do" -> getAddCommand(header, description);
-                case "deadline" -> getAddCommand(header, description);
-                case "event" -> getAddCommand(header, description);
-                default -> throw new JudeException("No valid command was provided.");
+            case "bye" -> getSingleCommand(header, description);
+            case "list" -> getSingleCommand(header, description);
+            case "sort" -> getSingleCommand(header, description);
+            case "mark" -> getIndexCommand(header, description);
+            case "unmark" -> getIndexCommand(header, description);
+            case "delete" -> getIndexCommand(header, description);
+            case "find" -> new FindCommand(description);
+            case "to-do" -> getAddCommand(header, description);
+            case "deadline" -> getAddCommand(header, description);
+            case "event" -> getAddCommand(header, description);
+            default -> throw new JudeException("No valid command was provided.");
             };
         } catch (NumberFormatException ne) {
             throw new JudeException("The command " + header + " has an invalid number format: expected an integer.");

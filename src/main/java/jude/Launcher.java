@@ -1,7 +1,6 @@
 package jude;
 
 import javafx.application.Application;
-import jude.Main;
 
 /**
  * A launcher class to workaround classpath issues.

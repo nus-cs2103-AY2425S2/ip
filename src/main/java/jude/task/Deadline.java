@@ -44,9 +44,9 @@ public class Deadline extends Task {
      * @throws JudeException If the format of the input is not valid.
      */
     public LocalDateTime parseDateAndTime(String deadline) throws JudeException {
-        final String input_format = "d/M/yyyy HHmm";
+        final String inputFormat = "d/M/yyyy HHmm";
         try {
-            DateTimeFormatter format = DateTimeFormatter.ofPattern(input_format);
+            DateTimeFormatter format = DateTimeFormatter.ofPattern(inputFormat);
             return LocalDateTime.parse(deadline, format);
         } catch (DateTimeParseException de) {
             throw new JudeException("Wrong date or time format was provided."
