@@ -45,11 +45,11 @@ public class Buddy {
      *         If an exception occurs during processing, an error message is returned.
      */
     public String getResponse(String input) {
-        assert input != null : "Input should not be null";
-
         try {
             StringBuilder response = new StringBuilder();
-
+            if (input.strip().isEmpty()) {
+                return "Please provide an input.";
+            }
             if (input.strip().equals("bye")) {
                 response.append("Goodbye👋! Hope to see you again soon.");
             } else {

@@ -3,6 +3,7 @@ package buddy;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * Handles parsing of user input and executing the corresponding commands.
@@ -27,29 +28,21 @@ public class Parser {
      * @throws IOException If an error occurs while saving to the storage.
      */
     public static String parseCommand(String input, TaskList taskList, Storage storage) throws IOException {
-        assert input != null : "Input should not be null.";
-        assert taskList != null : "TaskList should not be null.";
-        assert storage != null : "Storage should not be null.";
-
         String command = input.split(" ")[0].toLowerCase();
-
         if (command.equals("list")) {
             return taskList.listTasks();
         } else if (command.equals("mark")) {
             int index = parseTaskIndex(input, "mark");
-            assert index > 0 : "Task index should be a positive integer.";
             String response = taskList.markTaskAsDone(index);
             storage.save(taskList);
             return response;
         } else if (command.equals("unmark")) {
             int index = parseTaskIndex(input, "unmark");
-            assert index > 0 : "Task index should be a positive integer.";
             String response = taskList.unmarkTaskAsDone(index);
             storage.save(taskList);
             return response;
         } else if (command.equals("delete")) {
             int index = parseTaskIndex(input, "delete");
-            assert index > 0 : "Task index should be a positive integer.";
             String response = taskList.deleteTask(index);
             storage.save(taskList);
             return response;
@@ -57,11 +50,9 @@ public class Parser {
             return Ui.getErrorMessage("Please provide an input.");
         } else if (command.equals("todo") || command.equals("deadline")
                 || command.equals("event")) {
-            String response = parseTask(taskList, input, storage);
-            return response;
+            return parseTask(taskList, input, storage);
         } else if (command.equals("find")) {
             String keyword = input.substring(4).trim();
-            assert keyword != null : "Keyword should not be null.";
             if (keyword.isEmpty()) {
                 return Ui.getErrorMessage("Please specify a keyword to search for.");
             } else {
@@ -84,10 +75,6 @@ public class Parser {
      * @throws IOException If an error occurs while saving to the storage.
      */
     private static String parseTask(TaskList taskList, String input, Storage storage) throws IOException {
-        assert taskList != null : "TaskList should not be null.";
-        assert input != null : "Input should not be null.";
-        assert storage != null : "Storage should not be null.";
-
         input = input.replaceAll("/", "");
         String command = input.split(" ")[0].toLowerCase();
         if (command.equals("todo")) {
@@ -101,50 +88,59 @@ public class Parser {
                 return output;
             }
         } else if (command.equals("deadline")) {
-            String[] parts = input.substring(8).split(" by ", 2);
-            if (parts[0].trim().isEmpty() || parts.length < 2 || parts[1].trim().isEmpty()) {
-                return "The description or deadline must be provided.";
-            } else {
-                try {
-                    String dateString = parts[1].trim();
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-                    LocalDateTime deadline = LocalDateTime.parse(dateString, formatter);
-                    Deadline newTask = new Deadline(parts[0].trim(), deadline.format(formatter));
-                    String output = taskList.addTask(newTask);
-                    storage.save(taskList);
-                    return output;
-                } catch (Exception e) {
-                    return "Invalid date format. Please use yyyy-MM-dd HHmm.";
-                }
+            try {
+                Deadline newTask = parseDeadline(input);
+                String output = taskList.addTask(newTask);
+                storage.save(taskList);
+                return output;
+            } catch (IllegalArgumentException e) {
+                return e.getMessage();
+            } catch (DateTimeParseException e) {
+                return "Invalid date format. Please use yyyy-MM-dd HHmm.";
             }
         } else if (command.equals("event")) {
-            String[] parts = input.substring(5).split(" from | to ", 3);
-            if (parts[0].trim().isEmpty() || parts.length < 3
-                    || parts[1].trim().isEmpty() || parts[2].trim().isEmpty()) {
-                return "The description, start time, or end time of an event must be provided.";
-            } else {
-                try {
-                    String startDateString = parts[1].trim();
-                    String endDateString = parts[2].trim();
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-                    LocalDateTime start = LocalDateTime.parse(startDateString, formatter);
-                    LocalDateTime end = LocalDateTime.parse(endDateString, formatter);
-                    if (start.isBefore(end)) {
-                        Event newTask = new Event(parts[0].trim(), start.format(formatter), end.format(formatter));
-                        String output = taskList.addTask(newTask);
-                        storage.save(taskList);
-                        return output;
-                    } else {
-                        return "Error: Start time must be before end time.";
-                    }
-                } catch (Exception e) {
-                    return "Invalid date format. Please use yyyy-MM-dd HHmm.";
-                }
+            try {
+                Event newTask = parseEvent(input);
+                String output = taskList.addTask(newTask);
+                storage.save(taskList);
+                return output;
+            } catch (IllegalArgumentException e) {
+                return e.getMessage();
+            } catch (DateTimeParseException e) {
+                return "Invalid date format. Please use yyyy-MM-dd HHmm.";
             }
         }
-
         return "Unknown command. Please try again.";
     }
+
+    private static Deadline parseDeadline(String input) throws DateTimeParseException {
+        String[] parts = input.substring(8).split(" by ", 2);
+        if (parts[0].trim().isEmpty() || parts.length < 2 || parts[1].trim().isEmpty()) {
+            throw new IllegalArgumentException("The description or deadline must be provided.");
+        }
+        LocalDateTime deadline = parseDate(parts[1]);
+        return new Deadline(parts[0].trim(), deadline.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")));
+    }
+
+    private static Event parseEvent(String input) throws DateTimeParseException {
+        String[] parts = input.substring(5).split(" from | to ", 3);
+        if (parts[0].trim().isEmpty() || parts.length < 3 || parts[1].trim().isEmpty() || parts[2].trim().isEmpty()) {
+            throw new IllegalArgumentException("The description, start time or end time of an event must be provided.");
+        }
+        LocalDateTime start = parseDate(parts[1]);
+        LocalDateTime end = parseDate(parts[2]);
+        if (!start.isBefore(end)) {
+            throw new IllegalArgumentException("Error: Start time must be before end time.");
+        }
+        return new Event(parts[0].trim(), start.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")),
+                end.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")));
+    }
+
+    private static LocalDateTime parseDate(String dateString) throws DateTimeParseException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        return LocalDateTime.parse(dateString.trim(), formatter);
+    }
+
 
     /**
      * Parses the task index from a command input string.
