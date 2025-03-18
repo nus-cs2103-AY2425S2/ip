@@ -1,0 +1,20 @@
+hi
+todo study
+todo 
+mark 1
+deadline assignment 1 /friday
+mark 2
+unmark 1
+list
+todo sleep
+deadline assignment 2
+deadline 
+event hangout /4pm /6pm
+event dinner
+event 
+mark 4
+list
+mark 5
+unmark 4
+bye
+
