@@ -1,30 +1,66 @@
-# Duke User Guide
+# Ujin User Guide
 
-// Update the title above to match the actual product name
+![Alt text](https://github.com/Bill-1/ip/blob/master/docs/Ui.png)
 
-// Product screenshot goes here
+## Introduction
+Ujin is a chatbot for marking your activities.
 
-// Product intro goes here
+## Messages you can write
+You can add tasks to your tasklist with the commands:
+### Adding todo task
+Ujin lets you add todo task without any deadline.
+#### Usage:
+`todo <your task>`
+#### Example:
+`todo clean the house`
+### Adding deadline task
+Ujin lets you add deadline task with specific deadline.
+#### Usage:
+`deadline <your task> /by <time>`
+#### Example:
+`deadline clean the house /by 03/18`
+### Adding event task
+Ujin lets you mark an event between specific time period.
+#### Usage:
+`event <your task> /from <time> /to <time>`
+#### Example:
+`event clean the house /from 03/12 /to 03/31`
 
-## Adding deadlines
+**Notice that &lt;time&gt; has to be in format MM/DD.**
 
-// Describe the action and its outcome.
+### Listing all the tasks
+Ujin lists the all the tasks.
+#### Usage:
+`list`
 
-// Give examples of usage
+### Marking task as done
+Ujin checks the task as done.
+#### Usage:
+`mark <index>`
+#### Example:
+`mark 1`
 
-Example: `keyword (optional arguments)`
+### Unmarking task as done
+Ujin unchecks the task as not done.
+#### Usage:
+`unmark <index>`
+#### Example:
+`unmark 1`
+### Delete the task
+Ujin deletes the task from the list.
+#### Usage:
+`delete <index>`
+#### Example:
+`delete 1`
 
-// A description of the expected outcome goes here
+### Finds the task
+Ujin lets you find the tasks with the desired keyword.
+#### Usage:
+`find <keyword>`
+#### Example:
+`find clean`
 
-```
-expected output
-```
+Note that &lt;index&gt; is 1-indexed number and has to be less than or equal to the number of tasks in your tasklist.
 
-## Feature ABC
+Enjoy the app!
 
-// Feature details
-
-
-## Feature XYZ
-
-// Feature details

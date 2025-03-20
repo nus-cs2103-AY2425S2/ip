@@ -1,26 +1,25 @@
-# Duke project template
+# Ujin project template
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+This is a chatbot for marking your activities.
 
-## Setting up in Intellij
+## Starting process
+Use ./gradlew run command to see the interface for the chatbot. 
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+## Messages you can write
+You can add tasks to your tasklist with the commands:
+* todo &lt;your task&gt;
+* event &lt;your task&gt; /from &lt;time&gt; /to &lt;time&gt;
+* deadline &lt;your task&gt; /by &lt;time&gt;
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+Notice that &lt;time&gt; has to be in format MM/DD. 
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+* **list** is for when you want to list your tasks. 
+* **mark &lt;index&gt;** is for checking the task as done.
+* **unmark &lt;index&gt;** is for unchecking the task as not done.
+* **delete &lt;index&gt;** is for deleting the task.
+* **find &lt;keyword&gt;** is for finding the tasks that has &lt;keyword&gt; in them. 
+
+Note that &lt;index&gt; is 1-indexed number and has to be less thab or equal to the number of tasks in your tasklist.
+
+Enjoy your app.
+
