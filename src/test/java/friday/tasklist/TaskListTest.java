@@ -1,31 +1,55 @@
 package friday.tasklist;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
-
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import friday.fridayexceptions.FridayException;
+import friday.tasks.Task;
+import friday.tasks.TodoTask;
+
 public class TaskListTest {
+    private TaskList taskList;
+
+    @BeforeEach
+    public void taskList_setUp() {
+        taskList = new TaskList();
+    }
+
     @Test
-    public void taskListTest() {
-        TaskList taskList1 = new TaskList();
+    public void taskList_emptyTaskList_emptyList() {
         assertTrue(TaskList.returnList().isEmpty(), "New TaskList should be empty.");
+    }
 
-        ArrayList<String> savedTasks = new ArrayList<>();
-        savedTasks.add("[T][ ] buy book\n");
-        savedTasks.add("[D][ ] return book  (by: Feb 20 2025 10pm)\n");
-        savedTasks.add("[E][ ] book fair  (from: 10  to:  12)\n");
+    @Test
+    public void taskList_todoTask_taskListWithTodoTask() {
+        Task todo = new TodoTask("Finish homework");
+        String response = TaskList.addToList(todo);
+        assertTrue(response.contains("Got it. I've added this task:"), "Task should be added successfully");
+        assertEquals(1, TaskList.returnList().size(), "TaskList should have one task.");
+    }
 
-        TaskList taskList2 = new TaskList(savedTasks);
-        ArrayList<String> tasks = TaskList.returnList();
+    @Test
+    public void taskList_getTask_taskListThrowsExceptionForInvalidIndex() {
+        Exception exception = assertThrows(FridayException.class, () -> TaskList.getTask(0));
+        assertEquals("please input an acceptable integer",
+                exception.getMessage(), "Exception message should match");
+    }
 
-        assertEquals(3, tasks.size(), "TaskList should have 3 tasks.");
+    @Test
+    public void taskList_delete_taskListThrowsExceptionForInvalidIndex() {
+        Exception exception = assertThrows(FridayException.class, () -> TaskList.delete(0));
+        assertEquals("please input an acceptable integer",
+                exception.getMessage(), "Deleting from an empty list should throw an exception");
+    }
 
-        assertTrue(tasks.get(0).contains("[T][ ] buy book"), "TodoTask should remain unchanged");
-        assertTrue(tasks.get(1).contains("[D][ ] return book  (by: Feb 20 2025 10pm)"),
-                                "DeadLineTask remain unchanged");
-        assertTrue(tasks.get(2).contains("[E][ ] book fair  (from: 10  to:  12)"),
-                                "EventTask should remain unchanged");
+    @Test
+    public void taskList_mark_taskListThrowsExceptionForInvalidIndex() {
+        Exception exception = assertThrows(FridayException.class, () -> TaskList.mark(0));
+        assertEquals("please input an acceptable integer",
+                exception.getMessage(), "Marking an invalid task should throw an exception");
     }
 }
