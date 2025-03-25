@@ -1,0 +1,4 @@
+D | 1 | pepsi | 2020-02-02 0100
+D | 0 | return book | 2020-02-02 0100
+E | 0 | project meeting | 2024-02-02 1400 | 2024-02-02 1500
+T | 1 | graduation day
