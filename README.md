@@ -1,26 +1,61 @@
-# Duke project template
+# BuddyTalk - Your Personal Task Management Chatbot
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+```
+ _______                 __       __          ________          __ __       
+|       \               |  \     |  \        |        \        |  \  \      
+| ▓▓▓▓▓▓▓\__    __  ____| ▓▓ ____| ▓▓__    __ \▓▓▓▓▓▓▓▓ ______ | ▓▓ ▓▓   __ 
+| ▓▓__/ ▓▓  \  |  \/      ▓▓/      ▓▓  \  |  \  | ▓▓   |      \| ▓▓ ▓▓  /  \
+| ▓▓    ▓▓ ▓▓  | ▓▓  ▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓ ▓▓  | ▓▓  | ▓▓    \▓▓▓▓▓▓\ ▓▓ ▓▓_/  ▓▓
+| ▓▓▓▓▓▓▓\ ▓▓  | ▓▓ ▓▓  | ▓▓ ▓▓  | ▓▓ ▓▓  | ▓▓  | ▓▓   /      ▓▓ ▓▓ ▓▓   ▓▓ 
+| ▓▓__/ ▓▓ ▓▓__/ ▓▓ ▓▓__| ▓▓ ▓▓__| ▓▓ ▓▓__/ ▓▓  | ▓▓  |  ▓▓▓▓▓▓▓ ▓▓ ▓▓▓▓▓▓\ 
+| ▓▓    ▓▓\▓▓    ▓▓\▓▓    ▓▓\▓▓    ▓▓\▓▓    ▓▓  | ▓▓   \▓▓    ▓▓ ▓▓ ▓▓  \▓▓\
+ \▓▓▓▓▓▓▓  \▓▓▓▓▓▓  \▓▓▓▓▓▓▓ \▓▓▓▓▓▓▓_\▓▓▓▓▓▓▓   \▓▓    \▓▓▓▓▓▓▓\▓▓\▓▓   \▓▓
+                                    |  \__| ▓▓                              
+                                     \▓▓    ▓▓                              
+                                      \▓▓▓▓▓▓                               
+```
 
-## Setting up in Intellij
+---
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+## 🎉 Features 🎉
+- Create todos
+- Track deadlines
+- Schedule Events
+- List all tasks
+- Find task with keyword
+- Mark or unmark tasks that's done
+- Help command to list help for each function
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+## ✨ How to Use (Commands) ✨
+| Description                     | Command                                                                       | Example                                                   |
+|:--------------------------------|:------------------------------------------------------------------------------|:----------------------------------------------------------|
+| Create a new ToDo Task          | `todo <description>`                                                          | `todo meeting`                                            |
+| Create a new Task with Deadline | `deadline <description> /by <date yyyy-mm-dd HHmm>`                           | `deadline meeting /by 2025-01-01 1200`                    |
+| Create a new Task for Events    | `event <description> /from <date yyyy-mm-dd HHmm> /to <date yyyy-mm-dd HHmm>` | `event meeting /from 2025-01-01 1300 /to 2025-02-02 1400` |
+| Display List of Tasks           | `list`                                                                        | `list`                                                    |
+| Searching for Tasks             | `find <keyword>`                                                              | `find meeting`                                            |
+| Mark a Task as Done             | `mark <index>`                                                                | `mark 1`                                                  |
+| Unmark a Task as Undone         | `unmark <index>`                                                              | `unmark 1`                                                |
+| Delete a Task                   | `delete <index>`                                                              | `delete 1`                                                |
+| Help for a List of Commands     | `help`                                                                        | `help`                                                    |
+| Help for Each Command           | `help <command>`                                                              | `help deadline`                                           |
+| Exit the Application            | `bye`                                                                         | `bye`                                                     |
+
+---
+
+## 🚀 Getting Started 🚀
+### 📚 User Guide 📚
+- [Click Here For My User Guide](https://Emmanuel2001.github.io/ip/)
+### 📝 Prerequisites 📝
+- Java 17 or Higher ([Source](https://www.oracle.com/java/technologies/javase/jdk17-0-13-later-archive-downloads.html))
+
+### ⚡ Installation ⚡
+1. Download latest release from Releases Page ([Release](https://github.com/Emmanuel2001/ip/releases/tag/A-Release-Updated))
+2. Run the following command:
+``` java
+java -jar buddytalk.jar
+```
+
+### 📷 Screenshot 📷
+![alt text](https://Emmanuel2001.github.io/ip/Ui.png)
