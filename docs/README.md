@@ -20,15 +20,15 @@ Creates a normal task with the provided description.
 
 **Deadline**
 
-`deadline <description> /by dd-mm-yyyy hh:MM`
+`deadline <description> /by dd/mm/yyyy hh:MM`
 
-Creates a task with a specific deadline. The date and time must be provided using the /by command in the format dd-mm-yyyy hh:MM.
+Creates a task with a specific deadline. The date and time must be provided using the /by command in the format dd/mm/yyyy hh:MM.
 
 **Event**
 
-`event <description> /from dd-mm-yyyy hh:MM /to dd-mm-yyyy hh:MM`
+`event <description> /from dd/mm/yyyy hh:MM /to dd/mm/yyyy hh:MM`
 
-Creates a task with the start and end date and time. Specify the start date time using /from command and the end date time using /to command in the format dd-mm-yyyy hh:MM.
+Creates a task with the start and end date and time. Specify the start date time using /from command and the end date time using /to command in the format dd/mm/yyyy hh:MM.
 
 # Managing Tasks 𐙚
 
