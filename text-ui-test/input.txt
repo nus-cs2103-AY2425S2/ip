@@ -1,0 +1,12 @@
+add todo invent hextech
+add Deadline convince mel for funding /by 3/4/1845 1730
+mark 2
+list
+unmark 2
+add event meeting with heimerdinger /from 5/4/1845 2100 /to 6/4/1845 0300
+list
+delete 1
+list
+time 6/4/1845
+mark 2
+bye

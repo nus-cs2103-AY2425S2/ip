@@ -1,0 +1,34 @@
+/* Root style */
+.root {
+    main-color: rgb(254, 249, 225); /* Create a looked-up color called "main-color" within root. */
+    -fx-background-color: main-color;
+    -fx-font-family: "Times New Roman", Times, serif; /* Apply Times New Roman globally */
+}
+
+/* Label styling */
+.label {
+    -fx-background-color: linear-gradient(to bottom right, #BE3144, #872341); /* Gradient background */
+    -fx-border-color: #E17564 #E17564 #E17564 #E17564; /* Border color with different shades */
+    -fx-border-width: 2px; /* Set border width */
+    -fx-background-radius: 1em 1em 0 1em; /* Rounded corners for background */
+    -fx-border-radius: 1em 1em 0 1em; /* Rounded corners for border */
+    -fx-padding: 4px 10px; /* Set padding inside label */
+    -fx-text-fill: main-color;
+}
+
+/* Reply label styling */
+.reply-label {
+    -fx-background-color: linear-gradient(to bottom right, #3B6790, #23486A);
+    -fx-border-color: #B3C8CF;
+    -fx-padding: 4px 10px;
+    -fx-background-radius: 1em 1em 1em 0; /* Rounded corners for background */
+    -fx-border-radius: 1em 1em 1em 0; /* Rounded corners for border */
+}
+
+/* Display picture styling */
+#displayPicture {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 5, 5); /* Shadow effect on image */
+    -fx-scale-x: 1; /* Set horizontal scaling */
+    -fx-scale-y: 1; /* Set vertical scaling */
+    -fx-rotate: 0; /* Set image rotation to 0 degrees */
+}

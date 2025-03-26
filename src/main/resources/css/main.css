@@ -1,0 +1,74 @@
+/* Root style */
+.root {
+    main-color: rgb(254, 249, 225); /* Create a looked-up color called "main-color" within root. */
+    -fx-background-color: main-color;
+    -fx-font-family: "Times New Roman", Times, serif; /* Apply Times New Roman globally */
+}
+
+/* Header box styling with separate background color and border */
+.header-box {
+    -fx-background-color: #BE3144; /* Set a separate color for the header box */
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+}
+
+/* Header label styling */
+.header-label {
+    -fx-font-family: "Times New Roman", Times, serif;
+    -fx-font-weight: bold;  /* Make the font bold */
+    -fx-text-fill: main-color;  /* Set the color to main-color */
+    -fx-font-size: 25px;  /* Set font size */
+    -fx-text-transform: uppercase; /* Ensure the text is capitalized */
+    -fx-alignment: center; /* Ensure the label is always centered */
+}
+
+/* Text field style */
+.text-field {
+    -fx-background-color: rgb(229, 208, 172);
+    -fx-font: 20px "Times New Roman", Times, serif; /* Set font to Times New Roman */
+}
+
+/* Button style */
+.button {
+    -fx-background-color: #E17564;
+    -fx-font: italic bold 16px "Times New Roman", Times, serif; /* Set font to Times New Roman */
+}
+
+/* Button hover style */
+.button:hover {
+    -fx-background-color: #BE3144;
+    -fx-font-size: 18px;
+    -fx-font-family: "Times New Roman", Times, serif; /* Ensure font stays consistent on hover */
+}
+
+/* Button pressed style */
+.button:pressed {
+    -fx-background-color: #872341;
+    -fx-font-size: 20px;
+    -fx-font-family: "Times New Roman", Times, serif; /* Ensure font stays consistent when pressed */
+}
+
+/* Scroll pane style */
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Scroll bar style */
+.scroll-bar {
+    -fx-font-size: 10px;
+    -fx-background-color: main-color;
+}
+
+/* Scroll bar thumb style */
+.scroll-bar .thumb {
+    -fx-background-color: rgb(220, 200, 165);
+    -fx-background-radius: 1em;
+}
+
+/* Hide increment and decrement buttons on scroll bar */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}

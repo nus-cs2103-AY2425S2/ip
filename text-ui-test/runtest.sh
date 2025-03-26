@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# need to manually toggle testing to true in Viktor.java to run this test
 
 # create bin directory if it doesn't exist
 if [ ! -d "../bin" ]
@@ -12,6 +13,13 @@ then
     rm ACTUAL.TXT
 fi
 
+# Clear the viktor.txt file explicitly before running the program
+if [ -e "ip/data/viktor.txt" ]
+then
+    echo "Clearing viktor.txt before running the test..."
+    > ip/data/viktor.txt
+fi
+
 # compile the code into the bin folder, terminates if error occurred
 if ! javac -cp ../src/main/java -Xlint:none -d ../bin ../src/main/java/*.java
 then
@@ -19,8 +27,8 @@ then
     exit 1
 fi
 
-# run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
-java -classpath ../bin Duke < input.txt > ACTUAL.TXT
+# run the program with testing set to true
+java -classpath ../bin -DisTesting=true Viktor < input.txt > ACTUAL.TXT
 
 # convert to UNIX format
 cp EXPECTED.TXT EXPECTED-UNIX.TXT
