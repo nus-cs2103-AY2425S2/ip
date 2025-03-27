@@ -1,0 +1,21 @@
+todo read book
+todo return book
+mark 1
+mark 2
+unmark 2
+list
+deadline return book /by 2025/01/01 0000
+event project meeting /from 2025/01/02 1200 /to 2025/01/01 1400
+list
+delete task
+delete 1
+todo
+deadline
+event
+event fakeEvent
+invalidcommand
+mark 2
+find book
+find nonexistent task
+list
+bye
