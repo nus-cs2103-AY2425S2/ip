@@ -1,0 +1,44 @@
+/* Dialog box styling */
+.dialog-box {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1;
+    -fx-min-width: 500px;
+    -fx-pref-width: 500px;
+}
+
+/* Bot message specific styling */
+.bot-dialog {
+    -fx-background-color: #e9f5fe;
+}
+
+/* User message specific styling */
+.user-dialog {
+    -fx-background-color: #e3f2fd;
+}
+
+/* Error message styling */
+.error-message {
+    -fx-background-color: #ffebee;
+}
+
+/* Dark mode styles */
+.dark .dialog-box {
+    -fx-background-color: #192734;
+    -fx-text-fill: white;
+    -fx-border-color: #38444d;
+}
+
+.dark .bot-dialog {
+    -fx-background-color: #162d40;
+}
+
+.dark .user-dialog {
+    -fx-background-color: #1e3a54;
+}
+
+.dark .error-message {
+    -fx-background-color: #4a1515;
+}
