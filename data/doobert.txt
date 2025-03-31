@@ -1,0 +1,12 @@
+    T | 1 | read book
+    E | 0 | project meeting | Dec 22 2019 1400 - 1600
+    D | 0 | return book | Dec 02 2019 0800
+    D | 0 | return book | Oct 15 2019
+    E | 0 | project meeting | Jan 02 2019 1400 - 1600
+    E | 1 | office hours | Feb 17 2025 1400 - 1600
+    T | 0 | groceries
+    E | 0 | family dinner | Feb 24 2025 1700 - 1900
+    D | 0 | assignment | Mar 06 2025 2359
+    E | 0 | read | Feb 23 2025 1400 - 1600
+    D | 0 | return book | Mar 02 2025
+    D | 0 | return book | Mar 02 2025

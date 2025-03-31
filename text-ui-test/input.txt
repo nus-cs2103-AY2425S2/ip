@@ -1,0 +1,41 @@
+mark 1
+read book
+mark 1
+unmark 2
+unmark 1
+list
+todo borrow book
+list
+deadline return book /by Sunday
+event project meeting /from Mon 2pm /to 4pm
+mark abc
+todo
+blah
+unmark abc
+deadline
+event
+event read
+event read /from
+event read /from 2pm
+event read /from 2pm to
+event read /from 2pm /to
+event read /from 2pm /to 4pm
+list
+delete
+delete abc
+delete 3
+delete 5
+mark 2
+list
+mark 3
+delete 3
+list
+deadline return book /by 2/12/2019 1800
+deadline return book /by 2/12/2019 800
+deadline return book /by 22/12/2019 1800
+deadline return book /by 2019-10-15
+deadline return book /by 2019-1-1
+event project meeting /from 2019-12-22 1400 /to 1600
+event office hours /from Mon 2pm /to 4pm
+event office /from Mon 2pm /to 4pm
+event project meeting /from 2019-1-2 1400 /to 1600
