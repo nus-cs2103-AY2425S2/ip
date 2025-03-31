@@ -1,0 +1,12 @@
+list
+todo read book
+todo return book
+event error
+event something /from 6pm /to 10pm
+deadline return something /by today
+list
+mark 1
+list
+delete 1
+list
+bye
