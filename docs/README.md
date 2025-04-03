@@ -1,30 +1,54 @@
-# Duke User Guide
+# Ziyang's User Guide
 
-// Update the title above to match the actual product name
+![UI](./Ui.png)
 
-// Product screenshot goes here
+Hi, I'm Zi Yang, your personal assistant. I'm here to help you with your tasks. I can do the following:
 
-// Product intro goes here
+- Add tasks
+- Mark tasks as done
+- Delete tasks
+- Add deadlines
+- Add events
 
 ## Adding deadlines
 
-// Describe the action and its outcome.
-
-// Give examples of usage
-
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
-
 ```
-expected output
+deadline /by (deadline date)/ (task description) or d /by (deadline date) (task description)
 ```
 
-## Feature ABC
+Deadlines are added to the list of tasks. Dates can be in any format aka write any text
 
-// Feature details
+## Adding events
 
+```
+event /from (start date) /to (end date) or e /from (start date) /to (end date) (task description)
+```
 
-## Feature XYZ
+Events are added to the list of tasks. Dates can be in any format aka write any text
 
-// Feature details
+## Adding tasks
+```
+todo (task description) or t (task description)
+```
+
+Tasks are added to the list of tasks. The task description is the text that will be displayed in the task list.
+
+## Marking tasks as done
+```
+mark (task number) or m (task number)
+```
+
+The task number is the number of the task in the list of tasks. The task will be marked as done.
+
+## Deleting tasks
+```
+delete (task number) d (task number)
+```
+
+The task number is the number of the task in the list of tasks. The task will be deleted.
+
+## Listing tasks
+```
+list or l
+```
+
