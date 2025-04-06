@@ -1,0 +1,54 @@
+.root {
+    main-color: #1E1E2E; 
+    -fx-background-color: main-color;
+    -fx-background-image: url("../images/background.jpg"); /* Set image */
+    -fx-background-size: cover;
+}
+
+.text-field {
+    -fx-background-color: rgba(44, 62, 80, 0.5); /* Translucent dark blue */
+    -fx-text-fill: white;
+    -fx-font: 18px "Arial";
+    -fx-border-color: #5B92E5;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, #5C6BC0, #3949AB); /* Indigo gradient */
+    -fx-text-fill: white;
+    -fx-font: italic bold 16px "Arial";
+    -fx-border-radius: 8px;
+    -fx-padding: 8px 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 5, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #3D5AFE; /* Brighter blue when hovered */
+    -fx-font-size: 17px;
+}
+
+.button:pressed {
+    -fx-background-color: #1E40AF; /* Darker blue when pressed */
+    -fx-font-size: 17px;
+}
+
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(44, 62, 80, 0.7); /* Darker but semi-transparent */
+    -fx-background-radius: 10px;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
