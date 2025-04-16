@@ -1,0 +1,59 @@
+/* Background for the main chat window */
+.main-window {
+    -fx-color:#BBDEFB
+}
+
+/* Styling the scroll pane */
+.scroll-pane {
+    -fx-background: transparent;
+    -fx-padding: 10px;
+}
+
+/* Styling the message container */
+.dialog-container {
+    -fx-spacing: 10px;
+    -fx-padding: 10px;
+}
+
+/* Style for the user input field */
+.user-input {
+    -fx-background-color: #E3F2FD;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+}
+
+/* Style for the send button */
+.send-button {
+    -fx-background-color: #FFB6C1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+}
+
+/* General dialog box styling */
+.dialog-box {
+    -fx-spacing: 10px;
+    -fx-padding: 10px;
+}
+
+/* User messages (right-aligned) */
+.dialog-label {
+    -fx-background-color: #D7BDE2;
+    -fx-text-fill: #0D47A1;
+    -fx-padding: 10px;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+}
+
+/* Pluto messages (left-aligned) */
+.dialog-box .dialog-label {
+    -fx-background-color: #A8E6CF;
+    -fx-text-fill: black;
+}
+
+/* Image styling */
+.dialog-image {
+    -fx-border-radius: 50px;
+}
