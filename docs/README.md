@@ -13,20 +13,6 @@ Nyanko is a **simple, text-based** task manager that helps you keep track of **T
 
 ---
 
-## ✨ **Features**
-
-- ✅ **Manage Tasks Efficiently**
-- 📌 **Supports Three Types of Tasks** (ToDos, Deadlines, Events)
-- 😴 **Snooze Tasks**
-- 🔍 **Find Tasks Using Keywords**
-- 💾 **Persistent Storage** - Saves tasks to a file
-- 🎭 **Intuitive Command-Based Interface**
-- 🎨 **Graphical User Interface (GUI) with JavaFX**
-
-see user guide for more info
-
----
-
 ## 📥 **Installation & Setup**
 
 1. **Download the latest JAR file** from the [Releases](https://github.com/rannn367/ip/releases) page.
