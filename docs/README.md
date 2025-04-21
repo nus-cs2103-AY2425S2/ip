@@ -42,6 +42,24 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 
 ---
 
+## 📋 **Table of Commands**
+
+| Command               | Description                     | Link to Section                                |
+|-----------------------|---------------------------------|-----------------------------------------------|
+| `todo`               | Add a ToDo task                | [Add a ToDo Task](#1-add-a-todo-task)         |
+| `deadline`           | Add a Deadline task            | [Add a Deadline Task](#2-add-a-deadline-task) |
+| `event`              | Add an Event task              | [Add an Event Task](#3-add-an-event-task)     |
+| `list`               | List all tasks                 | [List All Tasks](#4-list-all-tasks)           |
+| `mark`               | Mark a task as done            | [Mark a Task as Done](#5-mark-a-task-as-done) |
+| `unmark`             | Unmark a task as done          | [Unmark a Task](#6-unmark-a-task)             |
+| `delete`             | Delete a task                  | [Delete a Task](#7-delete-a-task)             |
+| `find`               | Find tasks by keyword          | [Find Tasks by Keyword](#8-find-tasks-by-keyword) |
+| `snoozeDeadline`     | Snooze a deadline task          | [Snooze a Deadline Task](#9-snooze-a-deadline-task) |
+| `snoozeEvent`        | Snooze an event task            | [Snooze an Event Task](#10-snooze-an-event-task) |
+| `bye`                | Exit the application           | [Exit the Application](#11-exit-the-application) |
+
+---
+
 ### 1. **Add a ToDo Task**
 - **Syntax**:  
   `todo <description>`
