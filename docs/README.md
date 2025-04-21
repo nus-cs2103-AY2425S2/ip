@@ -32,3 +32,18 @@ Nyanko is a **simple, text-based** task manager that helps you keep track of **T
 2. **Run the application** using the terminal:
    ```sh
    java -jar Nyanko.jar
+
+---
+
+## 📖 **User Guide**
+
+Nyanko supports a variety of commands to manage your tasks. Below is a detailed guide for each command, including syntax and examples.
+
+---
+
+### 1. **Add a ToDo Task**
+- **Syntax**:  
+  `todo <description>`
+- **Example**:  
+  ```sh
+  todo Buy groceries
