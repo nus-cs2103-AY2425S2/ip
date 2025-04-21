@@ -19,6 +19,9 @@ public class TodoCommand extends Command {
      * @param argument The description of the To-Do task.
      */
     public TodoCommand(String argument) {
+        if (argument == null || argument.trim().isEmpty()) {
+            throw new IllegalArgumentException("Your description cannot be empty dumbdumb!!");
+        }
         this.description = argument;
     }
 
