@@ -36,13 +36,23 @@ public class Event extends Task {
     }
 
     /**
+     * Gets the end time of the event in input format.
+     *
+     * @return The end time formatted as "yyyy-MM-dd HHmm".
+     */
+    public String getTo() {
+        return this.to.format(INPUT_FORMAT);
+    }
+
+    /**
      * Updates the event start and end time.
      *
-     * @param newDateTime The new start date/time in "yyyy-MM-dd HHmm" format.
+     * @param newStartDateTime The new start date/time in "yyyy-MM-dd HHmm" format.
+     * @param newEndDateTime   The new end date/time in "yyyy-MM-dd HHmm" format.
      */
-    public void snooze(String newDateTime) {
-        this.from = LocalDateTime.parse(newDateTime, INPUT_FORMAT);
-        this.to = from.plusHours(2); // Default duration 2 hours
+    public void snooze(String newStartDateTime, String newEndDateTime) {
+        this.from = LocalDateTime.parse(newStartDateTime, INPUT_FORMAT);
+        this.to = LocalDateTime.parse(newEndDateTime, INPUT_FORMAT);
     }
 
     /**
