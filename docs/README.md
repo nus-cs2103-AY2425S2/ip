@@ -8,7 +8,7 @@ Nyanko is a **simple, text-based** task manager that helps you keep track of **T
 
 ---
 
-![Nyanko Screenshot](./images/nyanko-ui.png)  
+![Nyanko Screenshot](./images/Ui.png)  
 *Screenshot of the GUI version of Nyanko*
 
 ---
