@@ -33,7 +33,7 @@ public class Ui {
      * Displays a welcome message.
      */
     public void showWelcome() {
-        showMessage("HEEHAW I'M NYANKO 🐱\nToday's a good day to chill and slack!\nzzzzzz");
+        showMessage("HEEHAW I'M NYANKO \nToday's a good day to chill and slack!\nzzzzzz");
     }
 
     /**
