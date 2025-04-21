@@ -143,19 +143,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 
 ---
 
-### 10. **Snooze an Event Task**
-- **Syntax**:
-  `snoozeEvent <task_number> <new_start_time> <new_end_time>`
-  - `<task_number>` is the 1-based index of the task in the list.
-  - `<new_due_date>` and `<new_end_time>` must be in the format yyyy-MM-dd HHmm.
-- **Example**:
-  ```sh
-  snoozeEvent 4 2025-05-01 1000 2025-05-01 1200
-  ```
-
----
-
-### 11. **Exit the Application**
+### 10. **Exit the Application**
 - **Syntax**:
   `bye`
 - **Example**:
