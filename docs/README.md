@@ -180,7 +180,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 ---
 
 ### Notes:
--Ensure all date and time inputs follow the format `yyyy-MM-dd HHmm`.
+- Ensure all date and time inputs follow the format `yyyy-MM-dd HHmm`.
 - Task numbers are based on the current list of tasks displayed using the `list` command.
 - Commands are case-insensitive (e.g., `TODO` and `todo` are equivalent).
 
