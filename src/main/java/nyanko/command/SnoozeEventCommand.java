@@ -26,7 +26,8 @@ public class SnoozeEventCommand extends Command {
         String[] args = argument.split(" ", 3);
         if (args.length < 3) {
             throw new IllegalArgumentException(
-                "Invalid snoozeEvent command! Usage: snoozeEvent <task_number> <new_start_date_time> <new_end_date_time>"
+                "Invalid snoozeEvent command! Usage: snoozeEvent <task_number> <new_start_date_time> "
+                + "<new_end_date_time>"
             );
         }
         this.index = Integer.parseInt(args[0]) - 1; // Convert to 0-based index

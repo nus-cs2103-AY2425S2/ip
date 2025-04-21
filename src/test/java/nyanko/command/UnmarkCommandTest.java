@@ -1,17 +1,20 @@
 package nyanko.command;
 
-import java.io.IOException; // STANDARD_JAVA_PACKAGE
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.io.IOException;
+
+import org.junit.jupiter.api.Test;
 
 import nyanko.storage.Storage;
 import nyanko.task.TaskList;
 import nyanko.task.ToDo;
 import nyanko.ui.Ui;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows; // STATIC IMPORTS
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
+/**
+ * Unit tests for the {@link UnmarkCommand} class.
+ */
 class UnmarkCommandTest {
 
     @Test
