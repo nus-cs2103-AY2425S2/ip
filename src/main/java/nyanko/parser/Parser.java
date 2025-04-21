@@ -9,7 +9,8 @@ import nyanko.command.FindCommand;
 import nyanko.command.InvalidCommand;
 import nyanko.command.ListCommand;
 import nyanko.command.MarkCommand;
-import nyanko.command.SnoozeCommand;
+import nyanko.command.SnoozeDeadlineCommand;
+import nyanko.command.SnoozeEventCommand;
 import nyanko.command.TodoCommand;
 import nyanko.command.UnmarkCommand;
 
@@ -58,8 +59,11 @@ public class Parser {
         case "FIND":
             command = new FindCommand(argument);
             break;
-        case "SNOOZE":
-            command = new SnoozeCommand(argument);
+        case "SNOOZEDEADLINE":
+            command = new SnoozeDeadlineCommand(argument);
+            break;
+        case "SNOOZEEVENT":
+            command = new SnoozeEventCommand(argument);
             break;
         default:
             command = new InvalidCommand();
