@@ -26,6 +26,9 @@ public class DeadlineCommand extends Command {
         if (parts.length < 2) {
             throw new IllegalArgumentException("Invalid deadline format! Use: deadline description\\due_date");
         }
+        if (parts[0].trim().isEmpty()) {
+            throw new IllegalArgumentException("Your description cannot be empty dumbdumb!!");
+        }
         this.description = parts[0].trim();
         this.by = parts[1].trim();
     }

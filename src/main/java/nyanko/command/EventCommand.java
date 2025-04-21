@@ -37,6 +37,12 @@ public class EventCommand extends Command {
         if (parts.length < 3) {
             throw new IllegalArgumentException("Invalid event format! Use: event description\\start_time\\end_time");
         }
+        if (parts[0].trim().isEmpty()) {
+            throw new IllegalArgumentException("Your description cannot be empty dumbdumb!!");
+        }
+        if (parts[1].trim().isEmpty() || parts[2].trim().isEmpty()) {
+            throw new IllegalArgumentException("Invalid event format! Use: event description\\start_time\\end_time");
+        }
         this.description = parts[0].trim();
         this.from = parts[1].trim();
         this.to = parts[2].trim();
