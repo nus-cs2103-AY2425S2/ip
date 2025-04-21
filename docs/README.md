@@ -66,6 +66,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:  
   ```sh
   todo Buy groceries
+  ```
 
 ---
 
@@ -76,6 +77,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:  
   ```sh
   deadline Submit report\2025-04-30 2359
+  ```
 
 ---
 
@@ -86,6 +88,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:  
   ```sh
   event Team meeting\2025-05-01 0900\2025-05-01 1100
+  ```
 
 ---
 
@@ -95,6 +98,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:
   ```sh
   list
+  ```
 
 ---
 
@@ -105,6 +109,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:
   ```sh
   mark 1
+  ```
 
 ---
 
@@ -115,6 +120,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:
   ```sh
   unmark 1
+  ```
 
 ---
 
@@ -125,6 +131,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:
   ```sh
   delete 1
+  ```
 
 ---
 
@@ -134,6 +141,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:
   ```sh
   find meeting
+  ```
 
 ---
 
@@ -145,6 +153,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:
   ```sh
   snoozeDeadline 3 2025-05-01 1200
+  ```
 
 ---
 
@@ -156,6 +165,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:
   ```sh
   snoozeEvent 4 2025-05-01 1000 2025-05-01 1200
+  ```
 
 ---
 
@@ -165,6 +175,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 - **Example**:
   ```sh
   bye
+  ```
 
 ---
 
