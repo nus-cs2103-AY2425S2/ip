@@ -47,7 +47,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 ---
 
 ### 1. **Add a ToDo Task**
-- **Syntax**:  
+- **Syntax**:
   `todo <description>`
 - **Example**:  
   ```sh
@@ -57,7 +57,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 ---
 
 ### 2. **Add a Deadline Task**
-- **Syntax**:  
+- **Syntax**:
   `deadline <description>\<due_date>`
   - `<due_date>` must be in the format `yyyy-MM-dd HHmm`.
 - **Example**:  
@@ -68,7 +68,7 @@ Nyanko supports a variety of commands to manage your tasks. Below is a detailed 
 ---
 
 ### 3. **Add an Event Task**
-- **Syntax**:  
+- **Syntax**:
   `event <description>\<start_time>\<end_time>`
   - `<start_time>` and `<end_time>` must be in the format `yyyy-MM-dd HHmm`.
 - **Example**:  
