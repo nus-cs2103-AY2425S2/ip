@@ -1,30 +1,46 @@
-# Duke User Guide
+# Sunpter User Guide
 
-// Update the title above to match the actual product name
+## Preview 
 
-// Product screenshot goes here
+![Preview](https://github.com/sunpterodactyl/ip/blob/master/docs/Ui.png)
 
-// Product intro goes here
+Hi, I'm Sunpter your personalised priority assistant - but I've recently been taken over by another character. Here are some great things about me 
+- I remember tasks for you
+- I can list tasks in order of priority
+- I'm a simple chatbot  
 
 ## Adding deadlines
 
-// Describe the action and its outcome.
+Add a deadline 
 
-// Give examples of usage
-
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
+Example:`add deadline Submit report /by 25/3/2024 1430 /priority 1
 
 ```
-expected output
+Got it. I've added this task:
+[D][Priority Score: 1][] Submit report(by: Mar 25 2024)
 ```
 
-## Feature ABC
+## Adding todo
 
-// Feature details
+Example: `add todo Finish project /priority 20`
 
+## Adding events 
 
-## Feature XYZ
+Example: `add event Team meeting /from 10/4/2024 0900 /to 10/4/2024 1100 /priority 15`
 
-// Feature details
+## List in order of priority and time added 
+Example: `list`
+Example: `priority`
+
+## Delete, mark, and unmark commands 
+Example: `delete [ID]`
+Example: `mark [ID]`
+Example: `unmark [ID]`
+
+Where my ID is the corresponding list number of your task 
+## Search 
+Searches and produces a list of tasks containing the given keyword
+Example: `search [keyword]`
+
+## Bye
+Exits the application
