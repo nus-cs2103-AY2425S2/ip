@@ -1,30 +1,36 @@
-# Duke User Guide
+# A
 
-// Update the title above to match the actual product name
+Welcome to **A**, a chatbot application that helps you manage tasks efficiently.
 
-// Product screenshot goes here
+## Features
 
-// Product intro goes here
+- **Add Tasks**:
+    - `todo DESCRIPTION`: Add a todo task.
+    - `deadline DESCRIPTION /by DATE`: Add a task with a deadline.
+    - `event DESCRIPTION /from START /to END`: Add an event task.
+    - `fixed DESCRIPTION /for DURATION`: Add a fixed duration task.
 
-## Adding deadlines
+- **Manage Tasks**:
+    - `list`: List all tasks.
+    - `mark INDEX`: Mark a task as done.
+    - `unmark INDEX`: Mark a task as not done.
+    - `delete INDEX`: Delete a task.
 
-// Describe the action and its outcome.
+- **Search Tasks**:
+    - `find KEYWORD`: Search for tasks containing the keyword.
 
-// Give examples of usage
+- **Exit Program**:
+    - `bye`: Exit the application.
 
-Example: `keyword (optional arguments)`
+## Usage
 
-// A description of the expected outcome goes here
+1. Download and run the JAR file.
+2. Use the commands above to manage your tasks.
 
-```
-expected output
-```
+## Example Commands
 
-## Feature ABC
+- Add a todo task: `todo Read book`
+- Add a deadline task: `deadline Submit report /by 2023-12-31`
+- List all tasks: `list`
+- Mark a task as done: `mark 1`
 
-// Feature details
-
-
-## Feature XYZ
-
-// Feature details

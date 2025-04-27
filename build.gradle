@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'checkstyle'
+}
+
+repositories {
+    mavenCentral()
+}
+
+String javaFxVersion = '17.0.7'
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+
+
+    implementation "org.openjfx:javafx-base:$javaFxVersion:win"
+    implementation "org.openjfx:javafx-controls:$javaFxVersion:win"
+    implementation "org.openjfx:javafx-fxml:$javaFxVersion:win"
+    implementation "org.openjfx:javafx-graphics:$javaFxVersion:win"
+
+
+    implementation "org.openjfx:javafx-base:$javaFxVersion:linux"
+    implementation "org.openjfx:javafx-controls:$javaFxVersion:linux"
+    implementation "org.openjfx:javafx-fxml:$javaFxVersion:linux"
+    implementation "org.openjfx:javafx-graphics:$javaFxVersion:linux"
+    implementation "org.openjfx:javafx-media:$javaFxVersion:linux"
+    implementation "org.openjfx:javafx-web:$javaFxVersion:linux"
+
+    implementation "org.openjfx:javafx-base:$javaFxVersion:mac"
+    implementation "org.openjfx:javafx-controls:$javaFxVersion:mac"
+    implementation "org.openjfx:javafx-fxml:$javaFxVersion:mac"
+    implementation "org.openjfx:javafx-graphics:$javaFxVersion:mac"
+}
+
+application {
+    mainClass.set("Launcher")
+}
+
+shadowJar {
+    archiveBaseName = "a"
+    archiveClassifier = null
+    manifest {
+        attributes 'Main-Class': 'Launcher'
+    }
+    mergeServiceFiles()
+}
+
+run {
+    standardInput = System.in
+    doFirst {
+        def currentOs = System.getProperty("os.name").toLowerCase()
+        def osSuffix = currentOs.contains('win') ? 'win' :
+                currentOs.contains('mac') ? 'mac' : 'linux'
+        def platformDeps = configurations.runtimeClasspath.filter { it.name.contains(osSuffix) }
+
+        if (!platformDeps.empty) {
+            jvmArgs += ['--module-path', platformDeps.asPath, '--add-modules', 'javafx.controls,javafx.fxml']
+        }
+    }
+}
+
+checkstyle {
+    toolVersion = '10.15.0'
+}
