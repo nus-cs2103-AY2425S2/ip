@@ -1,0 +1,5 @@
+D | 0 | finish IP | 2025-03-03
+T | 0 | buy food
+T | 1 | eat
+T | 0 | hungry
+T | 0 | buy jacket
