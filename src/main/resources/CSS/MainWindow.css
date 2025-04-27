@@ -1,0 +1,43 @@
+/* gui.MainWindow.css */
+
+/* Set background image on ScrollPane to prevent zooming */
+#scrollPane {
+    -fx-background-color: transparent;
+    -fx-background-image: url("/images/Background.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}
+
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+#dialogContainer {
+    -fx-background-color: transparent;
+}
+
+/* Style for the user input text field */
+#userInput {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-border-color: #ADD8E6;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+/* Style for the send button */
+#sendButton {
+    -fx-background-color: linear-gradient(to bottom, #00BFFF, #1E90FF);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10px;
+}
+
+/* Hover effect for send button */
+#sendButton:hover {
+    -fx-background-color: linear-gradient(to bottom, #1E90FF, #00BFFF);
+}
+
