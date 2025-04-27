@@ -1,0 +1,16 @@
+list
+todo
+todo get water
+deadline
+deadline again
+deadline /by later
+deadline drink water /by sometime later
+event water party /from tonight /to midnight
+list
+mark 300
+mark 0
+list
+remove 100
+remove 0
+list
+bye
