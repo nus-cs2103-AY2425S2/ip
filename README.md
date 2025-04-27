@@ -1,26 +1,105 @@
-# Duke project template
+# DNar Bot: Free Your Mind, Get Things Done
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+DNar helps you capture, organize, and manage your tasks so you can focus on what matters most. Stop using your brain as a to-do list and start getting things done!
 
-## Setting up in Intellij
+**[Key Benefits]:**
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+* **[Simple and Intuitive]:** Easy to learn and use, with straightforward commands.
+* **[Text-Based Interaction]:** No complex GUI to navigate – just type and go.
+* **[Lightning Fast]:** Quick responses so you can add and manage tasks efficiently.
+* **[Completely Free]:** No cost to download and use!
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+---
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+## **[Quick Start]**
+
+### Ready to Experience the Freedom?
+
+1. **[Download]:** Grab the latest release from [here](https://github.com/dnardnar/DNar).
+2. **[Launch]:** Double-click the executable to start the application.
+3. **[Add Tasks]:** Start adding your tasks using simple commands.
+4. **[Relax]:** Let DNar handle the reminders so you can focus on your day.
+
+It's that easy!
+
+---
+
+## **[Features]**
+
+### Task Management Commands
+
+- **Adding a Task:**  
+  Format: `todo DESCRIPTION`  
+  Example: `todo Buy groceries`
+
+- **Adding a Deadline:**  
+  Format: `deadline DESCRIPTION /by DATE`  
+  Example: `deadline Submit assignment /by 2025-03-20`
+
+- **Adding an Event:**  
+  Format: `event DESCRIPTION /from DAY TIME /to TIME`  
+  Example: `event project meeting /from Mon 2pm /to 4pm`
+
+- **Listing All Tasks:**  
+  Format: `list`  
+  Example: `list`
+
+- **Marking a Task as Done:**  
+  Format: `mark INDEX`  
+  Example: `mark 2`
+
+- **Unmarking a Task:**  
+  Format: `unmark INDEX`  
+  Example: `unmark 2`
+
+- **Editing a Task:**  
+  Format: `edit INDEX description NEW DESCRIPTION`  
+  Example: `edit 1 description Buy milk`
+
+- **Finding Tasks by Keyword:**  
+  Format: `find KEYWORD`  
+  Example: `find groceries milk`
+
+- **Deleting a Task:**  
+  Format: `delete INDEX`  
+  Example: `delete 3`
+
+---
+
+## **[Saving Data]**
+
+DNar automatically saves your task data after every command that modifies it. The data is stored in a txt file in the application's directory.
+
+---
+
+## **[Upcoming Features]**
+
+- [ ] **Reminders:** Receive timely notifications for deadlines and events (Coming Soon).
+
+---
+
+## **[Command Summary]**
+
+| Action             | Format, Examples                                                                                  |
+|--------------------|---------------------------------------------------------------------------------------------------| 
+| Add Task (To-do)   | `todo DESCRIPTION`, e.g., `todo Buy milk`                                                         |
+| Add Deadline       | `deadline DESCRIPTION /by DATE`, e.g., `deadline Submit report /by 2025-03-20`                    |
+| Add Event          | `event DESCRIPTION /from DAY TIME /to TIME` , e.g., `event project meeting /from Mon 2pm /to 4pm` |
+| List Tasks         | `list`, e.g., `list`                                                                              |
+| Mark as Done       | `mark INDEX`, e.g., `mark 2`                                                                      |
+| Unmark as Not Done | `unmark INDEX`, e.g., `unmark 2`                                                                  |
+| Edit Task          | `edit INDEX description NEW DESCRIPTION`  , e.g., `edit 1 description Buy milk`                   |
+| Find Tasks         | `find KEYWORD [MORE_KEYWORDS]`, e.g., `find groceries milk`                                       |
+| Delete Task        | `delete INDEX`, e.g., `delete 3`                                                                  |
+
+---
+
+DNar is also a great project for Java developers to explore. Dive into the code and contribute!
+```java
+public class Main {
+  public static void main(String[] args) {
+    Application.launch(DNar.class, args);
+  }
+}
+```
+
