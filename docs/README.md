@@ -1,30 +1,31 @@
-# Duke User Guide
+# main.Xuxin User Guide
 
-// Update the title above to match the actual product name
+<img width="299" alt="Ui" src="Ui.png" >
 
-// Product screenshot goes here
+### Welcome to Chatbot Xuxin, 
+an **interactive chatbot application** designed to manage tasks efficiently. This project supports various task-related commands, including adding, marking, deleting, and finding tasks. Below are instructions and details of the implementation.
 
-// Product intro goes here
+### Here’s a list of commands Xuxin recognizes:
 
-## Adding deadlines
+1. list: Display all tasks.
+2. todo, deadline, event: Add different types of tasks.
+3. delete: delete a task.
+4. mark, unmark: mark or unmark the task as done.
+5. find: find a task.
+6. bye: exit the chatbot.
 
-// Describe the action and its outcome.
-
-// Give examples of usage
-
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
+Example: `todo do homework`
 
 ```
-expected output
+Got it! I've added this task: 
+[T][ ] do homework
+Now you have one tasks in the list.
 ```
 
 ## Feature ABC
 
-// Feature details
-
+Task Management: Add, delete, and modify tasks in real-time.
 
 ## Feature XYZ
 
-// Feature details
+Command Recognition: Recognizes multiple task types (e.g., todo, deadline, event).
