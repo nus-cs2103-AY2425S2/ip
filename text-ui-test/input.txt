@@ -1,0 +1,13 @@
+todo DOOT
+todo DoOT
+list
+mark 1
+list
+unmark 1
+list
+unmark 1
+deadline dr doot /by dootday
+event dootday /from dawn /to dusk
+list
+mark 3
+list
