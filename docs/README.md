@@ -1,30 +1,80 @@
-# Duke User Guide
+![Screenshot of Jeff](Ui.png)
 
-// Update the title above to match the actual product name
+Jeff is your friendly land shark that can help keep track of your tasks!
 
-// Product screenshot goes here
+## Features
 
-// Product intro goes here
+- Add todos, deadlines and events
+- View all todos, deadlines and events
+- Delete todos, deadlines and events
+- Find specific todos, deadlines and events
+- Mark and unmark todos, deadlines and events
+- Add, delete and view notes
 
-## Adding deadlines
+## Commands
 
-// Describe the action and its outcome.
+### `todo [description]`
 
-// Give examples of usage
+Adds todo with the given description
 
-Example: `keyword (optional arguments)`
+`description - description of the todo task`
 
-// A description of the expected outcome goes here
+### `deadline [description] /by [due time]`
 
-```
-expected output
-```
+Adds deadline with the given description and due time
 
-## Feature ABC
+`description - description of the deadline task`
 
-// Feature details
+`due time - time the deadline task is due by, in the format YYYY-MM-DD`
 
+### `event [description] /from [start time] /to [end time]`
 
-## Feature XYZ
+Adds event with the given description, start time and end time
 
-// Feature details
+`description - description of the deadline task`
+
+`start time - time the event task starts, in the format YYYY-MM-DD`
+
+`end time - time the event task ends, in the format YYYY-MM-DD`
+
+### `list`
+
+Shows all tasks you have added
+
+### `delete [index]`
+
+Deletes task at the specificed index in the list
+
+`index - index of the task to be deleted in the list`
+
+### `find [keyword]`
+
+Shows tasks whose description contains the keyword
+
+`keyword - keyword used to find tasks`
+
+### `mark [index]`
+
+Marks task at the specificed index in the list as done
+
+`index - index of the task to be marked as done in the list`
+
+### `unmark [index]`
+
+Marks task at the specificed index in the list as not done
+
+`index - index of the task to be marked as not done in the list`
+
+### `note [description]`
+
+Adds note with the given description
+
+`description - description of the note`
+
+### `notes`
+
+Shows all notes you have added
+
+### `bye`
+
+Closes Jeff
