@@ -1,0 +1,11 @@
+todo go for date
+deadline cs4231 /by 1800 25/2/2025
+event prom /from 1400 12/11/2025 /to 1600 12/11/2025
+list
+mark 2
+list
+unmark 1
+unmark 2
+delete 3
+list
+bye
