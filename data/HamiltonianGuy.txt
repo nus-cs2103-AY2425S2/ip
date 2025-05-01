@@ -1,0 +1,6 @@
+T | 1 | run
+T | 0 | eat
+T | 0 | 2109s ps2
+D | 1 | return book | 2024-02-01 1800
+D | 1 | return book | 2019-02-02 1800
+D | 0 | Submit assignment | 2024-03-01 2359
