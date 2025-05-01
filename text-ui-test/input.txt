@@ -1,0 +1,11 @@
+clear
+todo go to utown
+todo go to pc common
+deadline eat lunch /by 2025-02-20
+event party /from 2025-02-20 /to 2025-02-21
+list
+mark 1
+delete 2
+unmark 1
+mark
+find lunch
