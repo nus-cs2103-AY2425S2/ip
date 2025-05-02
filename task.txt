@@ -1,0 +1,10 @@
+T | 0 | read book
+D | 0 | return book | 2025-10-15
+E | 0 | project meeting | Aug 6th 2-4pm
+T | 1 | join sports club
+D | 1 | fix sink | 2025-07-07
+E | 0 | comedy show | Sunday 5pm to 6pm
+E | 1 | Date Night | Wednesday 6pm to 9pm
+T | 1 | car painting
+T | 0 | read CS2103 notes
+T | 0 | buy grocery from mart
