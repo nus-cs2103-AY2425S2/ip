@@ -1,30 +1,60 @@
-# Duke User Guide
+# Babe Chatbot User Guide
 
-// Update the title above to match the actual product name
+![Babe Chatbot Interface](Ui.png)
 
-// Product screenshot goes here
+Babe is an intuitive task management chatbot that helps you organize your deadlines, events, and todos with priority levels. With a resizable chat window and graceful error handling, Babe makes task management a breeze.
 
-// Product intro goes here
+## Adding Tasks
 
-## Adding deadlines
+Babe supports three types of tasks:
+- Deadlines
+- Events
+- Todos
 
-// Describe the action and its outcome.
+### Task Priority Levels
 
-// Give examples of usage
+All tasks can be assigned a priority level from 1 to 3:
+- Priority 1: Most important/urgent
+- Priority 2: Medium importance
+- Priority 3: Lowest importance
 
-Example: `keyword (optional arguments)`
+### Command Format
 
-// A description of the expected outcome goes here
+- `<task_type> "<task_description>" /p <priority_number>`
 
-```
-expected output
-```
+### Examples
 
-## Feature ABC
+1. Adding a deadline:
 
-// Feature details
+   deadline "Submit project proposal" /p 1 /date 2025-03-01
 
+2. Creating an event:
 
-## Feature XYZ
+   event "Team meeting" /p 2 /from 2025-02-22-14:00 /to 2025-02-22-15:30
 
-// Feature details
+3. Adding a todo:
+
+   todo "Buy groceries" /p 3
+
+## Chat Window Features
+
+### Resizable Interface
+- Click and drag the window edges to resize the chat interface
+- Supports minimum and maximum size limits for optimal viewing
+- Automatically adjusts content layout to fit the new dimensions
+
+### Error Handling
+
+Babe handles various error scenarios gracefully:
+
+- Invalid priority levels
+- Missing required arguments
+- Invalid date formats
+
+## Additional Features
+
+- Task modification and deletion
+- Task completion tracking
+- Storing list between conversations
+- Task list viewing and filtering by keyword search
+
