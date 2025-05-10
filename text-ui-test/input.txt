@@ -1,0 +1,30 @@
+hi
+mark
+unmark
+mark 1
+unmark 1
+mark a
+unmark a
+todo
+todo read books
+deadline
+deadline submit assignment
+deadline submit assignment /by Sunday
+mark 1
+event
+event meeting with project team
+event meeting with project team /from Saturday 8pm
+event meeting with project team /to 9pm
+event meeting with project team /from Saturday 8pm /to 9pm
+mark 1
+hello
+mark 2
+unmark 2
+unmark 2
+list
+delete
+delete a
+delete 5
+delete 2
+list
+bye
