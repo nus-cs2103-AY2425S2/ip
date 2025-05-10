@@ -1,30 +1,46 @@
-# Duke User Guide
+# YoChan User Guide
 
-// Update the title above to match the actual product name
+YoChan is a **desktop app for managing your tasks with a GUI**.
 
-// Product screenshot goes here
+YoChan can:
+- [X] Track **ToDos:** Tasks with no deadline
+- [X] Track **Deadlines:** Tasks with one deadline
+- [X] Track **Events:** Tasks that exist over a time interval
 
-// Product intro goes here
+## Getting Started
 
-## Adding deadlines
+1. Download the executable JAR file from [here](https://github.com/Reshiro/ip/releases/tag/A-Release)
 
-// Describe the action and its outcome.
+2. Run the following command in the JAR file's directory
+   ```terminal
+   java -jar YoChan.jar
+   ```
 
-// Give examples of usage
+3. Begin adding tasks:
 
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
-
-```
-expected output
-```
-
-## Feature ABC
-
-// Feature details
+   - To add a **ToDo** task, enter `todo <task_name>`
+   - To add a **Deadline** task, enter `deadline <task_name> /by <yyyy-MM-dd HHmm>`
+   - To add an **Event** task, enter `event <task_name> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>`
 
 
-## Feature XYZ
+4. To list all of your tasks, simply enter `list`
 
-// Feature details
+## Other Features
+
+1. **Mark** and **Unmark** a task as complete using `mark <task_number>` or `unmark <task_number>`
+
+2. **Delete** a task using `delete <task_number>`
+
+3. **Find** a task using `find <search_term>`
+
+4. Set a **Priority** for a task using `priority <task_number> <priority>`
+   It's up to you to determine a priority scale! YoChan accepts negative numbers here.
+
+5. Once you're done using the app, just enter `bye`
+   and YoChan will save all of the tasks in your list! The next time you open up the app, everything will be there 🦭.
+
+> Tip: you can use the list command to find task numbers!
+
+> Tip: YoChan is too lazy to deal with extra arguments!
+
+

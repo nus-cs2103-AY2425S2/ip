@@ -1,7 +1,43 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+Ough... What do you want?
+-*-*-*-*-*-*-*-*-*-*-
+Oughkay, I've added this task:
+[T][ ] Feed fishes (Priority: 0)
+Now you have 1 tasks in the list.
+-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-
+1. [T][ ] Feed fishes (Priority: 0)
+-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-
+Oughkay, I've added this task:
+[D][ ] Rub belly (Priority: 0) (by: Oct 10 1000 1000)
+Now you have 2 tasks in the list.
+-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-
+1. [T][ ] Feed fishes (Priority: 0)
+2. [D][ ] Rub belly (Priority: 0) (by: Oct 10 1000 1000)
+-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-
+Ough! I've marked this task as done:
+[T][X] Feed fishes (Priority: 0)
+-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-
+Ough! I've marked this task as done:
+[D][X] Rub belly (Priority: 0) (by: Oct 10 1000 1000)
+-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-
+1. [T][X] Feed fishes (Priority: 0)
+2. [D][X] Rub belly (Priority: 0) (by: Oct 10 1000 1000)
+-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-
+Ough... I've marked this task as not done yet:
+[T][ ] Feed fishes (Priority: 0)
+-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-
+1. [T][ ] Feed fishes (Priority: 0)
+2. [D][X] Rub belly (Priority: 0) (by: Oct 10 1000 1000)
+-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-
+Oughkay, I've added this task:
+[E][ ] Aquarium meeting (Priority: 0) (from: Nov 10 1001 1100 to: Nov 19 1001 1200)
+Now you have 3 tasks in the list.
+-*-*-*-*-*-*-*-*-*-*-
