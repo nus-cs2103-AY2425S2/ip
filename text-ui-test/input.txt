@@ -1,0 +1,16 @@
+list
+hi
+todo
+todo hi
+deadline hi by 2023-12-02T18:00
+deadline hi /by sunday
+deadline hi /by 2023-12-02T18:00
+event hi /from 2023-12-01T10:00 /to 2023-12-01T12:00
+list
+mark 1
+list
+mark 2
+unmark 2
+delete 2
+list
+bye
