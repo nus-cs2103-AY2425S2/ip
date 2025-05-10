@@ -1,19 +1,11 @@
-# Duke project template
+# HeyJudy
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+This is a bot that can help you to organise to-do list. It is a bit moody, tho... not for the faint-hearted ><
 
-## Setting up in Intellij
+### credits
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+1. This repo is forked from _Duke_. 
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
    ```
    Hello from
     ____        _        
@@ -22,5 +14,10 @@ Prerequisites: JDK 17, update Intellij to the most recent version.
    | |_| | |_| |   <  __/
    |____/ \__,_|_|\_\___|
    ```
+
+2. Use of AI
+   1. IntelliJ code autocompletion
+   2. Use of ChatGPT to improve header comments (documentation).
+   3. Copilot: enquiries about functions available in JUnit, LocalDateTime Class of Java, and detailed explanations of Java Streams.
 
 **Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
