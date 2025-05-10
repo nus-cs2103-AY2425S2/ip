@@ -1,0 +1,11 @@
+todo read book
+list
+deadline return book /by Sunday
+list
+event cs2103 Briefing /from 4pm /to 6pm
+list
+mark 2
+list
+unmark 2
+list
+bye

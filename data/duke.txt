@@ -1,0 +1,7 @@
+T | false | cs2103
+D | true | oop | 2025-03-14
+E | false | film festival | 2025-03-14 | 2025-03-24
+E | false | midterms | 2024-12-05 | 2025-01-01
+D | false | homework 1 | 2025-01-25
+D | false | [D] homewokr 2 | 2025-01-25 1800
+D | false | homework 3 | 2024-10-24
