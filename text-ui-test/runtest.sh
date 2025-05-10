@@ -20,7 +20,10 @@ then
 fi
 
 # run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
-java -classpath ../bin Duke < input.txt > ACTUAL.TXT
+if ! java -classpath ../bin GodBot < input.txt > ACTUAL.TXT; then
+  echo "********** RUN FAILURE **********"
+  exit 1
+fi
 
 # convert to UNIX format
 cp EXPECTED.TXT EXPECTED-UNIX.TXT
