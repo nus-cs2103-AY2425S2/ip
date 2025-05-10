@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nightcoder.javafx.MainWindow">
+    <children>
+        <Button fx:id="themeToggleButton" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#toggleTheme" prefHeight="25.0" prefWidth="120.0" text="Light Mode" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="3.0" />
+        <Button fx:id="clearChatButton" layoutX="130.0" layoutY="5.0" mnemonicParsing="false" onAction="#clearChat" prefHeight="25.0" prefWidth="120.0" text="Clear Chat" AnchorPane.leftAnchor="126.0" AnchorPane.topAnchor="3.0" />
+        <TextField fx:id="userInput" layoutX="3.0" layoutY="556.0" onAction="#handleUserInput" prefHeight="41.0" prefWidth="716.0" AnchorPane.bottomAnchor="3.0" />
+        <Button fx:id="sendButton" alignment="CENTER" layoutX="321.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleUserInput" prefHeight="41.0" prefWidth="76.0" text="Send" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="3.0" />
+        <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" hvalue="1.0" layoutY="31.0" prefHeight="522.0" prefWidth="800.0" vbarPolicy="ALWAYS" vvalue="1.0">
+            <content>
+                <VBox fx:id="dialogContainer" prefHeight="521.0" prefWidth="786.0" />
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>
