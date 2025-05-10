@@ -1,7 +1,199 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+██   ██ ██ ██████  ██████
+██  ██  ██ ██   ██ ██   ██
+█████   ██ ██████  ██████
+██  ██  ██ ██      ██
+██   ██ ██ ██      ██
 
+[KIPP]
+Well, hello there cooper-testuser. This is KIPP speaking.
+How can I help?
+---
+[reuben]
+---
+[KIPP]
+I don't recognize that command.
+---
+[reuben]
+---
+[KIPP]
+I don't recognize that command.
+---
+[reuben]
+---
+[KIPP]
+Dear cooper-testuser, I can't add an empty task to your list. Please provide a task description.
+Example: todo <task description>
+---
+[reuben]
+---
+[KIPP]
+Roger that cooper-testuser, I've added the following task to your list:
+[T][ ] fix spaceship
+Note, you have 1 tasks in your list.
+---
+[reuben]
+---
+[KIPP]
+Focus cooper-testuser! I need a task description and a deadline to add a task.
+Example: deadline <task description> /by <deadline yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+Focus cooper-testuser! I need a task description and a deadline to add a task.
+Example: deadline <task description> /by <deadline yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+Focus cooper-testuser! I need a task description and a deadline to add a task.
+Example: deadline <task description> /by <deadline yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+cooper-testuser, I need a valid deadline in the format yyyy-mm-dd.
+Example: deadline <task description> /by <deadline yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+cooper-testuser, I need a task description and a start and end time to add an event.
+Example: event <task description> /from <start yyyy-mm-dd> /to <end yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+cooper-testuser, I need a task description and a start and end time to add an event.
+Example: event <task description> /from <start yyyy-mm-dd> /to <end yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+cooper-testuser, I need a task description and a start and end time to add an event.
+Example: event <task description> /from <start yyyy-mm-dd> /to <end yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+Listen to me cooper-testuser! I need a valid start and end date from you.
+Example: event <task description> /from <start yyyy-mm-dd> /to <end yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+Listen to me cooper-testuser! I need a valid start and end date from you.
+Example: event <task description> /from <start yyyy-mm-dd> /to <end yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+Listen to me cooper-testuser! I need a valid start and end date from you.
+Example: event <task description> /from <start yyyy-mm-dd> /to <end yyyy-mm-dd>
+---
+[reuben]
+---
+[KIPP]
+1. [T][ ] fix spaceship
+---
+[reuben]
+---
+[KIPP]
+Roger that cooper-testuser. Marking task as completed, good work!
+[T][x] fix spaceship
+---
+[reuben]
+---
+[KIPP]
+Roger that cooper-testuser. Marking task as incomplete, good work!
+[T][ ] fix spaceship
+---
+[reuben]
+---
+[KIPP]
+1. [T][ ] fix spaceship
+---
+[reuben]
+---
+[KIPP]
+Are you alright cooper-testuser? A task with the number 3 does not exist. Please provide a valid task number.
+Example: mark <task number>
+---
+[reuben]
+---
+[KIPP]
+Are you alright cooper-testuser? A task with the number 3 does not exist. Please provide a valid task number.
+Example: mark <task number>
+---
+[reuben]
+---
+[KIPP]
+Are you alright cooper-testuser? A task with the number 3 does not exist. Please provide a valid task number.
+Example: unmark <task number>
+---
+[reuben]
+---
+[KIPP]
+Are you alright cooper-testuser? A task with the number 3 does not exist. Please provide a valid task number.
+Example: unmark <task number>
+---
+[reuben]
+---
+[KIPP]
+1. [T][ ] fix spaceship
+---
+[reuben]
+---
+[KIPP]
+I don't recognize that command.
+---
+[reuben]
+---
+[KIPP]
+Are you alright cooper-testuser? A task with the number 3 does not exist. Please provide a valid task number.
+Example: delete <task number>
+---
+[reuben]
+---
+[KIPP]
+1. [T][ ] fix spaceship
+---
+[reuben]
+---
+[KIPP]
+Are you alright cooper-testuser? A task with the number 2 does not exist. Please provide a valid task number.
+Example: delete <task number>
+---
+[reuben]
+---
+[KIPP]
+1. [T][ ] fix spaceship
+---
+[reuben]
+---
+[KIPP]
+Roger that cooper-testuser. I've deleted the following task from your list:
+[T][ ] fix spaceship
+You still have 0 tasks in your roster.
+---
+[reuben]
+---
+[KIPP]
+Are you alright cooper-testuser? A task with the number 1 does not exist. Please provide a valid task number.
+Example: delete <task number>
+---
+[reuben]
+---
+[KIPP]
+I don't recognize that command.
+---
+[reuben]
+---
+[KIPP]
+Lucky you cooper-testuser! Guess you're done for the day.
+---
+[reuben]
+---
+[KIPP]
+Goodbye cooper-testuser and venture safely. I'll be here if you need me.
+---

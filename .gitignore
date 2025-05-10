@@ -7,6 +7,11 @@
 /.gradle/
 /build/
 src/main/resources/docs/
+/.settings/
+.classpath
+
+# Data save files
+KIPP.txt
 
 # MacOS custom attributes files created by Finder
 .DS_Store
