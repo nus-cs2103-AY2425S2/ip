@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'checkstyle'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+ext {
+    javaFxVersion = '17.0.9'  // Updated to latest Java 17 compatible version
+    mockitoVersion = '5.11.0'
+    junitVersion = '5.10.0'
+    checkstyleVersion = '10.21.2'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+}
+
+dependencies {
+    // Testing
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    // JavaFX - Platform specific dependencies
+    ['win', 'mac', 'linux'].each { platform ->
+        ['base', 'controls', 'fxml', 'graphics'].each { module ->
+            implementation "org.openjfx:javafx-${module}:${javaFxVersion}:${platform}"
+        }
+    }
+}
+
+application {
+    mainClass = "Launcher"
+}
+
+shadowJar {
+    archiveBaseName = "dusk"
+    archiveVersion = "0.1.0"
+    archiveClassifier = null
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+        showExceptions true
+        exceptionFormat "full"
+        showCauses true
+        showStackTraces true
+        showStandardStreams = false
+    }
+}
+
+checkstyle {
+    toolVersion = checkstyleVersion
+}
+
+run {
+    standardInput = System.in
+    enableAssertions = true
+}
