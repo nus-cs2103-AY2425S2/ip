@@ -1,0 +1,6 @@
+todo walk
+deadline study /by Sunday
+event meeting /from 2pm /to 4pm
+mark 2
+list
+bye
