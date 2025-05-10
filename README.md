@@ -1,26 +1,78 @@
-# Duke project template
+# Bob: Your Personal Task Manager 🚀
+![alt text](https://github.com/zyonwee/iP/blob/master/src/main/resources/images/user.png?raw=true)
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+Bob is a lightweight, text-based task manager designed to help you organize your tasks efficiently. Inspired by the quote:
 
-## Setting up in Intellij
+> “Your mind is for having ideas, not holding them.” – [David Allen](https://gettingthingsdone.com/)
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+Bob frees your mind from the burden of remembering tasks. It’s:
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+*   Text-based: Simple and intuitive.
+*   Easy to learn: No steep learning curve.
+*   **FAST SUPER FAST** to use: Get things done in seconds.
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+## How to Get Started
+
+1.  Download Bob from [here](https://github.com/zyonwee/ip/releases/download/v0.2/bob.jar).
+2.  Double-click the executable file.
+3.  Add your tasks using simple commands.
+4.  Let Bob manage your tasks for you 😉.
+
+And the best part? It’s FREE! 🎉
+
+## Features
+
+-   Add tasks with deadlines, events, or todos.
+-   Mark tasks as done or undone.
+-   Delete tasks you no longer need.
+-   Save and load tasks automatically.
+-   ~~Sync tasks across devices~~ (coming soon!).
+
+## Example Usage
+
+Here’s how you can use Bob:
+
+```java
+// Add a todo task
+todo Buy groceries
+
+// Add a deadline task
+deadline Submit report /by 2023-12-31
+
+// Add an event task
+event Team meeting /from 2023-10-01 /to 2023-10-02
+
+// Mark task No. 1 as done
+mark 1
+
+// Unmark task No. 1
+unmark 1
+
+// Delete task No. 1
+delete 1
+
+// Find a task called 'Cry'
+find cry
+
+// Lists all tasks
+list  
+
+// Exit application
+bye
+```
+
+- [x] Sassy Personality
+- [x] GUI
+- [x] Tests
+- [x] Full set of Commands
+- [x] Responsiveness
+
+# Acknowledgements
+
+This project incorporates code and/or ideas from the following sources:
+
+*   **Code Reuse:**  The `DialogBox` `MainWindow` classes is adapted from work by Wang Haitao iP.
+
+*   **AI Assistance:** Gemini and DeepSeek were used for generating initial drafts of Javadoc documentation.
+
+![alt text](https://github.com/zyonwee/iP/blob/master/docs/Ui.png?raw=true)

@@ -1,0 +1,8 @@
+T | 1 | buy Groceries
+T | 0 | buy groceires
+T | 1 | buy groceries
+T | 0 | buy groceries
+T | 0 | buy groceries
+T | 0 | buy groceries
+T | 0 | buy fro
+D | 0 | cry | Aug 02 2021

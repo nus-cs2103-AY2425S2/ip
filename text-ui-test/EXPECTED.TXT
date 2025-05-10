@@ -1,7 +1,44 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Hello! I'm bob.bob the Princess
+What can I do for you?
+
+You didn't tell me what to do yet
+Error Saving this File
+You better remember to do it or I'll spank you
+Am I invited? Nah... no one cares bout this damsel
+Woah woah woah,
+let me get this straight... You want me to :
+
+1. [T] [ ] cry
+2. [D] [ ] laugh ( by: Tuesday )
+3. [E] [ ] die ( from: Monday to :  Tuesday)
+
+I think you're asking for way to much >.<
+
+Took you long enough to complete laugh
+
+Took you long enough to complete die
+
+Woah woah woah,
+let me get this straight... You want me to :
+
+1. [T] [ ] cry
+2. [D] [X] laugh ( by: Tuesday )
+3. [E] [X] die ( from: Monday to :  Tuesday)
+
+I think you're asking for way to much >.<
+
+You lied! You have not started to laugh
+
+What are you trying to say? You speak alien? Try English...
+Invalid task number. Please enter a valid integer.
+Fine... stop laugh then...
+Woah woah woah,
+let me get this straight... You want me to :
+
+1. [T] [ ] cry
+2. [E] [X] die ( from: Monday to :  Tuesday)
+
+I think you're asking for way to much >.<
+
+Bye. Please don't trouble me again!
 

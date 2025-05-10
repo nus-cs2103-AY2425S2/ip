@@ -1,0 +1,13 @@
+list
+todo cry
+deadline laugh /by Tuesday
+event die /from Monday /to Tuesday
+list
+mark 2
+mark 3
+list
+unmark 2
+bob.exceptions.BobException Invalid Input
+mark bob.exceptions.BobException Invalid Input
+delete 2
+list
