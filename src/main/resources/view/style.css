@@ -1,0 +1,73 @@
+/* Background */
+.root {
+    -fx-background-color: #411900; /* Dark Chocolate Brown */
+}
+
+/* Header */
+.victorian-header {
+    -fx-font-family: "Great Vibes", cursive; /* Elegant cursive font */
+    -fx-font-size: 28px;
+    -fx-text-fill: #D2B48C; /* Tan */
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+    -fx-background-color: #411900; /* Rich Brown */
+    -fx-background-radius: 10px;
+    -fx-max-width: Infinity;
+    -fx-text-alignment: center;
+}
+
+/* Chat Background */
+#dialogContainer {
+    -fx-padding: 15px;
+    -fx-background-color: #efc88b; /* Soft Beige */
+}
+
+/* User Message */
+.user-dialog {
+    -fx-background-color: #A67B5B; /* Warm Brown */
+    -fx-background-radius: 20px;
+    -fx-padding: 12px;
+    -fx-text-fill: black;
+    -fx-font-family: "Jacquard_24", serif;
+    -fx-font-size: 14px;
+}
+
+/* Max's Message */
+.max-dialog {
+    -fx-background-color: #6D4C41; /* Cocoa Brown */
+    -fx-background-radius: 20px;
+    -fx-padding: 12px;
+    -fx-text-fill: #FAEBD7; /* Antique White */
+    -fx-font-family: "Jacquard_24", serif;
+    -fx-font-size: 14px;
+}
+
+/* Input Field */
+#userInput {
+    -fx-font-size: 14px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #6D4C41; /* Cocoa Brown */
+    -fx-background-color: white;
+}
+
+/* Send Button */
+#sendButton {
+    -fx-background-color: #5A0000; /* Deep Red */
+    -fx-text-fill: white;
+    -fx-border-radius: 8px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Garamond", serif;
+}
+#sendButton:hover {
+    -fx-background-color: #6a040f; /* Even darker red */
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    -fx-background-color: #D3D3D3;
+    -fx-text-fill: black;
+    -fx-padding: 8px;
+    -fx-font-style: italic;
+}
