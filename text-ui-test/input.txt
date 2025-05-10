@@ -1,0 +1,29 @@
+write
+todo
+todo watch tv
+event
+event party
+event party /from
+event party /from 12pm /to
+event party /from 12pm /to 1pm
+deadline
+deadline assignment
+deadline assignment /by
+deadline assignment /by friday
+list
+mark 10
+mark 1
+mark 1
+mark 2
+list
+unmark 10
+unmark 1
+unmark 1
+list
+delete
+delete 4
+delete 3
+list
+delete 2
+list
+bye
