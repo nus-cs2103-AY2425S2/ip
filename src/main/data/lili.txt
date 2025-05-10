@@ -1,0 +1,12 @@
+T | 0 | Buy flowers
+T | 0 | Complete project report
+D | 1 | Submit CS2103 assignment | 2025-02-20 2359
+D | 0 | Submit resume for internship | 2025-02-18 1700
+E | 0 | Team meeting | 2025-02-17 0900 | 2025-02-17 1030
+T | 0 | Buy groceries
+E | 1 | Birthday party | 2025-02-19 1800 | 2025-02-19 2200
+E | 1 | English presentation | 2025-02-22 1400 | 2025-02-22 1600
+T | 0 | Read for CS2040S exam
+D | 0 | Prepare for valentines date | 2025-02-14 1820
+T | 1 | Buy chocolates
+E | 0 | Chalet party | 2025-02-23 1300 | 2025-02-24 1600
