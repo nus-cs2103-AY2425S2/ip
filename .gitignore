@@ -1,5 +1,4 @@
 # IDEA files
-/.idea/
 /out/
 /*.iml
 
@@ -12,6 +11,9 @@ src/main/resources/docs/
 .DS_Store
 *.iml
 bin/
+*.class
 
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT
+
+data/
