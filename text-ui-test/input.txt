@@ -1,0 +1,21 @@
+list
+todo borrow book
+deadline return book /by Sunday 3pm
+event JCFN 2025 /from Saturday 11am /to 9pm
+list
+mark 3
+mark 2
+list
+unmark 3
+list
+todo
+event
+deadline
+random plant the flowers
+event Career Fair /from tmr
+deadline watch online lecture
+delete 2
+todo read textbook
+delete 3
+list
+bye
