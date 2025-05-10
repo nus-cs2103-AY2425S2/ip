@@ -1,7 +1,22 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+Hola! Yo me llamo El Chino. Encantado.
+¿Le puedo ayudar en algo?
+Agregado: [T][ ] read book
+Agregado: [T][ ] return book
+Ok, lo he marcado como hecho:
+[T][X] read book
+Ok, lo he marcado como hecho:
+[T][X] return book
+Ok, lo he marcado como deshacer:
+[T][ ] return book
+Estas son tus tareas:
+1. [T][X] read book
+2. [T][ ] return book
+Agregado: [D][ ] return book (by: Sunday)
+Agregado: [E][ ] project meeting (from: Mon 2pm to: 4pm)
+Estas son tus tareas:
+1. [T][X] read book
+2. [T][ ] return book
+3. [D][ ] return book (by: Sunday)
+4. [E][ ] project meeting (from: Mon 2pm to: 4pm)
+Hasta pronto!
+Gracias por usar El Chino. ¡Adiós!
