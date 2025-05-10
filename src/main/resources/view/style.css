@@ -1,0 +1,24 @@
+@font-face {
+    src: url(../fonts/Nunito-Regular.ttf);
+}
+
+.root {
+    -fx-font-size: 14px;
+    -fx-font-family: 'Nunito', sans-serif;
+    -fx-font-weight: 700;
+}
+
+.sendButton {
+    -fx-background-color: #6c5e82;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.dialogContainer {
+    -fx-background-color: #e9e3ff;
+}
+
+.dialogBox {
+    -fx-background-color: #e9e3ff;
+    -fx-padding: 10;
+}
