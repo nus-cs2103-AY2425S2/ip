@@ -1,26 +1,160 @@
-# Duke project template
+# Pelops II Chatbot User Guide
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+![Ui picture](docs/Ui.png)
 
-## Setting up in Intellij
+Welcome to **Pelops II**, your task management companion! 
+This application helps you keep track of your _to-dos, deadlines, and events_ with ease.
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+- [Features](#features)
+- [FAQ](#faq)
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+# Features
+Command Quick Guide:
+```
+todo     | todo <description>
+deadline | deadline <description> /by <date>
+event    | event <description> /from <start_date> /to <end_date>
+list     | list
+mark     | mark <index>
+unmark   | unmark <index>
+delete   | delete <index>
+undo     | undo
+find     | find <keyword>
+```
+## Adding a todo task: ```todo```
+Adds a todo task to the task list
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+Format: `todo <description>`
+
+Examples:
+ - `todo buy bread`
+ - `todo wash dishes`
+
+## Adding a deadline task: ```deadline```
+Adds a deadline task to the task list
+
+Format: `deadline <description> /by <date>`
+- `<date>` must be in the format `YYYY-MM-DD hhmm`
+- Enter time using the 24-hour format (hhmm). For example, 6:00 PM should be entered as 1800.
+
+Examples:
+ - `deadline assignment 1 /by 2025-03-25 2359`
+ - `deadline XYZ marketing plan /by 2025-06-12 1700`
+
+## Adding a event task: ```event```
+Adds an event task to the task list
+
+Format: `event <description> /from <start_date> /to <end_date>`
+- `<start_date>` and `<end_date>` must be in the format `YYYY-MM-DD hhmm`
+- Enter time using the 24-hour format (hhmm). For example, 6:00 PM should be entered as 1800.
+- The `<start_date>` for the event must come before the `<end_date>`
+
+Examples:
+ - `event John's Birthday Party /from 2025-02-24 1600 /to 2025-02-24 2030`
+ - `event Flag Day /from 2025-01-15 1200 /to 2025-01-18 1830`
+
+## Listing all tasks: ```list```
+Lists out all the tasks in the task list
+
+Format: `list`
+
+Example Output:
+```
+1. [D][ ] buy tickets (by: 24 Feb 2025 11:40PM)
+2. [E][ ] birthday party (from: 23 Jan 2025 4:00PM to: 23 Jan 2025 10:00PM)
+3. [T][ ] do homework
+```
+
+## Marking a task: ```mark```
+Marks a task in the task list as completed
+
+Format: `mark <index>`
+- The `<index>` of a task can been seen from doing the `list` command
+- `<index>` must be a number between 1 and the total number of items in the task list
+ 
+Example:
+- `mark 1`
+
+Example output:
+```
+Nice! I've marked this task as done:
+[D][X] buy tickets (by: 24 Feb 2025 11:40PM)
+```
+
+## Unmarking a task: ```unmark```
+Unmarks a task in the task list as uncompleted
+
+Format: `unmark <index>`
+- The `<index>` of a task can been seen from doing the `list` command
+- `<index>` must be a number between 1 and the total number of items in the task list
+ 
+Example:
+- `unmark 1`
+
+Example output:
+```
+Ok, I've marked this task as not done yet:
+[D][ ] buy tickets (by: 24 Feb 2025 11:40PM)
+```
+
+## Deleting a task: ```delete```
+Deletes a task from the task list
+
+Format: `delete <index>`
+- The `<index>` of a task can been seen from doing the `list` command
+- `<index>` must be a number between 1 and the total number of items in the task list
+ 
+Example:
+- `delete 1`
+
+Example output:
+```
+Noted. I've removed this task:
+[D][ ] buy tickets (by: 24 Feb 2025 11:40PM)
+```
+
+## Undoing a command: ```undo```
+Undoes the previous command
+
+Format: `undo`
+- Undo only works on the following commands: `todo`, `deadline`, `event`, `mark`, `unmark`, `delete` and `undo`
+- Undo only works on the previous undoable command
+ 
+Example:
+- `undo`
+
+Example output:
+```
+Reverted previous command:
+delete 1
+
+Your Updated Task List:
+1. [D][ ] buy tickets (by: 24 Feb 2025 11:40PM)
+2. [E][ ] birthday party (from: 23 Jan 2025 4:00PM to: 23 Jan 2025 10:00PM)
+3. [T][ ] do homework
+```
+
+## Finding a task: ```find```
+Finds relevant tasks that contains the keyword in the description
+
+Format: `find <keyword>`
+
+Examples:
+ - `find birthday`
+ - `find book`
+
+# FAQ
+**Q1:** Are commands case sensitive?
+
+**Ans:** No commands are not case sensitive. `list` and `LiSt` will both recognized by Pelops II
+
+**Q2:** Do I need to save my data in my task list?
+
+**Ans:** Task list data are saved in your local storage automatically after any command that changes the data. There is no need to save the data manually.
+
+**Q3:** What if I type in an invalid command?
+
+**Ans:** Pelops II will prompt you will the list of available commands for you to use.
+
+# Note
+This task management companion is inspired by [Pelops II](https://wikizilla.org/wiki/Pelops_II) from [Godzilla Singular Point](https://godzilla.fandom.com/wiki/Godzilla_Singular_Point).
