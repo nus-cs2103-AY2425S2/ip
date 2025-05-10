@@ -1,0 +1,11 @@
+todo Finish homework
+deadline Submit assignment /by 12-12-2025 17:00
+event Meeting with Suzuran /from 12-12-2025 09:00 /to 12-12-2025 11:00
+list
+mark 1
+unmark 1
+remove 2
+clear
+list
+echo hi
+bye
