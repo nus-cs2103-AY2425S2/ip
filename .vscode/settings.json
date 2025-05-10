@@ -1,0 +1,23 @@
+{
+    "formatFiles.excludedFolders": [
+        "node_modules",
+        ".vscode",
+        ".git",
+        "dist",
+        ".chrome",
+        "bin",
+        ".gradle",
+        "gradle",
+        "build",
+        "data",
+        "text-ui-test",
+        ".settings",
+        ".vscode",
+        "docs"
+    ],
+    "formatFiles.runOrganizeImports": true,
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.checkstyle.configuration": "${workspaceFolder}\\config\\checkstyle\\checkstyle.xml",
+    "editor.formatOnPaste": false,
+    "java.format.settings.url": "./config/checkstyle/checkstyle.xml",
+}
