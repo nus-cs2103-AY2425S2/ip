@@ -1,26 +1,54 @@
-# Duke project template
+# Tasker: Your Ultimate Task Management Companion
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+![Screenshot](docs/Ui.png)
 
-## Setting up in Intellij
+Tasker is an all-in-one task manager designed to simplify your life. Whether you're managing daily to-dos, tracking deadlines, scheduling events, or handling fixed-duration tasks, Tasker has you covered. With its intuitive interface and powerful features, you'll never miss a beat.
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+## Features
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
+* To-dos: Add simple tasks with descriptions to be done.
+* Deadlines: Set tasks with descriptions and deadlines to complete them by.
+* Events: Schedule tasks with descriptions, start times, and end times.
+* Fixed Duration Tasks: Specify tasks with descriptions and required durations to complete.
+* Task Management: List, mark, unmark, find, and delete tasks efficiently.
+
+## Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/BladerX11/ip.git
    ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
+2. Navigate to the project directory:
+   ```bash
+   cd ip
+   ```
+3. Compile the program:
+   ```bash
+   ./gradlew clean shadowJar
+   ```
+4. Run the program:
+   ```bash
+   java -jar build/libs/tasker.jar
    ```
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+## Usage
+
+Tasker supports the following commands:
+
+* Adding Tasks:
+  * `todo {description}`: Adds a simple task.
+  * `deadline {description} /by {datetime}`: Adds a task with a deadline.
+  * `event {description} /from {datetime} /to {datetime}`: Adds a scheduled event.
+  * `fixed {description} /hr {hours} /min {minutes}`: Adds a task with a fixed duration.
+* Managing Tasks:
+  * `list`: Lists all tasks.
+  * `mark {index}`: Marks a task as complete.
+  * `unmark {index}`: Unmarks a task.
+  * `find {term}`: Finds tasks containing the search term.
+  * `delete {index}`: Deletes a task.
+
+For detailed usage and examples, refer to the [Tasker User Guide](https://bladerx11.github.io/ip/).
+
+## Storage
+
+Tasks are stored and loaded from the file at `./data/tasker.txt`.
