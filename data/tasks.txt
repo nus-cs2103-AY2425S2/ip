@@ -1,0 +1,5 @@
+
+D | 1 | submit assignment /by 2025-06-01
+E | 0 | project meeting /from Aug 6th 2pm /to 4pm
+T | 0 | goon hard
+C | 1 | friend /name terence /phone 99871232
