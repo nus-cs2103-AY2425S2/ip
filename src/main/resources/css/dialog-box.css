@@ -1,0 +1,34 @@
+/*style generate by ChatGPT, and tweak some of its designs like text color*/
+
+.user-message {
+    -fx-background-color: #212121;
+    -fx-background-radius: 18px 18px 4px 18px;
+    -fx-padding: 12 18 12 18;
+}
+
+.user-text {
+    -fx-fill: white;
+}
+
+.bot-message {
+    -fx-background-color: white;
+    -fx-background-radius: 18px 18px 18px 4px;
+    -fx-padding: 12 18 12 18;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 18px 18px 18px 4px;
+}
+
+.bot-text {
+    -fx-fill: #212121;
+}
+
+.user-text, .bot-text {
+    -fx-font-size: 1.2em;
+}
+
+.error-message {
+    -fx-background-color: #fff0f0;
+    -fx-border-color: #ff4444 !important;
+    -fx-border-width: 1.5 !important;
+}

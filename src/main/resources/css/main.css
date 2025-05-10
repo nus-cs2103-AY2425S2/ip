@@ -1,0 +1,54 @@
+/*style generate by ChatGPT, and tweak some of its designs*/
+.root {
+    -fx-base: #ffffff;
+    -fx-background: #f8f9fa;
+}
+
+/* ScrollPane */
+.modern-scroll {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+}
+
+.modern-scroll .scroll-bar:vertical {
+    -fx-pref-width: 8;
+    -fx-background-color: transparent;
+}
+
+.modern-scroll .scroll-bar .thumb {
+    -fx-background-color: rgba(0,0,0,0.15);
+    -fx-background-radius: 4;
+}
+
+
+/* Input Field */
+.modern-input {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1.5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 6, 0, 0, 2);
+}
+
+.modern-input:focused {
+    -fx-border-color: #212121;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0, 0, 3);
+}
+
+/* Send Button */
+.modern-button {
+    -fx-background-radius: 20;
+    -fx-background-color: #212121;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 6, 0, 0, 2);
+}
+
+.modern-button:hover {
+    -fx-background-color: #424242;
+}
+
+.modern-button:pressed {
+    -fx-background-color: #000000;
+}
