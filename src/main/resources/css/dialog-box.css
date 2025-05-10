@@ -1,0 +1,43 @@
+.reply-label {
+    -fx-background-color: linear-gradient(to bottom right, #FFC3A0, #FFD6C3); /* Soft peach gradient */
+    -fx-border-color: #FFBFA5; /* Soft pastel border */
+    -fx-background-radius: 1em 1em 1em 0;
+    -fx-border-radius: 1em 1em 1em 0;
+}
+
+
+
+/* Main Label with Pastel Theme */
+.label {
+    -fx-background-color: linear-gradient(to bottom right, #A8E6CF, #DCE8B5); /* Soft mint and pastel yellow */
+    -fx-border-color: #FFAAA5 #FF8B94 #D4A5A5 #FFB5A7; /* Soft pinks and reds */
+    -fx-border-width: 2px;
+    -fx-background-radius: 1em 1em 0 1em;
+    -fx-border-radius: 1em 1em 0 1em;
+    -fx-padding: 6px;
+    -fx-border-insets: 0px 7px 0px 7px;
+    -fx-background-insets: 0px 7px 0px 7px;
+    -fx-font-family: ".SF NS Text", "San Francisco", "Helvetica Neue", "Arial", sans-serif; /* Apple's system font */
+    -fx-font-size: 15px; /* Set font size */
+}
+
+
+#displayPicture {
+    /* Shadow effect on image. */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 40, 0.5, 3, 3);
+
+    /* Change size of image. */
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+
+    /* Rotate image clockwise by degrees. */
+    -fx-rotate: 0;
+}
+
+.hello-label {
+    /* Softer gold gradient */
+    -fx-background-color: linear-gradient(to bottom right, #87B5D9, #A8CBE6, #E5AFA4);
+
+    /* Vintage purple border */
+    -fx-border-color: #7D5BA6; /* Muted royal purple */
+}

@@ -1,0 +1,75 @@
+/* Background animation */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #FFD6C3, #FFBFA5); /* Brighter soft gradient */
+}
+
+.scroll-pane {
+    -fx-background-color: linear-gradient(to bottom right, #FFD6C3, #FFBFA5); /* Light peach-pink gradient */
+    -fx-border-color: transparent;
+}
+
+.viewport {
+    -fx-background-color: transparent;
+}
+
+/* Button animation */
+.button {
+    -fx-font-family: ".SF NS Text", "San Francisco", "Helvetica Neue", "Arial", sans-serif; /* Apple's system font */
+    -fx-font-size: 18px; /* Set font size */
+    -fx-border-radius: 100px;
+    -fx-background-color: #F5E6CC; /* Soft beige */
+    -fx-text-fill: #5A4A42; /* Soft brown text */
+}
+
+.button:hover {
+    -fx-background-color: #E8D8C4; /* Light warm beige */
+    -fx-font-size: 18px;
+}
+
+.button:pressed {
+    -fx-background-color: #FFC3A0; /* Warm pastel orange */
+    -fx-font-size: 20px;
+}
+
+/* Scrollbar animation */
+.scroll-bar {
+    -fx-font-size: 10px;  /* Change width of scroll bar. */
+    -fx-background-color: #DFD3C3;
+}
+
+.scroll-bar .thumb {
+    -fx-background-radius: 1em;
+    -fx-background-color: #C5705D;   /* Using looked-up color */
+}
+
+/* Hides the increment and decrement buttons. */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
+
+
+
+
+/* text field animation */
+.text-field {
+    -fx-font-family: ".SF NS Text", "San Francisco", "Helvetica Neue", "Arial", sans-serif; /* Apple's system font */
+    -fx-font-size: 15px; /* Set font size */
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.4); /* Dimmed placeholder text */
+    -fx-transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Placeholder animation when input is empty */
+.decorate-empty-text {
+    -fx-prompt-text-fill: rgba(0, 0, 255, 0.6); /* Light blue effect */
+    -fx-font-style: italic;
+    -fx-opacity: 0.7;
+}
+
+/* Optional: Fade-in effect when focused */
+.text-field:focused {
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.6);
+}
+
+
