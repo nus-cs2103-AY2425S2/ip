@@ -1,30 +1,46 @@
-# Duke User Guide
+# Dusty User Guide
 
-// Update the title above to match the actual product name
+![Ui.png](Ui.png)
 
-// Product screenshot goes here
+Dusty is a chat bot application built using JavaFX. It provides a simple user interface where users can input messages, and the chatbot responds accordingly. The application features a clean UI with a text input field, a send button, and a scrollable chat display area.
 
-// Product intro goes here
+## Commands
 
-## Adding deadlines
+Dusty supports the following commands:
 
-// Describe the action and its outcome.
+### list
+Displays all tasks.
 
-// Give examples of usage
+### mark [task number]
+Marks a task as completed.
 
-Example: `keyword (optional arguments)`
+### unmark [task number]
+Marks a task as incomplete.
 
-// A description of the expected outcome goes here
+### delete [task number]
+Deletes a task from the list.
 
-```
-expected output
-```
+### todo [task] #tag1 #tag2
+Adds a new To-Do task with optional tags.
 
-## Feature ABC
+### deadline [task]  /by <dd/mm/yyyy ttmm> #tag1 #tag2
+Adds a new Deadline task with a due date and optional tags.
 
-// Feature details
+### event [task]  /from <dd/mm/yyyy ttmm> /to <dd/mm/yyyy ttmm> #tag1 #tag2
+Adds a new Event task with a start and end time and optional tags.
 
+### find [keyword]
+Searches for tasks containing the keyword.
 
-## Feature XYZ
+### findtag [tag]
+Searches for tasks associated with a specific tag.
 
-// Feature details
+## How to Use
+
+Open the application.
+
+Type a command in the input field at the bottom.
+
+Press Enter or click the Send button to submit your command.
+
+The chatbot will respond accordingly.
