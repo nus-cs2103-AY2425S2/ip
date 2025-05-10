@@ -1,30 +1,54 @@
-# Duke User Guide
+# Alpha User Guide
 
-// Update the title above to match the actual product name
+![A demo of Alpha](https://raw.githubusercontent.com/gandwarf/ip/a28a8a4516162d58e6f64f5b25879dd48bf8def8/docs/Ui.png)
 
-// Product screenshot goes here
+## Wellcome User
+Feeling overwhelmed by millions of works? Let Alpha help you deal with it!
+Equipped with 
+- text-based📄
+- No entry barrier🎯
+- super fast⚡⚡
+Alpha will do its best
 
-// Product intro goes here
+Let's get start:
 
-## Adding deadlines
+1. download the newest release
+2. run it using `java -jar alpha.java`
+3. add all your tasks
+4. let it git rid of all the trouble for you
 
-// Describe the action and its outcome.
+This is a project template for a greenfield Java project. It's named after the Java mascot _Alpha_. Given below are instructions on how to use it.
+Just use `list` to check all your tasks!
+Alpha is a time table robot that provides users with three types of tasks:
+  1. Todo
+  2. Deadline with a deadline time
+  3. Event with start and end time
+Users can use `todo`, `deadline` and `event` to create correspond items in the time table, use `delete` to delete the out-of-date items.
+And users can also use `mark` and `unmark` to set one task as "done", use `find` to easily pick out the item based on the index
+## Adding tasks
 
-// Give examples of usage
+you may add a deadline bt the command: 
+`deadline task name /by time`
+the other two types of tasks are added by: 
+`todo taskname`
+`event eventname /from starttime /to endtime`
+then one task will be added to the time table and Alpha will inform you your change in the time table like
+![A demo of the execution of the deadline command](https://raw.githubusercontent.com/gandwarf/ip/093277a05513956e84b8451683c2e1d377b2617d/a%20demo%20of%20Alpha.jpg)
 
-Example: `keyword (optional arguments)`
+## Feature find
 
-// A description of the expected outcome goes here
+The format of the instruction: 
+`find keyword`
 
-```
-expected output
-```
+then Alpha will print out the task with the input index
 
-## Feature ABC
+## Feature mark and unmark
 
-// Feature details
+you may mark or unmark a task by:
+`mark taskindex`
+`unmark taskindex`
 
+## Feature Duplicate Detection
 
-## Feature XYZ
+If you push a task that has already existed in the timetable, Alpha will pop up a window to ask user whether to add this task
 
-// Feature details
