@@ -13,5 +13,12 @@ src/main/resources/docs/
 *.iml
 bin/
 
+# java spectific binaries
+*.class
+
+# project data
+/data/
+/testDataDir/
+
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT

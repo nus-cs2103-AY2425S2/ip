@@ -1,7 +1,48 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+hi! i'm your sigma bot. what's on your list?
+here goes your task list:
+added new task 1: [T][ ] borrow book
+you've got 1 tasks so far
+[!] This task type requires parameter /by
+here goes your task list:
+1: [T][ ] borrow book
+added new task 2: [D][ ] return book (by: Sunday)
+you've got 2 tasks so far
+added new task 3: [E][ ] project meeting (from: Mon 2pm to: 4pm)
+you've got 3 tasks so far
+here goes your task list:
+1: [T][ ] borrow book
+2: [D][ ] return book (by: Sunday)
+3: [E][ ] project meeting (from: Mon 2pm to: 4pm)
+added new task 4: [D][ ] do homework (by: no idea :-p)
+you've got 4 tasks so far
+here goes your task list:
+1: [T][ ] borrow book
+2: [D][X] return book (by: Sunday)
+3: [E][X] project meeting (from: Mon 2pm to: 4pm)
+4: [D][ ] do homework (by: no idea :-p)
+[!] Task numbered 10 does not exist.
+[!] Incorrect mark format. Use: unmark [task number]
+here goes your task list:
+1: [T][ ] borrow book
+2: [D][X] return book (by: Sunday)
+3: [E][X] project meeting (from: Mon 2pm to: 4pm)
+4: [D][ ] do homework (by: no idea :-p)
+here goes your task list:
+1: [T][ ] borrow book
+2: [D][X] return book (by: Sunday)
+3: [E][ ] project meeting (from: Mon 2pm to: 4pm)
+4: [D][ ] do homework (by: no idea :-p)
+[!] Task numbered -1 does not exist.
+[!] Task numbered 123 does not exist.
+here goes your task list:
+1: [T][ ] borrow book
+2: [D][X] return book (by: Sunday)
+3: [E][ ] project meeting (from: Mon 2pm to: 4pm)
+4: [D][ ] do homework (by: no idea :-p)
+removed task 2: [D][X] return book (by: Sunday)
+you've got 3 tasks so far
+here goes your task list:
+1: [T][ ] borrow book
+2: [E][ ] project meeting (from: Mon 2pm to: 4pm)
+3: [D][ ] do homework (by: no idea :-p)
+see you soon!
