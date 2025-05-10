@@ -22,9 +22,7 @@ ____________________________________________________________
 
 ____________________________________________________________ 
 
-Meow! I've pawed this task into the list - don't make me scratch it out later.
-[D][ ] submit assignment (by: friday)
-Remember now, you have 2 task(s) to do.
+MEOW! Must be in format MM/DD/YYYY
 ____________________________________________________________ 
 
 ____________________________________________________________ 
@@ -35,8 +33,7 @@ ____________________________________________________________
 ____________________________________________________________ 
 
 Meow! I've pawed this task into the list - don't make me scratch it out later.
-[E][ ] team meeting (from: monday 2pm to: 3pm)
-Remember now, you have 3 task(s) to do.
+MEOW! Must be in format MM/DD/YYYY
 ____________________________________________________________ 
 
 ____________________________________________________________ 
@@ -48,8 +45,6 @@ ____________________________________________________________
 
 Don't forget what you have to do:
 1. [T][ ] read book
-2. [D][ ] submit assignment (by: friday)
-3. [E][ ] team meeting (from: monday 2pm to: 3pm)
 ____________________________________________________________ 
 
 ____________________________________________________________ 
@@ -68,10 +63,7 @@ ____________________________________________________________
 
 ____________________________________________________________ 
 
-MEOW. This task never existed: 
-
-[D][ ] submit assignment (by: friday)
-You have 2 tasks to do.
+MEOW! You don't have that many tasks
 ____________________________________________________________ 
 
 ____________________________________________________________ 
@@ -86,8 +78,8 @@ ____________________________________________________________
 
 ____________________________________________________________ 
 
+MEOW! Unable to save tasks to file: 
+.\data\Gigi.txt (The system cannot find the path specified)
 See ya! 
 Don't forget - this mighty fiery feline doesn't wait forever. 
 Meow!
-____________________________________________________________ 
-

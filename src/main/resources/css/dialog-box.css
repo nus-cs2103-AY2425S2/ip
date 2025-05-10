@@ -1,0 +1,44 @@
+.label {
+    -fx-background-color: linear-gradient(to bottom right, #e1edf9 , #599cd7);
+    -fx-border-color: #0948b6;
+    -fx-border-width: 2px;
+    -fx-background-radius: 1em 1em 0 1em;
+    -fx-border-radius: 1em 1em 0 1em;
+    -fx-text-fill: ladder(background, white 49%, black 50%);
+    -fx-wrap-text: true;
+    -fx-max-width: 300px; /* Prevents text from going too wide */
+    -fx-min-width: Region.USE_PREF_SIZE; /* Ensures width expands as needed */
+    -fx-min-height: Region.USE_PREF_SIZE; /* Ensures height grows for multiline */
+    -fx-padding: 10px;
+}
+
+.reply-label {
+    -fx-background-radius: 1em 1em 1em 0;
+    -fx-border-radius: 1em 1em 1em 0;
+}
+
+.add-label {
+    -fx-background-color: yellow;
+}
+
+.marked-label {
+    -fx-background-color: palegreen;
+}
+
+.delete-label {
+    -fx-background-color: lightpink;
+}
+
+
+#displayPicture {
+    /* Shadow effect on image. */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 5, 5);
+
+    /* Change size of image. */
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+
+    /* Rotate image clockwise by degrees. */
+    -fx-rotate: 0;
+}
+
