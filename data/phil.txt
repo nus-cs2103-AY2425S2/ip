@@ -1,0 +1,10 @@
+Todo -   - read a new book
+Todo -   - do something today
+Todo -   - hi
+Todo -   - bye
+Todo -   - hello
+Deadline -   - read - tuesday
+Event -   - hi - mon - tues
+Event -   - tutorial - 2/5/25 1000 - 05/07/2025 1100
+Event -   - tutorial - 2/5/25 1100 - tomorrow
+Event -   - break - 2/7/25 1000 - 2/10/25 1100

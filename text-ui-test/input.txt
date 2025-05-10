@@ -1,0 +1,12 @@
+todo read a book
+deadline do homework
+deadline do homework /by tomorrow morning
+event tutorial session
+event tutorial session /from Monday 2pm /to Monday 5pm
+list
+mark 1
+mark 3
+unmark 3
+list
+some incompatible command
+bye
