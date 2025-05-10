@@ -12,15 +12,21 @@ then
     rm ACTUAL.TXT
 fi
 
+# delete record from previous run
+if [ -e "./src/data/records.txt" ]
+then
+    rm ./src/data/records.txt
+fi
+
 # compile the code into the bin folder, terminates if error occurred
-if ! javac -cp ../src/main/java -Xlint:none -d ../bin ../src/main/java/*.java
+if ! javac -cp ../src/main/java -Xlint:none -d ../bin ../src/main/java/odin/*.java ../src/main/java/odin/exception/*.java ../src/main/java/odin/parser/*.java ../src/main/java/odin/parser/command/*.java ../src/main/java/odin/storage/*.java ../src/main/java/odin/task/*.java ../src/main/java/odin/ui/*.java
 then
     echo "********** BUILD FAILURE **********"
     exit 1
 fi
 
 # run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
-java -classpath ../bin Duke < input.txt > ACTUAL.TXT
+java -classpath ../bin odin.Odin < input.txt > ACTUAL.TXT
 
 # convert to UNIX format
 cp EXPECTED.TXT EXPECTED-UNIX.TXT
