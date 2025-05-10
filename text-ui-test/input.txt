@@ -1,0 +1,10 @@
+todo read book
+deadline return book /by 2/12/2019 1800
+event project meeting /from 3/1/2019 1400 /to 3/1/2019 1700
+list
+mark 1
+unmark 1
+delete 1
+lidt
+list
+bye
