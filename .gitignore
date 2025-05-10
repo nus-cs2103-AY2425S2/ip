@@ -13,5 +13,11 @@ src/main/resources/docs/
 *.iml
 bin/
 
-/text-ui-test/ACTUAL.TXT
-text-ui-test/EXPECTED-UNIX.TXT
+# Test folder and data
+text-ui-test/
+/data/
+
+# Executable
+/src/main/java/mirai/tasks/*.class
+/src/main/java/mirai/ui/Mirai.class
+/src/main/java/mirai/utility/*.class
