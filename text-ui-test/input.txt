@@ -1,0 +1,31 @@
+todo read book
+deadline return book /by tomorrow
+event book launch /from Sunday /to Tuesday
+list
+mark 3
+list
+unmark 3
+list
+delete 3
+list
+todo
+deadline
+deadline /by
+deadline hi /by
+event
+event /from /to
+event hi /from /to
+event hi /from today /to
+mark 0
+mark
+mark  dd
+mark 1000
+unmark 0
+unmark
+unmark dd
+unmark 1000
+delete 0
+delete
+delete dd
+delete 1000
+bye
