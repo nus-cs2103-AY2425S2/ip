@@ -1,0 +1,9 @@
+todo hw 
+deadline hw /by today
+event hw /from this morning /to 3pm
+list
+mark 1
+list
+unmark 1
+list
+bye
