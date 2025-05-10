@@ -1,0 +1,12 @@
+todo Yasmeen's Birthday
+deadline CS2109S PS1 /by 1/2/2025 1600
+event Answering Techniques BBQ /from 1/2/2025 1800 /to 1/2/2025 2300
+mark 1
+mark 3
+list
+unmark 1
+mark 2
+list
+mark 4
+unmark 5
+bye

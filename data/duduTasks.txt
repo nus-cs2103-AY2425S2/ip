@@ -1,0 +1,3 @@
+T | Done | SPH3107 Quiz
+D | Done | CS2109S Tutorial | 2025-02-21T15:00
+E | Not Done | CS2109S Lecture | 2025-02-18T10:00 | 2025-02-18T12:00
