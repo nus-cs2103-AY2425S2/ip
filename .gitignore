@@ -1,12 +1,13 @@
-# IDEA files
-/.idea/
-/out/
-/*.iml
+# Java build files
+/sources.txt
 
 # Gradle build files
 /.gradle/
 /build/
 src/main/resources/docs/
+/.settings
+/.classpath
+/.project
 
 # MacOS custom attributes files created by Finder
 .DS_Store
@@ -15,3 +16,9 @@ bin/
 
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT
+
+# Java class files
+*.class
+
+# runtime output files
+/pascal.txt
