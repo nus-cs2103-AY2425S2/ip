@@ -1,30 +1,43 @@
-# Duke User Guide
+# ProcrastinAid User Guide
 
-// Update the title above to match the actual product name
+![Ui Image](Ui.png)
 
-// Product screenshot goes here
+The ProcrastinAid application is a task management tool designed to help users organize and prioritize their tasks 
+efficiently. With ProcrastinAid, users can add, delete, and mark tasks as done, set deadlines, and categorize tasks 
+with tags. The application features a user-friendly JavaFX GUI, making it easy to interact with and manage tasks 
+visually. ProcrastinAid aims to boost productivity by providing a clear overview of tasks and deadlines, ensuring 
+that users stay on top of their responsibilities.
 
-// Product intro goes here
+## Adding Tasks, Deadlines and Events
 
-## Adding deadlines
+You can add deadlines to tasks by specifying a date and time. ProcrastinAid will display the deadline in the task list,
+allowing you to keep track of upcoming deadlines easily.
 
-// Describe the action and its outcome.
+Format: `deadline <description> /by <yyyy-MM-dd HH:mm>`
+Format: `event <description> /from <yyyy-MM-dd HH:mm> /to <yyyy-MM-dd HH:mm>`
+Format: `todo <description>`
 
-// Give examples of usage
+Example: `deadline Finish report /by 2021-09-30 23:59`
 
-Example: `keyword (optional arguments)`
+Example: `event Meeting with team /from 2021-09-30 14:00 /to 2021-09-30 16:00`
 
-// A description of the expected outcome goes here
+Example: `todo Buy groceries`
 
-```
-expected output
-```
+## Feature List all tasks
 
-## Feature ABC
-
-// Feature details
+You can view all tasks in the task list by entering the `list` command. ProcrastinAid will display all tasks, 
+including their type, description, and status.
 
 
-## Feature XYZ
+## Feature Mark and Unmark tasks as done
 
-// Feature details
+You can mark tasks as done by entering the `mark` command followed by the task number. ProcrastinAid will update the 
+task status to done, making it easy to track completed tasks.
+
+Format: `mark <task number>`
+
+## Feature Delete tasks
+
+You can delete tasks from the task list by entering the `delete` command followed by the task number. ProcrastinAid
+
+Format: `delete <task number>`
