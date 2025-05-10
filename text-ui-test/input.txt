@@ -1,0 +1,14 @@
+todo buy book
+deadline read book /by 2001-01-01
+event
+event meeting /from
+event meeting /from 2025-04-19 /to
+event meeting /from 2025-04-19 /to 2025-05-05
+mark 1
+lest
+list
+mark 3
+todo shopping
+unmark 3
+list
+bye
