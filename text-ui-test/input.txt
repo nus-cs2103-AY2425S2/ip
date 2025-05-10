@@ -1,0 +1,7 @@
+deadline eat apple /by 2pm
+todo buy bwead
+event slap my friend /from 6pm /to 7pm
+mark 2
+delete 2
+list
+bye

@@ -1,0 +1,5 @@
+E|0|sleep|6pm|8pm
+D|1|drugs|2019-10-10
+D|0|meow |2018-08-08
+T|0|help
+E|0|do drugs |5pm |7pm
