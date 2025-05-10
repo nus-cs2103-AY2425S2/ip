@@ -1,0 +1,26 @@
+.label {
+    -fx-background-color: #F2F2F2; /* Light background */
+    -fx-border-color: #A480F2;  /* Soft purple border */
+    -fx-border-width: 2px;
+    -fx-text-fill: #1D1340; /* Dark navy text */
+    -fx-padding: 10px;
+    -fx-font-family: "Roboto Thin";
+    -fx-background-radius: 1em 1em 0 1em;
+    -fx-border-radius: 1em 1em 0 1em;
+}
+
+.reply-label {
+    -fx-border-color: #445EF2; /* Vibrant blue border */
+    -fx-text-fill: #221426; /* Dark purple text */
+    -fx-padding: 10px;
+    -fx-font-family: "Roboto Thin";
+    -fx-background-radius: 1em 1em 1em 0;
+    -fx-border-radius: 1em 1em 1em 0;
+}
+
+#displayPicture {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 5, 5);
+    -fx-border-radius: 50%;
+    -fx-border-color: #445EF2;
+    -fx-border-width: 2px;
+}
