@@ -1,0 +1,66 @@
+plugins {
+    id 'application'
+    id 'checkstyle'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def javaFxVersion = '17.0.7'
+def osName = System.getProperty("os.name").toLowerCase()
+def osClassifier = osName.contains("win") ? "win" : osName.contains("mac") ? "mac" : "linux"
+
+dependencies {
+    implementation 'com.google.guava:guava:32.1.2-jre'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+
+    // JavaFX Dependencies (Dynamically selects OS version)
+    implementation "org.openjfx:javafx-base:${javaFxVersion}:${osClassifier}"
+    implementation "org.openjfx:javafx-controls:${javaFxVersion}:${osClassifier}"
+    implementation "org.openjfx:javafx-fxml:${javaFxVersion}:${osClassifier}"
+    implementation "org.openjfx:javafx-graphics:${javaFxVersion}:${osClassifier}"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    mainClass.set("boblet.Launcher")  // ✅ Use correct main class
+}
+
+shadowJar {
+    archiveBaseName.set("boblet")
+    archiveClassifier.set("")
+    archiveVersion.set("")
+    manifest {
+        attributes 'Main-Class': application.mainClass.get()
+    }
+    mergeServiceFiles()
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.fxml'
+        include '**/*.png'
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.withType(Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+checkstyle {
+    toolVersion = '10.2'
+    configFile = file("${rootProject.projectDir}/config/checkstyle/checkstyle.xml")
+    configProperties.suppressionFile = file("${rootProject.projectDir}/config/checkstyle/suppressions.xml")
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

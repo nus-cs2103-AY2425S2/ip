@@ -1,7 +1,40 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Hey there! I'm Boblet, your friendly assistant!
+I can track ToDos, Deadlines, and Events.
 
+____________________________________________________________
+Got it. I've added this task:
+  [TODO][✗] Read a book
+Now you have 1 tasks in the list.
+____________________________________________________________
+Got it. I've added this task:
+  [DEADLINE][✗] Submit assignment (by: Feb 01 2025, 06:00 PM)
+Now you have 2 tasks in the list.
+____________________________________________________________
+Got it. I've added this task:
+  [EVENT][✗] Team meeting (at: Feb 01 2025, 02:00 PM)
+Now you have 3 tasks in the list.
+____________________________________________________________
+Here are your tasks:
+1. [TODO][✗] Read a book
+2. [DEADLINE][✗] Submit assignment (by: Feb 01 2025, 06:00 PM)
+3. [EVENT][✗] Team meeting (at: Feb 01 2025, 02:00 PM)
+____________________________________________________________
+Nice! I've marked this task as done:
+  [TODO][✓] Read a book
+____________________________________________________________
+Here are your tasks:
+1. [TODO][✓] Read a book
+2. [DEADLINE][✗] Submit assignment (by: Feb 01 2025, 06:00 PM)
+3. [EVENT][✗] Team meeting (at: Feb 01 2025, 02:00 PM)
+____________________________________________________________
+Noted. I've removed this task:
+  [DEADLINE][✗] Submit assignment (by: Feb 01 2025, 06:00 PM)
+Now you have 2 tasks in the list.
+____________________________________________________________
+Here are your tasks:
+1. [TODO][✓] Read a book
+2. [EVENT][✗] Team meeting (at: Feb 01 2025, 02:00 PM)
+____________________________________________________________
+Aww, you're leaving already! Well, take care!
+See you soon! Bye from Boblet!
+____________________________________________________________
