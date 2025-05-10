@@ -1,0 +1,12 @@
+read book
+todo read book
+todo pat burd
+deadline buy catfood /by Feb 12th 2025 5pm
+event dance rehearsal /from Mar 1st 2025 2pm
+event dance rehearsal /from Mar 1st 2025 2pm /to Mar 1st 2025 5pm
+list
+mark 1
+unmark 1
+mark 4
+list
+bye
