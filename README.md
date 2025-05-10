@@ -1,26 +1,168 @@
-# Duke project template
+# **Charlie User Guide**
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+*A simple task manager chatbot for efficient productivity.*
 
-## Setting up in Intellij
+![Charlie Chatbot](docs/Ui.png)
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+## **Introduction**
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
+Charlie is a chatbot designed to help users manage tasks efficiently. It supports **To-Dos, Deadlines, and Events**, and
+allows users to list or delete tasks easily.
+
+---
+
+## **Features**
+
+### **1. Adding a To-Do**
+
+Create a simple to-do task without a deadline.
+
+#### **Usage:**
+
+```plaintext
+todo <task description>
+```
+
+#### **Example:**
+
+```plaintext
+todo Buy groceries
+```
+
+#### **Expected Output:**
+
+```plaintext
+Got it! I've added this task:
+[T][ ] Buy groceries
+Now you have 1 task in the list.
+```
+
+---
+
+### **2. Adding a Deadline**
+
+Create a task with a specified deadline.
+
+#### **Usage:**
+
+```plaintext
+deadline <task description> /by <time>
+```
+
+#### **Example:**
+
+```plaintext
+deadline Finish assignment /by 2025-02-21
+```
+
+#### **Expected Output:**
+
+```plaintext
+Got it! I've added this task:
+[D][ ] Finish assignment (by: Feb 21 2025)
+Now you have 2 tasks in the list.
+```
+
+---
+
+### **3. Adding an Event**
+
+Create an event that spans a specific time range.
+
+#### **Usage:**
+
+```plaintext
+event <task description> /from <start time> /to <end time>
+```
+
+#### **Example:**
+
+```plaintext
+event Team meeting /from 2pm /to 4pm
+```
+
+#### **Expected Output:**
+
+```plaintext
+Got it! I've added this task:
+[E][ ] Team meeting (from: 2pm to: 4pm)
+Now you have 3 tasks in the list.
+```
+
+---
+
+### **4. Deleting a Task**
+
+Remove a specific task from the list.
+
+#### **Usage:**
+
+```plaintext
+delete <task number>
+```
+
+#### **Example:**
+
+```plaintext
+delete 2
+```
+
+#### **Expected Output:**
+
+```plaintext
+Noted! I've removed this task:
+[D][ ] Finish assignment (by: Feb 21 2025)
+Now you have 2 tasks in the list.
+```
+
+---
+
+### **5. Listing All Tasks**
+
+View all tasks currently stored.
+
+#### **Usage:**
+
+```plaintext
+list
+```
+
+#### **Expected Output:**
+
+```plaintext
+Here are the tasks in your list:
+1. [T][ ] Buy groceries
+2. [E][ ] Team meeting (from: 2pm to: 4pm)
+```
+
+---
+
+### **6. Exiting the Chatbot**
+
+End the session with Charlie.
+
+#### **Usage:**
+
+```plaintext
+bye
+```
+
+#### **Expected Output:**
+
+```plaintext
+Goodbye! Hope to see you again soon!
+```
+
+---
+
+## **Installation & Usage**
+
+1. Download and extract `Charlie.jar`.
+2. Open a terminal or command prompt in the extracted folder.
+3. Run the chatbot using:
+   ```sh
+   java -jar Charlie.jar
    ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+4. Start managing your tasks!
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+

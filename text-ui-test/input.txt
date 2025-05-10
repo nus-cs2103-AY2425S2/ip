@@ -1,0 +1,6 @@
+todo go grocery shopping
+deadline do cs2103t
+deadline do cs2103t homework /by 21/1
+event soc meeting /from 18:00 /to 20:00
+list
+bye
