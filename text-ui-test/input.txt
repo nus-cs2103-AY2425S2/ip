@@ -1,0 +1,56 @@
+hello
+list
+todo
+todo todotest1
+todo todotest2
+todo todotest3
+list
+event
+event  /from  /to
+event fail /from  /to
+event  /from fail /to
+event  /from  /to fail
+event failduetoinvaliddate /from 234443 /to 234443
+event failduetoinvaliddate /from favre /to 24554
+event failduetoinvaliddate /from 6576 /to ar
+event failduetoinvaliddate /from 27-01-2025 1800 /to 28-01-2025 1900
+event eventtest1 /from 27-01-26 1800 /to 28-01-26 1900
+event eventtest2 /from 27-01-25 1800 /to 28-01-25 1900
+event eventtest3 /from 27-01-25 /to 28-01-25
+event eventtest4 /from 27-01-25 1900 /to 28-01-25
+deadline
+deadline  /by
+deadline fail /by
+deadline /by fail
+deadline failduetoinvaliddate /by 234443
+deadline failduetoinvaliddate /by favre
+deadline failduetoinvaliddate /by 27-01-2025 1800
+deadline deadlinetest1 /by 27-01-26
+deadline deadlinetest2 /by 27-01-25
+deadline deadlinetest3 /by 27-01-25 1900
+find
+find test
+find ven
+find 1
+find none
+list
+mark
+mark 1
+mark 1
+mark 2
+mark 3
+mark 4
+unmark 1
+unmark 1
+mark 0
+unmark 0
+mark 7
+unmark 7
+list
+delete
+delete 0
+delete 10
+delete 7
+delete 3
+bye
+

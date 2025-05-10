@@ -1,26 +1,47 @@
-# Duke project template
+# L.A.F.F.Y
+> "Hello, I am Laffy, Lucas' Automated Friendship For You." - Laffy 😊
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+Laffy is a task management application that helps you keep track of your tasks. It is a CLI app that allows you to add, mark, unmark, list, delete, and find tasks.
 
-## Setting up in Intellij
+## Using Laffy
+1. download the latest release from [here](https://github.com/aekyr/ip/releases)
+2. Run the jar file using the command `java -jar laffy.jar`
+3. Start chatting with Laffy!
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+## Features
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+- **Add tasks:** Add different types of tasks such as todos, deadlines, and events.
+- **Mark tasks:** Mark tasks as done.
+- **Unmark tasks:** Unmark tasks that are marked as done.
+- **List tasks:** List all tasks.
+- **Delete tasks:** Delete tasks from the list.
+- **Find tasks:** Find tasks by searching for keywords.
+- **Upcoming tasks:** View tasks that are due soon.
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+## Commands
+1. `list`: Lists all tasks.
+2. `todo <description>`: Adds a todo task to the list.
+3. `deadline <description> /by <date>`: Adds a deadline task to the list.
+4. `event <description> /from <date> /to <date>`: Adds an event task to the list.
+5. `mark <index>`: Marks a task as done.
+6. `unmark <index>`: Marks a task as undone.
+7. `delete <index>`: Deletes a task from the list.
+8. `find <keyword>`: Finds tasks that contain the keyword.
+9. `upcoming`: Lists tasks that are due soon.
+10. `bye`: Exits the application.
+11. `help`: Displays the list of commands.
+
+### To do list
+
+- [x] ~~Create project structure~~
+- [x] ~~Implement basic features~~
+- [ ] Add **_friendship_**
+- [ ] Write documentation
+
+### Main Function of Laffy Application (For those who would like to make Laffy your own)
+
+```java
+public static void main(String[] args) throws IOException {
+    new Laffy("data/laffy.txt").run();
+}
+```

@@ -1,7 +1,303 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+File not found, creating new file
+____________________________________________________________
+Hello! I'm L.A.F.F.Y
+What can I do for you?
+____________________________________________________________
+> ____________________________________________________________
+Invalid command. Please enter a valid command.
+Here are the available commands:
+1. list
+2. todo <description>
+3. deadline <description> /by <deadline: dd-MM-yy[ HHMM]>
+4. event <description> /from <start time: dd-MM-yy[ HHMM]> /to <end time: dd-MM-yy[ HHMM]>
+5. find <keyword>
+6. mark <index>
+7. unmark <index>
+8. delete <index>
+9. bye
+____________________________________________________________
+> ____________________________________________________________
+There are no tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Description cannot be empty.
+Usage: todo <description>
 
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [T][ ] todotest1
+Now you have 1 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [T][ ] todotest2
+Now you have 2 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [T][ ] todotest3
+Now you have 3 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Here are the tasks in your list:
+1. [T][ ] todotest1
+2. [T][ ] todotest2
+3. [T][ ] todotest3
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing keyword flag. Could not find flag "/from" in command.
+Usage: event <description> /from <start time: dd-MM-yy[ HHMM]> /to <end time: dd-MM-yy[ HHMM]>
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Description, from, and to cannot be empty.
+Usage: event <description> /from <start time: dd-MM-yy[ HHMM]> /to <end time: dd-MM-yy[ HHMM]>
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Description, from, and to cannot be empty.
+Usage: event <description> /from <start time: dd-MM-yy[ HHMM]> /to <end time: dd-MM-yy[ HHMM]>
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Description, from, and to cannot be empty.
+Usage: event <description> /from <start time: dd-MM-yy[ HHMM]> /to <end time: dd-MM-yy[ HHMM]>
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Description, from, and to cannot be empty.
+Usage: event <description> /from <start time: dd-MM-yy[ HHMM]> /to <end time: dd-MM-yy[ HHMM]>
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Invalid datetime format.
+Expected: dd-MM-yy [HHmm].
+Instead got: 234443 and 234443
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Invalid datetime format.
+Expected: dd-MM-yy [HHmm].
+Instead got: favre and 24554
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Invalid datetime format.
+Expected: dd-MM-yy [HHmm].
+Instead got: 6576 and ar
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Invalid datetime format.
+Expected: dd-MM-yy [HHmm].
+Instead got: 27-01-2025 1800 and 28-01-2025 1900
+
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [E][ ] eventtest1 (from: Tuesday, 27/01/2026, 06:00pm to: Wednesday, 28/01/2026, 07:00pm)
+Now you have 4 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [E][ ] eventtest2 (from: Monday, 27/01, 06:00pm to: Tuesday, 28/01, 07:00pm)
+Now you have 5 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [E][ ] eventtest3 (from: Monday, 27/01, 12:00am to: Tuesday, 28/01, 12:00am)
+Now you have 6 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [E][ ] eventtest4 (from: Monday, 27/01, 07:00pm to: Tuesday, 28/01, 12:00am)
+Now you have 7 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing keyword flag. Could not find flag "/by" in command.
+Usage: deadline <description> /by <deadline: dd-MM-yy[ HHMM]>
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Description and deadline cannot be empty.
+Usage: deadline <description> /by <deadline: dd-MM-yy[ HHMM]>
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Description and deadline cannot be empty.
+Usage: deadline <description> /by <deadline: dd-MM-yy[ HHMM]>
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Description and deadline cannot be empty.
+Usage: deadline <description> /by <deadline: dd-MM-yy[ HHMM]>
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Invalid datetime format.
+Expected: dd-MM-yy [HHmm].
+Instead got: 234443
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Invalid datetime format.
+Expected: dd-MM-yy [HHmm].
+Instead got: favre
+
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Invalid datetime format.
+Expected: dd-MM-yy [HHmm].
+Instead got: 27-01-2025 1800
+
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [D][ ] deadlinetest1 (by: Tuesday, 27/01/2026, 12:00am)
+Now you have 8 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [D][ ] deadlinetest2 (by: Monday, 27/01, 12:00am)
+Now you have 9 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Got it. I've added this task:
+  [D][ ] deadlinetest3 (by: Monday, 27/01, 07:00pm)
+Now you have 10 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Search keyword cannot be empty.
+Usage: find <keyword>
+
+____________________________________________________________
+> ____________________________________________________________
+Here are the matching tasks in your list:
+1.  [T][ ] todotest1
+2.  [T][ ] todotest2
+3.  [T][ ] todotest3
+4.  [E][ ] eventtest1 (from: Tuesday, 27/01/2026, 06:00pm to: Wednesday, 28/01/2026, 07:00pm)
+5.  [E][ ] eventtest2 (from: Monday, 27/01, 06:00pm to: Tuesday, 28/01, 07:00pm)
+6.  [E][ ] eventtest3 (from: Monday, 27/01, 12:00am to: Tuesday, 28/01, 12:00am)
+7.  [E][ ] eventtest4 (from: Monday, 27/01, 07:00pm to: Tuesday, 28/01, 12:00am)
+8.  [D][ ] deadlinetest1 (by: Tuesday, 27/01/2026, 12:00am)
+9.  [D][ ] deadlinetest2 (by: Monday, 27/01, 12:00am)
+10. [D][ ] deadlinetest3 (by: Monday, 27/01, 07:00pm)
+____________________________________________________________
+> ____________________________________________________________
+Here are the matching tasks in your list:
+1. [E][ ] eventtest1 (from: Tuesday, 27/01/2026, 06:00pm to: Wednesday, 28/01/2026, 07:00pm)
+2. [E][ ] eventtest2 (from: Monday, 27/01, 06:00pm to: Tuesday, 28/01, 07:00pm)
+3. [E][ ] eventtest3 (from: Monday, 27/01, 12:00am to: Tuesday, 28/01, 12:00am)
+4. [E][ ] eventtest4 (from: Monday, 27/01, 07:00pm to: Tuesday, 28/01, 12:00am)
+____________________________________________________________
+> ____________________________________________________________
+Here are the matching tasks in your list:
+1. [T][ ] todotest1
+2. [E][ ] eventtest1 (from: Tuesday, 27/01/2026, 06:00pm to: Wednesday, 28/01/2026, 07:00pm)
+3. [D][ ] deadlinetest1 (by: Tuesday, 27/01/2026, 12:00am)
+____________________________________________________________
+> ____________________________________________________________
+No tasks found with the keyword: none
+____________________________________________________________
+> ____________________________________________________________
+Here are the tasks in your list:
+1.  [T][ ] todotest1
+2.  [T][ ] todotest2
+3.  [T][ ] todotest3
+4.  [E][ ] eventtest1 (from: Tuesday, 27/01/2026, 06:00pm to: Wednesday, 28/01/2026, 07:00pm)
+5.  [E][ ] eventtest2 (from: Monday, 27/01, 06:00pm to: Tuesday, 28/01, 07:00pm)
+6.  [E][ ] eventtest3 (from: Monday, 27/01, 12:00am to: Tuesday, 28/01, 12:00am)
+7.  [E][ ] eventtest4 (from: Monday, 27/01, 07:00pm to: Tuesday, 28/01, 12:00am)
+8.  [D][ ] deadlinetest1 (by: Tuesday, 27/01/2026, 12:00am)
+9.  [D][ ] deadlinetest2 (by: Monday, 27/01, 12:00am)
+10. [D][ ] deadlinetest3 (by: Monday, 27/01, 07:00pm)
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Index cannot be empty.
+Usage: mark <index>
+
+____________________________________________________________
+> ____________________________________________________________
+Nice! I've marked this task as done:
+  [T][X] todotest1
+____________________________________________________________
+> ____________________________________________________________
+Task is already marked as done!
+____________________________________________________________
+> ____________________________________________________________
+Nice! I've marked this task as done:
+  [T][X] todotest2
+____________________________________________________________
+> ____________________________________________________________
+Nice! I've marked this task as done:
+  [T][X] todotest3
+____________________________________________________________
+> ____________________________________________________________
+Nice! I've marked this task as done:
+  [E][X] eventtest1 (from: Tuesday, 27/01/2026, 06:00pm to: Wednesday, 28/01/2026, 07:00pm)
+____________________________________________________________
+> ____________________________________________________________
+Ok, I've marked this task as not yet done:
+  [T][ ] todotest1
+____________________________________________________________
+> ____________________________________________________________
+Task is already marked as not done!
+____________________________________________________________
+> ____________________________________________________________
+[TASKL-ERROR]: An error occurred while executing the command.
+Index out of range. Valid index range is 1 to 10
+____________________________________________________________
+> ____________________________________________________________
+[TASKL-ERROR]: An error occurred while executing the command.
+Index out of range. Valid index range is 1 to 10
+____________________________________________________________
+> ____________________________________________________________
+Nice! I've marked this task as done:
+  [E][X] eventtest4 (from: Monday, 27/01, 07:00pm to: Tuesday, 28/01, 12:00am)
+____________________________________________________________
+> ____________________________________________________________
+Ok, I've marked this task as not yet done:
+  [E][ ] eventtest4 (from: Monday, 27/01, 07:00pm to: Tuesday, 28/01, 12:00am)
+____________________________________________________________
+> ____________________________________________________________
+Here are the tasks in your list:
+1.  [T][ ] todotest1
+2.  [T][X] todotest2
+3.  [T][X] todotest3
+4.  [E][X] eventtest1 (from: Tuesday, 27/01/2026, 06:00pm to: Wednesday, 28/01/2026, 07:00pm)
+5.  [E][ ] eventtest2 (from: Monday, 27/01, 06:00pm to: Tuesday, 28/01, 07:00pm)
+6.  [E][ ] eventtest3 (from: Monday, 27/01, 12:00am to: Tuesday, 28/01, 12:00am)
+7.  [E][ ] eventtest4 (from: Monday, 27/01, 07:00pm to: Tuesday, 28/01, 12:00am)
+8.  [D][ ] deadlinetest1 (by: Tuesday, 27/01/2026, 12:00am)
+9.  [D][ ] deadlinetest2 (by: Monday, 27/01, 12:00am)
+10. [D][ ] deadlinetest3 (by: Monday, 27/01, 07:00pm)
+____________________________________________________________
+> ____________________________________________________________
+[PARSE-ERROR]: Missing argument. Index cannot be empty.
+Usage: delete <index>
+
+____________________________________________________________
+> ____________________________________________________________
+[TASKL-ERROR]: An error occurred while executing the command.
+Index out of range. Valid index range is 1 to 10
+____________________________________________________________
+> ____________________________________________________________
+Noted. I've removed this task:
+  [D][ ] deadlinetest3 (by: Monday, 27/01, 07:00pm)
+Now you have 9 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Noted. I've removed this task:
+  [E][ ] eventtest4 (from: Monday, 27/01, 07:00pm to: Tuesday, 28/01, 12:00am)
+Now you have 8 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Noted. I've removed this task:
+  [T][X] todotest3
+Now you have 7 tasks in the list.
+____________________________________________________________
+> ____________________________________________________________
+Bye. Hope to see you again soon!
+____________________________________________________________
