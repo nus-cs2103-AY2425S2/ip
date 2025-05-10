@@ -1,26 +1,151 @@
-# Duke project template
+# Dynamis - User Guide
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+Introducing **Dynamis**, a simple and efficient task management chatbot. This guide will help you understand the basic commands and how to use them.
 
-## Setting up in Intellij
+---
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+##  Getting Started
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+To start using **Dynamis**, simply run the program and interact with it using the available text commands mentioend below.
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+---
+
+## Features & Commands
+
+### 1️⃣ Add a To-Do Task
+Creates a task without a deadline.
+
+```
+todo <task_description>
+```
+**Example:**
+```
+todo Laundry
+```
+📝 **Adds**: `[T][ ] Laundry`
+
+---
+
+### 2️⃣ Add a Deadline Task
+Creates a task that must be completed by a certain date.
+
+```
+deadline <task_description> /by <yyyy-MM-dd>
+```
+**Example:**
+```
+deadline Math homework /by 2024-06-15
+```
+📝 **Adds**: `[D][ ] Math homework (by: Jun 15 2024)`
+
+---
+
+### 3️⃣ Add an Event Task
+Creates a task with a start and end time.
+
+```
+event <task_description> /from <start_time> /to <end_time>
+```
+**Example:**
+```
+event party /from 10am /to 12pm
+```
+📝 **Adds**: `[E][ ] party (from: 10am to: 12pm)`
+
+---
+
+### 4️⃣ View All Tasks
+Lists all the tasks currently stored.
+
+```
+list
+```
+📋 **Example Output:**
+```
+1. [T][ ] Laundry
+2. [D][ ] Math homework (by: Jun 15 2024)
+3. [E][ ] party (from: 10am to: 12pm)
+```
+
+---
+
+### 5️⃣ Mark a Task as Done
+Marks a task as completed.
+
+```
+mark <task_number>
+```
+**Example:**
+```
+mark 2
+```
+✅ **Marks Task #2 as Done** → `[D][X] Math homework (by: Jun 15 2024)`
+
+---
+
+### 6️⃣ Delete a Task
+Deletes a task from the list.
+
+```
+delete <task_number>
+```
+**Example:**
+```
+remove 1
+```
+🗑 **Deletes Task #1**
+
+---
+
+### 7️⃣ Find Tasks by Keyword
+Searches for tasks containing a specific keyword.
+
+```
+find <keyword>
+```
+**Example:**
+```
+find book
+```
+🔍 **Matching Tasks:**
+```
+1. [T][X] Laundry
+2. [D][ ] return book (by: Jun 6th)
+```
+
+---
+
+### 8️⃣ Get Help
+Displays a list of available commands.
+
+```
+help
+```
+📖 **Example Output:**
+```
+Here are the available commands:
+  todo <task>
+  deadline <task> /by <yyyy-MM-dd>
+  event <task> /from <yyyy-MM-dd> /to <yyyy-MM-dd>
+  list
+  mark <task_number>
+  remove <task_number>
+  find <keyword>
+  help
+  bye
+```
+
+---
+
+### 9️⃣ Exit the Program
+Closes the chatbot.
+
+```
+bye
+```
+👋 **Example Output:**
+```
+Bye. Hope to see you again soon!
+```
+
+---
