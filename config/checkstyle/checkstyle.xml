@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<!--
+    This configuration file enforces rules for the coding standard at
+    https://se-education.org/guides/conventions/java/intermediate.html
+-->
+
+<module name="Checker">
+    <!-- Check that there are no tab characters in the file -->
+    <module name="FileTabCharacter"/>
+
+    <!-- Ensures that there is a newline at the end of the file -->
+    <module name="NewlineAtEndOfFile">
+        <property name="lineSeparator" value="lf_cr_crlf"/>
+    </module>
+
+    <!-- Enforces use of TODO instead of FIXME in comments -->
+    <module name="RegexpSingleline">
+        <property name="format" value="((//.*)|(\*.*))FIXME" />
+        <property name="message" value="TODO is preferred to FIXME." />
+    </module>
+
+    <!-- Suppress specific violations (optional) -->
+    <module name="SuppressionFilter">
+        <property name="file" value="${config_loc}/suppressions.xml"/>
+    </module>
+
+    <!-- Ensure that lines are no longer than 120 characters -->
+    <module name="LineLength">
+        <property name="max" value="120"/>
+    </module>
+
+    <!-- TreeWalker is used for checking code constructs -->
+    <module name="TreeWalker">
+
+        <!-- Suppression filters for comments -->
+        <module name="SuppressionCommentFilter">
+            <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
+            <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)"/>
+            <property name="checkFormat" value="$1"/>
+        </module>
+
+        <!-- Import Checks -->
+        <!-- Ensures correct ordering of imports -->
+        <module name="CustomImportOrder">
+            <property name="customImportOrderRules" value="STATIC###STANDARD_JAVA_PACKAGE###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE"/>
+            <property name="specialImportsRegExp" value="^org\."/>
+            <property name="thirdPartyPackageRegExp" value="^com\."/>
+            <property name="sortImportsInGroupAlphabetically" value="true"/>
+        </module>
+
+        <!-- Ensures that there are no redundant import statements -->
+        <module name="RedundantImport"/>
+
+        <!-- Ensures that unused import statements are removed -->
+        <module name="UnusedImports"/>
+
+        <!-- Avoid using wildcard imports -->
+        <module name="AvoidStarImport"/>
+
+        <!-- Naming Checks -->
+        <!-- Enforces a rule on abbreviation length for identifiers -->
+        <module name="AbbreviationAsWordInName">
+            <property name="ignoreFinal" value="false"/>
+            <property name="allowedAbbreviationLength" value="1"/>
+        </module>
+
+        <!-- Enforces valid package names -->
+        <module name="PackageName">
+            <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]{1,})*$"/>
+            <property name="severity" value="warning"/>
+        </module>
+
+        <!-- Enforces proper naming for types (classes, interfaces, etc.) -->
+        <module name="TypeName">
+            <property name="severity" value="warning"/>
+        </module>
+
+        <!-- Enforces naming conventions for constants (uppercase with underscores) -->
+        <module name="ConstantName">
+            <property name="applyToPrivate" value="false"/>
+            <property name="severity" value="warning"/>
+        </module>
+
+        <!-- Enforces proper naming for static variables -->
+        <module name="StaticVariableName">
+            <property name="severity" value="warning"/>
+        </module>
+
+    </module>
+</module>
