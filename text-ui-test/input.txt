@@ -1,0 +1,25 @@
+list
+delete 1
+delete a
+todo
+todo homework
+deadline
+deadline homework
+deadline /by tonight
+deadline hw /by tonight
+event
+event party /from 6pm
+event /from 6pm /to 11pm
+event class /from 4 /to 6
+list
+mark A
+unmark B
+mark 7
+mark 2
+mark 2
+unmark 1
+unmark 2
+delete 3
+hi
+delete 1
+bye
