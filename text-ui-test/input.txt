@@ -1,0 +1,26 @@
+todo read psych chap 1
+deadline cs2103t ip week 2 by 24 Jan 2025 1600
+event ihg track from 6 Feb 2025 1900 to 6 Feb 2025 2100
+list
+check 1
+list
+uncheck 1
+list
+todo
+deadline
+event
+deadline tutorial 1
+event meeting
+event meeting from 2000
+check
+uncheck
+remove
+check 4
+uncheck 5
+remove 4
+meh
+
+deadline quiz 4 by 6 Feb 2025 2359
+filter 6 Feb 2025
+filter 5 Feb 2025
+bye

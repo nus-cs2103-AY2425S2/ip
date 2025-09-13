@@ -1,7 +1,75 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Welcome to the Universe!
+What cosmic quest can I assist you with today?
 
+[T][ ] read psych chap 1 added to Checklist!
+You now have 1 chore(s) in the checklist.
+
+[D][ ] cs2103t ip week 2 (by: 24-1-2025 16:00) added to Checklist!
+You now have 2 chore(s) in the checklist.
+
+[E][ ] ihg track (from: 6-2-2025 19:00 to: 6-2-2025 21:00) added to Checklist!
+You now have 3 chore(s) in the checklist.
+
+Cosmic Chore Checklist:
+1 [T][ ] read psych chap 1
+2 [D][ ] cs2103t ip week 2 (by: 24-1-2025 16:00)
+3 [E][ ] ihg track (from: 6-2-2025 19:00 to: 6-2-2025 21:00)
+You now have 3 chore(s) in the checklist.
+
+Yay read psych chap 1 successfully completed!
+[T][X] read psych chap 1
+
+Cosmic Chore Checklist:
+1 [T][X] read psych chap 1
+2 [D][ ] cs2103t ip week 2 (by: 24-1-2025 16:00)
+3 [E][ ] ihg track (from: 6-2-2025 19:00 to: 6-2-2025 21:00)
+You now have 3 chore(s) in the checklist.
+
+read psych chap 1 marked as not done yet :(
+[T][ ] read psych chap 1
+
+Cosmic Chore Checklist:
+1 [T][ ] read psych chap 1
+2 [D][ ] cs2103t ip week 2 (by: 24-1-2025 16:00)
+3 [E][ ] ihg track (from: 6-2-2025 19:00 to: 6-2-2025 21:00)
+You now have 3 chore(s) in the checklist.
+
+A chore must have a description!
+
+A chore must have a description!
+
+A chore must have a description!
+
+A deadline chore must have a date/time!
+
+An event must have a start and end time!
+
+An event must have a start and end time!
+
+Please provide a chore number!
+
+Please provide a chore number!
+
+Please provide a chore number!
+
+This chore is not in the list :(
+
+This chore is not in the list :(
+
+This chore is not in the list :(
+
+Sorry, this word doesn't exist in the Universe library yet.
+Check back again in a million light years or reenter your command.
+
+Still waiting for your response!
+
+[D][ ] quiz 4 (by: 6-2-2025 23:59) added to Checklist!
+You now have 4 chore(s) in the checklist.
+
+Chores on 6 Feb 2025:
+[E][ ] ihg track (from: 6-2-2025 19:00 to: 6-2-2025 21:00)
+[D][ ] quiz 4 (by: 6-2-2025 23:59)
+Chores on 5 Feb 2025:
+No deadlines or events on this date
+
+Farewell, Universe traveller. May our paths intersect again soon!
