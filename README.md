@@ -1,5 +1,6 @@
 # Bartholomew User Guide
 Greetings, good traveler! I am Bartholomew, thy most faithful scribe. Entrust thy tasks to me, and I shall remember them for thy.
+![Ui.png](Ui.png)
 
 ## Notes about the command format:
 
