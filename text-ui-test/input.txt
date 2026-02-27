@@ -1,0 +1,9 @@
+todo buy flowers
+deadline submit 2103 ip /by monday
+event cny dinner /6pm /9pm
+list
+mark 2
+mark 3
+unmark 3
+list
+bye
