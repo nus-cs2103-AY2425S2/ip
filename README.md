@@ -27,7 +27,7 @@ TaskMaster is a simple task management application with a GUI built using JavaFX
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/SomneelSaha2004/taskmaster.git
+    git clone https://github.com/SomneelSaha2042/taskmaster.git
     ```
 2. Navigate to the project directory:
     ```sh
